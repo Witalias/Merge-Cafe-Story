@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using Service;
+using System;
+using Enums;
 
 namespace Gameplay.Field
 {
@@ -12,8 +14,8 @@ namespace Gameplay.Field
         private const string _zoomAnimatorBool = "Mouse Enter";
         private const string _burnAnimatorBool = "Burn";
 
-        [SerializeField] private float returningSpeed;
-        [SerializeField] private float followSpeed;
+        [SerializeField] private float _returningSpeed;
+        [SerializeField] private float _followSpeed;
         [SerializeField] private Image _image;
 
         private Animator _animator;
@@ -22,6 +24,9 @@ namespace Gameplay.Field
         private GameStorage _storage;
 
         private bool _isReturning = false;
+
+        public static event Action JoiningItemsOfMaxLevelTried;
+        public static event Action<ItemType> CursorHoveredOverItem;
 
         public ItemStats Stats { get; private set; }
 
@@ -55,7 +60,7 @@ namespace Gameplay.Field
         {
             if (_isReturning)
             {
-                transform.position = Vector3.Lerp(transform.position, _currentCell.transform.position, returningSpeed * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, _currentCell.transform.position, _returningSpeed * Time.deltaTime);
                 if (Vector3.Distance(transform.position, _currentCell.transform.position) <= 0.01f)
                     _isReturning = false;
             }
@@ -64,6 +69,7 @@ namespace Gameplay.Field
         private void OnMouseEnter()
         {
             _animator.SetBool(_zoomAnimatorBool, true);
+            CursorHoveredOverItem?.Invoke(Stats.Type);
         }
 
         private void OnMouseExit()
@@ -75,7 +81,7 @@ namespace Gameplay.Field
         {
             var mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
             var followPosition = new Vector3(mousePosition.x, mousePosition.y, 0f);
-            transform.position = Vector3.Lerp(transform.position, followPosition, followSpeed * Time.fixedDeltaTime);
+            transform.position = Vector3.Lerp(transform.position, followPosition, _followSpeed * Time.fixedDeltaTime);
         }
 
         private void OnMouseDown()
@@ -97,7 +103,9 @@ namespace Gameplay.Field
                 if (_currentCell == cell)
                     return;
 
-                if (!_storage.IsItemMaxLevel(Stats))
+                if (_storage.IsItemMaxLevel(Stats))
+                    JoiningItemsOfMaxLevelTried?.Invoke();
+                else
                     Join(cell);
             }
             else

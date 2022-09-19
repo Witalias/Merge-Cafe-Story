@@ -10,6 +10,7 @@ namespace Service
         public static GameStorage Instanse { get; private set; } = null;
 
         [Header("Sprites")]
+        [SerializeField] private Sprite questionMark;
         [SerializeField] private Sprite[] teaIcons;
         [SerializeField] private Sprite[] coffeeIcons;
 
@@ -24,7 +25,16 @@ namespace Service
 
         public Transform ItemsParent { get; private set; }
 
-        public ItemStats GetNextItemByAnotherItem(ItemStats item) => items[item.Type][item.Level];
+        public Sprite QuestionMark { get => questionMark; }
+
+        public ItemStats GetNextItemByAnotherItem(ItemStats item)
+        {
+            var nextItemStats = items[item.Type][item.Level];
+            nextItemStats.Unlock();
+            return nextItemStats;
+        }
+
+        public ItemStats GetItem(ItemType type, int level) => items[type][level - 1];
 
         public bool IsItemMaxLevel(ItemStats item) => items[item.Type].Length == item.Level;
 
