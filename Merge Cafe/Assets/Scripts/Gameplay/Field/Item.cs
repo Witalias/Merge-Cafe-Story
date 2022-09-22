@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Service;
 using System;
 using Enums;
+using Gameplay.Orders;
 
 namespace Gameplay.Field
 {
@@ -26,7 +27,7 @@ namespace Gameplay.Field
         private bool _isReturning = false;
 
         public static event Action JoiningItemsOfMaxLevelTried;
-        public static event Action<ItemType> CursorHoveredOverItem;
+        public static event Action<ItemType> CursorHoveredItem;
 
         public ItemStats Stats { get; private set; }
 
@@ -42,12 +43,7 @@ namespace Gameplay.Field
 
         public void ReturnToCell() => _isReturning = true;
 
-        public bool EqualTo(Item other)
-        {
-            if (Stats.Type == other.Stats.Type)
-                return Stats.Level == other.Stats.Level;
-            return false;
-        }
+        public bool EqualTo(Item other) => Stats.EqualTo(other.Stats);
 
         private void Awake()
         {
@@ -69,7 +65,7 @@ namespace Gameplay.Field
         private void OnMouseEnter()
         {
             _animator.SetBool(_zoomAnimatorBool, true);
-            CursorHoveredOverItem?.Invoke(Stats.Type);
+            CursorHoveredItem?.Invoke(Stats.Type);
         }
 
         private void OnMouseExit()
@@ -92,8 +88,52 @@ namespace Gameplay.Field
 
         private void OnMouseUp()
         {
-            var cell = GetOverCell();
             ReturnToCell();
+            CheckCursorOver();
+        }
+
+        private void CheckCursorOver()
+        {
+            var pointer = new PointerEventData(EventSystem.current)
+            {
+                position = Input.mousePosition
+            };
+            var raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointer, raycastResults);
+            foreach (var obj in raycastResults)
+            {
+                var cell = obj.gameObject.GetComponent<Cell>();
+                if (cell != null)
+                    InteractWithCell(cell);
+                else
+                {
+                    var order = obj.gameObject.GetComponent<Order>();
+                    if (order != null)
+                        InteractWithOrder(order);
+                    else
+                    {
+
+                    }
+                }
+
+            }
+        }
+
+        private void InteractWithOrder(Order order)
+        {
+            if (order == null)
+                return;
+
+            order.CheckIncomingItem(Stats, out bool matches);
+            if (!matches)
+                return;
+
+            _currentCell.Clear();
+            Destroy(gameObject);
+        }
+
+        private void InteractWithCell(Cell cell)
+        {
             if (cell == null)
                 return;
             else if (cell.Empty)
@@ -110,23 +150,6 @@ namespace Gameplay.Field
             }
             else
                 Swap(cell);
-        }
-
-        private Cell GetOverCell()
-        {
-            var pointer = new PointerEventData(EventSystem.current)
-            {
-                position = Input.mousePosition
-            };
-            var raycastResults = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(pointer, raycastResults);
-            foreach (var obj in raycastResults)
-            {
-                var cell = obj.gameObject.GetComponent<Cell>();
-                if (obj.gameObject.GetComponent<Cell>() != null)
-                    return cell;
-            }
-            return null;
         }
 
         private void Move(Cell toCell)

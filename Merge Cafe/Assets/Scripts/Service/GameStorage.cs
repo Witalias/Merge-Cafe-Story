@@ -9,38 +9,46 @@ namespace Service
     {
         public static GameStorage Instanse { get; private set; } = null;
 
+        [Header("Settings")]
+        [SerializeField] [Range(1, 2)] private int _gameStage = 1;
+        [SerializeField] private int _starsCount = 0;
+
         [Header("Sprites")]
-        [SerializeField] private Sprite questionMark;
-        [SerializeField] private Sprite[] teaIcons;
-        [SerializeField] private Sprite[] coffeeIcons;
+        [SerializeField] private Sprite _questionMark;
+        [SerializeField] private Sprite[] _teaIcons;
+        [SerializeField] private Sprite[] _coffeeIcons;
 
         [Header("Prefabs")]
-        [SerializeField] private GameObject itemPrefab;
+        [SerializeField] private GameObject _itemPrefab;
 
         private Cell[] cells;
-        private Dictionary<ItemType, ItemStats[]> items;
-        private Dictionary<ItemType, Dictionary<int, Sprite>> itemSprites = new Dictionary<ItemType, Dictionary<int, Sprite>>();
+        private Dictionary<ItemType, ItemStats[]> _items;
+        private Dictionary<ItemType, Dictionary<int, Sprite>> _itemSprites = new Dictionary<ItemType, Dictionary<int, Sprite>>();
 
-        public GameObject ItemPrefab { get => itemPrefab; }
+        public int GameStage { get => _gameStage; }
+
+        public int StatsCount { get => _starsCount; set => _starsCount = value; }
+
+        public GameObject ItemPrefab { get => _itemPrefab; }
 
         public Transform ItemsParent { get; private set; }
 
-        public Sprite QuestionMark { get => questionMark; }
+        public Sprite QuestionMark { get => _questionMark; }
 
         public ItemStats GetNextItemByAnotherItem(ItemStats item)
         {
-            var nextItemStats = items[item.Type][item.Level];
+            var nextItemStats = _items[item.Type][item.Level];
             nextItemStats.Unlock();
             return nextItemStats;
         }
 
-        public ItemStats GetItem(ItemType type, int level) => items[type][level - 1];
+        public ItemStats GetItem(ItemType type, int level) => _items[type][level - 1];
 
-        public bool IsItemMaxLevel(ItemStats item) => items[item.Type].Length == item.Level;
+        public bool IsItemMaxLevel(ItemStats item) => _items[item.Type].Length == item.Level;
 
-        public int GetItemMaxLevel(ItemType itemType) => items[itemType].Length;
+        public int GetItemMaxLevel(ItemType itemType) => _items[itemType].Length;
 
-        public Sprite GetItemSprite(ItemType type, int level) => itemSprites[type][level];
+        public Sprite GetItemSprite(ItemType type, int level) => _itemSprites[type][level];
 
         public Cell GetEmptyCell()
         {
@@ -51,6 +59,8 @@ namespace Service
             }
             return null;
         }
+
+        public void IncrementGameStage() => ++_gameStage;
 
         private void Awake()
         {
@@ -72,7 +82,7 @@ namespace Service
 
         private void CreateItemSpritesDictionary()
         {
-            foreach (var element in items)
+            foreach (var element in _items)
             {
                 var spritesDict = new Dictionary<int, Sprite>();
 
@@ -82,16 +92,16 @@ namespace Service
                     spritesDict.Add(item.Level, item.Icon);
                 }
 
-                itemSprites.Add(element.Key, spritesDict);
+                _itemSprites.Add(element.Key, spritesDict);
             }
         }
 
         private void CreateItemsDictionary()
         {
-            items = new Dictionary<ItemType, ItemStats[]>
+            _items = new Dictionary<ItemType, ItemStats[]>
             {
-                [ItemType.Tea] = GetItemStatsArray(teaIcons),
-                [ItemType.Coffee] = GetItemStatsArray(coffeeIcons),
+                [ItemType.Tea] = GetItemStatsArray(_teaIcons),
+                [ItemType.Coffee] = GetItemStatsArray(_coffeeIcons),
             };
         }
 

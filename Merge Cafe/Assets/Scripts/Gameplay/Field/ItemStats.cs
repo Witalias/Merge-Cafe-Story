@@ -28,5 +28,7 @@ namespace Gameplay.Field
         public void Unlock() => Unlocked = true;
 
         public void NotNew() => IsNew = false;
+
+        public bool EqualTo(ItemStats other) => other.Type == Type && other.Level == Level;
     }
 }

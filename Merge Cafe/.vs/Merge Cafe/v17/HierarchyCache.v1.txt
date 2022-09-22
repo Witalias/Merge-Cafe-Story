@@ -1,0 +1,688 @@
+﻿++Решение "Merge Cafe" ‎(проекты: 1 из 1)
+i:{00000000-0000-0000-0000-000000000000}:Merge Cafe.sln
+++Assembly-CSharp
+i:{00000000-0000-0000-0000-000000000000}:Assembly-CSharp
+++Ссылки
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Assets
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\
+++Scripts
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\
+++Enums
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\
+++ItemType.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\itemtype.cs
+++Tags.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\tags.cs
+++Event Handlers
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\
+++Gameplay
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\
+++Field
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\
+++Cell.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\cell.cs
+++Item.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\item.cs
+++ItemStats.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\itemstats.cs
+++Orders
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\orders\
+++Order.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\orders\order.cs
+++OrderManager.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\orders\ordermanager.cs
+++OrderPoint.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\orders\orderpoint.cs
+++ItemGenerator.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\itemgenerator.cs
+++Service
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\
+++GameStage.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\gamestage.cs
+++GameStorage.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\gamestorage.cs
+++UI
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\ui\
+++Message.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\ui\message.cs
+++SequencePanel.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\ui\sequencepanel.cs
+++UIBar.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\ui\uibar.cs
+++TextMesh Pro
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\
+++Microsoft.Win32.Primitives
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++mscorlib
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++netstandard
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++PsdPlugin
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.AppContext
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Buffers
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Collections
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Collections.Concurrent
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Collections.NonGeneric
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Collections.Specialized
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.ComponentModel
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.ComponentModel.Composition
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.ComponentModel.EventBasedAsync
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.ComponentModel.Primitives
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.ComponentModel.TypeConverter
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Console
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Core
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Data
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Data.Common
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Diagnostics.Contracts
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Diagnostics.Debug
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Diagnostics.FileVersionInfo
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Diagnostics.Process
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Diagnostics.StackTrace
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Diagnostics.TextWriterTraceListener
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Diagnostics.Tools
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Diagnostics.TraceSource
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Diagnostics.Tracing
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Drawing
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Drawing.Primitives
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Dynamic.Runtime
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Globalization
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Globalization.Calendars
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Globalization.Extensions
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.IO
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.IO.Compression
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.IO.Compression.FileSystem
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.IO.Compression.ZipFile
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.IO.FileSystem
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.IO.FileSystem.DriveInfo
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.IO.FileSystem.Primitives
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.IO.FileSystem.Watcher
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.IO.IsolatedStorage
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.IO.MemoryMappedFiles
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.IO.Pipes
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.IO.UnmanagedMemoryStream
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Linq
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Linq.Expressions
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Linq.Parallel
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Linq.Queryable
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Memory
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Net
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Net.Http
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Net.NameResolution
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Net.NetworkInformation
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Net.Ping
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Net.Primitives
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Net.Requests
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Net.Security
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Net.Sockets
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Net.WebHeaderCollection
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Net.WebSockets
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Net.WebSockets.Client
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Numerics
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Numerics.Vectors
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.ObjectModel
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Reflection
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Reflection.DispatchProxy
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Reflection.Emit
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Reflection.Emit.ILGeneration
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Reflection.Emit.Lightweight
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Reflection.Extensions
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Reflection.Primitives
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Resources.Reader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Resources.ResourceManager
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Resources.Writer
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Runtime
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Runtime.CompilerServices.VisualC
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Runtime.Extensions
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Runtime.Handles
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Runtime.InteropServices
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Runtime.InteropServices.RuntimeInformation
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Runtime.InteropServices.WindowsRuntime
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Runtime.Numerics
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Runtime.Serialization
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Runtime.Serialization.Formatters
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Runtime.Serialization.Json
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Runtime.Serialization.Primitives
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Runtime.Serialization.Xml
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Security.Claims
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Security.Cryptography.Algorithms
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Security.Cryptography.Csp
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Security.Cryptography.Encoding
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Security.Cryptography.Primitives
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Security.Cryptography.X509Certificates
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Security.Principal
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Security.SecureString
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.ServiceModel.Web
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Text.Encoding
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Text.Encoding.Extensions
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Text.RegularExpressions
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Threading
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Threading.Overlapped
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Threading.Tasks
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Threading.Tasks.Extensions
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Threading.Tasks.Parallel
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Threading.Thread
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Threading.ThreadPool
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Threading.Timer
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Transactions
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.ValueTuple
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Web
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Windows
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Xml
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Xml.Linq
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Xml.ReaderWriter
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Xml.Serialization
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Xml.XDocument
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Xml.XmlDocument
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Xml.XmlSerializer
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Xml.XPath
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++System.Xml.XPath.XDocument
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.2D.Animation.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.2D.Animation.Runtime
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.2D.Common.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.2D.Common.Runtime
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.2D.IK.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.2D.IK.Runtime
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.2D.Path.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.2D.PixelPerfect
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.2D.PixelPerfect.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.2D.Psdimporter.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.2D.Sprite.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.2D.SpriteShape.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.2D.SpriteShape.Runtime
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.2D.Tilemap.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.2D.Tilemap.Extras
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.2D.Tilemap.Extras.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.Burst
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.Burst.Cecil
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.Burst.Cecil.Mdb
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.Burst.Cecil.Pdb
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.Burst.Cecil.Rocks
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.Burst.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.Burst.Unsafe
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.InternalAPIEditorBridge.001
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.InternalAPIEngineBridge.001
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.Mathematics
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.Mathematics.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.PlasticSCM.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.Rider.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.TextMeshPro
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.TextMeshPro.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.Timeline
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.Timeline.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.VisualScripting.Antlr3.Runtime
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.VisualScripting.Core
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.VisualScripting.Core.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.VisualScripting.Flow
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.VisualScripting.Flow.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.VisualScripting.SettingsProvider.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.VisualScripting.Shared.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.VisualScripting.State
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.VisualScripting.State.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.VisualStudio.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.VSCode.Editor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEditor
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEditor.CoreModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEditor.DeviceSimulatorModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEditor.DiagnosticsModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEditor.GraphViewModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEditor.PackageManagerUIModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEditor.QuickSearchModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEditor.SceneTemplateModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEditor.TextCoreFontEngineModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEditor.TextCoreTextEngineModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEditor.UI
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEditor.UIBuilderModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEditor.UIElementsModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEditor.UIElementsSamplesModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEditor.UIServiceModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEditor.UnityConnectModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.AccessibilityModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.AIModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.AndroidJNIModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.AnimationModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.ARModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.AssetBundleModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.AudioModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.ClothModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.ClusterInputModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.ClusterRendererModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.CoreModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.CrashReportingModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.DirectorModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.DSPGraphModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.GameCenterModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.GIModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.GridModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.HotReloadModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.ImageConversionModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.IMGUIModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.InputLegacyModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.InputModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.JSONSerializeModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.LocalizationModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.ParticleSystemModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.PerformanceReportingModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.Physics2DModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.PhysicsModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.ProfilerModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.ScreenCaptureModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.SharedInternalsModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.SpriteMaskModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.SpriteShapeModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.StreamingModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.SubstanceModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.SubsystemsModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.TerrainModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.TerrainPhysicsModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.TextCoreFontEngineModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.TextCoreTextEngineModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.TextRenderingModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.TilemapModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.TLSModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.UI
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.UIElementsModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.UIElementsNativeModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.UIModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.UmbraModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.UNETModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.UnityAnalyticsModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.UnityConnectModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.UnityCurlModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.UnityTestProtocolModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.UnityWebRequestAssetBundleModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.UnityWebRequestAudioModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.UnityWebRequestModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.UnityWebRequestTextureModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.UnityWebRequestWWWModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.VehiclesModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.VFXModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.VideoModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.VirtualTexturingModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.VRModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.WindModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++UnityEngine.XRModule
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++NewOrderHandler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\neworderhandler.cs
+++ShowMessageHandler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\showmessagehandler.cs
+++ShowSequenceHandler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\showsequencehandler.cs
+++Examples & Extras
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\
+++Fonts
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\fonts\
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\fonts\
+++Resources
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\resources\
+++Shaders
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\
+++Sprites
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\sprites\
+++LiberationSans - OFL.txt
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\fonts\liberationsans - ofl.txt
+++LineBreaking Following Characters.txt
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\resources\linebreaking following characters.txt
+++LineBreaking Leading Characters.txt
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\resources\linebreaking leading characters.txt
+++TMP_Bitmap-Custom-Atlas.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_bitmap-custom-atlas.shader
+++TMP_Bitmap-Mobile.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_bitmap-mobile.shader
+++TMP_Bitmap.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_bitmap.shader
+++TMP_SDF-Mobile Masking.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf-mobile masking.shader
+++TMP_SDF-Mobile Overlay.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf-mobile overlay.shader
+++TMP_SDF-Mobile SSD.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf-mobile ssd.shader
+++TMP_SDF-Mobile.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf-mobile.shader
+++TMP_SDF-Surface-Mobile.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf-surface-mobile.shader
+++TMP_SDF-Surface.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf-surface.shader
+++TMP_SDF Overlay.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf overlay.shader
+++TMP_SDF SSD.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf ssd.shader
+++TMP_SDF.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf.shader
+++TMP_Sprite.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sprite.shader
+++TMPro.cginc
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmpro.cginc
+++TMPro_Mobile.cginc
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmpro_mobile.cginc
+++TMPro_Properties.cginc
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmpro_properties.cginc
+++TMPro_Surface.cginc
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmpro_surface.cginc
+++EmojiOne Attribution.txt
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\sprites\emojione attribution.txt
+++Anton OFL.txt
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\fonts\anton ofl.txt
+++Bangers - OFL.txt
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\fonts\bangers - ofl.txt
+++Oswald-Bold - OFL.txt
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\fonts\oswald-bold - ofl.txt
+++Benchmark01.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\benchmark01.cs
+++Benchmark01_UGUI.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\benchmark01_ugui.cs
+++Benchmark02.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\benchmark02.cs
+++Benchmark03.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\benchmark03.cs
+++Benchmark04.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\benchmark04.cs
+++CameraController.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\cameracontroller.cs
+++ChatController.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\chatcontroller.cs
+++DropdownSample.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\dropdownsample.cs
+++EnvMapAnimator.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\envmapanimator.cs
+++ObjectSpin.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\objectspin.cs
+++ShaderPropAnimator.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\shaderpropanimator.cs
+++SimpleScript.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\simplescript.cs
+++SkewTextExample.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\skewtextexample.cs
+++TeleType.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\teletype.cs
+++TextConsoleSimulator.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\textconsolesimulator.cs
+++TextMeshProFloatingText.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\textmeshprofloatingtext.cs
+++TextMeshSpawner.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\textmeshspawner.cs
+++TMP_DigitValidator.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_digitvalidator.cs
+++TMP_ExampleScript_01.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_examplescript_01.cs
+++TMP_FrameRateCounter.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_frameratecounter.cs
+++TMP_PhoneNumberValidator.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_phonenumbervalidator.cs
+++TMP_TextEventCheck.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_texteventcheck.cs
+++TMP_TextEventHandler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_texteventhandler.cs
+++TMP_TextInfoDebugTool.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_textinfodebugtool.cs
+++TMP_TextSelector_A.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_textselector_a.cs
+++TMP_TextSelector_B.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_textselector_b.cs
+++TMP_UiFrameRateCounter.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_uiframeratecounter.cs
+++TMPro_InstructionOverlay.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmpro_instructionoverlay.cs
+++VertexColorCycler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\vertexcolorcycler.cs
+++VertexJitter.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\vertexjitter.cs
+++VertexShakeA.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\vertexshakea.cs
+++VertexShakeB.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\vertexshakeb.cs
+++VertexZoom.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\vertexzoom.cs
+++WarpTextExample.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\warptextexample.cs

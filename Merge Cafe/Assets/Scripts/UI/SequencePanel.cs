@@ -12,8 +12,13 @@ namespace UI
         [SerializeField] private Image[] _icons;
         [SerializeField] private GameObject[] _arrows;
 
+        private bool _busy = false;
+
         public void Show(ItemType type)
         {
+            if (_busy)
+                return;
+
             var storage = GameStorage.Instanse;
             var length = Mathf.Min(storage.GetItemMaxLevel(type), _icons.Length);
 
@@ -30,6 +35,7 @@ namespace UI
                 {
                     item.NotNew();
                     _icons[i].GetComponent<Animator>().SetTrigger(_attentionAnimatorTrigger);
+                    //_busy = true;
                 }
             }
         }

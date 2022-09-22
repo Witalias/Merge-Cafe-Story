@@ -1,6 +1,7 @@
 using UnityEngine;
 using UI;
 using Gameplay.Field;
+using Gameplay.Orders;
 using Enums;
 
 namespace EventHandlers
@@ -17,12 +18,14 @@ namespace EventHandlers
 
         private void OnEnable()
         {
-            Item.CursorHoveredOverItem += Show;
+            Item.CursorHoveredItem += Show;
+            OrderPoint.CursorHoveredItemInOrder += Show;
         }
 
         private void OnDisable()
         {
-            Item.CursorHoveredOverItem -= Show;
+            Item.CursorHoveredItem -= Show;
+            OrderPoint.CursorHoveredItemInOrder -= Show;
         }
 
         private void Show(ItemType type)
