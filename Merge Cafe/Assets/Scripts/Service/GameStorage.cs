@@ -12,6 +12,7 @@ namespace Service
         [Header("Settings")]
         [SerializeField] [Range(1, 2)] private int _gameStage = 1;
         [SerializeField] private int _starsCount = 0;
+        [SerializeField] private int[] _starsByItemLevels;
 
         [Header("Sprites")]
         [SerializeField] private Sprite _questionMark;
@@ -20,6 +21,7 @@ namespace Service
 
         [Header("Prefabs")]
         [SerializeField] private GameObject _itemPrefab;
+        [SerializeField] private GameObject _starForAnimation;
 
         private Cell[] cells;
         private Dictionary<ItemType, ItemStats[]> _items;
@@ -30,6 +32,8 @@ namespace Service
         public int StatsCount { get => _starsCount; set => _starsCount = value; }
 
         public GameObject ItemPrefab { get => _itemPrefab; }
+
+        public GameObject StarForAnimation { get => _starForAnimation; }
 
         public Transform ItemsParent { get; private set; }
 
@@ -49,6 +53,8 @@ namespace Service
         public int GetItemMaxLevel(ItemType itemType) => _items[itemType].Length;
 
         public Sprite GetItemSprite(ItemType type, int level) => _itemSprites[type][level];
+
+        public int GetStarsCountByItemlevel(int level) => _starsByItemLevels[level - 1];
 
         public Cell GetEmptyCell()
         {

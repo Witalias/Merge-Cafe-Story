@@ -14,6 +14,7 @@ namespace Gameplay.Orders
         [SerializeField] private int _ordersCountBeforeRareOrder = 10;
         [SerializeField] private int _ordersCountBeforeRareOrderSpread = 5;
         [SerializeField] private float _delayBeforeNewOrder = 1f;
+        [SerializeField] private int _starsMultiplierForRareOrders = 5;
 
         private int _ordersCount = 1;
         private int _remainsToRareOrder = 1;
@@ -48,24 +49,27 @@ namespace Gameplay.Orders
             if (_remainsToRareOrder == 0 && _rareItemsQueue.Count > 0)
             {
                 UpdateRemainToRareOrder();
-                _orders[id].Generate(new[] { _rareItemsQueue.Dequeue() });
+                var rareItem = _rareItemsQueue.Dequeue();
+                _orders[id].Generate(new[] { rareItem }, storage.GetStarsCountByItemlevel(rareItem.Level) * _starsMultiplierForRareOrders);
                 return;
             }
 
-            var possibleItems = new List<(ItemType Type, int MinLevel, int MaxLevel)>(settings.Items);
+            var possibleItems = new List<(ItemType Type, int MinLevel, int MaxLevel, int RewardLevel)>(settings.Items);
             var pointsCount = Random.Range(1, settings.MaxOrderPoints);
             var itemsToOrder = new ItemStats[pointsCount];
+            var starsReward = 0;
             for (var i = 0; i < pointsCount; ++i)
             {
                 var item = possibleItems[Random.Range(0, possibleItems.Count)];
                 var randomLevel = Random.Range(item.MinLevel, item.MaxLevel + 1);
                 itemsToOrder[i] = storage.GetItem(item.Type, randomLevel);
+                starsReward += storage.GetStarsCountByItemlevel(randomLevel) + (item.RewardLevel - 1);
                 possibleItems.Remove(item);
 
                 if (possibleItems.Count == 0)
                     break;
             }
-            _orders[id].Generate(itemsToOrder);
+            _orders[id].Generate(itemsToOrder, starsReward);
 
             if (_rareItemsQueue.Count > 0)
                 --_remainsToRareOrder;

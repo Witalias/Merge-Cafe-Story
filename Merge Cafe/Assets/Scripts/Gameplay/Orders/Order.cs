@@ -3,7 +3,8 @@ using UnityEngine.UI;
 using Gameplay.Field;
 using System.Collections.Generic;
 using System.Collections;
-using System;
+using Service;
+using Enums;
 
 namespace Gameplay.Orders
 {
@@ -13,20 +14,26 @@ namespace Gameplay.Orders
         private const string _showAnimatorBool = "Show";
 
         [SerializeField] private OrderPoint[] _orderPoints;
+        [SerializeField] private Transform _starsSpawnLeftTopPoint;
+        [SerializeField] private Transform _starsSpawnRightBottomPoint;
         [SerializeField] private Color _darkenedColor;
         [SerializeField] private float _delayBeforeFinished = 1f;
 
         private Animator _animator;
-        private int _id;
+        private Transform _mainCanvas;
 
         private readonly ItemStats[] _orders = new ItemStats[3];
+        private int _id;
+        private int _stars;
 
-        public static event Action<int> OrderDone;
+        public static event System.Action<int> OrderDone;
+        public static event System.Action<int> StarsReceived;
 
         public void SetID(int value) => _id = value;
 
-        public void Generate(ItemStats[] items)
+        public void Generate(ItemStats[] items, int stars)
         {
+            _stars = stars;
             for (var i = 0; i < _orderPoints.Length; ++i)
             {
                 if (i < items.Length)
@@ -75,12 +82,18 @@ namespace Gameplay.Orders
             _animator = GetComponent<Animator>();
         }
 
+        private void Start()
+        {
+            _mainCanvas = GameObject.FindGameObjectWithTag(Tags.MainCanvas.ToString()).transform;
+        }
+
         private void Show() => _animator.SetBool(_showAnimatorBool, true);
 
         private void Hide() => _animator.SetBool(_showAnimatorBool, false);
 
         private IEnumerator Finish()
         {
+            SpawnStars();
             yield return new WaitForSeconds(_delayBeforeFinished);
             Hide();
             yield return new WaitForSeconds(0.5f);
@@ -90,6 +103,19 @@ namespace Gameplay.Orders
                 orderPoint.CheckMark.gameObject.SetActive(false);
             }
             OrderDone?.Invoke(_id);
+            StarsReceived?.Invoke(_stars);
+        }
+
+        private void SpawnStars()
+        {
+            var count = _stars / 3 + 1;
+            for (var i = 0; i < count; ++i)
+            {
+                var randomX = Random.Range(_starsSpawnLeftTopPoint.position.x, _starsSpawnRightBottomPoint.position.x);
+                var randomY = Random.Range(_starsSpawnLeftTopPoint.position.y, _starsSpawnRightBottomPoint.position.y);
+                var spawnPoint = new Vector2(randomX, randomY);
+                Instantiate(GameStorage.Instanse.StarForAnimation, spawnPoint, Quaternion.identity, _mainCanvas);
+            }
         }
 
         private bool IsEmpty()

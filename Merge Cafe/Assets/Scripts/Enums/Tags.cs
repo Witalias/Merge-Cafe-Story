@@ -3,6 +3,8 @@ namespace Enums
     public enum Tags
     {
         ItemsParent,
-        CellsParent
+        CellsParent,
+        StarIcon,
+        MainCanvas
     }
 }
