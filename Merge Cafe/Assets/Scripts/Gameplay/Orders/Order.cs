@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections;
 using Service;
 using Enums;
+using TMPro;
 
 namespace Gameplay.Orders
 {
@@ -16,6 +17,9 @@ namespace Gameplay.Orders
         [SerializeField] private OrderPoint[] _orderPoints;
         [SerializeField] private Transform _starsSpawnLeftTopPoint;
         [SerializeField] private Transform _starsSpawnRightBottomPoint;
+        [SerializeField] private GameObject _rewards;
+        [SerializeField] private TextMeshProUGUI _starsValueText;
+        [SerializeField] private TextMeshProUGUI _brilliantsValueText;
         [SerializeField] private Color _darkenedColor;
         [SerializeField] private float _delayBeforeFinished = 1f;
 
@@ -34,6 +38,7 @@ namespace Gameplay.Orders
         public void Generate(ItemStats[] items, int stars)
         {
             _stars = stars;
+            _starsValueText.text = stars.ToString();
             for (var i = 0; i < _orderPoints.Length; ++i)
             {
                 if (i < items.Length)
@@ -94,6 +99,7 @@ namespace Gameplay.Orders
         private IEnumerator Finish()
         {
             SpawnStars();
+            _rewards.SetActive(false);
             yield return new WaitForSeconds(_delayBeforeFinished);
             Hide();
             yield return new WaitForSeconds(0.5f);
@@ -102,8 +108,9 @@ namespace Gameplay.Orders
                 orderPoint.Icon.color = Color.white;
                 orderPoint.CheckMark.gameObject.SetActive(false);
             }
-            OrderDone?.Invoke(_id);
             StarsReceived?.Invoke(_stars);
+            OrderDone?.Invoke(_id);
+            _rewards.SetActive(true);
         }
 
         private void SpawnStars()
