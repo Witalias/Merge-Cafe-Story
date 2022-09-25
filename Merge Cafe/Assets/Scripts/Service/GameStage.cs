@@ -14,14 +14,21 @@ namespace Service
                 {
                     (ItemType.Tea, 1, 3, 1),
                     (ItemType.Coffee, 1, 3, 1),
-                }, null, 3)
+                }, new[]
+                {
+                    (ItemType.Tea, 4),
+                }, new[]
+                {
+                    (ItemType.Present, 1, 2),
+                    (ItemType.Present, 1, 3),
+                }, 1)
             };
         }
 
         public static Settings GetSettingsByStage(int value)
         {
             if (value > _storage.Length)
-                value = _storage.Length;
+                return null;
             return _storage[value - 1];
         }
 
@@ -31,12 +38,18 @@ namespace Service
 
             public (ItemType Type, int Level)[] RareItems { get; private set; }
 
+            public (ItemType Type, int Level, int RequiredStars)[] Targets { get; private set; }
+
             public int MaxOrderPoints { get; }
 
-            public Settings((ItemType Type, int MinLevel, int MaxLevel, int RewardLevel)[] items, (ItemType Type, int Level)[] rareItems, int maxOrderPoints = 3)
+            public Settings((ItemType Type, int MinLevel, int MaxLevel, int RewardLevel)[] items, 
+                (ItemType Type, int Level)[] rareItems, 
+                (ItemType Type, int Level, int RequiredStars)[] targets, 
+                int maxOrderPoints = 3)
             {
                 Items = items;
                 RareItems = rareItems;
+                Targets = targets;
                 MaxOrderPoints = maxOrderPoints;
             }
 

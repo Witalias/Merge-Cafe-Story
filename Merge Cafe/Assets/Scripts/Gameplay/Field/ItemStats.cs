@@ -24,6 +24,8 @@ namespace Gameplay.Field
 
         public ItemStats(int level, Sprite icon) : this(level, icon, ItemType.Tea) { }
 
+        public ItemStats(ItemStats other) : this(other.Level, other.Icon, other.Type) { }
+
         public void SetType(ItemType type) => Type = type;
 
         public void Unlock() => Unlocked = true;

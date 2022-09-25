@@ -3,6 +3,9 @@ using UnityEngine.UI;
 using UI;
 using TMPro;
 using Service;
+using Enums;
+using System.Collections.Generic;
+using Gameplay.Field;
 
 namespace Gameplay.Counters
 {
@@ -15,9 +18,10 @@ namespace Gameplay.Counters
 
         private GameStorage _storage;
 
+        private List<(ItemType Type, int Level, int RequiredStars)> _targets;
+        private ItemStats _currentTarget;
         private float _currentBarValue = 0f;
         private int _needStarsToNextPresent = 10;
-        private int _needPresentsToNextGameStage = 10;
 
         public void AddStars(int value)
         {
@@ -28,6 +32,7 @@ namespace Gameplay.Counters
         private void Start()
         {
             _storage = GameStorage.Instanse;
+            SetTargetsByGameStage();
             UpdateValueText();
         }
 
@@ -37,7 +42,20 @@ namespace Gameplay.Counters
             _bar.SetValue(_currentBarValue / _needStarsToNextPresent * 100f);
 
             if (_bar.Filled)
-                Next();
+                FinishTarget();
+        }
+
+        private void SetTargetsByGameStage()
+        {
+            var settings = GameStage.GetSettingsByStage(GameStorage.Instanse.GameStage);
+            if (settings == null)
+            {
+                _nextPresent.gameObject.SetActive(false);
+                _needStarsToNextPresent = 999999;
+                return;
+            }
+            _targets = new List<(ItemType Type, int Level, int RequiredStars)>(settings.Targets);
+            NextTarget();
         }
 
         private void UpdateValueText()
@@ -45,11 +63,32 @@ namespace Gameplay.Counters
             _value.text = $"{_storage.StatsCount} / {_needStarsToNextPresent}";
         }
 
-        private void Next()
+        private void FinishTarget()
         {
-            --_needPresentsToNextGameStage;
+            _currentBarValue = 0f;
             _storage.StatsCount -= _needStarsToNextPresent;
+
+            var randomCell = _storage.GetRandomEmptyCell();
+            randomCell.CreateItem(_currentTarget, transform.position);
+
+            if (_targets.Count == 0)
+            {
+                _storage.GameStage += 1;
+                SetTargetsByGameStage();
+            }
+            else
+                NextTarget();
+
             UpdateValueText();
+        }
+
+        private void NextTarget()
+        {
+            var randomTarget = _targets[Random.Range(0, _targets.Count)];
+            _targets.Remove(randomTarget);
+            _needStarsToNextPresent = randomTarget.RequiredStars;
+            _currentTarget = new ItemStats(_storage.GetItem(randomTarget.Type, randomTarget.Level));
+            _nextPresent.sprite = _currentTarget.Icon;
         }
     }
 

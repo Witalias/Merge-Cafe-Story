@@ -3425,6 +3425,14 @@ MonoBehaviour:
   _brilliantsCount: 0
   _starsByItemLevels: 0100000002000000030000000500000007000000090000000c0000000f0000001200000016000000
   _questionMark: {fileID: 21300000, guid: abb3b55f573e57349b00631515a50614, type: 3}
+  _presentIcons:
+  - {fileID: 21300000, guid: ca28e40d25c55d24c865675af71b988d, type: 3}
+  - {fileID: 21300000, guid: 72db8ceb66a594747aeefdf10bbcfd1c, type: 3}
+  - {fileID: 21300000, guid: aa1f0e59c13af5a44912ca4352b0362a, type: 3}
+  _openPresentIcons:
+  - {fileID: 21300000, guid: 71c86643b76d2644ba07af141de02249, type: 3}
+  - {fileID: 21300000, guid: 060391959751271478d2d6e916955dea, type: 3}
+  - {fileID: 21300000, guid: 6a917b4e515a5694f9a91c4d40424e34, type: 3}
   _teaIcons:
   - {fileID: 21300000, guid: 8b2470e6a8a5c444cb5fbea141f356ca, type: 3}
   - {fileID: 21300000, guid: b02c2d70e39016c4996535e0696385c5, type: 3}
@@ -5468,7 +5476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5254902}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

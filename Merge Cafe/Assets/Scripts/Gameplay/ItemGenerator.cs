@@ -40,7 +40,7 @@ public class ItemGenerator : MonoBehaviour
 
     private void Update()
     {
-        if (stopped && _storage.GetEmptyCell() != null)
+        if (stopped && _storage.GetFirstEmptyCell() != null)
         {
             stopped = false;
             _addBarValueCoroutine = StartCoroutine(AddBarValue());
@@ -98,7 +98,7 @@ public class ItemGenerator : MonoBehaviour
 
     private void CreateItem()
     {
-        var cell = _storage.GetEmptyCell();
+        var cell = _storage.GetFirstEmptyCell();
         if (cell == null)
         {
             StopCoroutine(_addBarValueCoroutine);

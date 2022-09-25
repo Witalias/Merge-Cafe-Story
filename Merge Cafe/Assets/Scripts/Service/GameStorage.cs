@@ -32,7 +32,7 @@ namespace Service
         private Dictionary<ItemType, ItemStats[]> _items;
         private Dictionary<ItemType, Dictionary<int, Sprite>> _itemSprites = new Dictionary<ItemType, Dictionary<int, Sprite>>();
 
-        public int GameStage { get => _gameStage; }
+        public int GameStage { get => _gameStage; set => _gameStage = value; }
 
         public int StatsCount { get => _starsCount; set => _starsCount = value; }
 
@@ -85,7 +85,7 @@ namespace Service
 
         public int GetStarsCountByItemlevel(int level) => _starsByItemLevels[level - 1];
 
-        public Cell GetEmptyCell()
+        public Cell GetFirstEmptyCell()
         {
             foreach (var cell in cells)
             {
@@ -93,6 +93,17 @@ namespace Service
                     return cell;
             }
             return null;
+        }
+
+        public Cell GetRandomEmptyCell()
+        {
+            var emptyCells = new List<Cell>();
+            foreach (var cell in cells)
+            {
+                if (cell.Empty)
+                    emptyCells.Add(cell);
+            }
+            return emptyCells[Random.Range(0, emptyCells.Count)];
         }
 
         public void IncrementGameStage() => ++_gameStage;

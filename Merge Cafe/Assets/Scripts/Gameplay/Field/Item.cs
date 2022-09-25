@@ -61,6 +61,7 @@ namespace Gameplay.Field
         {
             Stats.OpenPresent();
             _animator.SetTrigger(_burnAnimatorTrigger);
+            _image.sprite = Stats.Icon;
         }
 
         private void Awake()

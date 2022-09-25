@@ -1,5 +1,6 @@
 using UnityEngine;
 using Enums;
+using System;
 
 namespace Gameplay.Field
 {
@@ -8,18 +9,26 @@ namespace Gameplay.Field
     {
         private Item _item;
 
+        public static event Action PresentClickedLeftMouseButton;
+
         private void Awake()
         {
             _item = GetComponent<Item>();
         }
 
-        private void OnMouseDown()
+        private void OnMouseOver()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(1))
             {
                 if (_item.Stats.Type == ItemType.Present)
-                    _item.Stats.OpenPresent();
+                    _item.OpenPresent();
             }
+        }
+
+        private void OnMouseDown()
+        {
+            if (_item.Stats.Type == ItemType.Present)
+                PresentClickedLeftMouseButton?.Invoke();
         }
     }
 }

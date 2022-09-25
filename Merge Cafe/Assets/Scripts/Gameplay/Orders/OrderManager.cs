@@ -46,6 +46,9 @@ namespace Gameplay.Orders
 
             var storage = GameStorage.Instanse;
             var settings = GameStage.GetSettingsByStage(storage.GameStage);
+            if (settings == null)
+                settings = GameStage.GetSettingsByStage(storage.GameStage - 1);
+
             UpdateRareItemsQueue(settings);
 
             if (_remainsToRareOrder == 0 && _rareItemsQueue.Count > 0)
