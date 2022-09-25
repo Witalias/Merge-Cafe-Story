@@ -28,6 +28,11 @@ namespace UI
                     _arrows[i - 1].SetActive(true);
 
                 var item = storage.GetItem(type, i + 1);
+                if (item == null)
+                {
+                    Hide();
+                    return;
+                }
                 _icons[i].gameObject.SetActive(true);
                 _icons[i].sprite = item.Unlocked ? item.Icon : storage.QuestionMark;
 

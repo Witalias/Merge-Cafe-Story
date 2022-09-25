@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Enums;
 using Gameplay.Field;
+using System.Linq;
 
 namespace Service
 {
@@ -12,16 +13,20 @@ namespace Service
         [Header("Settings")]
         [SerializeField] [Range(1, 2)] private int _gameStage = 1;
         [SerializeField] private int _starsCount = 0;
+        [SerializeField] private int _brilliantsCount = 0;
         [SerializeField] private int[] _starsByItemLevels;
 
         [Header("Sprites")]
         [SerializeField] private Sprite _questionMark;
+        [SerializeField] private Sprite[] _presentIcons;
+        [SerializeField] private Sprite[] _openPresentIcons;
         [SerializeField] private Sprite[] _teaIcons;
         [SerializeField] private Sprite[] _coffeeIcons;
 
         [Header("Prefabs")]
         [SerializeField] private GameObject _itemPrefab;
         [SerializeField] private GameObject _starForAnimation;
+        [SerializeField] private GameObject _brilliantForAnimation;
 
         private Cell[] cells;
         private Dictionary<ItemType, ItemStats[]> _items;
@@ -31,9 +36,13 @@ namespace Service
 
         public int StatsCount { get => _starsCount; set => _starsCount = value; }
 
+        public int BrilliantsCount { get => _brilliantsCount; set => _brilliantsCount = value; }
+
         public GameObject ItemPrefab { get => _itemPrefab; }
 
         public GameObject StarForAnimation { get => _starForAnimation; }
+
+        public GameObject BrilliantForAnimation { get => _brilliantForAnimation; }
 
         public Transform ItemsParent { get; private set; }
 
@@ -46,13 +55,33 @@ namespace Service
             return nextItemStats;
         }
 
-        public ItemStats GetItem(ItemType type, int level) => _items[type][level - 1];
+        public ItemStats GetItem(ItemType type, int level)
+        {
+            if (_items.ContainsKey(type))
+                return _items[type][level - 1];
+            return null;
+        }
 
-        public bool IsItemMaxLevel(ItemStats item) => _items[item.Type].Length == item.Level;
+        public bool IsItemMaxLevel(ItemStats item)
+        { 
+            if (_items.ContainsKey(item.Type))
+                return _items[item.Type].Length == item.Level;
+            return true;
+        }
 
-        public int GetItemMaxLevel(ItemType itemType) => _items[itemType].Length;
+        public int GetItemMaxLevel(ItemType itemType)
+        {
+            if (_items.ContainsKey(itemType))
+                return _items[itemType].Length;
+            return 1;
+        }
 
-        public Sprite GetItemSprite(ItemType type, int level) => _itemSprites[type][level];
+        public Sprite GetItemSprite(ItemType type, int level)
+        {
+            if (_itemSprites.ContainsKey(type))
+                return _itemSprites[type][level];
+            return null;
+        }
 
         public int GetStarsCountByItemlevel(int level) => _starsByItemLevels[level - 1];
 
@@ -100,6 +129,15 @@ namespace Service
 
                 _itemSprites.Add(element.Key, spritesDict);
             }
+            CreateOpenPresentSpritesDictionary();
+
+            void CreateOpenPresentSpritesDictionary()
+            {
+                var spritesDict = new Dictionary<int, Sprite>();
+                for (var i = 0; i < _openPresentIcons.Length; ++i)
+                    spritesDict.Add(i + 1, _openPresentIcons[i]);
+                _itemSprites.Add(ItemType.OpenPresent, spritesDict);
+            }
         }
 
         private void CreateItemsDictionary()
@@ -108,6 +146,7 @@ namespace Service
             {
                 [ItemType.Tea] = GetItemStatsArray(_teaIcons),
                 [ItemType.Coffee] = GetItemStatsArray(_coffeeIcons),
+                [ItemType.Present] = GetItemStatsArray(_presentIcons),
             };
         }
 

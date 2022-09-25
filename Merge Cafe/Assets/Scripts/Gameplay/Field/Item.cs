@@ -6,6 +6,7 @@ using Service;
 using System;
 using Enums;
 using Gameplay.Orders;
+using System.Linq;
 
 namespace Gameplay.Field
 {
@@ -13,7 +14,7 @@ namespace Gameplay.Field
     public class Item : MonoBehaviour
     {
         private const string _zoomAnimatorBool = "Mouse Enter";
-        private const string _burnAnimatorBool = "Burn";
+        private const string _burnAnimatorTrigger = "Burn";
 
         [SerializeField] private float _returningSpeed;
         [SerializeField] private float _followSpeed;
@@ -36,7 +37,7 @@ namespace Gameplay.Field
             _image.sprite = stats.Icon;
             Stats = stats;
 
-            _animator.SetTrigger(_burnAnimatorBool);
+            _animator.SetTrigger(_burnAnimatorTrigger);
         }
 
         public void SetCell(Cell cell) => _currentCell = cell;
@@ -44,6 +45,23 @@ namespace Gameplay.Field
         public void ReturnToCell() => _isReturning = true;
 
         public bool EqualTo(Item other) => Stats.EqualTo(other.Stats);
+
+        public GameObject[] GetScreenRaycastResults()
+        {
+            var pointer = new PointerEventData(EventSystem.current)
+            {
+                position = Input.mousePosition
+            };
+            var raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointer, raycastResults);
+            return raycastResults.Select(element => element.gameObject).ToArray();
+        }
+
+        public void OpenPresent()
+        {
+            Stats.OpenPresent();
+            _animator.SetTrigger(_burnAnimatorTrigger);
+        }
 
         private void Awake()
         {
@@ -94,20 +112,15 @@ namespace Gameplay.Field
 
         private void CheckCursorOver()
         {
-            var pointer = new PointerEventData(EventSystem.current)
+            var hits = GetScreenRaycastResults();
+            foreach (var obj in hits)
             {
-                position = Input.mousePosition
-            };
-            var raycastResults = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(pointer, raycastResults);
-            foreach (var obj in raycastResults)
-            {
-                var cell = obj.gameObject.GetComponent<Cell>();
+                var cell = obj.GetComponent<Cell>();
                 if (cell != null)
                     InteractWithCell(cell);
                 else
                 {
-                    var order = obj.gameObject.GetComponent<Order>();
+                    var order = obj.GetComponent<Order>();
                     if (order != null)
                         InteractWithOrder(order);
                     else

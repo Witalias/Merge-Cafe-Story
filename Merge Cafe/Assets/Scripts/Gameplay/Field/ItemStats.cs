@@ -1,11 +1,12 @@
 using UnityEngine;
 using Enums;
+using Service;
 
 namespace Gameplay.Field
 {
     public class ItemStats
     {
-        public Sprite Icon { get; }
+        public Sprite Icon { get; private set; }
         public int Level { get; } = 1;
         public ItemType Type { get; private set; }
         public bool Unlocked { get; private set; } = false;
@@ -28,6 +29,15 @@ namespace Gameplay.Field
         public void Unlock() => Unlocked = true;
 
         public void NotNew() => IsNew = false;
+
+        public void OpenPresent()
+        {
+            if (Type != ItemType.Present)
+                return;
+
+            Type = ItemType.OpenPresent;
+            Icon = GameStorage.Instanse.GetItemSprite(Type, Level);
+        }
 
         public bool EqualTo(ItemStats other) => other.Type == Type && other.Level == Level;
     }

@@ -5,6 +5,7 @@ namespace Enums
         ItemsParent,
         CellsParent,
         StarIcon,
-        MainCanvas
+        MainCanvas,
+        BrilliantIcon
     }
 }

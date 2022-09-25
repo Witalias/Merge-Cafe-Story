@@ -38,6 +38,11 @@ namespace Gameplay.Field
             Item.Initialize(stats);
             Item.SetCell(this);
             Item.ReturnToCell();
+
+            switch (stats.Type)
+            {
+                case ItemType.Present: Item.gameObject.AddComponent(typeof(Present)); break;
+            }
         }
 
         private void Start()

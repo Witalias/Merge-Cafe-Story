@@ -84,8 +84,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 6292305270728971641}
+  _targetTag: 2
   _minWaitingTime: 1
   _maxWaitingTime: 1.5
+  _enableMoveAnimation: 1
+  _enableIdleAnimation: 1
+  _enableAppearAnimation: 1
+  _enableDisappearAnimation: 1
 --- !u!1 &6292305270728971640
 GameObject:
   m_ObjectHideFlags: 0

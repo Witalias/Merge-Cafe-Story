@@ -15,6 +15,8 @@ namespace Gameplay.Orders
         [SerializeField] private int _ordersCountBeforeRareOrderSpread = 5;
         [SerializeField] private float _delayBeforeNewOrder = 1f;
         [SerializeField] private int _starsMultiplierForRareOrders = 5;
+        [SerializeField] private int _brilliantsMultiplier = 10;
+        [SerializeField] private int _brilliantsSpread = 7;
 
         private int _ordersCount = 1;
         private int _remainsToRareOrder = 1;
@@ -50,7 +52,8 @@ namespace Gameplay.Orders
             {
                 UpdateRemainToRareOrder();
                 var rareItem = _rareItemsQueue.Dequeue();
-                _orders[id].Generate(new[] { rareItem }, storage.GetStarsCountByItemlevel(rareItem.Level) * _starsMultiplierForRareOrders);
+                var stars = storage.GetStarsCountByItemlevel(rareItem.Level) * _starsMultiplierForRareOrders;
+                _orders[id].Generate(new[] { rareItem }, stars, GetBrilliantsReward(stars));
                 return;
             }
 
@@ -58,21 +61,30 @@ namespace Gameplay.Orders
             var pointsCount = Random.Range(1, settings.MaxOrderPoints);
             var itemsToOrder = new ItemStats[pointsCount];
             var starsReward = 0;
+            var brilliantsReward = 0;
             for (var i = 0; i < pointsCount; ++i)
             {
                 var item = possibleItems[Random.Range(0, possibleItems.Count)];
                 var randomLevel = Random.Range(item.MinLevel, item.MaxLevel + 1);
                 itemsToOrder[i] = storage.GetItem(item.Type, randomLevel);
                 starsReward += storage.GetStarsCountByItemlevel(randomLevel) + (item.RewardLevel - 1);
+                brilliantsReward += GetBrilliantsReward(starsReward);
                 possibleItems.Remove(item);
 
                 if (possibleItems.Count == 0)
                     break;
             }
-            _orders[id].Generate(itemsToOrder, starsReward);
+            _orders[id].Generate(itemsToOrder, starsReward, brilliantsReward);
 
             if (_rareItemsQueue.Count > 0)
                 --_remainsToRareOrder;
+        }
+
+        private int GetBrilliantsReward(int starsReward)
+        {
+            var brilliantsBase = starsReward * _brilliantsMultiplier;
+            var brilliantsSpread = brilliantsBase / _brilliantsSpread;
+            return Random.Range(brilliantsBase - brilliantsSpread, brilliantsBase + brilliantsSpread);
         }
 
         private void UpdateRareItemsQueue(GameStage.Settings settings)

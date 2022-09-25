@@ -17,6 +17,8 @@ namespace Gameplay.Orders
         [SerializeField] private OrderPoint[] _orderPoints;
         [SerializeField] private Transform _starsSpawnLeftTopPoint;
         [SerializeField] private Transform _starsSpawnRightBottomPoint;
+        [SerializeField] private Transform _brilliantsSpawnLeftTopPoint;
+        [SerializeField] private Transform _brilliantsSpawnRightBottomPoint;
         [SerializeField] private GameObject _rewards;
         [SerializeField] private TextMeshProUGUI _starsValueText;
         [SerializeField] private TextMeshProUGUI _brilliantsValueText;
@@ -29,16 +31,21 @@ namespace Gameplay.Orders
         private readonly ItemStats[] _orders = new ItemStats[3];
         private int _id;
         private int _stars;
+        private int _brilliants;
 
         public static event System.Action<int> OrderDone;
         public static event System.Action<int> StarsReceived;
+        public static event System.Action<int> BrilliantsReceived;
 
         public void SetID(int value) => _id = value;
 
-        public void Generate(ItemStats[] items, int stars)
+        public void Generate(ItemStats[] items, int stars, int brilliants)
         {
             _stars = stars;
+            _brilliants = brilliants;
             _starsValueText.text = stars.ToString();
+            _brilliantsValueText.text = brilliants.ToString();
+
             for (var i = 0; i < _orderPoints.Length; ++i)
             {
                 if (i < items.Length)
@@ -99,6 +106,7 @@ namespace Gameplay.Orders
         private IEnumerator Finish()
         {
             SpawnStars();
+            SpawnBrilliants();
             _rewards.SetActive(false);
             yield return new WaitForSeconds(_delayBeforeFinished);
             Hide();
@@ -109,19 +117,23 @@ namespace Gameplay.Orders
                 orderPoint.CheckMark.gameObject.SetActive(false);
             }
             StarsReceived?.Invoke(_stars);
+            BrilliantsReceived?.Invoke(_brilliants);
             OrderDone?.Invoke(_id);
             _rewards.SetActive(true);
         }
 
-        private void SpawnStars()
+        private void SpawnStars() => Spawn(GameStorage.Instanse.StarForAnimation, _stars / 3 + 1, _starsSpawnLeftTopPoint.position, _starsSpawnRightBottomPoint.position);
+
+        private void SpawnBrilliants() => Spawn(GameStorage.Instanse.BrilliantForAnimation, _brilliants / 20 + 1, _brilliantsSpawnLeftTopPoint.position, _brilliantsSpawnRightBottomPoint.position);
+
+        private void Spawn(GameObject obj, int count, Vector2 leftTop, Vector2 rightBottom)
         {
-            var count = _stars / 3 + 1;
             for (var i = 0; i < count; ++i)
             {
-                var randomX = Random.Range(_starsSpawnLeftTopPoint.position.x, _starsSpawnRightBottomPoint.position.x);
-                var randomY = Random.Range(_starsSpawnLeftTopPoint.position.y, _starsSpawnRightBottomPoint.position.y);
+                var randomX = Random.Range(leftTop.x, rightBottom.x);
+                var randomY = Random.Range(leftTop.y, rightBottom.y);
                 var spawnPoint = new Vector2(randomX, randomY);
-                Instantiate(GameStorage.Instanse.StarForAnimation, spawnPoint, Quaternion.identity, _mainCanvas);
+                Instantiate(obj, spawnPoint, Quaternion.identity, _mainCanvas);
             }
         }
 

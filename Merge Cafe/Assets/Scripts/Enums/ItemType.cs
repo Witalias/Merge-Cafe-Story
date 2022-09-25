@@ -3,6 +3,8 @@ namespace Enums
     public enum ItemType
     {
         Tea,
-        Coffee
+        Coffee,
+        Present,
+        OpenPresent
     }
 }
