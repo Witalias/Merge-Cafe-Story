@@ -19,7 +19,7 @@ namespace Gameplay.Counters
         private GameStorage _storage;
 
         private List<(ItemType Type, int Level, int RequiredStars)> _targets;
-        private ItemStats _currentTarget;
+        private (ItemType Type, int Level) _currentTarget;
         private float _currentBarValue = 0f;
         private int _needStarsToNextPresent = 10;
 
@@ -69,7 +69,9 @@ namespace Gameplay.Counters
             _storage.StatsCount -= _needStarsToNextPresent;
 
             var randomCell = _storage.GetRandomEmptyCell();
-            randomCell.CreateItem(_currentTarget, transform.position);
+            var stats = _storage.GetItem(_currentTarget.Type, _currentTarget.Level);
+            stats.Unlock();
+            randomCell.CreateItem(stats, transform.position);
 
             if (_targets.Count == 0)
             {
@@ -87,8 +89,8 @@ namespace Gameplay.Counters
             var randomTarget = _targets[Random.Range(0, _targets.Count)];
             _targets.Remove(randomTarget);
             _needStarsToNextPresent = randomTarget.RequiredStars;
-            _currentTarget = new ItemStats(_storage.GetItem(randomTarget.Type, randomTarget.Level));
-            _nextPresent.sprite = _currentTarget.Icon;
+            _currentTarget = (randomTarget.Type, randomTarget.Level);
+            _nextPresent.sprite = _storage.GetItemSprite(randomTarget.Type, randomTarget.Level);
         }
     }
 

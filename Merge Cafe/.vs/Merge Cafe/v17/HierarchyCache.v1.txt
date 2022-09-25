@@ -9,6 +9,10 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge caf
 ++Scripts
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\
+++Animation
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\animation\
+++CurrencyAnimation.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\animation\currencyanimation.cs
 ++Enums
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\
 ++ItemType.cs
@@ -17,8 +21,20 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge caf
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\tags.cs
 ++Event Handlers
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\
+++ChangeBrilliantsCountHandler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\changebrilliantscounthandler.cs
+++ChangeStarsCountHandler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\changestarscounthandler.cs
+++NewOrderHandler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\neworderhandler.cs
+++ShowMessageHandler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\showmessagehandler.cs
+++ShowSequenceHandler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\showsequencehandler.cs
 ++Gameplay
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\
+++Counters
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\counters\
 ++Field
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\
 ++Cell.cs
@@ -39,6 +55,8 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge caf
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\itemgenerator.cs
 ++Service
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\
+++Destroyer.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\destroyer.cs
 ++GameStage.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\gamestage.cs
 ++GameStorage.cs
@@ -553,12 +571,8 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
 ++UnityEngine.XRModule
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
-++NewOrderHandler.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\neworderhandler.cs
-++ShowMessageHandler.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\showmessagehandler.cs
-++ShowSequenceHandler.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\showsequencehandler.cs
+++StarCounter.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\counters\starcounter.cs
 ++Examples & Extras
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\
 ++Fonts
@@ -686,3 +700,15 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge caf
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\vertexzoom.cs
 ++WarpTextExample.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\warptextexample.cs
+++Assembly-CSharp (выгружено)
+++Решение "Merge Cafe" ‎(проекты: 0 из 1)
+++Present.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\present.cs
+++ItemCurrency.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\itemcurrency.cs
+++CurrencyType.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\currencytype.cs
+++QuickClickTracking.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\quickclicktracking.cs
+++CurrencyAdder.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\counters\currencyadder.cs

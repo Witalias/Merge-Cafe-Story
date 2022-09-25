@@ -54,7 +54,10 @@ namespace AnimationEngine
         {
             yield return new WaitForSeconds(Random.Range(_minWaitingTime, _maxWaitingTime));
             _icon.localScale = new Vector3(1, 1, 1);
-            _animation.Play(_moveAnimation);
+
+            if (_enableMoveAnimation)
+                _animation.Play(_moveAnimation);
+
             _isMoving = true;
         }
 

@@ -5,30 +5,36 @@ using System;
 namespace Gameplay.Field
 {
     [RequireComponent(typeof(Item))]
+    [RequireComponent(typeof(QuickClickTracking))]
     public class Present : MonoBehaviour
     {
         private Item _item;
-
-        public static event Action PresentClickedLeftMouseButton;
+        private QuickClickTracking _quickClickTracking;
 
         private void Awake()
         {
             _item = GetComponent<Item>();
+            _quickClickTracking = GetComponent<QuickClickTracking>();
         }
 
-        private void OnMouseOver()
+        private void Update()
         {
-            if (Input.GetMouseButtonDown(1))
+            if (_quickClickTracking.QuickClicked)
             {
-                if (_item.Stats.Type == ItemType.Present)
-                    _item.OpenPresent();
+                OpenPresent();
             }
         }
 
-        private void OnMouseDown()
+        private void OpenPresent()
         {
             if (_item.Stats.Type == ItemType.Present)
-                PresentClickedLeftMouseButton?.Invoke();
+                _item.OpenPresent();
         }
+
+        //private void OnMouseDown()
+        //{
+        //    if (_item.Stats.Type == ItemType.Present)
+        //        PresentClickedLeftMouseButton?.Invoke();
+        //}
     }
 }

@@ -15,11 +15,15 @@ namespace Service
         [SerializeField] private int _starsCount = 0;
         [SerializeField] private int _brilliantsCount = 0;
         [SerializeField] private int[] _starsByItemLevels;
+        [SerializeField] private int[] _starsRewardForLevels;
+        [SerializeField] private int[] _brilliantsRewardForLevels;
 
         [Header("Sprites")]
         [SerializeField] private Sprite _questionMark;
         [SerializeField] private Sprite[] _presentIcons;
         [SerializeField] private Sprite[] _openPresentIcons;
+        [SerializeField] private Sprite[] _brilliantIcons;
+        [SerializeField] private Sprite[] _starIcons;
         [SerializeField] private Sprite[] _teaIcons;
         [SerializeField] private Sprite[] _coffeeIcons;
 
@@ -83,7 +87,11 @@ namespace Service
             return null;
         }
 
-        public int GetStarsCountByItemlevel(int level) => _starsByItemLevels[level - 1];
+        public int GetStarsCountByItemLevel(int level) => _starsByItemLevels[level - 1];
+
+        public int GetStarsRewardByItemLevel(int level) => _starsRewardForLevels[level - 1];
+
+        public int GetBrilliantsRewardByItemlevel(int level) => _brilliantsRewardForLevels[level - 1];
 
         public Cell GetFirstEmptyCell()
         {
@@ -158,6 +166,8 @@ namespace Service
                 [ItemType.Tea] = GetItemStatsArray(_teaIcons),
                 [ItemType.Coffee] = GetItemStatsArray(_coffeeIcons),
                 [ItemType.Present] = GetItemStatsArray(_presentIcons),
+                [ItemType.Brilliant] = GetItemStatsArray(_brilliantIcons),
+                [ItemType.Star] = GetItemStatsArray(_starIcons),
             };
         }
 

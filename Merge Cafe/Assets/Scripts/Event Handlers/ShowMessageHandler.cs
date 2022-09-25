@@ -8,7 +8,6 @@ namespace EventHandlers
     public class ShowMessageHandler : MonoBehaviour
     {
         private const string _maxLevelText = "Максимальный уровень";
-        private const string _presentClickedLeftMouseButtonText = "Правая кнопка мыши для открытия";
         private const string _noEmptyCellsText = "Нет свободных ячеек";
 
         private Message _message;
@@ -21,23 +20,16 @@ namespace EventHandlers
         private void OnEnable()
         {
             Item.JoiningItemsOfMaxLevelTried += ShowMaxLevel;
-            Present.PresentClickedLeftMouseButton += ShowRightMouseButtonForPresent;
         }
 
         private void OnDisable()
         {
             Item.JoiningItemsOfMaxLevelTried -= ShowMaxLevel;
-            Present.PresentClickedLeftMouseButton -= ShowRightMouseButtonForPresent;
         }
 
         private void ShowMaxLevel()
         {
             _message.Show(_maxLevelText);
-        }
-
-        private void ShowRightMouseButtonForPresent()
-        {
-            _message.Show(_presentClickedLeftMouseButtonText);
         }
     }
 }

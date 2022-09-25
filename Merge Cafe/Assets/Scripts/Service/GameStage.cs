@@ -19,8 +19,14 @@ namespace Service
                     (ItemType.Tea, 4),
                 }, new[]
                 {
-                    (ItemType.Present, 1, 2),
-                    (ItemType.Present, 1, 3),
+                    (ItemType.Star, 1, 2),
+                    (ItemType.Star, 1, 2),
+                    (ItemType.Star, 2, 2),
+                    (ItemType.Star, 2, 2),
+                    (ItemType.Brilliant, 1, 2),
+                    (ItemType.Brilliant, 1, 2),
+                    (ItemType.Brilliant, 2, 2),
+                    (ItemType.Brilliant, 2, 2),
                 }, 1)
             };
         }

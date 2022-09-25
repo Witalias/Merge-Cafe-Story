@@ -12,11 +12,12 @@ namespace Gameplay.Field
         public bool Unlocked { get; private set; } = false;
         public bool IsNew { get; private set; } = true;
 
-        public ItemStats(int level, Sprite icon, ItemType type)
+        public ItemStats(int level, Sprite icon, ItemType type, bool unlocked = false)
         {
             Icon = icon;
             Level = level;
             Type = type;
+            Unlocked = unlocked;
 
             if (level <= 1)
                 Unlock();
@@ -24,7 +25,7 @@ namespace Gameplay.Field
 
         public ItemStats(int level, Sprite icon) : this(level, icon, ItemType.Tea) { }
 
-        public ItemStats(ItemStats other) : this(other.Level, other.Icon, other.Type) { }
+        public ItemStats(ItemStats other, bool unlocked = true) : this(other.Level, other.Icon, other.Type, unlocked) { }
 
         public void SetType(ItemType type) => Type = type;
 

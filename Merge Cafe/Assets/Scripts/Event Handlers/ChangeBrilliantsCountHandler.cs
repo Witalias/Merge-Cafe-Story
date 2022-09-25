@@ -1,7 +1,7 @@
-using Gameplay.Orders;
 using UnityEngine;
 using Service;
 using TMPro;
+using Gameplay.Counters;
 
 namespace EventHandlers
 {
@@ -19,12 +19,12 @@ namespace EventHandlers
 
         private void OnEnable()
         {
-            Order.BrilliantsReceived += Add;
+            CurrencyAdder.BrilliantsChanged += Add;
         }
 
         private void OnDisable()
         {
-            Order.BrilliantsReceived -= Add;
+            CurrencyAdder.BrilliantsChanged -= Add;
         }
 
         private void Add(int brilliants)

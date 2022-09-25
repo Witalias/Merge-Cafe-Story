@@ -64,6 +64,12 @@ namespace Gameplay.Field
             _image.sprite = Stats.Icon;
         }
 
+        public void Remove()
+        {
+            _currentCell.Clear();
+            Destroy(gameObject);
+        }
+
         private void Awake()
         {
             _animator = GetComponent<Animator>();
@@ -186,10 +192,9 @@ namespace Gameplay.Field
         private void Join(Cell withCell)
         {
             Destroy(withCell.Item.gameObject);
-            _currentCell.Clear();
             withCell.Clear();
             withCell.CreateItem(_storage.GetNextItemByAnotherItem(Stats));
-            Destroy(gameObject);
+            Remove();
         }
     }
 }

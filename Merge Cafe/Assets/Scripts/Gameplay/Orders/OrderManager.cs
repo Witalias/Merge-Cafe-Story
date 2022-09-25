@@ -55,7 +55,7 @@ namespace Gameplay.Orders
             {
                 UpdateRemainToRareOrder();
                 var rareItem = _rareItemsQueue.Dequeue();
-                var stars = storage.GetStarsCountByItemlevel(rareItem.Level) * _starsMultiplierForRareOrders;
+                var stars = storage.GetStarsCountByItemLevel(rareItem.Level) * _starsMultiplierForRareOrders;
                 _orders[id].Generate(new[] { rareItem }, stars, GetBrilliantsReward(stars));
                 return;
             }
@@ -70,7 +70,7 @@ namespace Gameplay.Orders
                 var item = possibleItems[Random.Range(0, possibleItems.Count)];
                 var randomLevel = Random.Range(item.MinLevel, item.MaxLevel + 1);
                 itemsToOrder[i] = storage.GetItem(item.Type, randomLevel);
-                starsReward += storage.GetStarsCountByItemlevel(randomLevel) + (item.RewardLevel - 1);
+                starsReward += storage.GetStarsCountByItemLevel(randomLevel) + (item.RewardLevel - 1);
                 brilliantsReward += GetBrilliantsReward(starsReward);
                 possibleItems.Remove(item);
 

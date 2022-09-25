@@ -6,6 +6,7 @@ using System.Collections;
 using Service;
 using Enums;
 using TMPro;
+using Gameplay.Counters;
 
 namespace Gameplay.Orders
 {
@@ -15,10 +16,8 @@ namespace Gameplay.Orders
         private const string _showAnimatorBool = "Show";
 
         [SerializeField] private OrderPoint[] _orderPoints;
-        [SerializeField] private Transform _starsSpawnLeftTopPoint;
-        [SerializeField] private Transform _starsSpawnRightBottomPoint;
-        [SerializeField] private Transform _brilliantsSpawnLeftTopPoint;
-        [SerializeField] private Transform _brilliantsSpawnRightBottomPoint;
+        [SerializeField] private Transform _starsSpawnPoint;
+        [SerializeField] private Transform _brilliantsSpawnPoint;
         [SerializeField] private GameObject _rewards;
         [SerializeField] private TextMeshProUGUI _starsValueText;
         [SerializeField] private TextMeshProUGUI _brilliantsValueText;
@@ -26,7 +25,7 @@ namespace Gameplay.Orders
         [SerializeField] private float _delayBeforeFinished = 1f;
 
         private Animator _animator;
-        private Transform _mainCanvas;
+        private CurrencyAdder _currencyAdder;
 
         private readonly ItemStats[] _orders = new ItemStats[3];
         private int _id;
@@ -34,8 +33,6 @@ namespace Gameplay.Orders
         private int _brilliants;
 
         public static event System.Action<int> OrderDone;
-        public static event System.Action<int> StarsReceived;
-        public static event System.Action<int> BrilliantsReceived;
 
         public void SetID(int value) => _id = value;
 
@@ -96,7 +93,7 @@ namespace Gameplay.Orders
 
         private void Start()
         {
-            _mainCanvas = GameObject.FindGameObjectWithTag(Tags.MainCanvas.ToString()).transform;
+            _currencyAdder = GameStorage.Instanse.GetComponent<CurrencyAdder>();
         }
 
         private void Show() => _animator.SetBool(_showAnimatorBool, true);
@@ -105,8 +102,8 @@ namespace Gameplay.Orders
 
         private IEnumerator Finish()
         {
-            SpawnStars();
-            SpawnBrilliants();
+            _currencyAdder.Add(CurrencyType.Star, _stars, _starsSpawnPoint.position);
+            _currencyAdder.Add(CurrencyType.Brilliant, _brilliants, _brilliantsSpawnPoint.position);
             _rewards.SetActive(false);
             yield return new WaitForSeconds(_delayBeforeFinished);
             Hide();
@@ -116,25 +113,8 @@ namespace Gameplay.Orders
                 orderPoint.Icon.color = Color.white;
                 orderPoint.CheckMark.gameObject.SetActive(false);
             }
-            StarsReceived?.Invoke(_stars);
-            BrilliantsReceived?.Invoke(_brilliants);
             OrderDone?.Invoke(_id);
             _rewards.SetActive(true);
-        }
-
-        private void SpawnStars() => Spawn(GameStorage.Instanse.StarForAnimation, _stars / 3 + 1, _starsSpawnLeftTopPoint.position, _starsSpawnRightBottomPoint.position);
-
-        private void SpawnBrilliants() => Spawn(GameStorage.Instanse.BrilliantForAnimation, _brilliants / 20 + 1, _brilliantsSpawnLeftTopPoint.position, _brilliantsSpawnRightBottomPoint.position);
-
-        private void Spawn(GameObject obj, int count, Vector2 leftTop, Vector2 rightBottom)
-        {
-            for (var i = 0; i < count; ++i)
-            {
-                var randomX = Random.Range(leftTop.x, rightBottom.x);
-                var randomY = Random.Range(leftTop.y, rightBottom.y);
-                var spawnPoint = new Vector2(randomX, randomY);
-                Instantiate(obj, spawnPoint, Quaternion.identity, _mainCanvas);
-            }
         }
 
         private bool IsEmpty()

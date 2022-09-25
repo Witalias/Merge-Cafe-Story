@@ -5,6 +5,8 @@ namespace Enums
         Tea,
         Coffee,
         Present,
-        OpenPresent
+        OpenPresent,
+        Brilliant,
+        Star
     }
 }

@@ -16,12 +16,12 @@ namespace EventHandlers
 
         private void OnEnable()
         {
-            Order.StarsReceived += starCounter.AddStars;
+            CurrencyAdder.StarsChanged += starCounter.AddStars;
         }
 
         private void OnDisable()
         {
-            Order.StarsReceived -= starCounter.AddStars;
+            CurrencyAdder.StarsChanged -= starCounter.AddStars;
         }
     }
 
