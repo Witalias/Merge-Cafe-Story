@@ -59,9 +59,9 @@ namespace Gameplay.Field
 
         public void OpenPresent()
         {
-            Stats.OpenPresent();
-            _animator.SetTrigger(_burnAnimatorTrigger);
-            _image.sprite = Stats.Icon;
+            var openPresentStats = new ItemStats(Stats.Level, _storage.GetItemSprite(ItemType.OpenPresent, Stats.Level), ItemType.OpenPresent);
+            Remove();
+            _currentCell.CreateItem(openPresentStats);
         }
 
         public void Remove()

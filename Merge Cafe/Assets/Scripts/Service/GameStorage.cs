@@ -17,6 +17,7 @@ namespace Service
         [SerializeField] private int[] _starsByItemLevels;
         [SerializeField] private int[] _starsRewardForLevels;
         [SerializeField] private int[] _brilliantsRewardForLevels;
+        [SerializeField] private int[] _presentsRewardForLevels;
 
         [Header("Sprites")]
         [SerializeField] private Sprite _questionMark;
@@ -92,6 +93,8 @@ namespace Service
         public int GetStarsRewardByItemLevel(int level) => _starsRewardForLevels[level - 1];
 
         public int GetBrilliantsRewardByItemlevel(int level) => _brilliantsRewardForLevels[level - 1];
+
+        public int GetPresentLevelByItemlevel(int level) => _presentsRewardForLevels[level - 1];
 
         public Cell GetFirstEmptyCell()
         {

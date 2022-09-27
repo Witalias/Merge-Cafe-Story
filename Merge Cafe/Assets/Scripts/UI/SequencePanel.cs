@@ -7,9 +7,7 @@ namespace UI
 {
     public class SequencePanel : MonoBehaviour
     {
-        private const string _attentionAnimatorTrigger = "Attention";
-
-        [SerializeField] private Image[] _icons;
+        [SerializeField] private ItemInSequence[] _icons;
         [SerializeField] private GameObject[] _arrows;
 
         private bool _busy = false;
@@ -34,19 +32,23 @@ namespace UI
                     return;
                 }
                 _icons[i].gameObject.SetActive(true);
-                _icons[i].sprite = item.Unlocked ? item.Icon : storage.QuestionMark;
+                _icons[i].SetSprite(item.Unlocked ? item.Icon : storage.QuestionMark);
 
                 if (item.IsNew && item.Unlocked)
                 {
                     item.NotNew();
-                    _icons[i].GetComponent<Animator>().SetTrigger(_attentionAnimatorTrigger);
-                    //_busy = true;
+                    _icons[i].PayAttentionAnimation();
+                    _icons[i].ShowPresent(i + 1);
+                    _busy = true;
                 }
             }
         }
 
         public void Hide()
         {
+            if (_busy)
+                return;
+
             foreach (var icon in _icons)
                 icon.gameObject.SetActive(false);
             foreach (var arrow in _arrows)
@@ -56,6 +58,25 @@ namespace UI
         private void Awake()
         {
             Hide();
+        }
+
+        private void Update()
+        {
+            if (_busy)
+            {
+                _busy = false;
+                for (var i = 0; i < _icons.Length; ++i)
+                {
+                    if (!_icons[i].gameObject.activeSelf)
+                        break;
+
+                    if (_icons[i].ContainsPresent)
+                    {
+                        _busy = true;
+                        break;
+                    }
+                }
+            }
         }
     }
 }
