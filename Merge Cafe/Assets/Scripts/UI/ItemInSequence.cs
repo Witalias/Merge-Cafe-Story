@@ -57,8 +57,10 @@ namespace UI
             if (!ContainsPresent)
                 return;
 
-            var randomCell = _storage.GetRandomEmptyCell();
-            //randomCell.CreateItem(_storage.GetItem(_presentStats.Type, _presentStats.Level), transform.position);
+            var randomCell = _storage.GetRandomEmptyCell(true);
+            if (randomCell == null)
+                return;
+
             randomCell.CreateItem(_rewardStorage, transform.position);
             _reward.gameObject.SetActive(false);
             ContainsPresent = false;

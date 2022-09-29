@@ -23,6 +23,8 @@ namespace Gameplay.Counters
         private float _currentBarValue = 0f;
         private int _needStarsToNextPresent = 10;
 
+        public static event System.Action<ItemStorage> NoEmptyCellsAndRewardGetted;
+
         public void AddStars(int value)
         {
             _storage.StatsCount += value;
@@ -68,10 +70,14 @@ namespace Gameplay.Counters
             _currentBarValue = 0f;
             _storage.StatsCount -= _needStarsToNextPresent;
 
+            var itemStorage = _storage.GetItem(_currentTarget.Type, _currentTarget.Level);
+            itemStorage.Unlock();
+
             var randomCell = _storage.GetRandomEmptyCell();
-            var stats = _storage.GetItem(_currentTarget.Type, _currentTarget.Level);
-            stats.Unlock();
-            randomCell.CreateItem(stats, transform.position);
+            if (randomCell == null)
+                NoEmptyCellsAndRewardGetted?.Invoke(itemStorage);
+            else
+                randomCell.CreateItem(itemStorage, transform.position);
 
             if (_targets.Count == 0)
             {

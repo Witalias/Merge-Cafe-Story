@@ -196,6 +196,12 @@ namespace Gameplay.Field
             withCell.Clear();
             withCell.CreateItem(_storage.GetNextItemByAnotherItem(Stats));
             Remove();
+
+            if (Stats.Level >= _storage.GenerationStarFromLevel)
+            {
+                var randomCell = _storage.GetRandomEmptyCell();
+                randomCell.CreateItem(_storage.GetItem(ItemType.Star, 1), transform.position);
+            }
         }
     }
 }

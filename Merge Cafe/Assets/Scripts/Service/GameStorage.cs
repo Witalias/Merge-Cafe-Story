@@ -14,6 +14,7 @@ namespace Service
         [SerializeField] [Range(1, 2)] private int _gameStage = 1;
         [SerializeField] private int _starsCount = 0;
         [SerializeField] private int _brilliantsCount = 0;
+        [SerializeField] private int _generationStarFromLevel = 6;
         [SerializeField] private int[] _starsByItemLevels;
         [SerializeField] private int[] _starsRewardForLevels;
         [SerializeField] private int[] _brilliantsRewardForLevels;
@@ -34,11 +35,15 @@ namespace Service
         private Dictionary<ItemType, ItemStorage[]> _items = new Dictionary<ItemType, ItemStorage[]>();
         private Dictionary<ItemType, Dictionary<int, Sprite>> _itemSprites = new Dictionary<ItemType, Dictionary<int, Sprite>>();
 
+        public static event System.Action NoEmptyCells;
+
         public int GameStage { get => _gameStage; set => _gameStage = value; }
 
         public int StatsCount { get => _starsCount; set => _starsCount = value; }
 
         public int BrilliantsCount { get => _brilliantsCount; set => _brilliantsCount = value; }
+
+        public int GenerationStarFromLevel { get => _generationStarFromLevel; }
 
         public GameObject ItemPrefab { get => _itemPrefab; }
 
@@ -93,23 +98,31 @@ namespace Service
 
         public ItemStorage GetRewardForNewItemByLevel(int level) => GetItem(_rewardsForNewItems[level - 1].Type, _rewardsForNewItems[level - 1].Level);
 
-        public Cell GetFirstEmptyCell()
+        public Cell GetFirstEmptyCell(bool showMessageIfNoEmpty = false)
         {
             foreach (var cell in cells)
             {
                 if (cell.Empty)
                     return cell;
             }
+            if (showMessageIfNoEmpty)
+                NoEmptyCells?.Invoke();
             return null;
         }
 
-        public Cell GetRandomEmptyCell()
+        public Cell GetRandomEmptyCell(bool showMessageIfNoEmpty = false)
         {
             var emptyCells = new List<Cell>();
             foreach (var cell in cells)
             {
                 if (cell.Empty)
                     emptyCells.Add(cell);
+            }
+            if (emptyCells.Count == 0)
+            {
+                if (showMessageIfNoEmpty)
+                    NoEmptyCells?.Invoke();
+                return null;
             }
             return emptyCells[Random.Range(0, emptyCells.Count)];
         }
@@ -150,13 +163,13 @@ namespace Service
             }
             //CreateOpenPresentSpritesDictionary();
 
-            void CreateOpenPresentSpritesDictionary()
-            {
-                var spritesDict = new Dictionary<int, Sprite>();
-                for (var i = 0; i < _items[ItemType.OpenPresent].Length; ++i)
-                    spritesDict.Add(i + 1, _items[ItemType.OpenPresent][i].Icon);
-                _itemSprites.Add(ItemType.OpenPresent, spritesDict);
-            }
+            //void CreateOpenPresentSpritesDictionary()
+            //{
+            //    var spritesDict = new Dictionary<int, Sprite>();
+            //    for (var i = 0; i < _items[ItemType.OpenPresent].Length; ++i)
+            //        spritesDict.Add(i + 1, _items[ItemType.OpenPresent][i].Icon);
+            //    _itemSprites.Add(ItemType.OpenPresent, spritesDict);
+            //}
         }
 
         private void CreateItemsDictionary()

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UI;
 using Gameplay.Field;
+using Service;
 
 namespace EventHandlers
 {
@@ -20,16 +21,23 @@ namespace EventHandlers
         private void OnEnable()
         {
             Item.JoiningItemsOfMaxLevelTried += ShowMaxLevel;
+            GameStorage.NoEmptyCells += ShowNoEmptyCells;
         }
 
         private void OnDisable()
         {
             Item.JoiningItemsOfMaxLevelTried -= ShowMaxLevel;
+            GameStorage.NoEmptyCells -= ShowNoEmptyCells;
         }
 
         private void ShowMaxLevel()
         {
             _message.Show(_maxLevelText);
+        }
+
+        private void ShowNoEmptyCells()
+        {
+            _message.Show(_noEmptyCellsText);
         }
     }
 }

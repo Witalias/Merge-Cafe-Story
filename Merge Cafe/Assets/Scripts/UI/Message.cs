@@ -16,7 +16,7 @@ namespace UI
         public void Show(string message)
         {
             var mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = new Vector3(mousePosition.x, mousePosition.y, 0f);
+            transform.position = Vector3.Lerp(Vector3.zero, new Vector3(mousePosition.x, mousePosition.y, 0f), 0.7f);
             _text.text = message;
             _animator.SetTrigger(_showAnimatorTrigger);
         }
