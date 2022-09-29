@@ -20,7 +20,7 @@ namespace Gameplay.Orders
 
         private int _ordersCount = 1;
         private int _remainsToRareOrder = 1;
-        private readonly Queue<ItemStats> _rareItemsQueue = new Queue<ItemStats>();
+        private readonly Queue<ItemStorage> _rareItemsQueue = new Queue<ItemStorage>();
 
         public float DelayBeforeNewOrder { get => _delayBeforeNewOrder; }
 
@@ -62,7 +62,7 @@ namespace Gameplay.Orders
 
             var possibleItems = new List<(ItemType Type, int MinLevel, int MaxLevel, int RewardLevel)>(settings.Items);
             var pointsCount = Random.Range(1, settings.MaxOrderPoints);
-            var itemsToOrder = new ItemStats[pointsCount];
+            var itemsToOrder = new ItemStorage[pointsCount];
             var starsReward = 0;
             var brilliantsReward = 0;
             for (var i = 0; i < pointsCount; ++i)

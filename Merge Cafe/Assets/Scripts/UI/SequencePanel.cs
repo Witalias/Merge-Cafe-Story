@@ -38,7 +38,7 @@ namespace UI
                 {
                     item.NotNew();
                     _icons[i].PayAttentionAnimation();
-                    _icons[i].ShowPresent(i + 1);
+                    _icons[i].ShowReward(i + 1);
                     _busy = true;
                 }
             }

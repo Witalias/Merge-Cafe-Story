@@ -12,13 +12,14 @@ namespace UI
     {
         private const string _attentionAnimatorTrigger = "Attention";
 
-        [SerializeField] private Image _present;
+        [SerializeField] private Image _reward;
 
         private Animator _animator;
         private Image _image;
         private GameStorage _storage;
 
-        private (ItemType Type, int Level) _presentStats;
+        //private (ItemType Type, int Level) _presentStats;
+        private ItemStorage _rewardStorage;
 
         public bool ContainsPresent { get; private set; } = false;
 
@@ -27,14 +28,15 @@ namespace UI
             _animator.SetTrigger(_attentionAnimatorTrigger);
         }
 
-        public void ShowPresent(int level)
+        public void ShowReward(int itemLevel)
         {
             _storage = GameStorage.Instanse;
             ContainsPresent = true;
-            var presentLevel = _storage.GetPresentLevelByItemlevel(level);
-            _presentStats = (ItemType.Present, presentLevel);
-            _present.gameObject.SetActive(true);
-            _present.sprite = _storage.GetItemSprite(_presentStats.Type, _presentStats.Level);
+            _rewardStorage = _storage.GetRewardForNewItemByLevel(itemLevel);
+            //_presentStats = (ItemType.Present, presentLevel);
+            _reward.gameObject.SetActive(true);
+            //_present.sprite = _storage.GetItemSprite(_presentStats.Type, _presentStats.Level);
+            _reward.sprite = _rewardStorage.Icon;
         }
 
         public void SetSprite(Sprite value) => _image.sprite = value;
@@ -56,8 +58,9 @@ namespace UI
                 return;
 
             var randomCell = _storage.GetRandomEmptyCell();
-            randomCell.CreateItem(_storage.GetItem(_presentStats.Type, _presentStats.Level), transform.position);
-            _present.gameObject.SetActive(false);
+            //randomCell.CreateItem(_storage.GetItem(_presentStats.Type, _presentStats.Level), transform.position);
+            randomCell.CreateItem(_rewardStorage, transform.position);
+            _reward.gameObject.SetActive(false);
             ContainsPresent = false;
         }
     }

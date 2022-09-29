@@ -17,16 +17,13 @@ namespace Service
         [SerializeField] private int[] _starsByItemLevels;
         [SerializeField] private int[] _starsRewardForLevels;
         [SerializeField] private int[] _brilliantsRewardForLevels;
-        [SerializeField] private int[] _presentsRewardForLevels;
+        [SerializeField] private ItemTypeLevel[] _rewardsForNewItems;
+
+        [Header("items")]
+        [SerializeField] private TypedItem[] _typedItems;
 
         [Header("Sprites")]
         [SerializeField] private Sprite _questionMark;
-        [SerializeField] private Sprite[] _presentIcons;
-        [SerializeField] private Sprite[] _openPresentIcons;
-        [SerializeField] private Sprite[] _brilliantIcons;
-        [SerializeField] private Sprite[] _starIcons;
-        [SerializeField] private Sprite[] _teaIcons;
-        [SerializeField] private Sprite[] _coffeeIcons;
 
         [Header("Prefabs")]
         [SerializeField] private GameObject _itemPrefab;
@@ -34,7 +31,7 @@ namespace Service
         [SerializeField] private GameObject _brilliantForAnimation;
 
         private Cell[] cells;
-        private Dictionary<ItemType, ItemStats[]> _items;
+        private Dictionary<ItemType, ItemStorage[]> _items = new Dictionary<ItemType, ItemStorage[]>();
         private Dictionary<ItemType, Dictionary<int, Sprite>> _itemSprites = new Dictionary<ItemType, Dictionary<int, Sprite>>();
 
         public int GameStage { get => _gameStage; set => _gameStage = value; }
@@ -53,21 +50,21 @@ namespace Service
 
         public Sprite QuestionMark { get => _questionMark; }
 
-        public ItemStats GetNextItemByAnotherItem(ItemStats item)
+        public ItemStorage GetNextItemByAnotherItem(ItemStorage item)
         {
             var nextItemStats = _items[item.Type][item.Level];
             nextItemStats.Unlock();
             return nextItemStats;
         }
 
-        public ItemStats GetItem(ItemType type, int level)
+        public ItemStorage GetItem(ItemType type, int level)
         {
             if (_items.ContainsKey(type))
                 return _items[type][level - 1];
             return null;
         }
 
-        public bool IsItemMaxLevel(ItemStats item)
+        public bool IsItemMaxLevel(ItemStorage item)
         { 
             if (_items.ContainsKey(item.Type))
                 return _items[item.Type].Length == item.Level;
@@ -94,7 +91,7 @@ namespace Service
 
         public int GetBrilliantsRewardByItemlevel(int level) => _brilliantsRewardForLevels[level - 1];
 
-        public int GetPresentLevelByItemlevel(int level) => _presentsRewardForLevels[level - 1];
+        public ItemStorage GetRewardForNewItemByLevel(int level) => GetItem(_rewardsForNewItems[level - 1].Type, _rewardsForNewItems[level - 1].Level);
 
         public Cell GetFirstEmptyCell()
         {
@@ -151,36 +148,36 @@ namespace Service
 
                 _itemSprites.Add(element.Key, spritesDict);
             }
-            CreateOpenPresentSpritesDictionary();
+            //CreateOpenPresentSpritesDictionary();
 
             void CreateOpenPresentSpritesDictionary()
             {
                 var spritesDict = new Dictionary<int, Sprite>();
-                for (var i = 0; i < _openPresentIcons.Length; ++i)
-                    spritesDict.Add(i + 1, _openPresentIcons[i]);
+                for (var i = 0; i < _items[ItemType.OpenPresent].Length; ++i)
+                    spritesDict.Add(i + 1, _items[ItemType.OpenPresent][i].Icon);
                 _itemSprites.Add(ItemType.OpenPresent, spritesDict);
             }
         }
 
         private void CreateItemsDictionary()
         {
-            _items = new Dictionary<ItemType, ItemStats[]>
-            {
-                [ItemType.Tea] = GetItemStatsArray(_teaIcons),
-                [ItemType.Coffee] = GetItemStatsArray(_coffeeIcons),
-                [ItemType.Present] = GetItemStatsArray(_presentIcons),
-                [ItemType.Brilliant] = GetItemStatsArray(_brilliantIcons),
-                [ItemType.Star] = GetItemStatsArray(_starIcons),
-            };
+            foreach (var item in _typedItems)
+                _items.Add(item.Type, GetItemStorageArray(item));
         }
 
-        private ItemStats[] GetItemStatsArray(Sprite[] sprites)
+        private ItemStorage[] GetItemStorageArray(TypedItem item)
         {
-            var itemStats = new ItemStats[sprites.Length];
+            var itemStats = new ItemStorage[item.Icons.Length];
             for (var i = 0; i < itemStats.Length; ++i)
-                itemStats[i] = new ItemStats(i + 1, sprites[i]);
+                itemStats[i] = new ItemStorage(i + 1, item.Icons[i]);
             return itemStats;
         }
     }
 
+    [System.Serializable]
+    public class TypedItem
+    {
+        public ItemType Type;
+        public Sprite[] Icons;
+    }
 }

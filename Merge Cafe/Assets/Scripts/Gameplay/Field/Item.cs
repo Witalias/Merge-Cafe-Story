@@ -30,9 +30,9 @@ namespace Gameplay.Field
         public static event Action JoiningItemsOfMaxLevelTried;
         public static event Action<ItemType> CursorHoveredItem;
 
-        public ItemStats Stats { get; private set; }
+        public ItemStorage Stats { get; private set; }
 
-        public void Initialize(ItemStats stats)
+        public void Initialize(ItemStorage stats)
         {
             _image.sprite = stats.Icon;
             Stats = stats;
@@ -59,7 +59,7 @@ namespace Gameplay.Field
 
         public void OpenPresent()
         {
-            var openPresentStats = new ItemStats(Stats.Level, _storage.GetItemSprite(ItemType.OpenPresent, Stats.Level), ItemType.OpenPresent);
+            var openPresentStats = new ItemStorage(_storage.GetItem(ItemType.OpenPresent, Stats.Level));
             Remove();
             _currentCell.CreateItem(openPresentStats);
         }
@@ -191,6 +191,7 @@ namespace Gameplay.Field
 
         private void Join(Cell withCell)
         {
+            SoundManager.Instanse.Play(Sound.Merge, null, Stats.Level - 1);
             Destroy(withCell.Item.gameObject);
             withCell.Clear();
             withCell.CreateItem(_storage.GetNextItemByAnotherItem(Stats));

@@ -27,7 +27,7 @@ namespace Gameplay.Orders
         private Animator _animator;
         private CurrencyAdder _currencyAdder;
 
-        private readonly ItemStats[] _orders = new ItemStats[3];
+        private readonly ItemStorage[] _orders = new ItemStorage[3];
         private int _id;
         private int _stars;
         private int _brilliants;
@@ -36,7 +36,7 @@ namespace Gameplay.Orders
 
         public void SetID(int value) => _id = value;
 
-        public void Generate(ItemStats[] items, int stars, int brilliants)
+        public void Generate(ItemStorage[] items, int stars, int brilliants)
         {
             _stars = stars;
             _brilliants = brilliants;
@@ -62,7 +62,7 @@ namespace Gameplay.Orders
             Show();
         }
 
-        public void CheckIncomingItem(ItemStats item, out bool matches)
+        public void CheckIncomingItem(ItemStorage item, out bool matches)
         {
             matches = false;
             if (IsEmpty())

@@ -4,7 +4,7 @@ using Service;
 
 namespace Gameplay.Field
 {
-    public class ItemStats
+    public class ItemStorage
     {
         public Sprite Icon { get; private set; }
         public int Level { get; } = 1;
@@ -12,7 +12,7 @@ namespace Gameplay.Field
         public bool Unlocked { get; private set; } = false;
         public bool IsNew { get; private set; } = true;
 
-        public ItemStats(int level, Sprite icon, ItemType type, bool unlocked = false)
+        public ItemStorage(int level, Sprite icon, ItemType type, bool unlocked = false)
         {
             Icon = icon;
             Level = level;
@@ -23,9 +23,9 @@ namespace Gameplay.Field
                 Unlock();
         }
 
-        public ItemStats(int level, Sprite icon) : this(level, icon, ItemType.Tea) { }
+        public ItemStorage(int level, Sprite icon) : this(level, icon, ItemType.Tea) { }
 
-        public ItemStats(ItemStats other, bool unlocked = true) : this(other.Level, other.Icon, other.Type, unlocked) { }
+        public ItemStorage(ItemStorage other, bool unlocked = true) : this(other.Level, other.Icon, other.Type, unlocked) { }
 
         public void SetType(ItemType type) => Type = type;
 
@@ -42,6 +42,6 @@ namespace Gameplay.Field
             Icon = GameStorage.Instanse.GetItemSprite(Type, Level);
         }
 
-        public bool EqualTo(ItemStats other) => other.Type == Type && other.Level == Level;
+        public bool EqualTo(ItemStorage other) => other.Type == Type && other.Level == Level;
     }
 }

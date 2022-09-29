@@ -19,7 +19,7 @@ namespace Gameplay.Orders
 
         public Animation CheckMark { get => _checkMark; }
 
-        public void SetItem(ItemStats stats)
+        public void SetItem(ItemStorage stats)
         {
             Icon.sprite = stats.Icon;
             _itemType = stats.Type;

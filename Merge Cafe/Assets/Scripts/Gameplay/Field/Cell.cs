@@ -25,12 +25,12 @@ namespace Gameplay.Field
             Item.SetCell(this);
         }
 
-        public void CreateItem(ItemStats stats)
+        public void CreateItem(ItemStorage stats)
         {
             CreateItem(stats, transform.position);
         }
 
-        public void CreateItem(ItemStats stats, Vector2 position)
+        public void CreateItem(ItemStorage stats, Vector2 position)
         {
             CheckEmptiness();
             Item = Instantiate(storage.ItemPrefab, position, Quaternion.identity, storage.ItemsParent)
@@ -61,7 +61,7 @@ namespace Gameplay.Field
             {
                 var maxLevel = storage.GetItemMaxLevel(itemType);
                 level = Mathf.Clamp(level, 1, maxLevel);
-                CreateItem(new ItemStats(level, storage.GetItemSprite(itemType, level), itemType));
+                CreateItem(new ItemStorage(storage.GetItem(itemType, level)));
             }
         }
 

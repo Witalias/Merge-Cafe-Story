@@ -19,10 +19,10 @@ namespace Service
                     (ItemType.Tea, 4),
                 }, new[]
                 {
-                    (ItemType.Star, 1, 2),
-                    (ItemType.Star, 1, 2),
-                    (ItemType.Star, 2, 2),
-                    (ItemType.Star, 2, 2),
+                    (ItemType.Present, 1, 2),
+                    (ItemType.Present, 1, 2),
+                    (ItemType.Present, 2, 2),
+                    (ItemType.Present, 2, 2),
                     (ItemType.Brilliant, 1, 2),
                     (ItemType.Brilliant, 1, 2),
                     (ItemType.Brilliant, 2, 2),

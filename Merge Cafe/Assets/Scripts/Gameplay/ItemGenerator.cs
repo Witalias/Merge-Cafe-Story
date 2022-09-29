@@ -107,7 +107,8 @@ public class ItemGenerator : MonoBehaviour
         }
         var randomType = _generatedItems[Random.Range(0, _generatedItems.Length)];
         var randomLevel = Random.Range(1, _statsOnLevels[_level - 1].initItemsLevel + 1);
-        var item = new ItemStats(randomLevel, _storage.GetItemSprite(randomType, randomLevel), randomType);
+        //var item = new ItemStorage(randomLevel, _storage.GetItemSprite(randomType, randomLevel), randomType);
+        var item = new ItemStorage(_storage.GetItem(randomType, randomLevel));
         cell.CreateItem(item, transform.position);
     }
 }
