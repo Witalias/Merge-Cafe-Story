@@ -11,6 +11,7 @@ using System.Linq;
 namespace Gameplay.Field
 {
     [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(QuickClickTracking))]
     public class Item : MonoBehaviour
     {
         private const string _zoomAnimatorBool = "Mouse Enter";
@@ -24,6 +25,7 @@ namespace Gameplay.Field
         private Cell _currentCell;
         private Camera _mainCamera;
         private GameStorage _storage;
+        private QuickClickTracking _quickClickTracking;
 
         private bool _isReturning = false;
 
@@ -73,6 +75,7 @@ namespace Gameplay.Field
         private void Awake()
         {
             _animator = GetComponent<Animator>();
+            _quickClickTracking = GetComponent<QuickClickTracking>();
             _mainCamera = Camera.main;
             _storage = GameStorage.Instanse;
         }
@@ -100,6 +103,9 @@ namespace Gameplay.Field
 
         private void OnMouseDrag()
         {
+            if (_quickClickTracking.IsChecking)
+                return;
+
             var mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
             var followPosition = new Vector3(mousePosition.x, mousePosition.y, 0f);
             transform.position = Vector3.Lerp(transform.position, followPosition, _followSpeed * Time.fixedDeltaTime);

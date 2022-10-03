@@ -18,6 +18,8 @@ public class QuickClickTracking : MonoBehaviour
         set => _quickClicked = value;
     }
 
+    public bool IsChecking { get; private set; } = false;
+
     private void OnMouseDown()
     {
         StartCoroutine(CheckQuickClick());
@@ -25,7 +27,9 @@ public class QuickClickTracking : MonoBehaviour
 
     private IEnumerator CheckQuickClick()
     {
+        IsChecking = true;
         yield return new WaitForSeconds(_checkingTime);
+        IsChecking = false;
         if (Input.GetMouseButton(0))
             yield break;
         QuickClicked = true;

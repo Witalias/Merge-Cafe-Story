@@ -127,6 +127,8 @@ namespace Service
             return emptyCells[Random.Range(0, emptyCells.Count)];
         }
 
+        public bool HasEmptyCells(bool showMessageIfNoEmpty = false) => GetFirstEmptyCell(showMessageIfNoEmpty) != null;
+
         public void IncrementGameStage() => ++_gameStage;
 
         private void Awake()
@@ -161,15 +163,6 @@ namespace Service
 
                 _itemSprites.Add(element.Key, spritesDict);
             }
-            //CreateOpenPresentSpritesDictionary();
-
-            //void CreateOpenPresentSpritesDictionary()
-            //{
-            //    var spritesDict = new Dictionary<int, Sprite>();
-            //    for (var i = 0; i < _items[ItemType.OpenPresent].Length; ++i)
-            //        spritesDict.Add(i + 1, _items[ItemType.OpenPresent][i].Icon);
-            //    _itemSprites.Add(ItemType.OpenPresent, spritesDict);
-            //}
         }
 
         private void CreateItemsDictionary()

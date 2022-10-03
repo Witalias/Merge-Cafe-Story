@@ -13,24 +13,8 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge caf
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\animation\
 ++Enums
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\
-++CurrencyType.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\currencytype.cs
-++ItemType.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\itemtype.cs
-++Tags.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\tags.cs
 ++Event Handlers
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\
-++ChangeBrilliantsCountHandler.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\changebrilliantscounthandler.cs
-++ChangeStarsCountHandler.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\changestarscounthandler.cs
-++NewOrderHandler.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\neworderhandler.cs
-++ShowMessageHandler.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\showmessagehandler.cs
-++ShowSequenceHandler.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\showsequencehandler.cs
 ++Gameplay
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\
 ++Counters
@@ -44,7 +28,6 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge caf
 ++ItemCurrency.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\itemcurrency.cs
 ++ItemStats.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\itemstats.cs
 ++Present.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\present.cs
 ++Orders
@@ -59,131 +42,16 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge caf
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\gamestage.cs
 ++GameStorage.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\gamestorage.cs
+++MusicManager.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\musicmanager.cs
 ++QuickClickTracking.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\quickclicktracking.cs
+++SoundManager.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\soundmanager.cs
 ++UI
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\ui\
-++Message.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\ui\message.cs
-++SequencePanel.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\ui\sequencepanel.cs
-++UIBar.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\ui\uibar.cs
 ++TextMesh Pro
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\
-++Examples & Extras
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\
-++Fonts
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\fonts\
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\fonts\
-++Benchmark01.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\benchmark01.cs
-++Benchmark01_UGUI.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\benchmark01_ugui.cs
-++Benchmark02.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\benchmark02.cs
-++Benchmark03.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\benchmark03.cs
-++Benchmark04.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\benchmark04.cs
-++CameraController.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\cameracontroller.cs
-++ChatController.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\chatcontroller.cs
-++DropdownSample.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\dropdownsample.cs
-++EnvMapAnimator.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\envmapanimator.cs
-++ObjectSpin.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\objectspin.cs
-++ShaderPropAnimator.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\shaderpropanimator.cs
-++SimpleScript.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\simplescript.cs
-++SkewTextExample.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\skewtextexample.cs
-++TeleType.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\teletype.cs
-++TextConsoleSimulator.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\textconsolesimulator.cs
-++TextMeshProFloatingText.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\textmeshprofloatingtext.cs
-++TextMeshSpawner.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\textmeshspawner.cs
-++TMP_DigitValidator.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_digitvalidator.cs
-++TMP_ExampleScript_01.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_examplescript_01.cs
-++TMP_FrameRateCounter.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_frameratecounter.cs
-++TMP_PhoneNumberValidator.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_phonenumbervalidator.cs
-++TMP_TextEventCheck.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_texteventcheck.cs
-++TMP_TextEventHandler.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_texteventhandler.cs
-++TMP_TextInfoDebugTool.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_textinfodebugtool.cs
-++TMP_TextSelector_A.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_textselector_a.cs
-++TMP_TextSelector_B.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_textselector_b.cs
-++TMP_UiFrameRateCounter.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_uiframeratecounter.cs
-++TMPro_InstructionOverlay.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmpro_instructionoverlay.cs
-++VertexColorCycler.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\vertexcolorcycler.cs
-++VertexJitter.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\vertexjitter.cs
-++VertexShakeA.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\vertexshakea.cs
-++VertexShakeB.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\vertexshakeb.cs
-++VertexZoom.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\vertexzoom.cs
-++WarpTextExample.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\warptextexample.cs
-++Resources
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\resources\
-++Shaders
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\
-++TMP_Bitmap-Custom-Atlas.shader
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_bitmap-custom-atlas.shader
-++TMP_Bitmap-Mobile.shader
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_bitmap-mobile.shader
-++TMP_Bitmap.shader
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_bitmap.shader
-++TMP_SDF-Mobile Masking.shader
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf-mobile masking.shader
-++TMP_SDF-Mobile Overlay.shader
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf-mobile overlay.shader
-++TMP_SDF-Mobile SSD.shader
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf-mobile ssd.shader
-++TMP_SDF-Mobile.shader
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf-mobile.shader
-++TMP_SDF-Surface-Mobile.shader
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf-surface-mobile.shader
-++TMP_SDF-Surface.shader
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf-surface.shader
-++TMP_SDF Overlay.shader
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf overlay.shader
-++TMP_SDF SSD.shader
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf ssd.shader
-++TMP_SDF.shader
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf.shader
-++TMP_Sprite.shader
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sprite.shader
-++TMPro.cginc
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmpro.cginc
-++TMPro_Mobile.cginc
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmpro_mobile.cginc
-++TMPro_Properties.cginc
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmpro_properties.cginc
-++TMPro_Surface.cginc
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmpro_surface.cginc
-++Sprites
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\sprites\
 ++Microsoft.Win32.Primitives
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
 ++mscorlib
@@ -686,6 +554,26 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
 ++CurrencyAnimation.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\animation\currencyanimation.cs
+++CurrencyType.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\currencytype.cs
+++ItemType.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\itemtype.cs
+++Music.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\music.cs
+++Sound.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\sound.cs
+++Tags.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\tags.cs
+++ChangeBrilliantsCountHandler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\changebrilliantscounthandler.cs
+++ChangeStarsCountHandler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\changestarscounthandler.cs
+++NewOrderHandler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\neworderhandler.cs
+++ShowMessageHandler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\showmessagehandler.cs
+++ShowSequenceHandler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\showsequencehandler.cs
 ++CurrencyAdder.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\counters\currencyadder.cs
 ++StarCounter.cs
@@ -696,21 +584,150 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge caf
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\orders\ordermanager.cs
 ++OrderPoint.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\orders\orderpoint.cs
-++Anton OFL.txt
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\fonts\anton ofl.txt
-++Bangers - OFL.txt
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\fonts\bangers - ofl.txt
-++Oswald-Bold - OFL.txt
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\fonts\oswald-bold - ofl.txt
+++ItemInSequence.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\ui\iteminsequence.cs
+++Message.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\ui\message.cs
+++SequencePanel.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\ui\sequencepanel.cs
+++UIBar.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\ui\uibar.cs
+++Examples & Extras
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\
+++Fonts
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\fonts\
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\fonts\
+++Resources
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\resources\
+++Shaders
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\
+++Sprites
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\sprites\
 ++LiberationSans - OFL.txt
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\fonts\liberationsans - ofl.txt
 ++LineBreaking Following Characters.txt
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\resources\linebreaking following characters.txt
 ++LineBreaking Leading Characters.txt
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\resources\linebreaking leading characters.txt
+++TMP_Bitmap-Custom-Atlas.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_bitmap-custom-atlas.shader
+++TMP_Bitmap-Mobile.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_bitmap-mobile.shader
+++TMP_Bitmap.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_bitmap.shader
+++TMP_SDF-Mobile Masking.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf-mobile masking.shader
+++TMP_SDF-Mobile Overlay.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf-mobile overlay.shader
+++TMP_SDF-Mobile SSD.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf-mobile ssd.shader
+++TMP_SDF-Mobile.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf-mobile.shader
+++TMP_SDF-Surface-Mobile.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf-surface-mobile.shader
+++TMP_SDF-Surface.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf-surface.shader
+++TMP_SDF Overlay.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf overlay.shader
+++TMP_SDF SSD.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf ssd.shader
+++TMP_SDF.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sdf.shader
+++TMP_Sprite.shader
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmp_sprite.shader
+++TMPro.cginc
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmpro.cginc
+++TMPro_Mobile.cginc
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmpro_mobile.cginc
+++TMPro_Properties.cginc
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmpro_properties.cginc
+++TMPro_Surface.cginc
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\shaders\tmpro_surface.cginc
 ++EmojiOne Attribution.txt
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\sprites\emojione attribution.txt
+++Anton OFL.txt
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\fonts\anton ofl.txt
+++Bangers - OFL.txt
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\fonts\bangers - ofl.txt
+++Oswald-Bold - OFL.txt
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\fonts\oswald-bold - ofl.txt
+++Benchmark01.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\benchmark01.cs
+++Benchmark01_UGUI.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\benchmark01_ugui.cs
+++Benchmark02.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\benchmark02.cs
+++Benchmark03.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\benchmark03.cs
+++Benchmark04.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\benchmark04.cs
+++CameraController.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\cameracontroller.cs
+++ChatController.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\chatcontroller.cs
+++DropdownSample.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\dropdownsample.cs
+++EnvMapAnimator.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\envmapanimator.cs
+++ObjectSpin.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\objectspin.cs
+++ShaderPropAnimator.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\shaderpropanimator.cs
+++SimpleScript.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\simplescript.cs
+++SkewTextExample.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\skewtextexample.cs
+++TeleType.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\teletype.cs
+++TextConsoleSimulator.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\textconsolesimulator.cs
+++TextMeshProFloatingText.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\textmeshprofloatingtext.cs
+++TextMeshSpawner.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\textmeshspawner.cs
+++TMP_DigitValidator.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_digitvalidator.cs
+++TMP_ExampleScript_01.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_examplescript_01.cs
+++TMP_FrameRateCounter.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_frameratecounter.cs
+++TMP_PhoneNumberValidator.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_phonenumbervalidator.cs
+++TMP_TextEventCheck.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_texteventcheck.cs
+++TMP_TextEventHandler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_texteventhandler.cs
+++TMP_TextInfoDebugTool.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_textinfodebugtool.cs
+++TMP_TextSelector_A.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_textselector_a.cs
+++TMP_TextSelector_B.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_textselector_b.cs
+++TMP_UiFrameRateCounter.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmp_uiframeratecounter.cs
+++TMPro_InstructionOverlay.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\tmpro_instructionoverlay.cs
+++VertexColorCycler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\vertexcolorcycler.cs
+++VertexJitter.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\vertexjitter.cs
+++VertexShakeA.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\vertexshakea.cs
+++VertexShakeB.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\vertexshakeb.cs
+++VertexZoom.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\vertexzoom.cs
+++WarpTextExample.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\warptextexample.cs
+++ItemStorage.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\itemstorage.cs
 ++Assembly-CSharp (выгружено)
 ++Решение "Merge Cafe" ‎(проекты: 0 из 1)
-++ItemInSequence.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\ui\iteminsequence.cs
+++ItemTypeLevel.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\itemtypelevel.cs
+++ItemIconsSound.cs
+++ItemIcons.cs
+++ItemQueue.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\itemqueue.cs
+++AddRewardToQueueHandler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\addrewardtoqueuehandler.cs

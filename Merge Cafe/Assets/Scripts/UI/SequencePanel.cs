@@ -14,7 +14,7 @@ namespace UI
 
         public void Show(ItemType type)
         {
-            if (_busy)
+            if (_busy || type == ItemType.OpenPresent)
                 return;
 
             var storage = GameStorage.Instanse;

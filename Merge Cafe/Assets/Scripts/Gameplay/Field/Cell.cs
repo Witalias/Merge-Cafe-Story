@@ -41,7 +41,10 @@ namespace Gameplay.Field
 
             switch (stats.Type)
             {
-                case ItemType.Present: Item.gameObject.AddComponent(typeof(Present)); break;
+                case ItemType.Present:
+                case ItemType.OpenPresent:
+                    Item.gameObject.AddComponent(typeof(Present));
+                    break;
                 case ItemType.Star:
                     var starCurrency = Item.gameObject.AddComponent(typeof(ItemCurrency)) as ItemCurrency;
                     starCurrency.SetType(CurrencyType.Star);

@@ -20,13 +20,9 @@ namespace Service
                 }, new[]
                 {
                     (ItemType.Present, 1, 2),
-                    (ItemType.Present, 1, 2),
-                    (ItemType.Present, 2, 2),
-                    (ItemType.Present, 2, 2),
-                    (ItemType.Brilliant, 1, 2),
-                    (ItemType.Brilliant, 1, 2),
-                    (ItemType.Brilliant, 2, 2),
-                    (ItemType.Brilliant, 2, 2),
+                    (ItemType.Present, 2, 4),
+                    (ItemType.Present, 3, 6),
+                    (ItemType.Brilliant, 2, 4),
                 }, 1)
             };
         }
