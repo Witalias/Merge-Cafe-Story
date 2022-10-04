@@ -2,11 +2,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
 using Service;
 using System;
 using Enums;
 using Gameplay.Orders;
-using System.Linq;
 
 namespace Gameplay.Field
 {
@@ -16,6 +17,7 @@ namespace Gameplay.Field
     {
         private const string _zoomAnimatorBool = "Mouse Enter";
         private const string _burnAnimatorTrigger = "Burn";
+        private const string _disappearAnimatorTrigger = "Disappear";
 
         [SerializeField] private float _returningSpeed;
         [SerializeField] private float _followSpeed;
@@ -29,8 +31,9 @@ namespace Gameplay.Field
 
         private bool _isReturning = false;
 
-        public static event Action JoiningItemsOfMaxLevelTried;
+        public static event Action MergingItemsOfMaxLevelTried;
         public static event Action<ItemType> CursorHoveredItem;
+        public static event Action CannotBeThrownAway;
 
         public ItemStorage Stats { get; private set; }
 
@@ -123,6 +126,14 @@ namespace Gameplay.Field
             CheckCursorOver();
         }
 
+        private IEnumerator Disappear()
+        {
+            _isReturning = false;
+            _animator.SetTrigger(_disappearAnimatorTrigger);
+            yield return new WaitForSeconds(0.5f);
+            Remove();
+        }
+
         private void CheckCursorOver()
         {
             var hits = GetScreenRaycastResults();
@@ -138,11 +149,30 @@ namespace Gameplay.Field
                         InteractWithOrder(order);
                     else
                     {
-
+                        var trashCan = obj.GetComponent<TrashCan>();
+                        if (trashCan != null)
+                            InteractWithTrashCan(trashCan);
                     }
                 }
 
             }
+        }
+
+        private void InteractWithTrashCan(TrashCan trashCan)
+        {
+            if (trashCan == null)
+                return;
+
+            if (Stats.Type == ItemType.TrashCan && trashCan.CheckOnUpgrading(Stats))
+                return;
+
+            if (Stats.Throwable)
+            {
+                trashCan.Throw(Stats.Level);
+                StartCoroutine(Disappear());
+            }
+            else
+                CannotBeThrownAway?.Invoke();
         }
 
         private void InteractWithOrder(Order order)
@@ -154,8 +184,7 @@ namespace Gameplay.Field
             if (!matches)
                 return;
 
-            _currentCell.Clear();
-            Destroy(gameObject);
+            Remove();
         }
 
         private void InteractWithCell(Cell cell)
@@ -170,7 +199,7 @@ namespace Gameplay.Field
                     return;
 
                 if (_storage.IsItemMaxLevel(Stats))
-                    JoiningItemsOfMaxLevelTried?.Invoke();
+                    MergingItemsOfMaxLevelTried?.Invoke();
                 else
                     Join(cell);
             }

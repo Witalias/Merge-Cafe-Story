@@ -157,7 +157,7 @@ namespace Service
 
                 foreach (var item in element.Value)
                 {
-                    item.SetType(element.Key);
+                    //item.SetType(element.Key);
                     spritesDict.Add(item.Level, item.Icon);
                 }
 
@@ -175,7 +175,7 @@ namespace Service
         {
             var itemStats = new ItemStorage[item.Icons.Length];
             for (var i = 0; i < itemStats.Length; ++i)
-                itemStats[i] = new ItemStorage(i + 1, item.Icons[i]);
+                itemStats[i] = new ItemStorage(i + 1, item.Icons[i], item.Type, item.Throwable);
             return itemStats;
         }
     }
@@ -184,6 +184,7 @@ namespace Service
     public class TypedItem
     {
         public ItemType Type;
+        public bool Throwable;
         public Sprite[] Icons;
     }
 }

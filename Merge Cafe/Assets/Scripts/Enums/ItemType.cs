@@ -7,6 +7,7 @@ namespace Enums
         Present,
         OpenPresent,
         Brilliant,
-        Star
+        Star,
+        TrashCan
     }
 }

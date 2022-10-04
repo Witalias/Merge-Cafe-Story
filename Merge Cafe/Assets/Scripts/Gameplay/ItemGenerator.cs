@@ -10,7 +10,6 @@ using UnityEngine.UI;
 public class ItemGenerator : MonoBehaviour
 {
     private const float _tick = 0.01f;
-    private const string _zoomAnimatorBool = "Mouse Enter";
     private const string _clickAnimatorBool = "Click";
 
     [SerializeField] private Image _image;
@@ -45,16 +44,6 @@ public class ItemGenerator : MonoBehaviour
             stopped = false;
             _addBarValueCoroutine = StartCoroutine(AddBarValue());
         }
-    }
-
-    private void OnMouseEnter()
-    {
-        _animator.SetBool(_zoomAnimatorBool, true);
-    }
-
-    private void OnMouseExit()
-    {
-        _animator.SetBool(_zoomAnimatorBool, false);
     }
 
     private void OnMouseDown()

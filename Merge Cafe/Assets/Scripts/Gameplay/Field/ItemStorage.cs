@@ -11,23 +11,23 @@ namespace Gameplay.Field
         public ItemType Type { get; private set; }
         public bool Unlocked { get; private set; } = false;
         public bool IsNew { get; private set; } = true;
+        public bool Throwable { get; private set; } = true;
 
-        public ItemStorage(int level, Sprite icon, ItemType type, bool unlocked = false)
+        public ItemStorage(int level, Sprite icon, ItemType type, bool throwable, bool unlocked = false)
         {
             Icon = icon;
             Level = level;
             Type = type;
             Unlocked = unlocked;
+            Throwable = throwable;
 
             if (level <= 1)
                 Unlock();
         }
 
-        public ItemStorage(int level, Sprite icon) : this(level, icon, ItemType.Tea) { }
+        public ItemStorage(ItemStorage other, bool unlocked = true) : this(other.Level, other.Icon, other.Type, other.Throwable, unlocked) { }
 
-        public ItemStorage(ItemStorage other, bool unlocked = true) : this(other.Level, other.Icon, other.Type, unlocked) { }
-
-        public void SetType(ItemType type) => Type = type;
+        //public void SetType(ItemType type) => Type = type;
 
         public void Unlock() => Unlocked = true;
 

@@ -8,6 +8,7 @@ namespace Gameplay.Counters
     public class CurrencyAdder : MonoBehaviour
     {
         [SerializeField] private float _changingCounterDelay = 2.5f;
+        [SerializeField] private float _spawnRadius = 0.5f;
         private Transform _mainCanvas;
 
         public static event System.Action<int> StarsChanged;
@@ -37,8 +38,8 @@ namespace Gameplay.Counters
 
         private void Spawn(GameObject obj, int count, Vector2 position)
         {
-            var leftTop = new Vector2(position.x - 0.2f, position.y + 0.2f);
-            var rightBottom = new Vector2(position.x + 0.2f, position.y - 0.2f);
+            var leftTop = new Vector2(position.x - _spawnRadius, position.y + _spawnRadius);
+            var rightBottom = new Vector2(position.x + _spawnRadius, position.y - _spawnRadius);
             for (var i = 0; i < count; ++i)
             {
                 var randomX = Random.Range(leftTop.x, rightBottom.x);

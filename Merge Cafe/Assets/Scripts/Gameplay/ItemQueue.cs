@@ -10,7 +10,6 @@ namespace Gameplay
     [RequireComponent(typeof(Animator))]
     public class ItemQueue : MonoBehaviour
     {
-        private const string _zoomAnimatorBool = "Mouse Enter";
         private const string _twitchAnimatorTrigger = "Twitch";
 
         [SerializeField] private Image _icon;
@@ -33,16 +32,6 @@ namespace Gameplay
         private void Awake()
         {
             _animator = GetComponent<Animator>();
-        }
-
-        private void OnMouseEnter()
-        {
-            _animator.SetBool(_zoomAnimatorBool, true);
-        }
-
-        private void OnMouseExit()
-        {
-            _animator.SetBool(_zoomAnimatorBool, false);
         }
 
         private void OnMouseDown()

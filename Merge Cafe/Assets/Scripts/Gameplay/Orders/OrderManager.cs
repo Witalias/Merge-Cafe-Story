@@ -143,10 +143,10 @@ namespace Gameplay.Orders
             var rewards = _extraRewards
                 .Where(reward => orderDifficulty >= reward.MinOrderDifficulty)
                 .OrderBy(reward => reward.MinOrderDifficulty)
-                .TakeLast(5)
+                .TakeLast(_extraRewardSpread)
                 .ToArray();
 
-            if (rewards == null)
+            if (rewards == null || rewards.Length == 0)
                 return null;
 
             var randomReward = rewards[Random.Range(0, rewards.Length)];
