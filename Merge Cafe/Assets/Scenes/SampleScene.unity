@@ -10361,12 +10361,31 @@ MonoBehaviour:
   - {fileID: 1068776217}
   - {fileID: 1693017428}
   - {fileID: 1218000908}
+  _delayBeforeNewOrder: 1
   _ordersCountBeforeRareOrder: 10
   _ordersCountBeforeRareOrderSpread: 5
-  _delayBeforeNewOrder: 1
+  _diffucultyMultiplierForRareOrder: 2
   _starsMultiplierForRareOrders: 5
   _brilliantsMultiplier: 10
   _brilliantsSpread: 7
+  _extraRewardChance: 30
+  _extraRewardSpread: 5
+  _extraRewards:
+  - Type: 2
+    Level: 1
+    MinOrderDifficulty: 3
+  - Type: 4
+    Level: 1
+    MinOrderDifficulty: 2
+  - Type: 5
+    Level: 1
+    MinOrderDifficulty: 2
+  - Type: 4
+    Level: 2
+    MinOrderDifficulty: 3
+  - Type: 5
+    Level: 2
+    MinOrderDifficulty: 3
 --- !u!114 &1352955131
 MonoBehaviour:
   m_ObjectHideFlags: 0

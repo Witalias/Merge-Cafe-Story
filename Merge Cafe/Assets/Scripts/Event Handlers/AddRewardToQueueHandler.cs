@@ -2,6 +2,7 @@ using UnityEngine;
 using Gameplay;
 using Gameplay.Field;
 using Gameplay.Counters;
+using Gameplay.Orders;
 
 namespace EventHandlers
 {
@@ -18,11 +19,13 @@ namespace EventHandlers
         private void OnEnable()
         {
             StarCounter.NoEmptyCellsAndRewardGetted += Add;
+            Order.NoEmptyCellsAndRewardGetted += Add;
         }
 
         private void OnDisable()
         {
             StarCounter.NoEmptyCellsAndRewardGetted -= Add;
+            Order.NoEmptyCellsAndRewardGetted -= Add;
         }
 
         private void Add(ItemStorage item)

@@ -1,6 +1,7 @@
 using UnityEngine;
 using Service;
 using System.Collections.Generic;
+using System.Linq;
 using Gameplay.Field;
 using Enums;
 
@@ -11,30 +12,24 @@ namespace Gameplay.Orders
         private const int _maxOrdersCount = 3;
 
         [SerializeField] private Order[] _orders;
+        [SerializeField] private float _delayBeforeNewOrder = 1f;
         [SerializeField] private int _ordersCountBeforeRareOrder = 10;
         [SerializeField] private int _ordersCountBeforeRareOrderSpread = 5;
-        [SerializeField] private float _delayBeforeNewOrder = 1f;
+        [SerializeField] private float _diffucultyMultiplierForRareOrder = 2;
         [SerializeField] private int _starsMultiplierForRareOrders = 5;
         [SerializeField] private int _brilliantsMultiplier = 10;
         [SerializeField] private int _brilliantsSpread = 7;
+        [SerializeField] [Range(0f, 100f)] private float _extraRewardChance;
+        [SerializeField] private int _extraRewardSpread = 5;
+        [SerializeField] private Order.ExtraReward[] _extraRewards;
+
+        private GameStorage _storage;
 
         private int _ordersCount = 1;
         private int _remainsToRareOrder = 1;
         private readonly Queue<ItemStorage> _rareItemsQueue = new Queue<ItemStorage>();
 
         public float DelayBeforeNewOrder { get => _delayBeforeNewOrder; }
-
-        private void Awake()
-        {
-            for (var i = 0; i < _orders.Length; ++i)
-                _orders[i].SetID(i);
-            UpdateRemainToRareOrder();
-        }
-
-        private void Start()
-        {
-            GenerateOrder(0);
-        }
 
         public void GenerateOrder(int id)
         {
@@ -44,43 +39,83 @@ namespace Gameplay.Orders
                 return;
             }
 
-            var storage = GameStorage.Instanse;
-            var settings = GameStage.GetSettingsByStage(storage.GameStage);
+            var settings = GameStage.GetSettingsByStage(_storage.GameStage);
             if (settings == null)
-                settings = GameStage.GetSettingsByStage(storage.GameStage - 1);
+                settings = GameStage.GetSettingsByStage(_storage.GameStage - 1);
 
             UpdateRareItemsQueue(settings);
 
             if (_remainsToRareOrder == 0 && _rareItemsQueue.Count > 0)
             {
-                UpdateRemainToRareOrder();
-                var rareItem = _rareItemsQueue.Dequeue();
-                var stars = storage.GetStarsCountByItemLevel(rareItem.Level) * _starsMultiplierForRareOrders;
-                _orders[id].Generate(new[] { rareItem }, stars, GetBrilliantsReward(stars));
+                GenerateRareOrder(id);
                 return;
             }
+            GenerateOrdinaryOrder(id, settings);
 
+            if (_rareItemsQueue.Count > 0)
+                --_remainsToRareOrder;
+        }
+
+        private void GenerateOrdinaryOrder(int id, GameStage.Settings settings)
+        {
             var possibleItems = new List<(ItemType Type, int MinLevel, int MaxLevel, int RewardLevel)>(settings.Items);
             var pointsCount = Random.Range(1, settings.MaxOrderPoints);
             var itemsToOrder = new ItemStorage[pointsCount];
             var starsReward = 0;
             var brilliantsReward = 0;
+            var difficulty = 0;
             for (var i = 0; i < pointsCount; ++i)
             {
                 var item = possibleItems[Random.Range(0, possibleItems.Count)];
                 var randomLevel = Random.Range(item.MinLevel, item.MaxLevel + 1);
-                itemsToOrder[i] = storage.GetItem(item.Type, randomLevel);
-                starsReward += storage.GetStarsCountByItemLevel(randomLevel) + (item.RewardLevel - 1);
+                itemsToOrder[i] = _storage.GetItem(item.Type, randomLevel);
+                starsReward += _storage.GetStarsCountByItemLevel(randomLevel) + (item.RewardLevel - 1);
                 brilliantsReward += GetBrilliantsReward(starsReward);
+                difficulty += randomLevel;
                 possibleItems.Remove(item);
 
                 if (possibleItems.Count == 0)
                     break;
             }
-            _orders[id].Generate(itemsToOrder, starsReward, brilliantsReward);
 
-            if (_rareItemsQueue.Count > 0)
-                --_remainsToRareOrder;
+            ItemStorage extraReward = null;
+            if (Random.Range(0f, 100f) > _extraRewardChance)
+                extraReward = GetRandomExtraReward(difficulty);
+
+            _orders[id].Generate(itemsToOrder, starsReward, brilliantsReward, extraReward);
+        }
+
+        private void GenerateRareOrder(int id)
+        {
+            UpdateRemainToRareOrder();
+            var rareItem = _rareItemsQueue.Dequeue();
+            var stars = _storage.GetStarsCountByItemLevel(rareItem.Level) * _starsMultiplierForRareOrders;
+            _orders[id].Generate(new[] { rareItem }, stars, GetBrilliantsReward(stars), GetRandomExtraReward((int)(rareItem.Level * _diffucultyMultiplierForRareOrder)));
+        }
+
+        public void AddNewOrder()
+        {
+            if (_ordersCount >= _maxOrdersCount)
+            {
+                Debug.LogWarning($"Максимальное количество заказов: {_maxOrdersCount}. Больше никак не смогу добавить.");
+                return;
+            }
+            ++_ordersCount;
+            _orders[_ordersCount - 1].gameObject.SetActive(true);
+            GenerateOrder(_ordersCount - 1);
+        }
+
+        private void Awake()
+        {
+            _storage = GameStorage.Instanse;
+            for (var i = 0; i < _orders.Length; ++i)
+                _orders[i].SetID(i);
+            UpdateRemainToRareOrder();
+        }
+
+        private void Start()
+        {
+            GenerateOrder(0);
         }
 
         private int GetBrilliantsReward(int starsReward)
@@ -100,19 +135,23 @@ namespace Gameplay.Orders
             }
         }
 
-        public void AddNewOrder()
-        {
-            if (_ordersCount >= _maxOrdersCount)
-            {
-                Debug.LogWarning($"Максимальное количество заказов: {_maxOrdersCount}. Больше никак не смогу добавить.");
-                return;
-            }
-            ++_ordersCount;
-            _orders[_ordersCount - 1].gameObject.SetActive(true);
-            GenerateOrder(_ordersCount - 1);
-        }
-
         private void UpdateRemainToRareOrder() => _remainsToRareOrder = Random.Range(_ordersCountBeforeRareOrder - _ordersCountBeforeRareOrderSpread,
                 _ordersCountBeforeRareOrder + _ordersCountBeforeRareOrderSpread);
+
+        private ItemStorage GetRandomExtraReward(int orderDifficulty)
+        {
+            var rewards = _extraRewards
+                .Where(reward => orderDifficulty >= reward.MinOrderDifficulty)
+                .OrderBy(reward => reward.MinOrderDifficulty)
+                .TakeLast(5)
+                .ToArray();
+
+            if (rewards == null)
+                return null;
+
+            var randomReward = rewards[Random.Range(0, rewards.Length)];
+            var item = GameStorage.Instanse.GetItem(randomReward.Type, randomReward.Level);
+            return item;
+        }
     }
 }

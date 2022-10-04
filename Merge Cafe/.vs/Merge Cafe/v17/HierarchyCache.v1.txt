@@ -27,13 +27,18 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge caf
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\item.cs
 ++ItemCurrency.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\itemcurrency.cs
-++ItemStats.cs
+++ItemStorage.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\itemstorage.cs
+++ItemTypeLevel.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\itemtypelevel.cs
 ++Present.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\present.cs
 ++Orders
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\orders\
 ++ItemGenerator.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\itemgenerator.cs
+++ItemQueue.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\itemqueue.cs
 ++Service
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\
 ++Destroyer.cs
@@ -44,6 +49,8 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge caf
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\gamestorage.cs
 ++MusicManager.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\musicmanager.cs
+++PresentsInfo.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\presentsinfo.cs
 ++QuickClickTracking.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\quickclicktracking.cs
 ++SoundManager.cs
@@ -330,6 +337,10 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
 ++Unity.2D.Tilemap.Extras.Editor
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.Android.Gradle
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
+++Unity.Android.Types
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
 ++Unity.Burst
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
 ++Unity.Burst.Cecil
@@ -564,6 +575,8 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge caf
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\sound.cs
 ++Tags.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\tags.cs
+++AddRewardToQueueHandler.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\addrewardtoqueuehandler.cs
 ++ChangeBrilliantsCountHandler.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\changebrilliantscounthandler.cs
 ++ChangeStarsCountHandler.cs
@@ -719,15 +732,3 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge caf
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\vertexzoom.cs
 ++WarpTextExample.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\warptextexample.cs
-++ItemStorage.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\itemstorage.cs
-++Assembly-CSharp (выгружено)
-++Решение "Merge Cafe" ‎(проекты: 0 из 1)
-++ItemTypeLevel.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\field\itemtypelevel.cs
-++ItemIconsSound.cs
-++ItemIcons.cs
-++ItemQueue.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\itemqueue.cs
-++AddRewardToQueueHandler.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\addrewardtoqueuehandler.cs
