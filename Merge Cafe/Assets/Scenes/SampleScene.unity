@@ -2669,6 +2669,9 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 1002c44d0ac72fb44a0ccd3fcd6a6853, type: 3}
     - {fileID: 8300000, guid: ab02c249c6743e5498e57e28428fdef2, type: 3}
     - {fileID: 8300000, guid: b7527fc665cb4d241a187c0d91e123fb, type: 3}
+  - Type: 3
+    Clips:
+    - {fileID: 8300000, guid: d76fd224792eef84b98739e3c671f448, type: 3}
 --- !u!82 &585101883
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4084,20 +4087,20 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 8ce00ca72210d9d45b385df5431a7f9d, type: 3}
     - {fileID: 21300000, guid: f826e0df1bae962419c77b379142ec72, type: 3}
     - {fileID: 21300000, guid: fd9e9cb722def3d4c9baadc3702410d6, type: 3}
-    - {fileID: 21300000, guid: d34e8b8887e03b242b213ac7286cadd6, type: 3}
+    - {fileID: 21300000, guid: e2bcae98872917d45ac6ea635176bd45, type: 3}
   - Type: 9
     Throwable: 1
     Movable: 1
     Icons:
-    - {fileID: 21300000, guid: 2c07ed97c19db8e4b900ea3f3c918db4, type: 3}
     - {fileID: 21300000, guid: 95bb253fa35778e489d7efd935f6f27e, type: 3}
-    - {fileID: 21300000, guid: 8fe57dc410c985e46b8868444696cb51, type: 3}
-    - {fileID: 21300000, guid: 3b1f5a9a29e0f7b47b9e1f57ac80a321, type: 3}
-    - {fileID: 21300000, guid: 91e679ac6616ab8419c9be379e16807f, type: 3}
+    - {fileID: 21300000, guid: d5f6a73c83d6c9d45be11661fcdee515, type: 3}
+    - {fileID: 21300000, guid: 74c6d453a844956498f2a829765746ea, type: 3}
+    - {fileID: 21300000, guid: 005618c881bd80e4e97761026f56dd6e, type: 3}
+    - {fileID: 21300000, guid: a5f61d0fa4ed64b40aaa73123f22b238, type: 3}
   _combinations:
   - FirstType: 9
     SecondType: 8
-    CombinateSound: 0
+    CombinateSound: 3
   _questionMark: {fileID: 21300000, guid: abb3b55f573e57349b00631515a50614, type: 3}
   _itemPrefab: {fileID: 5818615698071924154, guid: 09bff0b57a355a443b533ea962f15876, type: 3}
   _starForAnimation: {fileID: 6292305270132265545, guid: a10a6f79787d7b4438baac93bdf8bb80, type: 3}

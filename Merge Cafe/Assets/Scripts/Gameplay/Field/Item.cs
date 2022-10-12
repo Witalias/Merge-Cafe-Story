@@ -34,7 +34,8 @@ namespace Gameplay.Field
         private bool _isReturning = false;
 
         public static event Action MergingItemsOfMaxLevelTried;
-        public static event Action<ItemType> CursorHoveredItem;
+        public static event Action<ItemType> CursorHoveredMovableItem;
+        public static event Action<ItemType> CursorHoveredNotMovableItem;
         public static event Action CannotBeThrownAway;
         public static event Action WrongLevelForCombinating;
 
@@ -103,7 +104,11 @@ namespace Gameplay.Field
         {
             if (Stats.Movable)
                 _animator.SetBool(_zoomAnimatorBool, true);
-            CursorHoveredItem?.Invoke(Stats.Type);
+
+            if (Stats.Movable)
+                CursorHoveredMovableItem?.Invoke(Stats.Type);
+            else
+                CursorHoveredNotMovableItem?.Invoke(Stats.Type);
         }
 
         private void OnMouseExit()
@@ -283,6 +288,7 @@ namespace Gameplay.Field
             _isReturning = false;
             StartCoroutine(Disappear());
             StartCoroutine(withCell.Item.Disappear());
+            SoundManager.Instanse.Play(_storage.GetCombinateSound(Stats.Type, withCell.Item.Stats.Type), null);
         }
     }
 }

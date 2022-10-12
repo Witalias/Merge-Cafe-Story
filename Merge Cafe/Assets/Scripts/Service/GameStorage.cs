@@ -144,6 +144,18 @@ namespace Service
             return Sound.None;
         }
 
+        public ItemType GetSecondItemTypeInCombination(ItemType type)
+        {
+            foreach (var combination in _combinations)
+            {
+                if (combination.FirstType == type)
+                    return combination.SecondType;
+                else if (combination.SecondType == type)
+                    return combination.FirstType;
+            }
+            throw new System.ArgumentException("Нет пары для типа " + type.ToString());
+        }
+
         public bool FieldHasItem(ItemStorage item, bool highlight = true)
         {
             var result = false;

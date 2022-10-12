@@ -13,12 +13,12 @@ namespace UI
         private const string _attentionAnimatorTrigger = "Attention";
 
         [SerializeField] private Image _reward;
+        [SerializeField] private GameObject _cross;
 
         private Animator _animator;
         private Image _image;
         private GameStorage _storage;
 
-        //private (ItemType Type, int Level) _presentStats;
         private ItemStorage _rewardStorage;
 
         public bool ContainsPresent { get; private set; } = false;
@@ -33,13 +33,13 @@ namespace UI
             _storage = GameStorage.Instanse;
             ContainsPresent = true;
             _rewardStorage = _storage.GetRewardForNewItemByLevel(itemLevel);
-            //_presentStats = (ItemType.Present, presentLevel);
             _reward.gameObject.SetActive(true);
-            //_present.sprite = _storage.GetItemSprite(_presentStats.Type, _presentStats.Level);
             _reward.sprite = _rewardStorage.Icon;
         }
 
         public void SetSprite(Sprite value) => _image.sprite = value;
+
+        public void SetCrossActive(bool value) => _cross.SetActive(value);
 
         private void Awake()
         {

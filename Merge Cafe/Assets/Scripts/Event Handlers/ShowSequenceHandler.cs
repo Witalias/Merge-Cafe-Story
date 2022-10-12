@@ -3,6 +3,7 @@ using UI;
 using Gameplay.Field;
 using Gameplay.Orders;
 using Enums;
+using Service;
 
 namespace EventHandlers
 {
@@ -18,13 +19,15 @@ namespace EventHandlers
 
         private void OnEnable()
         {
-            Item.CursorHoveredItem += Show;
+            Item.CursorHoveredMovableItem += Show;
+            Item.CursorHoveredNotMovableItem += ShowCombination;
             OrderPoint.CursorHoveredItemInOrder += Show;
         }
 
         private void OnDisable()
         {
-            Item.CursorHoveredItem -= Show;
+            Item.CursorHoveredMovableItem -= Show;
+            Item.CursorHoveredNotMovableItem -= ShowCombination;
             OrderPoint.CursorHoveredItemInOrder -= Show;
         }
 
@@ -32,6 +35,12 @@ namespace EventHandlers
         {
             _sequencePanel.Hide();
             _sequencePanel.Show(type);
+        }
+
+        private void ShowCombination(ItemType type)
+        {
+            _sequencePanel.Hide();
+            _sequencePanel.ShowCombination(GameStorage.Instanse.GetSecondItemTypeInCombination(type), type);
         }
     }
 }

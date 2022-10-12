@@ -5,5 +5,6 @@ namespace Enums
         None,
         Merge,
         Glass,
+        UnlockCell
     }
 }
