@@ -7,7 +7,7 @@ using Enums;
 using Gameplay.Field;
 using Gameplay;
 
-namespace Gameplay
+namespace Gameplay.ItemGenerators
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(Upgradable))]

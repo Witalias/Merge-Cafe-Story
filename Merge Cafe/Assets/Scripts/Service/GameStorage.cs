@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Enums;
 using Gameplay.Field;
+using Gameplay.ItemGenerators;
 using System.Linq;
 
 namespace Service
@@ -20,8 +21,9 @@ namespace Service
         [SerializeField] private int[] _brilliantsRewardForLevels;
         [SerializeField] private ItemTypeLevel[] _rewardsForNewItems;
 
-        [Header("items")]
+        [Header("Items")]
         [SerializeField] private TypedItem[] _typedItems;
+        [SerializeField] private ItemCombinations[] _combinations;
 
         [Header("Sprites")]
         [SerializeField] private Sprite _questionMark;
@@ -30,6 +32,8 @@ namespace Service
         [SerializeField] private GameObject _itemPrefab;
         [SerializeField] private GameObject _starForAnimation;
         [SerializeField] private GameObject _brilliantForAnimation;
+
+        private ItemGeneratorStorage _generatorStorage;
 
         private Cell[] cells;
         private Dictionary<ItemType, ItemStorage[]> _items = new Dictionary<ItemType, ItemStorage[]>();
@@ -70,7 +74,10 @@ namespace Service
         }
 
         public bool IsItemMaxLevel(ItemStorage item)
-        { 
+        {
+            if (_generatorStorage.IsGenerator(item.Type))
+                return _generatorStorage.IsMaxLevel(item);
+
             if (_items.ContainsKey(item.Type))
                 return _items[item.Type].Length == item.Level;
             return true;
@@ -127,6 +134,16 @@ namespace Service
             return emptyCells[Random.Range(0, emptyCells.Count)];
         }
 
+        public Sound GetCombinateSound(ItemType current, ItemType with)
+        {
+            foreach (var combination in _combinations)
+            {
+                if (ExistsCombination(combination, current, with))
+                    return combination.CombinateSound;
+            }
+            return Sound.None;
+        }
+
         public bool FieldHasItem(ItemStorage item, bool highlight = true)
         {
             var result = false;
@@ -145,6 +162,16 @@ namespace Service
         }
 
         public bool HasEmptyCells(bool showMessageIfNoEmpty = false) => GetFirstEmptyCell(showMessageIfNoEmpty) != null;
+
+        public bool IsCombinatingWith(ItemType current, ItemType with)
+        {
+            foreach (var combination in _combinations)
+            {
+                if (ExistsCombination(combination, current, with))
+                    return true;
+            }
+            return false;
+        }
 
         public void IncrementGameStage() => ++_gameStage;
 
@@ -170,9 +197,16 @@ namespace Service
 
             ItemsParent = GetObjectByTag(Tags.ItemsParent).transform;
             cells = GetObjectByTag(Tags.CellsParent).GetComponentsInChildren<Cell>();
+            _generatorStorage = GetObjectByTag(Tags.ItemGeneratorStorage).GetComponent<ItemGeneratorStorage>();
 
             CreateItemsDictionary();
             CreateItemSpritesDictionary();
+        }
+
+        private bool ExistsCombination(ItemCombinations combination, ItemType first, ItemType second)
+        {
+            return (first == combination.FirstType && second == combination.SecondType) ||
+                (first == combination.SecondType && second == combination.FirstType);
         }
 
         private GameObject GetObjectByTag(Tags tag) => GameObject.FindGameObjectWithTag(tag.ToString());
@@ -203,7 +237,7 @@ namespace Service
         {
             var itemStats = new ItemStorage[item.Icons.Length];
             for (var i = 0; i < itemStats.Length; ++i)
-                itemStats[i] = new ItemStorage(i + 1, item.Icons[i], item.Type, item.Throwable);
+                itemStats[i] = new ItemStorage(i + 1, item.Icons[i], item.Type, item.Throwable, item.Movable);
             return itemStats;
         }
     }
@@ -212,7 +246,8 @@ namespace Service
     public class TypedItem
     {
         public ItemType Type;
-        public bool Throwable;
+        public bool Throwable = true;
+        public bool Movable = true;
         public Sprite[] Icons;
     }
 }

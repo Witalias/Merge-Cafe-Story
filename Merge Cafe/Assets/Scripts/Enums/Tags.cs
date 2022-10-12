@@ -6,6 +6,7 @@ namespace Enums
         CellsParent,
         StarIcon,
         MainCanvas,
-        BrilliantIcon
+        BrilliantIcon,
+        ItemGeneratorStorage
     }
 }

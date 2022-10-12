@@ -1,7 +1,7 @@
 using UnityEngine;
 using UI;
 using Gameplay.Field;
-using Gameplay;
+using Gameplay.ItemGenerators;
 using Service;
 
 namespace EventHandlers
@@ -14,6 +14,7 @@ namespace EventHandlers
         private const string _cannotBeThrownAwayText = "Этот предмет нельзя выбросить";
         private const string _dragItemToTrashCanText = "Перетащите ненужный предмет";
         private const string _upgradedText = "УЛУЧШЕНО";
+        private const string _wrongLevelForCombinating = "Неподходящий уровень предмета";
 
         private Message _message;
 
@@ -26,6 +27,7 @@ namespace EventHandlers
         {
             Item.MergingItemsOfMaxLevelTried += ShowMaxLevel;
             Item.CannotBeThrownAway += ShowCannotBeThrownAway;
+            Item.WrongLevelForCombinating += ShowWrongLevelForCombination;
             GameStorage.NoEmptyCells += ShowNoEmptyCells;
             TrashCan.TrashCanClicked += ShowDragItemToTrashCan;
             Upgradable.Upgraded += ShowUpgraded;
@@ -35,6 +37,7 @@ namespace EventHandlers
         {
             Item.MergingItemsOfMaxLevelTried -= ShowMaxLevel;
             Item.CannotBeThrownAway -= ShowCannotBeThrownAway;
+            Item.WrongLevelForCombinating -= ShowWrongLevelForCombination;
             GameStorage.NoEmptyCells -= ShowNoEmptyCells;
             TrashCan.TrashCanClicked -= ShowDragItemToTrashCan;
             Upgradable.Upgraded -= ShowUpgraded;
@@ -63,6 +66,11 @@ namespace EventHandlers
         private void ShowUpgraded()
         {
             _message.Show(_upgradedText);
+        }
+
+        private void ShowWrongLevelForCombination()
+        {
+            _message.Show(_wrongLevelForCombinating);
         }
     }
 }

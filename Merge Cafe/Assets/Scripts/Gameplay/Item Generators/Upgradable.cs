@@ -6,7 +6,7 @@ using Enums;
 using System.Collections;
 using System;
 
-namespace Gameplay
+namespace Gameplay.ItemGenerators
 {
     [RequireComponent(typeof(Animator))]
     public class Upgradable : MonoBehaviour
@@ -21,6 +21,8 @@ namespace Gameplay
         private Animator _animator;
 
         public int Level { get => _level; }
+
+        public ItemType Type { get => _type; }
 
         public static event Action Upgraded;
 

@@ -9,6 +9,8 @@ namespace Enums
         Brilliant,
         Star,
         TrashCan,
-        Teapot
+        Teapot,
+        Lock,
+        Key
     }
 }

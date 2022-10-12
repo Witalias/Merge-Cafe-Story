@@ -6,7 +6,7 @@ using Service;
 using Enums;
 using System;
 
-namespace Gameplay
+namespace Gameplay.ItemGenerators
 {
     [RequireComponent(typeof(Upgradable))]
     public class TrashCan : MonoBehaviour

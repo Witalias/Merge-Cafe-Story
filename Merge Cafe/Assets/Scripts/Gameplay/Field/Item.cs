@@ -8,6 +8,7 @@ using Service;
 using System;
 using Enums;
 using Gameplay.Orders;
+using Gameplay.ItemGenerators;
 
 namespace Gameplay.Field
 {
@@ -35,6 +36,7 @@ namespace Gameplay.Field
         public static event Action MergingItemsOfMaxLevelTried;
         public static event Action<ItemType> CursorHoveredItem;
         public static event Action CannotBeThrownAway;
+        public static event Action WrongLevelForCombinating;
 
         public ItemStorage Stats { get; private set; }
 
@@ -99,18 +101,22 @@ namespace Gameplay.Field
 
         private void OnMouseEnter()
         {
-            _animator.SetBool(_zoomAnimatorBool, true);
+            if (Stats.Movable)
+                _animator.SetBool(_zoomAnimatorBool, true);
             CursorHoveredItem?.Invoke(Stats.Type);
         }
 
         private void OnMouseExit()
         {
+            if (!Stats.Movable)
+                return;
+
             _animator.SetBool(_zoomAnimatorBool, false);
         }
 
         private void OnMouseDrag()
         {
-            if (_quickClickTracking.IsChecking)
+            if (_quickClickTracking.IsChecking || !Stats.Movable)
                 return;
 
             var mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -126,6 +132,9 @@ namespace Gameplay.Field
 
         private void OnMouseUp()
         {
+            if (!Stats.Movable)
+                return;
+
             ReturnToCell();
             CheckCursorOver();
         }
@@ -226,7 +235,14 @@ namespace Gameplay.Field
                 else
                     Join(cell);
             }
-            else
+            else if (_storage.IsCombinatingWith(Stats.Type, cell.Item.Stats.Type))
+            {
+                if (Stats.Level == cell.Item.Stats.Level)
+                    Combinate(cell);
+                else
+                    WrongLevelForCombinating?.Invoke();
+            }
+            else if (Stats.Movable && cell.Item.Stats.Movable)
                 Swap(cell);
         }
 
@@ -260,6 +276,13 @@ namespace Gameplay.Field
                 var randomCell = _storage.GetRandomEmptyCell();
                 randomCell.CreateItem(_storage.GetItem(ItemType.Star, 1), transform.position);
             }
+        }
+
+        private void Combinate(Cell withCell)
+        {
+            _isReturning = false;
+            StartCoroutine(Disappear());
+            StartCoroutine(withCell.Item.Disappear());
         }
     }
 }
