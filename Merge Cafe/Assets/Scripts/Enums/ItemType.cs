@@ -8,6 +8,7 @@ namespace Enums
         OpenPresent,
         Brilliant,
         Star,
-        TrashCan
+        TrashCan,
+        Teapot
     }
 }

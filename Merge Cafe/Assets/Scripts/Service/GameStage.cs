@@ -13,16 +13,20 @@ namespace Service
                 new Settings(new[]
                 {
                     (ItemType.Tea, 1, 3, 1),
-                    (ItemType.Coffee, 1, 3, 1),
+                    //(ItemType.Coffee, 1, 3, 1),
                 }, new[]
                 {
                     (ItemType.Tea, 4),
+                    (ItemType.Coffee, 4),
                 }, new[]
                 {
-                    (ItemType.Present, 1, 2),
-                    (ItemType.Present, 2, 4),
-                    (ItemType.Present, 3, 6),
-                    (ItemType.Brilliant, 2, 4),
+                    (ItemType.Teapot, 1, 3),
+                    (ItemType.Teapot, 1, 4),
+                    (ItemType.Teapot, 1, 5),
+                    (ItemType.Brilliant, 1, 2),
+                    (ItemType.Present, 1, 4),
+                    (ItemType.TrashCan, 1, 4),
+                    (ItemType.TrashCan, 1, 5),
                 }, 1)
             };
         }

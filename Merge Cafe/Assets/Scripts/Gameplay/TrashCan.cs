@@ -8,13 +8,13 @@ using System;
 
 namespace Gameplay
 {
+    [RequireComponent(typeof(Upgradable))]
     public class TrashCan : MonoBehaviour
     {
         [SerializeField] private float[] _brilliantsMultiplierForLevels;
-        [SerializeField] private int _level = 2;
 
         private CurrencyAdder _currencyAdder;
-        private Image _image;
+        private Upgradable _upgradable;
 
         private int _initialLevel;
 
@@ -22,34 +22,21 @@ namespace Gameplay
 
         public void Throw(int itemLevel)
         {
-            if (_level <= _initialLevel)
+            if (_upgradable.Level <= _initialLevel)
             {
                 
             }
             else
             {
-                var brilliantsCount = (int)(itemLevel * _brilliantsMultiplierForLevels[_level - 3]);
+                var brilliantsCount = (int)(itemLevel * _brilliantsMultiplierForLevels[_upgradable.Level - _initialLevel - 1]);
                 _currencyAdder.Add(CurrencyType.Brilliant, brilliantsCount, transform.position);
             }
         }
 
-        public bool CheckOnUpgrading(ItemStorage item)
-        {
-            if (_level == GameStorage.Instanse.GetItemMaxLevel(item.Type))
-                return false;
-
-            if (item.Type == ItemType.TrashCan && item.Level == _level)
-            {
-                Upgrade(item.Icon);
-                return true;
-            }
-            return false;
-        }
-
         private void Awake()
         {
-            _image = GetComponent<Image>();
-            _initialLevel = _level;
+            _upgradable = GetComponent<Upgradable>();
+            _initialLevel = _upgradable.Level;
         }
 
         private void Start()
@@ -60,12 +47,6 @@ namespace Gameplay
         private void OnMouseDown()
         {
             TrashCanClicked?.Invoke();
-        }
-
-        private void Upgrade(Sprite icon)
-        {
-            ++_level;
-            _image.sprite = icon;
         }
     }
 }

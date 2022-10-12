@@ -13,6 +13,7 @@ namespace EventHandlers
         private const string _noEmptyCellsText = "Нет свободных ячеек";
         private const string _cannotBeThrownAwayText = "Этот предмет нельзя выбросить";
         private const string _dragItemToTrashCanText = "Перетащите ненужный предмет";
+        private const string _upgradedText = "УЛУЧШЕНО";
 
         private Message _message;
 
@@ -27,6 +28,7 @@ namespace EventHandlers
             Item.CannotBeThrownAway += ShowCannotBeThrownAway;
             GameStorage.NoEmptyCells += ShowNoEmptyCells;
             TrashCan.TrashCanClicked += ShowDragItemToTrashCan;
+            Upgradable.Upgraded += ShowUpgraded;
         }
 
         private void OnDisable()
@@ -35,6 +37,7 @@ namespace EventHandlers
             Item.CannotBeThrownAway -= ShowCannotBeThrownAway;
             GameStorage.NoEmptyCells -= ShowNoEmptyCells;
             TrashCan.TrashCanClicked -= ShowDragItemToTrashCan;
+            Upgradable.Upgraded -= ShowUpgraded;
         }
 
         private void ShowMaxLevel()
@@ -55,6 +58,11 @@ namespace EventHandlers
         private void ShowDragItemToTrashCan()
         {
             _message.Show(_dragItemToTrashCanText);
+        }
+
+        private void ShowUpgraded()
+        {
+            _message.Show(_upgradedText);
         }
     }
 }

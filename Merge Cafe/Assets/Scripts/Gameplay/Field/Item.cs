@@ -22,6 +22,7 @@ namespace Gameplay.Field
         [SerializeField] private float _returningSpeed;
         [SerializeField] private float _followSpeed;
         [SerializeField] private Image _image;
+        [SerializeField] private GameObject _particles;
 
         private Animator _animator;
         private Cell _currentCell;
@@ -75,12 +76,15 @@ namespace Gameplay.Field
             Destroy(gameObject);
         }
 
+        public void SetActiveParticles(bool value) => _particles.SetActive(value);
+
         private void Awake()
         {
             _animator = GetComponent<Animator>();
             _quickClickTracking = GetComponent<QuickClickTracking>();
             _mainCamera = Camera.main;
             _storage = GameStorage.Instanse;
+            SetActiveParticles(false);
         }
 
         private void Update()
@@ -149,13 +153,32 @@ namespace Gameplay.Field
                         InteractWithOrder(order);
                     else
                     {
-                        var trashCan = obj.GetComponent<TrashCan>();
-                        if (trashCan != null)
-                            InteractWithTrashCan(trashCan);
+                        var upgraded = false;
+                        var upgradable = obj.GetComponent<Upgradable>();
+                        if (upgradable != null)
+                            InteractWithUpgradableObject(upgradable, out upgraded);
+
+                        if (!upgraded)
+                        {
+                            var trashCan = obj.GetComponent<TrashCan>();
+                            if (trashCan != null)
+                                InteractWithTrashCan(trashCan);
+                        }
                     }
                 }
 
             }
+        }
+
+        private void InteractWithUpgradableObject(Upgradable obj, out bool upgraded)
+        {
+            if (obj.CheckOnUpgrading(Stats))
+            {
+                upgraded = true;
+                Remove();
+            }
+            else
+                upgraded = false;
         }
 
         private void InteractWithTrashCan(TrashCan trashCan)
@@ -163,7 +186,7 @@ namespace Gameplay.Field
             if (trashCan == null)
                 return;
 
-            if (Stats.Type == ItemType.TrashCan && trashCan.CheckOnUpgrading(Stats))
+            if (trashCan.GetComponent<Upgradable>().CheckOnUpgrading(Stats))
                 return;
 
             if (Stats.Throwable)

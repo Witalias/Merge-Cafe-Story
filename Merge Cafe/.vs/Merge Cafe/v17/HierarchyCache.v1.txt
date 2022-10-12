@@ -13,6 +13,16 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge caf
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\animation\
 ++Enums
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\
+++CurrencyType.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\currencytype.cs
+++ItemType.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\itemtype.cs
+++Music.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\music.cs
+++Sound.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\sound.cs
+++Tags.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\tags.cs
 ++Event Handlers
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\
 ++Gameplay
@@ -39,22 +49,12 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge caf
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\itemgenerator.cs
 ++ItemQueue.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\itemqueue.cs
+++TrashCan.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\trashcan.cs
+++Upgradable.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\upgradable.cs
 ++Service
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\
-++Destroyer.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\destroyer.cs
-++GameStage.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\gamestage.cs
-++GameStorage.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\gamestorage.cs
-++MusicManager.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\musicmanager.cs
-++PresentsInfo.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\presentsinfo.cs
-++QuickClickTracking.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\quickclicktracking.cs
-++SoundManager.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\soundmanager.cs
 ++UI
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\ui\
 ++TextMesh Pro
@@ -565,16 +565,8 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
 ++CurrencyAnimation.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\animation\currencyanimation.cs
-++CurrencyType.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\currencytype.cs
-++ItemType.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\itemtype.cs
-++Music.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\music.cs
-++Sound.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\sound.cs
-++Tags.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\enums\tags.cs
+++CursorHoveredAnimation.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\animation\cursorhoveredanimation.cs
 ++AddRewardToQueueHandler.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\event handlers\addrewardtoqueuehandler.cs
 ++ChangeBrilliantsCountHandler.cs
@@ -597,6 +589,20 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge caf
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\orders\ordermanager.cs
 ++OrderPoint.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\orders\orderpoint.cs
+++Destroyer.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\destroyer.cs
+++GameStage.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\gamestage.cs
+++GameStorage.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\gamestorage.cs
+++MusicManager.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\musicmanager.cs
+++PresentsInfo.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\presentsinfo.cs
+++QuickClickTracking.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\quickclicktracking.cs
+++SoundManager.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\soundmanager.cs
 ++ItemInSequence.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\ui\iteminsequence.cs
 ++Message.cs
@@ -732,3 +738,7 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge caf
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\vertexzoom.cs
 ++WarpTextExample.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\scripts\warptextexample.cs
+++Assembly-CSharp (выгружено)
+++Решение "Merge Cafe" ‎(проекты: 0 из 1)
+++RotateAndScale.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\animation\rotateandscale.cs

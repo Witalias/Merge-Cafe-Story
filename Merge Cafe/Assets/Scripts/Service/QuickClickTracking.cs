@@ -3,7 +3,7 @@ using System.Collections;
 
 public class QuickClickTracking : MonoBehaviour
 {
-    private const float _checkingTime = 0.1f;
+    private const float _checkingTime = 0.15f;
 
     private bool _quickClicked = false;
 

@@ -127,9 +127,37 @@ namespace Service
             return emptyCells[Random.Range(0, emptyCells.Count)];
         }
 
+        public bool FieldHasItem(ItemStorage item, bool highlight = true)
+        {
+            var result = false;
+            foreach (var cell in cells)
+            {
+                if (cell.Item == null)
+                    continue;
+
+                if (cell.Item.Stats.EqualTo(item))
+                {
+                    result = true;
+                    cell.Item.SetActiveParticles(highlight);
+                }
+            }
+            return result;
+        }
+
         public bool HasEmptyCells(bool showMessageIfNoEmpty = false) => GetFirstEmptyCell(showMessageIfNoEmpty) != null;
 
         public void IncrementGameStage() => ++_gameStage;
+
+        public void RemoveItemsHighlight()
+        {
+            foreach (var cell in cells)
+            {
+                if (cell.Item == null)
+                    continue;
+
+                cell.Item.SetActiveParticles(false);
+            }
+        }
 
         private void Awake()
         {
