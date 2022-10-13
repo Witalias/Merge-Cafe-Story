@@ -33,6 +33,7 @@ namespace Gameplay.Orders
         private int _id;
         private int _stars;
         private int _brilliants;
+        private bool _actived = false;
 
         public static event System.Action<int> OrderDone;
         public static event System.Action<ItemStorage> NoEmptyCellsAndRewardGetted;
@@ -41,6 +42,8 @@ namespace Gameplay.Orders
 
         public void Generate(ItemStorage[] items, int stars, int brilliants, ItemStorage extraReward)
         {
+            _actived = true;
+
             _stars = stars;
             _brilliants = brilliants;
             _extraReward = extraReward;
@@ -109,12 +112,19 @@ namespace Gameplay.Orders
             _currencyAdder = GameStorage.Instanse.GetComponent<CurrencyAdder>();
         }
 
+        private void OnEnable()
+        {
+            if (_actived)
+                Show();
+        }
+
         private void Show() => _animator.SetBool(_showAnimatorBool, true);
 
         private void Hide() => _animator.SetBool(_showAnimatorBool, false);
 
         private IEnumerator Finish()
         {
+            _actived = false;
             _currencyAdder.Add(CurrencyType.Star, _stars, _starsSpawnPoint.position);
             _currencyAdder.Add(CurrencyType.Brilliant, _brilliants, _brilliantsSpawnPoint.position);
             GetExtraReward();

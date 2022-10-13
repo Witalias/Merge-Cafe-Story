@@ -28,6 +28,16 @@ namespace Gameplay.ItemGenerators
         private List<ItemType> _currentGeneratedItems = new List<ItemType>();
         private float _currentGenerationTime = 0f;
         private bool stopped = false;
+        private bool forcedStopped = false;
+
+        public void SetActiveTimer(bool value)
+        {
+            forcedStopped = !value;
+            if (value == true)
+                _addBarValueCoroutine = StartCoroutine(AddBarValue());
+            else
+                StopCoroutine(_addBarValueCoroutine);
+        }
 
         public void UpdateProducedItems()
         {
@@ -53,9 +63,15 @@ namespace Gameplay.ItemGenerators
             _addBarValueCoroutine = StartCoroutine(AddBarValue());
         }
 
+        private void OnEnable()
+        {
+            if (!stopped)
+                _addBarValueCoroutine = StartCoroutine(AddBarValue());
+        }
+
         private void Update()
         {
-            if (stopped && _storage.GetFirstEmptyCell() != null)
+            if (stopped && !forcedStopped && _storage.GetFirstEmptyCell() != null)
             {
                 stopped = false;
                 _addBarValueCoroutine = StartCoroutine(AddBarValue());
@@ -64,7 +80,7 @@ namespace Gameplay.ItemGenerators
 
         private void OnMouseDown()
         {
-            if (stopped)
+            if (stopped || forcedStopped)
                 return;
 
             _animator.SetTrigger(_clickAnimatorBool);

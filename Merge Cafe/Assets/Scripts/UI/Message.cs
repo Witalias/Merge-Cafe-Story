@@ -26,5 +26,10 @@ namespace UI
             _animator = GetComponent<Animator>();
             _mainCamera = Camera.main;
         }
+
+        private void OnEnable()
+        {
+            transform.position = new Vector2(-5000, 0);
+        }
     }
 }

@@ -9,6 +9,14 @@ namespace Gameplay.ItemGenerators
     {
         [SerializeField] private Upgradable[] _upgradables;
 
+        private ItemGenerator[] _generators;
+
+        public void SetActiveTimers(bool value)
+        {
+            foreach (var generator in _generators)
+                generator.SetActiveTimer(value);
+        }
+
         public bool IsGenerator(ItemType type)
         {
             return GetGenerators(type).Length != 0;
@@ -22,6 +30,14 @@ namespace Gameplay.ItemGenerators
                 return true;
 
             return item.Level == generators[0].Level;
+        }
+
+        private void Awake()
+        {
+            _generators = _upgradables
+                .Where(upgradable => upgradable.GetComponent<ItemGenerator>() != null)
+                .Select(upgradable => upgradable.GetComponent<ItemGenerator>())
+                .ToArray();
         }
 
         private Upgradable[] GetGenerators(ItemType type)

@@ -20,6 +20,7 @@ namespace EventHandlers
         private void OnEnable()
         {
             CurrencyAdder.BrilliantsChanged += Add;
+            UpdateText();
         }
 
         private void OnDisable()
@@ -30,7 +31,13 @@ namespace EventHandlers
         private void Add(int brilliants)
         {
             _storage.BrilliantsCount += brilliants;
-            _value.text = _storage.BrilliantsCount.ToString();
+            UpdateText();
+        }
+
+        private void UpdateText()
+        {
+            if (_value != null && _storage != null)
+                _value.text = _storage.BrilliantsCount.ToString();
         }
     }
 }
