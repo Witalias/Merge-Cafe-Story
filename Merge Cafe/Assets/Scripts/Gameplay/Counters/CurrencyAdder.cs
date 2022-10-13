@@ -33,8 +33,10 @@ namespace Gameplay.Counters
                         break;
                 }
             }
-            StartCoroutine(ChangeCounter(type, count));
+            Add(type, count);
         }
+
+        public void Add(CurrencyType type, int count) => StartCoroutine(ChangeCounter(type, count));
 
         private void Spawn(GameObject obj, int count, Vector2 position)
         {

@@ -5,6 +5,8 @@ namespace Enums
         None,
         Merge,
         Glass,
-        UnlockCell
+        UnlockCell,
+        Buy,
+        Magic
     }
 }

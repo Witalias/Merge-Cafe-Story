@@ -3,6 +3,7 @@ using UI;
 using Gameplay.Field;
 using Gameplay.ItemGenerators;
 using Service;
+using Gameplay.DecorationMode;
 
 namespace EventHandlers
 {
@@ -14,7 +15,8 @@ namespace EventHandlers
         private const string _cannotBeThrownAwayText = "Этот предмет нельзя выбросить";
         private const string _dragItemToTrashCanText = "Перетащите ненужный предмет";
         private const string _upgradedText = "УЛУЧШЕНО";
-        private const string _wrongLevelForCombinating = "Неподходящий уровень предмета";
+        private const string _wrongLevelForCombinatingText = "Неподходящий уровень предмета";
+        private const string _notEnougthBrilliantsText = "Не хватает бриллиантов";
 
         private Message _message;
 
@@ -31,6 +33,7 @@ namespace EventHandlers
             GameStorage.NoEmptyCells += ShowNoEmptyCells;
             TrashCan.TrashCanClicked += ShowDragItemToTrashCan;
             Upgradable.Upgraded += ShowUpgraded;
+            PurchaseButton.NotEnougthBrilliants += ShowNotEnougthBrilliants;
         }
 
         private void OnDisable()
@@ -41,6 +44,7 @@ namespace EventHandlers
             GameStorage.NoEmptyCells -= ShowNoEmptyCells;
             TrashCan.TrashCanClicked -= ShowDragItemToTrashCan;
             Upgradable.Upgraded -= ShowUpgraded;
+            PurchaseButton.NotEnougthBrilliants -= ShowNotEnougthBrilliants;
         }
 
         private void ShowMaxLevel()
@@ -70,7 +74,12 @@ namespace EventHandlers
 
         private void ShowWrongLevelForCombination()
         {
-            _message.Show(_wrongLevelForCombinating);
+            _message.Show(_wrongLevelForCombinatingText);
+        }
+
+        private void ShowNotEnougthBrilliants()
+        {
+            _message.Show(_notEnougthBrilliantsText);
         }
     }
 }

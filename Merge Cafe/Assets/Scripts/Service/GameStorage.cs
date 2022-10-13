@@ -32,6 +32,8 @@ namespace Service
         [SerializeField] private GameObject _itemPrefab;
         [SerializeField] private GameObject _starForAnimation;
         [SerializeField] private GameObject _brilliantForAnimation;
+        [SerializeField] private GameObject _purchaseButton;
+        [SerializeField] private GameObject _sequins;
 
         private ItemGeneratorStorage _generatorStorage;
 
@@ -54,6 +56,10 @@ namespace Service
         public GameObject StarForAnimation { get => _starForAnimation; }
 
         public GameObject BrilliantForAnimation { get => _brilliantForAnimation; }
+
+        public GameObject PurchaseButton { get => _purchaseButton; }
+
+        public GameObject Sequins { get => _sequins; }
 
         public Transform ItemsParent { get; private set; }
 

@@ -9,6 +9,8 @@ TagManager:
   - StarIcon
   - MainCanvas
   - BrilliantIcon
+  - ItemGeneratorStorage
+  - BuildingCanvas
   layers:
   - Default
   - TransparentFX

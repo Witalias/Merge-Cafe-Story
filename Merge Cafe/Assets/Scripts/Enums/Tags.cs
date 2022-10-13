@@ -7,6 +7,7 @@ namespace Enums
         StarIcon,
         MainCanvas,
         BrilliantIcon,
-        ItemGeneratorStorage
+        ItemGeneratorStorage,
+        BuildingCanvas
     }
 }
