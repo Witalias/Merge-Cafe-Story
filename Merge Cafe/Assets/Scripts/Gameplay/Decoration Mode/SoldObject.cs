@@ -9,7 +9,8 @@ namespace Gameplay.DecorationMode
         [SerializeField] private bool _startActive = false;
         [SerializeField] private Sprite _icon;
         [SerializeField] private int _cost;
-        [SerializeField] private SoldObject[] _nextObjectForSell;
+        [SerializeField] private DialogActivationPoint _dialogActivationPoint;
+        [SerializeField] private SoldObject[] _nextObjectsForSell;
 
         public void Activate()
         {
@@ -22,8 +23,10 @@ namespace Gameplay.DecorationMode
             {
                 gameObject.SetActive(true);
                 Instantiate(GameStorage.Instanse.Sequins, transform.position, Quaternion.identity, transform.parent);
-                foreach (var nextSellObject in _nextObjectForSell)
+                foreach (var nextSellObject in _nextObjectsForSell)
                     nextSellObject.Activate();
+                if (_dialogActivationPoint != null)
+                    _dialogActivationPoint.Activate();
             }
 
             purchaseButton.SetPurchaseAction(SetObjectActive);

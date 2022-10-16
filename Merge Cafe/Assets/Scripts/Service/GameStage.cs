@@ -13,7 +13,7 @@ namespace Service
                 new Settings(new[]
                 {
                     (ItemType.Tea, 1, 3, 1),
-                    //(ItemType.Coffee, 1, 3, 1),
+                    (ItemType.Coffee, 1, 3, 1),
                 }, new[]
                 {
                     (ItemType.Tea, 4),
@@ -27,7 +27,7 @@ namespace Service
                     (ItemType.Present, 1, 4),
                     (ItemType.TrashCan, 1, 4),
                     (ItemType.TrashCan, 1, 5),
-                }, 1)
+                }, 2)
             };
         }
 

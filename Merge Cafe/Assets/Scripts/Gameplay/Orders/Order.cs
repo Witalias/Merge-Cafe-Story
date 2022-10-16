@@ -99,7 +99,14 @@ namespace Gameplay.Orders
                 }
             }
             if (IsEmpty())
+            {
+                _actived = false;
+                _currencyAdder.Add(CurrencyType.Star, _stars, _starsSpawnPoint.position);
+                _currencyAdder.Add(CurrencyType.Brilliant, _brilliants, _brilliantsSpawnPoint.position);
+                GetExtraReward();
+                _rewards.SetActive(false);
                 StartCoroutine(Finish());
+            }
         }
 
         private void Awake()
@@ -116,6 +123,7 @@ namespace Gameplay.Orders
         {
             if (_actived)
                 Show();
+            CheckOnEmpty();
         }
 
         private void Show() => _animator.SetBool(_showAnimatorBool, true);
@@ -124,11 +132,6 @@ namespace Gameplay.Orders
 
         private IEnumerator Finish()
         {
-            _actived = false;
-            _currencyAdder.Add(CurrencyType.Star, _stars, _starsSpawnPoint.position);
-            _currencyAdder.Add(CurrencyType.Brilliant, _brilliants, _brilliantsSpawnPoint.position);
-            GetExtraReward();
-            _rewards.SetActive(false);
             yield return new WaitForSeconds(_delayBeforeFinished);
             Hide();
             yield return new WaitForSeconds(0.5f);
@@ -151,6 +154,12 @@ namespace Gameplay.Orders
                 NoEmptyCellsAndRewardGetted?.Invoke(_extraReward);
             else
                 randomCell.CreateItem(_extraReward, transform.position);
+        }
+
+        private void CheckOnEmpty()
+        {
+            if (IsEmpty())
+                StartCoroutine(Finish());
         }
 
         private bool IsEmpty()

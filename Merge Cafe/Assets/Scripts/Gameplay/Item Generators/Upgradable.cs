@@ -48,6 +48,10 @@ namespace Gameplay.ItemGenerators
         private void Start()
         {
             SetIcon();
+        }
+
+        private void OnEnable()
+        {
             StartCoroutine(CheckMergingItemOnField());
         }
 
@@ -65,8 +69,8 @@ namespace Gameplay.ItemGenerators
 
         private IEnumerator CheckMergingItemOnField()
         {
-            _particles.SetActive(GameStorage.Instanse.FieldHasItem(GameStorage.Instanse.GetItem(_type, _level)));
             yield return new WaitForSeconds(2f);
+            _particles.SetActive(GameStorage.Instanse.FieldHasItem(GameStorage.Instanse.GetItem(_type, _level)));
             StartCoroutine(CheckMergingItemOnField());
         }
     }

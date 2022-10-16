@@ -27,6 +27,7 @@ namespace Service
 
         [Header("Sprites")]
         [SerializeField] private Sprite _questionMark;
+        [SerializeField] private Sprite _dialogWindow;
 
         [Header("Prefabs")]
         [SerializeField] private GameObject _itemPrefab;
@@ -64,6 +65,8 @@ namespace Service
         public Transform ItemsParent { get; private set; }
 
         public Sprite QuestionMark { get => _questionMark; }
+
+        public Sprite DialogWindow { get => _dialogWindow; }
 
         public ItemStorage GetNextItemByAnotherItem(ItemStorage item)
         {

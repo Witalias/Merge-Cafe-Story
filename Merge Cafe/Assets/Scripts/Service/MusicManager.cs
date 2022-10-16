@@ -25,7 +25,7 @@ namespace Service
             Stop();
             //_currentIndex = Random.Range(0, _musics[music].Length);
             _currentIndex = 0;
-            _playMusicCoroutine = StartCoroutine(PlayMusic(_currentIndex));
+            PlayMusic(_currentIndex);
         }
 
         public void Stop()
@@ -52,19 +52,32 @@ namespace Service
             Play(Music.Game);
         }
 
-        private IEnumerator PlayMusic(int index)
+        private void OnEnable()
         {
-            var musicToPlay = _musicDictionary[_currentMusic][index];
-            _audioSource.PlayOneShot(musicToPlay);
-            yield return new WaitForSeconds(musicToPlay.length);
-            Finish();
+            _playMusicCoroutine = StartCoroutine(CheckMusicEnd());
+        }
+
+        private IEnumerator CheckMusicEnd()
+        {
+            yield return new WaitForSeconds(2f);
+            if (!_audioSource.isPlaying)
+                Finish();
+            else
+                _playMusicCoroutine = StartCoroutine(CheckMusicEnd());
         }
 
         private void Finish()
         {
             if (++_currentIndex >= _musicDictionary[_currentMusic].Length)
                 _currentIndex = 0;
-            _playMusicCoroutine = StartCoroutine(PlayMusic(_currentIndex));
+            PlayMusic(_currentIndex);
+        }
+
+        private void PlayMusic(int index)
+        {
+            var musicToPlay = _musicDictionary[_currentMusic][index];
+            _audioSource.PlayOneShot(musicToPlay);
+            _playMusicCoroutine = StartCoroutine(CheckMusicEnd());
         }
     }
 

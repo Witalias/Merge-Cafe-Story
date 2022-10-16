@@ -9,7 +9,7 @@ namespace Service
 
         public void Remove() => Destroy(gameObject);
 
-        private void Awake()
+        private void OnEnable()
         {
             if (_destroyIn > 0f)
                 StartCoroutine(RemoveIn());

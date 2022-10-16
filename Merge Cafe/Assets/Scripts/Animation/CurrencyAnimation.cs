@@ -37,6 +37,10 @@ namespace AnimationEngine
         private void Start()
         {
             _target = GameObject.FindGameObjectWithTag(_targetTag.ToString()).transform;
+        }
+
+        private void OnEnable()
+        {
             Appear();
             StartCoroutine(StartMove());
         }
