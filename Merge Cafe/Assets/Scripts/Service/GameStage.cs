@@ -13,21 +13,16 @@ namespace Service
                 new Settings(new[]
                 {
                     (ItemType.Tea, 1, 3, 1),
-                    (ItemType.Coffee, 1, 3, 1),
+                    (ItemType.Coffee, 1, 2, 1),
                 }, new[]
                 {
                     (ItemType.Tea, 4),
-                    (ItemType.Coffee, 4),
                 }, new[]
                 {
-                    (ItemType.Teapot, 1, 3),
-                    (ItemType.Teapot, 1, 4),
-                    (ItemType.Teapot, 1, 5),
-                    (ItemType.Brilliant, 1, 2),
-                    (ItemType.Present, 1, 4),
-                    (ItemType.TrashCan, 1, 4),
-                    (ItemType.TrashCan, 1, 5),
-                }, 2)
+                    (ItemType.Teapot, 1, 7),
+                    (ItemType.Brilliant, 1, 4),
+                    (ItemType.Key, 1, 5),
+                }, 1)
             };
         }
 
@@ -48,7 +43,8 @@ namespace Service
 
             public int MaxOrderPoints { get; }
 
-            public Settings((ItemType Type, int MinLevel, int MaxLevel, int RewardLevel)[] items, 
+            public Settings(
+                (ItemType Type, int MinLevel, int MaxLevel, int RewardLevel)[] items, 
                 (ItemType Type, int Level)[] rareItems, 
                 (ItemType Type, int Level, int RequiredStars)[] targets, 
                 int maxOrderPoints = 3)

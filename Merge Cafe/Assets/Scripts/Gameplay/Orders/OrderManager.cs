@@ -59,7 +59,7 @@ namespace Gameplay.Orders
         private void GenerateOrdinaryOrder(int id, GameStage.Settings settings)
         {
             var possibleItems = new List<(ItemType Type, int MinLevel, int MaxLevel, int RewardLevel)>(settings.Items);
-            var pointsCount = Random.Range(1, settings.MaxOrderPoints);
+            var pointsCount = Random.Range(1, settings.MaxOrderPoints + 1);
             var itemsToOrder = new ItemStorage[pointsCount];
             var starsReward = 0;
             var brilliantsReward = 0;
