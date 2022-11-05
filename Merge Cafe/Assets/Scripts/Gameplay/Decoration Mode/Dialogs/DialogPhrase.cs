@@ -8,6 +8,7 @@ namespace Gameplay.DecorationMode.Dialogs
     {
         public CharacterName Character;
         public Emotion Emotion;
+        [UnityEngine.Multiline]
         public string Phrase;
     }
 }
