@@ -62,6 +62,7 @@ namespace Gameplay.ItemGenerators
             _particles.SetActive(false);
             ++_level;
             SetIcon();
+            SoundManager.Instanse.Play(Sound.UnlockCell, null);
             Upgraded?.Invoke();
         }
 
