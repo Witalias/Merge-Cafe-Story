@@ -105,7 +105,7 @@ namespace Gameplay.Orders
                 _currencyAdder.Add(CurrencyType.Brilliant, _brilliants, _brilliantsSpawnPoint.position);
                 GetExtraReward();
                 _rewards.SetActive(false);
-                StartCoroutine(Finish());
+                StartCoroutine(Finish(_delayBeforeFinished));
             }
         }
 
@@ -130,9 +130,9 @@ namespace Gameplay.Orders
 
         private void Hide() => _animator.SetBool(_showAnimatorBool, false);
 
-        private IEnumerator Finish()
+        private IEnumerator Finish(float delay)
         {
-            yield return new WaitForSeconds(_delayBeforeFinished);
+            yield return new WaitForSeconds(delay);
             Hide();
             yield return new WaitForSeconds(0.5f);
             foreach (var orderPoint in _orderPoints)
@@ -159,7 +159,7 @@ namespace Gameplay.Orders
         private void CheckOnEmpty()
         {
             if (IsEmpty())
-                StartCoroutine(Finish());
+                StartCoroutine(Finish(0f));
         }
 
         private bool IsEmpty()
