@@ -14,7 +14,7 @@ namespace EventHandlers
         private void Start()
         {
             _storage = GameStorage.Instanse;
-            Add(_storage.BrilliantsCount);
+            UpdateText();
         }
 
         private void OnEnable()
