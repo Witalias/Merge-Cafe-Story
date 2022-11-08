@@ -21,6 +21,7 @@ namespace Gameplay.DecorationMode.Dialogs
         [SerializeField] private DialogPart[] _dialogCollection;
 
         private Coroutine _pringPhraseCoroutine;
+        private GameObject _purchaseCanvas;
 
         private readonly Dictionary<CharacterName, Character> _charactersDict = new Dictionary<CharacterName, Character>();
         private readonly Dictionary<DialogTitle, DialogPhrase[]> _dialogDict = new Dictionary<DialogTitle, DialogPhrase[]>();
@@ -30,11 +31,16 @@ namespace Gameplay.DecorationMode.Dialogs
 
         public void Begin(DialogTitle title)
         {
+            if (_purchaseCanvas == null)
+                _purchaseCanvas = GameObject.FindGameObjectWithTag(Tags.BuildingCanvas.ToString());
+
             _currentIndex = 0;
             _currentDialogTitle = title;
             StartCoroutine(SetActive(true));
             NextPhrase();
         }
+
+        public void Skip() => StartCoroutine(SetActive(false));
 
         private void Awake()
         {
@@ -117,9 +123,9 @@ namespace Gameplay.DecorationMode.Dialogs
         private IEnumerator SetActive(bool value)
         {
             yield return new WaitForSeconds(0.01f);
-            //gameObject.SetActive(value);
             _background.SetActive(value);
             _blackFilter.SetActive(value);
+            _purchaseCanvas.SetActive(!value);
         }
     }
 }

@@ -22,10 +22,10 @@ namespace Gameplay.DecorationMode
 
             void StartDialog()
             {
-                DialogStarted?.Invoke(_dialogType);
                 gameObject.SetActive(false);
                 foreach (var nextSellObject in _nextObjectsForSell)
                     nextSellObject.Activate();
+                DialogStarted?.Invoke(_dialogType);
             }
 
             purchaseButton.SetPurchaseAction(StartDialog);

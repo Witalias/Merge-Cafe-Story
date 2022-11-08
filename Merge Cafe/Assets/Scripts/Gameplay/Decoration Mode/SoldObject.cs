@@ -17,7 +17,8 @@ namespace Gameplay.DecorationMode
         {
             var buildingCanvas = GameObject.FindGameObjectWithTag(Tags.BuildingCanvas.ToString()).transform;
             var spawnPosition = new Vector3(transform.position.x, transform.position.y, 0f);
-            var purchaseButton = Instantiate(GameStorage.Instanse.PurchaseButton, transform.position, Quaternion.identity, buildingCanvas).GetComponent<PurchaseButton>();
+            var purchaseButton = Instantiate(GameStorage.Instanse.PurchaseButton, transform.position, Quaternion.identity, buildingCanvas)
+                .GetComponent<PurchaseButton>();
             purchaseButton.SetIcon(_icon);
             purchaseButton.SetCost(_cost);
 
