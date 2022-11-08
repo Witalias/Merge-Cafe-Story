@@ -63,10 +63,24 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge caf
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\
 ++Counters
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\counters\
+++CurrencyAdder.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\counters\currencyadder.cs
+++StarCounter.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\counters\starcounter.cs
 ++Decoration Mode
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\decoration mode\
 ++Dialogs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\decoration mode\dialogs\
+++Character.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\decoration mode\dialogs\character.cs
+++DialogCreator.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\decoration mode\dialogs\dialogcreator.cs
+++DialogPart.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\decoration mode\dialogs\dialogpart.cs
+++DialogPhrase.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\decoration mode\dialogs\dialogphrase.cs
+++TypedEmotion.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\decoration mode\dialogs\typedemotion.cs
 ++DialogActivationPoint.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\decoration mode\dialogactivationpoint.cs
 ++PurchaseButton.cs
@@ -101,10 +115,30 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge caf
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\item generators\upgradable.cs
 ++Orders
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\orders\
+++Order.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\orders\order.cs
+++OrderManager.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\orders\ordermanager.cs
+++OrderPoint.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\orders\orderpoint.cs
 ++ItemQueue.cs
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\itemqueue.cs
 ++Service
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\
+++Destroyer.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\destroyer.cs
+++GameStage.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\gamestage.cs
+++GameStorage.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\gamestorage.cs
+++MusicManager.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\musicmanager.cs
+++PresentsInfo.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\presentsinfo.cs
+++QuickClickTracking.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\quickclicktracking.cs
+++SoundManager.cs
+i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\soundmanager.cs
 ++UI
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\ui\
 ++ItemInSequence.cs
@@ -700,40 +734,6 @@ i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
 ++UnityEngine.XRModule
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:
-++CurrencyAdder.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\counters\currencyadder.cs
-++StarCounter.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\counters\starcounter.cs
-++Character.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\decoration mode\dialogs\character.cs
-++DialogCreator.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\decoration mode\dialogs\dialogcreator.cs
-++DialogPart.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\decoration mode\dialogs\dialogpart.cs
-++DialogPhrase.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\decoration mode\dialogs\dialogphrase.cs
-++TypedEmotion.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\decoration mode\dialogs\typedemotion.cs
-++Order.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\orders\order.cs
-++OrderManager.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\orders\ordermanager.cs
-++OrderPoint.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\gameplay\orders\orderpoint.cs
-++Destroyer.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\destroyer.cs
-++GameStage.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\gamestage.cs
-++GameStorage.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\gamestorage.cs
-++MusicManager.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\musicmanager.cs
-++PresentsInfo.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\presentsinfo.cs
-++QuickClickTracking.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\quickclicktracking.cs
-++SoundManager.cs
-i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\scripts\service\soundmanager.cs
 ++Anton OFL.txt
 i:{89f218ec-d947-0a7e-2d43-5876e7b225a3}:c:\projects\github\merge-cafe\merge cafe\assets\textmesh pro\examples & extras\fonts\anton ofl.txt
 ++Bangers - OFL.txt
