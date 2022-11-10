@@ -6,6 +6,8 @@ namespace Enums
         FirstFelixCall,
         PainterLisa,
         GrandmaAndPresident,
-        LetterNumber11OnRun
+        LetterNumber11OnRun,
+        WhatHappenedToMyDaughter,
+        HowFireStarted
     }
 }

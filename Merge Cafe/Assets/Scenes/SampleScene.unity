@@ -2846,6 +2846,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Message
       objectReference: {fileID: 0}
+    - target: {fileID: 7096493458587955746, guid: 989778a7f3f15af458ae575db4080171, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9128579396340408621, guid: 989778a7f3f15af458ae575db4080171, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4350,7 +4354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameStage: 1
   _starsCount: 0
-  _brilliantsCount: 500
+  _brilliantsCount: 5000
   _generationStarFromLevel: 4
   _starsByItemLevels: 0100000002000000030000000500000007000000090000000c0000000f0000001200000016000000
   _starsRewardForLevels: 0100000003000000090000001800000037000000
@@ -13702,6 +13706,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Burron
       objectReference: {fileID: 0}
+    - target: {fileID: 200284850944781555, guid: a922d2ac3d773654a912023c50c69281, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 200284850944781556, guid: a922d2ac3d773654a912023c50c69281, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -14340,6 +14348,10 @@ PrefabInstance:
     - target: {fileID: 7107695862283789727, guid: e630f2498c8697a40846fe87d923283a, type: 3}
       propertyPath: m_Name
       value: Decor Mode Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 7107695862283789727, guid: e630f2498c8697a40846fe87d923283a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7107695863108206259, guid: e630f2498c8697a40846fe87d923283a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -16161,10 +16173,6 @@ PrefabInstance:
     - target: {fileID: 5819500965307548933, guid: 32291ccdeb07c7b42af3c25b849bdf72, type: 3}
       propertyPath: m_Name
       value: Building
-      objectReference: {fileID: 0}
-    - target: {fileID: 5819500965307548933, guid: 32291ccdeb07c7b42af3c25b849bdf72, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32291ccdeb07c7b42af3c25b849bdf72, type: 3}
