@@ -2,6 +2,12 @@ namespace Enums
 {
     public enum DialogTitle
     {
-        Begin
+        Begin,
+        FirstFelixCall,
+        PainterLisa,
+        GrandmaAndPresident,
+        LetterNumber11OnRun,
+        WhatHappenedToMyDaughter,
+        HowFireStarted
     }
 }

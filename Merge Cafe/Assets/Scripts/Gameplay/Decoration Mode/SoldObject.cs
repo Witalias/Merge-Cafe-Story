@@ -7,6 +7,7 @@ namespace Gameplay.DecorationMode
     public class SoldObject : MonoBehaviour
     {
         [SerializeField] private bool _startActive = false;
+        [SerializeField] private bool _hideable = false;
         [SerializeField] private Sprite _icon;
         [SerializeField] private int _cost;
         [SerializeField] private DialogActivationPoint _dialogActivationPoint;
@@ -15,13 +16,15 @@ namespace Gameplay.DecorationMode
         public void Activate()
         {
             var buildingCanvas = GameObject.FindGameObjectWithTag(Tags.BuildingCanvas.ToString()).transform;
-            var purchaseButton = Instantiate(GameStorage.Instanse.PurchaseButton, transform.position, Quaternion.identity, buildingCanvas).GetComponent<PurchaseButton>();
+            var spawnPosition = new Vector3(transform.position.x, transform.position.y, 0f);
+            var purchaseButton = Instantiate(GameStorage.Instanse.PurchaseButton, transform.position, Quaternion.identity, buildingCanvas)
+                .GetComponent<PurchaseButton>();
             purchaseButton.SetIcon(_icon);
             purchaseButton.SetCost(_cost);
 
             void SetObjectActive()
             {
-                gameObject.SetActive(true);
+                gameObject.SetActive(!_hideable);
                 Instantiate(GameStorage.Instanse.Sequins, transform.position, Quaternion.identity, transform.parent);
                 foreach (var nextSellObject in _nextObjectsForSell)
                     nextSellObject.Activate();
@@ -37,7 +40,7 @@ namespace Gameplay.DecorationMode
             if (_startActive)
                 Activate();
 
-            gameObject.SetActive(false);
+            gameObject.SetActive(_hideable);
         }
     }
 }

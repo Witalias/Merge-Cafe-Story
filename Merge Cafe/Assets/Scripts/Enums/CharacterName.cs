@@ -2,7 +2,10 @@ namespace Enums
 {
     public enum CharacterName
     {
-        Aisha,
-        Matilda
+        Magdalena,
+        Matilda,
+        Phone,
+        Felix,
+        Lisa
     }
 }
