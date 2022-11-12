@@ -11,6 +11,8 @@ namespace Gameplay.Counters
 {
     public class StarCounter : MonoBehaviour
     {
+        private const int _cheatStarsCount = 20;
+
         [SerializeField] private UIBar _bar;
         [SerializeField] private TextMeshProUGUI _value;
         [SerializeField] private Image _nextPresent;
@@ -24,10 +26,12 @@ namespace Gameplay.Counters
         private int _needStarsToNextPresent = 10;
 
         public static event System.Action<ItemStorage> NoEmptyCellsAndRewardGetted;
+        public static event System.Action UpdateOrderCount;
+        public static event System.Action NewStageReached;
 
         public void AddStars(int value)
         {
-            _storage.StatsCount += value;
+            _storage.StarsCount += value;
             UpdateValueText();
         }
 
@@ -40,11 +44,14 @@ namespace Gameplay.Counters
 
         private void Update()
         {
-            _currentBarValue = Mathf.Lerp(_currentBarValue, _storage.StatsCount, barSpeed * Time.deltaTime);
+            _currentBarValue = Mathf.Lerp(_currentBarValue, _storage.StarsCount, barSpeed * Time.deltaTime);
             _bar.SetValue(_currentBarValue / _needStarsToNextPresent * 100f);
 
             if (_bar.Filled)
                 FinishTarget();
+
+            if (Input.GetKeyDown(KeyCode.S))
+                AddStars(_cheatStarsCount);
         }
 
         private void SetTargetsByGameStage()
@@ -56,19 +63,22 @@ namespace Gameplay.Counters
                 _needStarsToNextPresent = 999999;
                 return;
             }
+            if (_storage.OrdersCountMustBeUpdated)
+                UpdateOrderCount?.Invoke();
+            NewStageReached?.Invoke();
             _targets = new List<(ItemType Type, int Level, int RequiredStars)>(settings.Targets);
             NextTarget();
         }
 
         private void UpdateValueText()
         {
-            _value.text = $"{_storage.StatsCount} / {_needStarsToNextPresent}";
+            _value.text = $"{_storage.StarsCount} / {_needStarsToNextPresent}";
         }
 
         private void FinishTarget()
         {
             _currentBarValue = 0f;
-            _storage.StatsCount -= _needStarsToNextPresent;
+            _storage.StarsCount -= _needStarsToNextPresent;
 
             var itemStorage = _storage.GetItem(_currentTarget.Type, _currentTarget.Level);
             itemStorage.Unlock();

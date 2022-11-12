@@ -20,6 +20,7 @@ namespace Service
         [SerializeField] private int[] _starsRewardForLevels;
         [SerializeField] private int[] _brilliantsRewardForLevels;
         [SerializeField] private ItemTypeLevel[] _rewardsForNewItems;
+        [SerializeField] private int[] _stagesForOrderCounts;
 
         [Header("Items")]
         [SerializeField] private TypedItem[] _typedItems;
@@ -46,7 +47,7 @@ namespace Service
 
         public int GameStage { get => _gameStage; set => _gameStage = value; }
 
-        public int StatsCount { get => _starsCount; set => _starsCount = value; }
+        public int StarsCount { get => _starsCount; set => _starsCount = value; }
 
         public int BrilliantsCount { get => _brilliantsCount; set => _brilliantsCount = value; }
 
@@ -67,6 +68,8 @@ namespace Service
         public Sprite QuestionMark { get => _questionMark; }
 
         public Sprite DialogWindow { get => _dialogWindow; }
+
+        public bool OrdersCountMustBeUpdated { get => System.Array.Exists(_stagesForOrderCounts, element => element == GameStage); }
 
         public ItemStorage GetNextItemByAnotherItem(ItemStorage item)
         {
