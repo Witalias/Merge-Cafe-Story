@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 177258564609147125}
   - component: {fileID: 177258564609147124}
   - component: {fileID: 177258564609147131}
+  - component: {fileID: 3664189736625332442}
   m_Layer: 5
   m_Name: Item Generator
   m_TagString: Untagged
@@ -249,6 +250,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3664189736625332442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177258564609147123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84714610494c1744a93f0d1f1b4fbe36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &177258564630686194
 GameObject:
   m_ObjectHideFlags: 0

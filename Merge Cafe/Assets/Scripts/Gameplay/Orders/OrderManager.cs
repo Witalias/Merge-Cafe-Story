@@ -29,8 +29,6 @@ namespace Gameplay.Orders
         private int _remainsToRareOrder = 1;
         private readonly Queue<ItemStorage> _rareItemsQueue = new Queue<ItemStorage>();
 
-        public float DelayBeforeNewOrder { get => _delayBeforeNewOrder; }
-
         public void GenerateOrder(int id)
         {
             if (id > _ordersCount - 1)
