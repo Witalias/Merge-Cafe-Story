@@ -17,6 +17,22 @@ namespace Gameplay.ItemGenerators
                 generator.SetActiveTimer(value);
         }
 
+        public bool ExistsInGame(ItemType type)
+        {
+            foreach (var upgradable in _upgradables)
+            {
+                if (upgradable.Type == type && upgradable.gameObject.activeSelf)
+                    return true;
+            }
+            return false;
+        }
+
+        public void Activate(ItemType type)
+        {
+            var generatorsToActivate = _upgradables.Where(upgradable => upgradable.Type == type).ToArray();
+            foreach (var generator in generatorsToActivate) generator.Activate();
+        }
+
         public bool IsGenerator(ItemType type)
         {
             return GetGenerators(type).Length != 0;

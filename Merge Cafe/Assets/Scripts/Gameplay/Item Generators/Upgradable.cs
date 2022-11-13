@@ -26,6 +26,15 @@ namespace Gameplay.ItemGenerators
 
         public static event Action Upgraded;
 
+        public void Activate()
+        {
+            if (gameObject.activeSelf)
+                return;
+
+            gameObject.SetActive(true);
+            _animator.SetTrigger(_burnAnimatorTrigger);
+        }
+
         public bool CheckOnUpgrading(ItemStorage item)
         {
             if (_level == GameStorage.Instanse.GetItemMaxLevel(item.Type))

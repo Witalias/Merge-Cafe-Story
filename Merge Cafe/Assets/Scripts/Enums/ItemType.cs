@@ -11,6 +11,9 @@ namespace Enums
         TrashCan,
         Teapot,
         Lock,
-        Key
+        Key,
+        BakeryProduct,
+        BakeryProductWithCream,
+        Oven
     }
 }

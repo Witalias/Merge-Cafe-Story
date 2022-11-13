@@ -60,7 +60,7 @@ namespace Gameplay.ItemGenerators
         {
             _storage = GameStorage.Instanse;
             UpdateProducedItems();
-            _addBarValueCoroutine = StartCoroutine(AddBarValue());
+            //_addBarValueCoroutine = StartCoroutine(AddBarValue());
         }
 
         private void OnEnable()
@@ -126,7 +126,10 @@ namespace Gameplay.ItemGenerators
                 stopped = true;
                 return;
             }
-            var randomType = _currentGeneratedItems[Random.Range(0, _currentGeneratedItems.Count)];
+            var randomType = _generatedItems[0];
+            if (_currentGeneratedItems.Count > 0)
+                randomType = _currentGeneratedItems[Random.Range(0, _currentGeneratedItems.Count)];
+
             var randomLevel = Random.Range(1, _statsOnLevels[_upgradable.Level - 1].initItemsLevel + 1);
             var item = new ItemStorage(_storage.GetItem(randomType, randomLevel));
             cell.CreateItem(item, transform.position);

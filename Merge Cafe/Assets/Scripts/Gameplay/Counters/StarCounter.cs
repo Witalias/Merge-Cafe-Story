@@ -28,6 +28,9 @@ namespace Gameplay.Counters
         public static event System.Action<ItemStorage> NoEmptyCellsAndRewardGetted;
         public static event System.Action UpdateOrderCount;
         public static event System.Action NewStageReached;
+        public static event System.Action<ItemType> ActivateGenerator;
+        public static event System.Func<ItemType, bool> IsGenerator;
+        public static event System.Func<ItemType, bool> GeneratorExistsInGame;
 
         public void AddStars(int value)
         {
@@ -83,11 +86,16 @@ namespace Gameplay.Counters
             var itemStorage = _storage.GetItem(_currentTarget.Type, _currentTarget.Level);
             itemStorage.Unlock();
 
-            var randomCell = _storage.GetRandomEmptyCell();
-            if (randomCell == null)
-                NoEmptyCellsAndRewardGetted?.Invoke(itemStorage);
-            else
-                randomCell.CreateItem(itemStorage, transform.position);
+            CheckOnNewGenerator(itemStorage.Type, out bool isNewGenerator);
+
+            if (!isNewGenerator)
+            {
+                var randomCell = _storage.GetRandomEmptyCell();
+                if (randomCell == null)
+                    NoEmptyCellsAndRewardGetted?.Invoke(itemStorage);
+                else
+                    randomCell.CreateItem(itemStorage, transform.position);
+            }
 
             if (_targets.Count == 0)
             {
@@ -108,6 +116,21 @@ namespace Gameplay.Counters
             _currentTarget = (randomTarget.Type, randomTarget.Level);
             _nextPresent.sprite = _storage.GetItemSprite(randomTarget.Type, randomTarget.Level);
         }
-    }
 
+        private void CheckOnNewGenerator(ItemType type, out bool isNew)
+        {
+            var isGenerator = IsGenerator?.Invoke(type);
+            if (isGenerator.GetValueOrDefault())
+            {
+                var existsInGame = GeneratorExistsInGame?.Invoke(type);
+                if (!existsInGame.GetValueOrDefault())
+                {
+                    isNew = true;
+                    ActivateGenerator?.Invoke(type);
+                    return;
+                }
+            }
+            isNew = false;
+        }
+    }
 }

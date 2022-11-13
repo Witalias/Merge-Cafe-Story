@@ -176,6 +176,39 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 74c6d453a844956498f2a829765746ea, type: 3}
     - {fileID: 21300000, guid: 005618c881bd80e4e97761026f56dd6e, type: 3}
     - {fileID: 21300000, guid: a5f61d0fa4ed64b40aaa73123f22b238, type: 3}
+  - Type: 10
+    Throwable: 1
+    Movable: 1
+    Icons:
+    - {fileID: 21300000, guid: 83f0db4cc6a97e444a797dafe348c6c9, type: 3}
+    - {fileID: 21300000, guid: daf9dbdc01549bc44b266ae31550a535, type: 3}
+    - {fileID: 21300000, guid: 8334c62a91746f34db023609ada50fc8, type: 3}
+    - {fileID: 21300000, guid: 11cad0c4d16e1ec4ca09693037da70fa, type: 3}
+    - {fileID: 21300000, guid: a2be819c107780a479c57a77dedcb3de, type: 3}
+    - {fileID: 21300000, guid: e5dac028ed5953843b6f6f64efea9ec4, type: 3}
+    - {fileID: 21300000, guid: 915407add2750df4e94166c9d63dd0be, type: 3}
+    - {fileID: 21300000, guid: bb45482f2c6dfc340ac2e8d1a81cd572, type: 3}
+    - {fileID: 21300000, guid: 4c195cde244971140a6bc1143b6920e8, type: 3}
+    - {fileID: 21300000, guid: aa02ab8749c3cee4d983d32d5b765204, type: 3}
+  - Type: 11
+    Throwable: 1
+    Movable: 1
+    Icons:
+    - {fileID: 21300000, guid: 4a456db0a70cab544ba116f1b77d9786, type: 3}
+    - {fileID: 21300000, guid: d3c1fddfc52308c4aa1840b9ab0fe759, type: 3}
+    - {fileID: 21300000, guid: e08e6dd273c56cb4a882a0d80eeb0bb8, type: 3}
+    - {fileID: 21300000, guid: 808ecf93766c4994d8981df6649621bc, type: 3}
+    - {fileID: 21300000, guid: 3375cf7381431ad4da108f45cb6b86c6, type: 3}
+    - {fileID: 21300000, guid: e6cbaea954d28c64284b076977c4eb05, type: 3}
+    - {fileID: 21300000, guid: d8d5c17a3f914a546ac0cb391703048c, type: 3}
+    - {fileID: 21300000, guid: 0fd180747b7aee9448f16a8e8c8369fc, type: 3}
+    - {fileID: 21300000, guid: e480014f516eabf48bdfa60c5c8e40cb, type: 3}
+    - {fileID: 21300000, guid: aed895ed7ee1cdc40a52ba6d07f3fc2d, type: 3}
+  - Type: 12
+    Throwable: 0
+    Movable: 1
+    Icons:
+    - {fileID: 21300000, guid: 75737b951ee76484b9bf34264e3bf2b6, type: 3}
   _combinations:
   - FirstType: 9
     SecondType: 8
