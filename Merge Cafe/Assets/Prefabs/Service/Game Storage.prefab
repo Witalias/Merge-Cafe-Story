@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2737563057547967187}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -47,10 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameStage: 1
   _starsCount: 0
-  _brilliantsCount: 5000
-  _generationStarFromLevel: 4
+  _brilliantsCount: 0
+  _generationStarFromLevel: 5
   _starsByItemLevels: 0100000002000000030000000500000007000000090000000c0000000f0000001200000016000000
-  _starsRewardForLevels: 0100000003000000090000001800000037000000
+  _starsRewardForLevels: 0100000003000000070000000f00000020000000
   _brilliantsRewardForLevels: 050000000f000000280000005f000000d2000000
   _rewardsForNewItems:
   - Type: 4
@@ -208,7 +208,13 @@ MonoBehaviour:
     Throwable: 0
     Movable: 1
     Icons:
-    - {fileID: 21300000, guid: 75737b951ee76484b9bf34264e3bf2b6, type: 3}
+    - {fileID: 21300000, guid: 4a0971bbfd844524aaa352ea03960477, type: 3}
+    - {fileID: 21300000, guid: bd985dff47394c940adba81a818820ee, type: 3}
+    - {fileID: 21300000, guid: aaab23784e19aac4882a7bd842af8f1f, type: 3}
+    - {fileID: 21300000, guid: 7bd20f75b8a11b74e8fff40463f583f5, type: 3}
+    - {fileID: 21300000, guid: 6dd0958be2ff0364ca0ca3c5ba3b9320, type: 3}
+    - {fileID: 21300000, guid: 20f94719135a99a4799a0f2c18238932, type: 3}
+    - {fileID: 21300000, guid: 43d20d8ead6e22343a634472c88c9de6, type: 3}
   _combinations:
   - FirstType: 9
     SecondType: 8

@@ -18,9 +18,9 @@ namespace Service
                     (ItemType.Tea, 4),
                 }, new[]
                 {
-                    (ItemType.Teapot, 1, 7),
-                    (ItemType.Brilliant, 1, 4),
-                    (ItemType.Key, 1, 5),
+                    (ItemType.Teapot, 1, 5),
+                    (ItemType.Brilliant, 1, 2),
+                    (ItemType.Key, 1, 4),
                 }, 1),
 
                 new Settings(new[] // 2
@@ -73,6 +73,26 @@ namespace Service
                     (ItemType.Teapot, 1, 7),
                     (ItemType.Brilliant, 2, 8),
                     (ItemType.Brilliant, 3, 10),
+                }, 2),
+
+                new Settings(new[] // 5
+                {
+                    (ItemType.Tea, 2, 5, 1),
+                    (ItemType.Coffee, 1, 4, 2),
+                    (ItemType.BakeryProduct, 1, 3, 3),
+                    (ItemType.BakeryProductWithCream, 1, 3, 4),
+                }, new[]
+                {
+                    (ItemType.Tea, 6),
+                    (ItemType.BakeryProductWithCream, 4),
+                }, new[]
+                {
+                    (ItemType.Teapot, 2, 23),
+                    (ItemType.Present, 1, 20),
+                    (ItemType.TrashCan, 1, 15),
+                    (ItemType.TrashCan, 2, 28),
+                    (ItemType.Brilliant, 1, 8),
+                    (ItemType.Brilliant, 2, 13),
                 }, 2)
             };
         }

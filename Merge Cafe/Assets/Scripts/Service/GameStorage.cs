@@ -12,7 +12,7 @@ namespace Service
         public static GameStorage Instanse { get; private set; } = null;
 
         [Header("Settings")]
-        [SerializeField] [Range(1, 2)] private int _gameStage = 1;
+        [SerializeField] [Range(1, 5)] private int _gameStage = 1;
         [SerializeField] private int _starsCount = 0;
         [SerializeField] private int _brilliantsCount = 0;
         [SerializeField] private int _generationStarFromLevel = 6;
