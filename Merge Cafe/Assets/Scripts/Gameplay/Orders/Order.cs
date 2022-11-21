@@ -34,6 +34,7 @@ namespace Gameplay.Orders
         private int _stars;
         private int _brilliants;
         private bool _actived = false;
+        private bool started = false;
 
         public static event System.Action<int> OrderDone;
         public static event System.Action<ItemStorage> NoEmptyCellsAndRewardGetted;
@@ -117,13 +118,18 @@ namespace Gameplay.Orders
         private void Start()
         {
             _currencyAdder = GameStorage.Instanse.GetComponent<CurrencyAdder>();
+            started = true;
         }
 
         private void OnEnable()
         {
+            if (!started)
+                return;
+
             if (_actived)
                 Show();
-            CheckOnEmpty();
+            else
+                CheckOnEmpty();
         }
 
         private void Show() => _animator.SetBool(_showAnimatorBool, true);

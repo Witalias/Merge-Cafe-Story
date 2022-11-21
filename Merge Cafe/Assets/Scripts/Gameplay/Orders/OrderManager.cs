@@ -12,7 +12,6 @@ namespace Gameplay.Orders
         private const int _maxOrdersCount = 3;
 
         [SerializeField] private Order[] _orders;
-        [SerializeField] private float _delayBeforeNewOrder = 1f;
         [SerializeField] private int _ordersCountBeforeRareOrder = 10;
         [SerializeField] private int _ordersCountBeforeRareOrderSpread = 5;
         [SerializeField] private float _diffucultyMultiplierForRareOrder = 2;
@@ -33,7 +32,7 @@ namespace Gameplay.Orders
         {
             if (id > _ordersCount - 1)
             {
-                Debug.LogWarning($"“екущее максимальное количество заказов: {_ordersCount}. я пока не могу добавить ещЄ один!");
+                Debug.LogWarning($"“екущее максимальное количество заказов: {_ordersCount}.");
                 return;
             }
 
@@ -103,16 +102,12 @@ namespace Gameplay.Orders
             GenerateOrder(_ordersCount - 1);
         }
 
-        private void Awake()
+        private void Start()
         {
             _storage = GameStorage.Instanse;
             for (var i = 0; i < _orders.Length; ++i)
                 _orders[i].SetID(i);
             UpdateRemainToRareOrder();
-        }
-
-        private void Start()
-        {
             GenerateOrder(0);
         }
 

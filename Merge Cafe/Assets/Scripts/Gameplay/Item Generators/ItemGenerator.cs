@@ -58,13 +58,13 @@ namespace Gameplay.ItemGenerators
 
         private void Start()
         {
-            _storage = GameStorage.Instanse;
             UpdateProducedItems();
             //_addBarValueCoroutine = StartCoroutine(AddBarValue());
         }
 
         private void OnEnable()
         {
+            _storage = GameStorage.Instanse;
             if (!stopped)
                 _addBarValueCoroutine = StartCoroutine(AddBarValue());
         }
