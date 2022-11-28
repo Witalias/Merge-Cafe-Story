@@ -855,7 +855,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5819500963960839732}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 7.69, y: 0.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1072,7 +1072,8 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: 9e601f25413cea843a4bc1d5e2a657ef, type: 3}
   _cost: 450
   _dialogActivationPoint: {fileID: 0}
-  _nextObjectsForSell: []
+  _nextObjectsForSell:
+  - {fileID: 1864817528}
 --- !u!1 &5819500964275119818
 GameObject:
   m_ObjectHideFlags: 0
@@ -10048,11 +10049,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8222511444695532100, guid: cc57f350bac579a43b430c9e728d0ac8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.829999
+      value: -0.9030013
       objectReference: {fileID: 0}
     - target: {fileID: 8222511444695532100, guid: cc57f350bac579a43b430c9e728d0ac8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.15799999
+      value: -0.52899987
       objectReference: {fileID: 0}
     - target: {fileID: 8222511444695532100, guid: cc57f350bac579a43b430c9e728d0ac8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11262,11 +11263,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8222511444695532100, guid: cc57f350bac579a43b430c9e728d0ac8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.3389997
+      value: -0.39400053
       objectReference: {fileID: 0}
     - target: {fileID: 8222511444695532100, guid: cc57f350bac579a43b430c9e728d0ac8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.19899988
+      value: -0.17199999
       objectReference: {fileID: 0}
     - target: {fileID: 8222511444695532100, guid: cc57f350bac579a43b430c9e728d0ac8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11386,11 +11387,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8222511444695532100, guid: cc57f350bac579a43b430c9e728d0ac8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.36
+      value: 0.6269994
       objectReference: {fileID: 0}
     - target: {fileID: 8222511444695532100, guid: cc57f350bac579a43b430c9e728d0ac8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9200001
+      value: 0.5490002
       objectReference: {fileID: 0}
     - target: {fileID: 8222511444695532100, guid: cc57f350bac579a43b430c9e728d0ac8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14580,11 +14581,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8222511444695532100, guid: cc57f350bac579a43b430c9e728d0ac8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.873
+      value: 1.14
       objectReference: {fileID: 0}
     - target: {fileID: 8222511444695532100, guid: cc57f350bac579a43b430c9e728d0ac8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2809999
+      value: 0.91
       objectReference: {fileID: 0}
     - target: {fileID: 8222511444695532100, guid: cc57f350bac579a43b430c9e728d0ac8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15030,7 +15031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startActive: 0
-  _hideable: 0
+  _hideable: 1
   _icon: {fileID: 21300000, guid: e5af092ffcdecf14192732cedbce0c72, type: 3}
   _cost: 120
   _dialogActivationPoint: {fileID: 0}
@@ -16203,11 +16204,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8222511444695532100, guid: cc57f350bac579a43b430c9e728d0ac8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.846999
+      value: 0.11399889
       objectReference: {fileID: 0}
     - target: {fileID: 8222511444695532100, guid: cc57f350bac579a43b430c9e728d0ac8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.55799985
+      value: 0.18699998
       objectReference: {fileID: 0}
     - target: {fileID: 8222511444695532100, guid: cc57f350bac579a43b430c9e728d0ac8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16677,7 +16678,8 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: 3e6bc089a5c87d84f9d8dc83957655da, type: 3}
   _cost: 145
   _dialogActivationPoint: {fileID: 0}
-  _nextObjectsForSell: []
+  _nextObjectsForSell:
+  - {fileID: 5819500964001172085}
 --- !u!4 &5679513188013155203 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2166981753075400008, guid: 878a09aed81ef6b44aafea4c7157e6a6, type: 3}

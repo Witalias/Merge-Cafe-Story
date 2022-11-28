@@ -93,7 +93,64 @@ namespace Service
                     (ItemType.TrashCan, 2, 28),
                     (ItemType.Brilliant, 1, 8),
                     (ItemType.Brilliant, 2, 13),
-                }, 2)
+                }, 2),
+
+                new Settings(new[] // 6
+                {
+                    (ItemType.Tea, 2, 5, 1),
+                    (ItemType.Coffee, 1, 5, 2),
+                    (ItemType.BakeryProduct, 1, 4, 3),
+                    (ItemType.BakeryProductWithCream, 1, 3, 4),
+                }, new[]
+                {
+                    (ItemType.Coffee, 6),
+                    (ItemType.BakeryProduct, 5),
+                }, new[]
+                {
+                    (ItemType.TrashCan, 1, 25),
+                    (ItemType.Brilliant, 2, 19),
+                    (ItemType.Brilliant, 2, 19),
+                    (ItemType.Key, 1, 20),
+                    (ItemType.Oven, 1, 24),
+                }, 2),
+
+                new Settings(new[] // 7
+                {
+                    (ItemType.Tea, 2, 6, 1),
+                    (ItemType.Coffee, 1, 5, 2),
+                    (ItemType.BakeryProduct, 1, 4, 3),
+                    (ItemType.BakeryProductWithCream, 1, 4, 4),
+                }, new[]
+                {
+                    (ItemType.Tea, 7),
+                    (ItemType.BakeryProductWithCream, 5),
+                }, new[]
+                {
+                    (ItemType.TrashCan, 1, 27),
+                    (ItemType.Teapot, 2, 28),
+                    (ItemType.Brilliant, 1, 10),
+                    (ItemType.Key, 3, 23),
+                    (ItemType.Present, 1, 30),
+                }, 2),
+
+                new Settings(new[] // 8
+                {
+                    (ItemType.Tea, 2, 6, 1),
+                    (ItemType.Coffee, 1, 6, 2),
+                    (ItemType.BakeryProduct, 1, 5, 3),
+                    (ItemType.BakeryProductWithCream, 1, 4, 4),
+                }, new[]
+                {
+                    (ItemType.Coffee, 7),
+                    (ItemType.BakeryProduct, 6),
+                }, new[]
+                {
+                    (ItemType.Toaster, 1, 60),
+                    (ItemType.Teapot, 1, 30),
+                    (ItemType.Brilliant, 1, 12),
+                    (ItemType.Key, 2, 34),
+                    (ItemType.Present, 1, 29),
+                }),
             };
         }
 

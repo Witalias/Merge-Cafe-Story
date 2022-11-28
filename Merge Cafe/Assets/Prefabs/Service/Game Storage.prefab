@@ -73,7 +73,7 @@ MonoBehaviour:
     Level: 2
   - Type: 2
     Level: 3
-  _stagesForOrderCounts: 02000000
+  _stagesForOrderCounts: 0200000006000000
   _typedItems:
   - Type: 0
     Throwable: 1
@@ -215,6 +215,31 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 6dd0958be2ff0364ca0ca3c5ba3b9320, type: 3}
     - {fileID: 21300000, guid: 20f94719135a99a4799a0f2c18238932, type: 3}
     - {fileID: 21300000, guid: 43d20d8ead6e22343a634472c88c9de6, type: 3}
+  - Type: 13
+    Throwable: 0
+    Movable: 1
+    Icons:
+    - {fileID: 21300000, guid: 15eb897176b9d924e9acffb2243c3d8d, type: 3}
+    - {fileID: 21300000, guid: 0d512d3d33ed94942bc9ba2e7fd9dbbc, type: 3}
+    - {fileID: 21300000, guid: 1e1338892aa71ec4cbca465b17d25d8e, type: 3}
+    - {fileID: 21300000, guid: 48e008158f645344ab54fb5851870817, type: 3}
+    - {fileID: 21300000, guid: 11652a501ef0ef44eb61d0e5976ac2c9, type: 3}
+    - {fileID: 21300000, guid: 40cdca4c0515f08489444bf96337beca, type: 3}
+    - {fileID: 21300000, guid: a0a5d9876e175454abb7b6789efc0b93, type: 3}
+  - Type: 14
+    Throwable: 1
+    Movable: 1
+    Icons:
+    - {fileID: 21300000, guid: e4e42dc8eb5b6ee428768b411eb9045c, type: 3}
+    - {fileID: 21300000, guid: d32b868b30f923f488f303c449ab422f, type: 3}
+    - {fileID: 21300000, guid: 72054ddaffe30a946a811cdc87c1f6a2, type: 3}
+    - {fileID: 21300000, guid: c11854c5026f4ad459d008da14d75805, type: 3}
+    - {fileID: 21300000, guid: b7deac9360a2697429b88915f5ac2184, type: 3}
+    - {fileID: 21300000, guid: d5297ce33c6c0de459e4439edbf98e5e, type: 3}
+    - {fileID: 21300000, guid: f1c5ee36b51993841b715b2c583b46a1, type: 3}
+    - {fileID: 21300000, guid: 45ca38eea34ea814a8fe5dc482fb32a9, type: 3}
+    - {fileID: 21300000, guid: 01792982d478f9047850ecdaa1daa5a6, type: 3}
+    - {fileID: 21300000, guid: ee198af1dc6f23444a2ffec851f3c7db, type: 3}
   _combinations:
   - FirstType: 9
     SecondType: 8
