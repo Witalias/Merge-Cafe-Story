@@ -134,6 +134,7 @@ namespace Gameplay.Field
         {
             _isReturning = false;
             transform.SetAsLastSibling();
+            SoundManager.Instanse.Play(Stats.TakeSound, null);
         }
 
         private void OnMouseUp()
@@ -257,6 +258,7 @@ namespace Gameplay.Field
             _currentCell.Clear();
             toCell.SetItem(this);
             _currentCell = toCell;
+            SoundManager.Instanse.Play(Stats.PutSound, null);
         }
 
         private void Swap(Cell withCell)
@@ -267,6 +269,7 @@ namespace Gameplay.Field
             withCell.Clear();
             withCell.SetItem(this);
             _currentCell = withCell;
+            SoundManager.Instanse.Play(Stats.PutSound, null);
         }
 
         private void Join(Cell withCell)

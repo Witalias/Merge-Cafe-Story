@@ -35,6 +35,7 @@ namespace UI
             _rewardStorage = _storage.GetRewardForNewItemByLevel(itemLevel);
             _reward.gameObject.SetActive(true);
             _reward.sprite = _rewardStorage.Icon;
+            SoundManager.Instanse.Play(Sound.NewItem, null);
         }
 
         public void SetSprite(Sprite value) => _image.sprite = value;

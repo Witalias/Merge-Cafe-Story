@@ -78,6 +78,8 @@ MonoBehaviour:
   - Type: 0
     Throwable: 1
     Movable: 1
+    TakeSound: 0
+    PutSound: 0
     Icons:
     - {fileID: 21300000, guid: 8b2470e6a8a5c444cb5fbea141f356ca, type: 3}
     - {fileID: 21300000, guid: b02c2d70e39016c4996535e0696385c5, type: 3}
@@ -92,6 +94,8 @@ MonoBehaviour:
   - Type: 1
     Throwable: 1
     Movable: 1
+    TakeSound: 0
+    PutSound: 0
     Icons:
     - {fileID: 21300000, guid: 029b429cde0846145a6520b545e6233d, type: 3}
     - {fileID: 21300000, guid: 4b4da4d9cf798b149b16949e60f76085, type: 3}
@@ -106,6 +110,8 @@ MonoBehaviour:
   - Type: 2
     Throwable: 1
     Movable: 1
+    TakeSound: 0
+    PutSound: 0
     Icons:
     - {fileID: 21300000, guid: ca28e40d25c55d24c865675af71b988d, type: 3}
     - {fileID: 21300000, guid: 72db8ceb66a594747aeefdf10bbcfd1c, type: 3}
@@ -113,6 +119,8 @@ MonoBehaviour:
   - Type: 3
     Throwable: 1
     Movable: 1
+    TakeSound: 0
+    PutSound: 0
     Icons:
     - {fileID: 21300000, guid: 71c86643b76d2644ba07af141de02249, type: 3}
     - {fileID: 21300000, guid: 060391959751271478d2d6e916955dea, type: 3}
@@ -120,6 +128,8 @@ MonoBehaviour:
   - Type: 4
     Throwable: 1
     Movable: 1
+    TakeSound: 0
+    PutSound: 0
     Icons:
     - {fileID: 21300000, guid: 16d20b135d922c849a6c7bd1730ddae6, type: 3}
     - {fileID: 21300000, guid: d986574ae0936874797228cb6264a4ee, type: 3}
@@ -129,6 +139,8 @@ MonoBehaviour:
   - Type: 5
     Throwable: 1
     Movable: 1
+    TakeSound: 0
+    PutSound: 0
     Icons:
     - {fileID: 21300000, guid: 5f150fe190467a04e8bc5d4f2eaf7ac8, type: 3}
     - {fileID: 21300000, guid: bcf3487918a6eb24c823b2276b68ebf5, type: 3}
@@ -138,6 +150,8 @@ MonoBehaviour:
   - Type: 6
     Throwable: 0
     Movable: 1
+    TakeSound: 0
+    PutSound: 0
     Icons:
     - {fileID: 21300000, guid: 94e04c3a9e3e91647a6f07b5a236012a, type: 3}
     - {fileID: 21300000, guid: e1c4db1e1932f2e459c4d86c0df2806a, type: 3}
@@ -150,6 +164,8 @@ MonoBehaviour:
   - Type: 7
     Throwable: 0
     Movable: 1
+    TakeSound: 2
+    PutSound: 3
     Icons:
     - {fileID: 21300000, guid: 0ecdf2a08a7d83e49be996bc047c78bb, type: 3}
     - {fileID: 21300000, guid: 310f6e5dd673e47498a68f6aa843bdf9, type: 3}
@@ -161,6 +177,8 @@ MonoBehaviour:
   - Type: 8
     Throwable: 0
     Movable: 0
+    TakeSound: 0
+    PutSound: 0
     Icons:
     - {fileID: 21300000, guid: b64192381c8af1d4e9a7f2f3b84587aa, type: 3}
     - {fileID: 21300000, guid: 8ce00ca72210d9d45b385df5431a7f9d, type: 3}
@@ -170,6 +188,8 @@ MonoBehaviour:
   - Type: 9
     Throwable: 1
     Movable: 1
+    TakeSound: 7
+    PutSound: 8
     Icons:
     - {fileID: 21300000, guid: 95bb253fa35778e489d7efd935f6f27e, type: 3}
     - {fileID: 21300000, guid: d5f6a73c83d6c9d45be11661fcdee515, type: 3}
@@ -179,6 +199,8 @@ MonoBehaviour:
   - Type: 10
     Throwable: 1
     Movable: 1
+    TakeSound: 0
+    PutSound: 0
     Icons:
     - {fileID: 21300000, guid: 83f0db4cc6a97e444a797dafe348c6c9, type: 3}
     - {fileID: 21300000, guid: daf9dbdc01549bc44b266ae31550a535, type: 3}
@@ -193,6 +215,8 @@ MonoBehaviour:
   - Type: 11
     Throwable: 1
     Movable: 1
+    TakeSound: 0
+    PutSound: 0
     Icons:
     - {fileID: 21300000, guid: 4a456db0a70cab544ba116f1b77d9786, type: 3}
     - {fileID: 21300000, guid: d3c1fddfc52308c4aa1840b9ab0fe759, type: 3}
@@ -207,6 +231,8 @@ MonoBehaviour:
   - Type: 12
     Throwable: 0
     Movable: 1
+    TakeSound: 0
+    PutSound: 0
     Icons:
     - {fileID: 21300000, guid: 4a0971bbfd844524aaa352ea03960477, type: 3}
     - {fileID: 21300000, guid: bd985dff47394c940adba81a818820ee, type: 3}
@@ -218,6 +244,8 @@ MonoBehaviour:
   - Type: 13
     Throwable: 0
     Movable: 1
+    TakeSound: 0
+    PutSound: 0
     Icons:
     - {fileID: 21300000, guid: 15eb897176b9d924e9acffb2243c3d8d, type: 3}
     - {fileID: 21300000, guid: 0d512d3d33ed94942bc9ba2e7fd9dbbc, type: 3}
@@ -229,6 +257,8 @@ MonoBehaviour:
   - Type: 14
     Throwable: 1
     Movable: 1
+    TakeSound: 0
+    PutSound: 0
     Icons:
     - {fileID: 21300000, guid: e4e42dc8eb5b6ee428768b411eb9045c, type: 3}
     - {fileID: 21300000, guid: d32b868b30f923f488f303c449ab422f, type: 3}
@@ -243,7 +273,7 @@ MonoBehaviour:
   _combinations:
   - FirstType: 9
     SecondType: 8
-    CombinateSound: 3
+    CombinateSound: 4
   _questionMark: {fileID: 21300000, guid: abb3b55f573e57349b00631515a50614, type: 3}
   _dialogWindow: {fileID: 21300000, guid: d6c5be0a54b99494fa7f4581d9a0c2ed, type: 3}
   _itemPrefab: {fileID: 5818615698071924154, guid: 09bff0b57a355a443b533ea962f15876, type: 3}
