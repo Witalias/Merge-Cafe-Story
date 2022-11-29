@@ -43,7 +43,8 @@ namespace Gameplay
             if (randomCell == null)
                 return;
 
-            randomCell.CreateItem(_items.Dequeue(), transform.position);
+            var nextItem = _items.Dequeue();
+            randomCell.CreateItem(nextItem, transform.position);
 
             if (_items.Count == 0)
                 Hide();
