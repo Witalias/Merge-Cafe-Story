@@ -8,6 +8,13 @@ namespace Enums
         GrandmaAndPresident,
         LetterNumber11OnRun,
         WhatHappenedToMyDaughter,
-        HowFireStarted
+        HowFireStarted,
+        MomsConservationOnThePhone,
+        PenetrationIntoTheOffice,
+        PhotoOfFox,
+        InvisibleInk,
+        FelixsParents,
+        FelixsLove,
+        Childhood
     }
 }

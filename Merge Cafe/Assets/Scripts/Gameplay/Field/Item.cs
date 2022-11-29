@@ -103,10 +103,11 @@ namespace Gameplay.Field
         private void OnMouseEnter()
         {
             if (Stats.Movable)
+            {
                 _animator.SetBool(_zoomAnimatorBool, true);
-
-            if (Stats.Movable)
                 CursorHoveredMovableItem?.Invoke(Stats.Type);
+                Stats.Unlock();
+            }
             else
                 CursorHoveredNotMovableItem?.Invoke(Stats.Type);
         }

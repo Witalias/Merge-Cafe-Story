@@ -92,3 +92,4 @@ MonoBehaviour:
   empty: 1
   itemType: 0
   level: 1
+  _lockColor: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}

@@ -29,8 +29,6 @@ namespace Gameplay.Field
 
         public ItemStorage(ItemStorage other, bool unlocked = true) : this(other.Level, other.Icon, other.Type, other.Throwable, other.Movable, unlocked) { }
 
-        //public void SetType(ItemType type) => Type = type;
-
         public void Unlock() => Unlocked = true;
 
         public void NotNew() => IsNew = false;
