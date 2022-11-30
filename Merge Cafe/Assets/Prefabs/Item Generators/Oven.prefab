@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 177258564464263409, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 75737b951ee76484b9bf34264e3bf2b6, type: 3}
+      objectReference: {fileID: 21300000, guid: 4a0971bbfd844524aaa352ea03960477, type: 3}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _generatedItems.Array.size
       value: 2
@@ -105,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147123, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147124, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _type
