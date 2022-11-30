@@ -153,19 +153,19 @@ MonoBehaviour:
     clickIncreaseSeconds: 2
     initItemsLevel: 1
   - generationTimeInSec: 16
-    clickIncreaseSeconds: 2
+    clickIncreaseSeconds: 2.5
     initItemsLevel: 2
   - generationTimeInSec: 16
-    clickIncreaseSeconds: 2
-    initItemsLevel: 3
-  - generationTimeInSec: 14
     clickIncreaseSeconds: 3
     initItemsLevel: 3
   - generationTimeInSec: 14
-    clickIncreaseSeconds: 3
+    clickIncreaseSeconds: 3.5
+    initItemsLevel: 3
+  - generationTimeInSec: 14
+    clickIncreaseSeconds: 4
     initItemsLevel: 4
   - generationTimeInSec: 14
-    clickIncreaseSeconds: 3
+    clickIncreaseSeconds: 5
     initItemsLevel: 5
 --- !u!95 &177258564609147121
 Animator:
