@@ -2154,7 +2154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e6cd9a1c4d01f4f938ebaec7f52123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sharpness: 1
+  _sharpness: 3
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2170,7 +2170,7 @@ MonoBehaviour:
   topLimit: 5
   bottomLimit: -5
   leftLimit: -5
-  rightLimit: 5
+  rightLimit: 8
 --- !u!1001 &529012069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15658,22 +15658,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 622634320}
     m_Modifications:
-    - target: {fileID: 3752640212211074662, guid: 989778a7f3f15af458ae575db4080171, type: 3}
-      propertyPath: m_fontColor.b
-      value: 0.3301887
-      objectReference: {fileID: 0}
-    - target: {fileID: 3752640212211074662, guid: 989778a7f3f15af458ae575db4080171, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0.16306408
-      objectReference: {fileID: 0}
-    - target: {fileID: 3752640212211074662, guid: 989778a7f3f15af458ae575db4080171, type: 3}
-      propertyPath: m_fontColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3752640212211074662, guid: 989778a7f3f15af458ae575db4080171, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4174758399
-      objectReference: {fileID: 0}
     - target: {fileID: 7096493458587955746, guid: 989778a7f3f15af458ae575db4080171, type: 3}
       propertyPath: m_Name
       value: Message
