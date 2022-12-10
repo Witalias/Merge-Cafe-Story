@@ -32,10 +32,12 @@ namespace Gameplay.Field
         private QuickClickTracking _quickClickTracking;
 
         private bool _isReturning = false;
+        private bool _dragged = false;
 
         public static event Action MergingItemsOfMaxLevelTried;
-        public static event Action<ItemType> CursorHoveredMovableItem;
-        public static event Action<ItemType> CursorHoveredNotMovableItem;
+        public static event Action<ItemType, int> CursorHoveredMovableItem;
+        public static event Action<ItemType, int> CursorHoveredNotMovableItem;
+        public static event Action CursorLeftItem;
         public static event Action CannotBeThrownAway;
         public static event Action WrongLevelForCombinating;
 
@@ -105,15 +107,18 @@ namespace Gameplay.Field
             if (Stats.Movable)
             {
                 _animator.SetBool(_zoomAnimatorBool, true);
-                CursorHoveredMovableItem?.Invoke(Stats.Type);
+                if (!_dragged)
+                    CursorHoveredMovableItem?.Invoke(Stats.Type, Stats.Level);
                 Stats.Unlock();
             }
-            else
-                CursorHoveredNotMovableItem?.Invoke(Stats.Type);
+            else if (!_dragged)
+                CursorHoveredNotMovableItem?.Invoke(Stats.Type, Stats.Level);
         }
 
         private void OnMouseExit()
         {
+            CursorLeftItem?.Invoke();
+
             if (!Stats.Movable)
                 return;
 
@@ -122,6 +127,8 @@ namespace Gameplay.Field
 
         private void OnMouseDrag()
         {
+            _dragged = true;
+
             if (_quickClickTracking.IsChecking || !Stats.Movable)
                 return;
 
@@ -139,6 +146,8 @@ namespace Gameplay.Field
 
         private void OnMouseUp()
         {
+            _dragged = false;
+
             if (!Stats.Movable)
                 return;
 
@@ -237,7 +246,7 @@ namespace Gameplay.Field
                 if (_currentCell == cell)
                     return;
 
-                if (_storage.IsItemMaxLevel(Stats))
+                if (_storage.IsItemMaxLevel(Stats.Type, Stats.Level))
                     MergingItemsOfMaxLevelTried?.Invoke();
                 else
                     Join(cell);

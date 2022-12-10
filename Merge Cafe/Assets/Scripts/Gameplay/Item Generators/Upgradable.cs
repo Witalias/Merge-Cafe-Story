@@ -25,6 +25,8 @@ namespace Gameplay.ItemGenerators
         public ItemType Type { get => _type; }
 
         public static event Action Upgraded;
+        public static event Action<ItemType, int> CursorHoveredGenerator;
+        public static event Action CursorLeftGenerator;
 
         public void Activate()
         {
@@ -62,6 +64,16 @@ namespace Gameplay.ItemGenerators
         private void OnEnable()
         {
             StartCoroutine(CheckMergingItemOnField());
+        }
+
+        private void OnMouseEnter()
+        {
+            CursorHoveredGenerator?.Invoke(Type, Level);
+        }
+
+        private void OnMouseExit()
+        {
+            CursorLeftGenerator?.Invoke();
         }
 
         private void Upgrade()

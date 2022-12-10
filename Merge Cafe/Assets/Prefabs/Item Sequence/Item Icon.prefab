@@ -192,6 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _reward: {fileID: 7452932491146509994}
   _cross: {fileID: 7357664555582727589}
+  _ballsParticlePrefab: {fileID: 7821464981293310730, guid: 82bb4b03e4086c447820b70b651ac60e, type: 3}
 --- !u!61 &4692545828700189897
 BoxCollider2D:
   m_ObjectHideFlags: 0
