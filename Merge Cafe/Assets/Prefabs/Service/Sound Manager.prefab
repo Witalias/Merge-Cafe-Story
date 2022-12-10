@@ -186,4 +186,13 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 64a429606e9d440468b5c3532093f683, type: 3}
   - Type: 10
     Clips:
-    - {fileID: 8300000, guid: 27d2ea471fb613e41a4ef3859a2d9577, type: 3}
+    - {fileID: 8300000, guid: 704a5041ba1d8b946a3dfa54d442f9f7, type: 3}
+    - {fileID: 8300000, guid: 8e43458cb234dc247a211f57a18d9cb5, type: 3}
+    - {fileID: 8300000, guid: 994a96f21e9c2b64587797ad03d0b4fe, type: 3}
+    - {fileID: 8300000, guid: e6d8dfd97fa55c544bdde84a5e883ad0, type: 3}
+    - {fileID: 8300000, guid: 6096e973be3f17a489384e57449c3194, type: 3}
+    - {fileID: 8300000, guid: 241a5fed502fe39429db7d213bd8444b, type: 3}
+    - {fileID: 8300000, guid: 411859d6fdcbf6c4c877f5805240ef83, type: 3}
+    - {fileID: 8300000, guid: 2d1df1ee6c2757b40a87fbab4488f697, type: 3}
+    - {fileID: 8300000, guid: c2912e1a7eaed144ca614b95de944084, type: 3}
+    - {fileID: 8300000, guid: c2912e1a7eaed144ca614b95de944084, type: 3}
