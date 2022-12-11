@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 namespace Gameplay
 {
+    [RequireComponent(typeof(Animation))]
     public class InformationWindow : MonoBehaviour
     {
         [SerializeField] private GameObject _panel;
@@ -20,12 +21,14 @@ namespace Gameplay
         [SerializeField] private Transform _rightScreenPoint;
 
         private Camera _mainCamera;
+        private Animation _animation;
         private readonly List<GameObject> _producedItems = new();
 
         public void ShowItem(string title, int level, string description, string instruction)
         {
+            ClearProducedItemsList();
             Show(title, level, description, instruction);
-            _producedItemsGroup.gameObject.SetActive(false);
+            //_producedItemsGroup.gameObject.SetActive(false);
         }
 
         public void ShowGenerator(string title, int level, string description, Sprite[] producedItemSprites,
@@ -33,7 +36,7 @@ namespace Gameplay
         {
             ClearProducedItemsList();
             Show(title, level, description, instruction);
-            _producedItemsGroup.gameObject.SetActive(true);
+            //_producedItemsGroup.gameObject.SetActive(true);
 
             if (producedItemSprites == null)
                 return;
@@ -50,11 +53,13 @@ namespace Gameplay
         public void Hide()
         {
             _panel.SetActive(false);
+            _animation.Stop();
         }
 
         private void Awake()
         {
             _mainCamera = Camera.main;
+            _animation = GetComponent<Animation>();
         }
 
         private void Show(string title, int level, string description, string instruction)
@@ -70,6 +75,8 @@ namespace Gameplay
 
             // Приходится юзать костыль, иначе Content Size Filter сбивается.
             StartCoroutine(UpdateWindow());
+
+            _animation.Play();
         }
 
         private System.Collections.IEnumerator UpdateWindow()
