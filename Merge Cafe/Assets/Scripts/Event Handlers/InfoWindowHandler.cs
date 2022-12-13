@@ -46,6 +46,11 @@ namespace EventHandlers
             var storage = GameStorage.Instanse;
             var itemDescription = Translation.GetItemDescription(type, level);
             var instruction = "";
+            var maxLevel = storage.IsItemMaxLevel(type, level);
+            Translation.ItemDescription nextDescription = null;
+
+            if (!maxLevel)
+                nextDescription = Translation.GetItemDescription(type, level + 1);
 
             var isGenerator = IsGenerator?.Invoke(type);
             if (isGenerator.GetValueOrDefault())
@@ -65,7 +70,7 @@ namespace EventHandlers
             else if (type == ItemType.Star || type == ItemType.Brilliant)
             {
                 var currencyCount = type == ItemType.Star ? storage.GetStarsRewardByItemLevel(level) : storage.GetBrilliantsRewardByItemlevel(level);
-                if (storage.IsItemMaxLevel(type, level))
+                if (maxLevel)
                     instruction = $"Нажми, чтобы получить {Translation.GetItemTitle(type)} ({currencyCount}).";
                 else
                     instruction = $"Нажми, чтобы получить {Translation.GetItemTitle(type)} " +
@@ -73,7 +78,7 @@ namespace EventHandlers
             }
             else if (type == ItemType.Present)
             {
-                if (storage.IsItemMaxLevel(type, level))
+                if (maxLevel)
                     instruction = "Нажми, чтобы открыть.";
                 else
                     instruction = "Нажми, чтобы открыть, или объедини, чтобы получить более ценный подарок.";
@@ -82,7 +87,7 @@ namespace EventHandlers
                 instruction = "Нажми, чтобы получить награды!";
             else if (type == ItemType.Key)
             {
-                if (storage.IsItemMaxLevel(type, level))
+                if (maxLevel)
                     instruction = $"Перетащи на замок {level}-го уровня, чтобы разблокировать ячейку.";
                 else
                     instruction = $"Перетащи на замок {level}-го уровня, чтобы разблокировать ячейку, " +
@@ -90,15 +95,21 @@ namespace EventHandlers
             }
             else if (type == ItemType.Lock)
                 instruction = $"Перетащи сюда ключ {level}-го уровня, чтобы разблокировать ячейку.";
+            else if (type == ItemType.Box)
+            {
+                if (maxLevel)
+                    instruction = "Нажми, чтобы получить предмет максимального уровня, необходимый для выполнения заказа.";
+                else if (level == 2)
+                    instruction = $"Нажми, чтобы получить случайный предмет, необходимый для выполнения заказа, или объедини, чтобы получить «{nextDescription.Title}».";
+                else if (level == 1)
+                    instruction = $"Объедини, чтобы получить «{nextDescription.Title}».";
+            }
             else
             {
-                if (storage.IsItemMaxLevel(type, level))
+                if (maxLevel)
                     instruction = $"Перетащи на окно заказа, чтобы выполнить его, если он содержит «{itemDescription.Title}».";
                 else
-                {
-                    var nextDescription = Translation.GetItemDescription(type, level + 1);
                     instruction = $"Перетащи на окно заказа, чтобы выполнить его, если он содержит «{itemDescription.Title}», или объедини, чтобы получить «{nextDescription.Title}».";
-                }
             }
 
             _informationWindow.ShowItem(itemDescription.Title, level, itemDescription.Description, instruction);

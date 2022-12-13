@@ -26,7 +26,7 @@ namespace Gameplay.Orders
 
         private int _ordersCount = 1;
         private int _remainsToRareOrder = 1;
-        private readonly Queue<ItemStorage> _rareItemsQueue = new Queue<ItemStorage>();
+        private readonly Queue<ItemStorage> _rareItemsQueue = new();
 
         public void GenerateOrder(int id)
         {
@@ -52,6 +52,24 @@ namespace Gameplay.Orders
             if (_rareItemsQueue.Count > 0)
                 --_remainsToRareOrder;
         }
+
+        public ItemStorage GetRandomOrderItem()
+        {
+            var orderPoints = GetOrderPoints();
+            if (orderPoints.Length == 0)
+                return null;
+            return orderPoints[Random.Range(0, orderPoints.Length)];
+        }
+
+        public ItemStorage GetOrderItemMaxLevel()
+        {
+            var orderPoints = GetOrderPoints();
+            if (orderPoints.Length == 0)
+                return null;
+            return orderPoints.OrderByDescending(point => point.Level).ToArray()[0];
+        }
+
+        private ItemStorage[] GetOrderPoints() => _orders.SelectMany(order => order.OrderPoints).ToArray();
 
         private void GenerateOrdinaryOrder(int id, GameStage.Settings settings)
         {

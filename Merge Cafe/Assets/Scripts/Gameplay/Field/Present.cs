@@ -13,7 +13,7 @@ namespace Gameplay.Field
         private Item _item;
         private QuickClickTracking _quickClickTracking;
 
-        private List<ItemStorage> _content = new List<ItemStorage>();
+        private readonly List<ItemStorage> _content = new();
 
         private void Awake()
         {

@@ -33,6 +33,12 @@ namespace Service
                 [9] = new ItemDescription("Рулет", "Сладкая колбаска."),
                 [10] = new ItemDescription("Торт", "То, из-за чего мы просыпаемся ночью голодными."),
             },
+            [ItemType.Box] = new Dictionary<int, ItemDescription>
+            {
+                [1] = new ItemDescription("Бумага", "Контракт на доставку эм... товара. Какого? Мы и сами не знаем."),
+                [2] = new ItemDescription("Коробка", "А может мне повезёт?"),
+                [3] = new ItemDescription("Подарочная коробка", "Для тебя."),
+            },
             [ItemType.Brilliant] = new Dictionary<int, ItemDescription>
             {
                 [1] = new ItemDescription("Бриллиант", "Что это там блестит?"),

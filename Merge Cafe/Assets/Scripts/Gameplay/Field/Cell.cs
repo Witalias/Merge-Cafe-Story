@@ -64,6 +64,9 @@ namespace Gameplay.Field
                     var brilliantCurrency = Item.gameObject.AddComponent(typeof(ItemCurrency)) as ItemCurrency;
                     brilliantCurrency.SetType(CurrencyType.Brilliant);
                     break;
+                case ItemType.Box:
+                    Item.gameObject.AddComponent(typeof(Box));
+                    break;
             }
         }
 

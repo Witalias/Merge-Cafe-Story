@@ -7,6 +7,7 @@ using Service;
 using Enums;
 using TMPro;
 using Gameplay.Counters;
+using System.Linq;
 
 namespace Gameplay.Orders
 {
@@ -38,6 +39,8 @@ namespace Gameplay.Orders
 
         public static event System.Action<int> OrderDone;
         public static event System.Action<ItemStorage> NoEmptyCellsAndRewardGetted;
+
+        public ItemStorage[] OrderPoints { get => _orders.Where(point => point != null).ToArray(); }
 
         public void SetID(int value) => _id = value;
 

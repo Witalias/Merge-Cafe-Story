@@ -50,7 +50,7 @@ namespace Service
                     (ItemType.Teapot, 1, 7),
                     (ItemType.TrashCan, 1, 9),
                     (ItemType.Present, 1, 10),
-                    (ItemType.Brilliant, 1, 5),
+                    (ItemType.Box, 1, 8),
                     (ItemType.Key, 1, 6),
                     (ItemType.Key, 1, 6),
                     (ItemType.Brilliant, 2, 7),
@@ -69,7 +69,7 @@ namespace Service
                 {
                     (ItemType.Oven, 1, 10),
                     (ItemType.Teapot, 1, 7),
-                    (ItemType.Brilliant, 2, 8),
+                    (ItemType.Box, 1, 8),
                     (ItemType.Brilliant, 3, 10),
                 }, 2),
 
@@ -110,6 +110,7 @@ namespace Service
                     (ItemType.Brilliant, 2, 19),
                     (ItemType.Key, 1, 20),
                     (ItemType.Oven, 1, 24),
+                    (ItemType.Box, 1, 16),
                 }, 2),
 
                 new Settings(new[] // 7
@@ -167,7 +168,7 @@ namespace Service
                 {
                     (ItemType.Teapot, 1, 33),
                     (ItemType.TrashCan, 1, 29),
-                    (ItemType.Brilliant, 2, 22),
+                    (ItemType.Box, 2, 30),
                     (ItemType.Brilliant, 3, 26),
                 }),
 

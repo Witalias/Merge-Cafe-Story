@@ -16,6 +16,7 @@ namespace Enums
         BakeryProductWithCream,
         Oven,
         Toaster,
-        FastFood
+        FastFood,
+        Box
     }
 }

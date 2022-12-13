@@ -65,8 +65,8 @@ MonoBehaviour:
     Level: 1
   - Type: 2
     Level: 1
-  - Type: 4
-    Level: 4
+  - Type: 15
+    Level: 3
   - Type: 2
     Level: 2
   - Type: 9
@@ -270,6 +270,15 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 45ca38eea34ea814a8fe5dc482fb32a9, type: 3}
     - {fileID: 21300000, guid: 01792982d478f9047850ecdaa1daa5a6, type: 3}
     - {fileID: 21300000, guid: ee198af1dc6f23444a2ffec851f3c7db, type: 3}
+  - Type: 15
+    Throwable: 1
+    Movable: 1
+    TakeSound: 0
+    PutSound: 0
+    Icons:
+    - {fileID: 21300000, guid: 7434345e8dd13b445b3f450621311885, type: 3}
+    - {fileID: 21300000, guid: 8ee4f6aba9bf24f41aa8350f70ffebc5, type: 3}
+    - {fileID: 21300000, guid: 92c4200865df5d141a3edb8c5e5b8054, type: 3}
   _combinations:
   - FirstType: 9
     SecondType: 8
