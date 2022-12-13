@@ -24,7 +24,8 @@ namespace Gameplay.Field
         [SerializeField] private float _returningSpeed;
         [SerializeField] private float _followSpeed;
         [SerializeField] private Image _image;
-        [SerializeField] private GameObject _particles;
+        [SerializeField] private GameObject _highlightParticlePrefab;
+        [SerializeField] private GameObject _mergeParticlePrefab;
 
         private Animator _animator;
         private Cell _currentCell;
@@ -82,7 +83,7 @@ namespace Gameplay.Field
             Destroy(gameObject);
         }
 
-        public void SetActiveParticles(bool value) => _particles.SetActive(value);
+        public void SetActiveParticles(bool value) => _highlightParticlePrefab.SetActive(value);
 
         public void PlayHighlight() => _animator.SetTrigger(_highlightAnimatorTrigger);
 
@@ -297,6 +298,7 @@ namespace Gameplay.Field
                 var randomCell = _storage.GetRandomEmptyCell();
                 randomCell.CreateItem(_storage.GetItem(ItemType.Star, 1), transform.position);
             }
+            Instantiate(_mergeParticlePrefab, withCell.transform.position, Quaternion.identity);
         }
 
         private void Combinate(Cell withCell)

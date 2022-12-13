@@ -14,7 +14,6 @@ namespace Gameplay.Field
 
         private GameStorage _storage;
         private Image _image;
-
         private Color _initialColor;
 
         public Item Item { get; private set; } = null;
