@@ -19,6 +19,7 @@ namespace Gameplay.Field
         private const string _zoomAnimatorBool = "Mouse Enter";
         private const string _burnAnimatorTrigger = "Burn";
         private const string _disappearAnimatorTrigger = "Disappear";
+        private const string _highlightAnimatorTrigger = "Highlight";
 
         [SerializeField] private float _returningSpeed;
         [SerializeField] private float _followSpeed;
@@ -82,6 +83,8 @@ namespace Gameplay.Field
         }
 
         public void SetActiveParticles(bool value) => _particles.SetActive(value);
+
+        public void PlayHighlight() => _animator.SetTrigger(_highlightAnimatorTrigger);
 
         private void Awake()
         {
