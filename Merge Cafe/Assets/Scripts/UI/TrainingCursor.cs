@@ -15,7 +15,7 @@ public class TrainingCursor : MonoBehaviour
         cursor.SetActive(true);
         var target = cursor.transform;
         _tween = DOTween.Sequence().Append(target.DOLocalMove(endPoint, 1).From(startPoint))
-            .AppendInterval(speed).Append(target.DOScale(clickScale, speed))
+            .Append(target.DOScale(clickScale, speed))
             .Append(target.DOScale(defaultScale, speed))
             .SetLoops(-1);
     }
@@ -48,5 +48,10 @@ public class TrainingCursor : MonoBehaviour
     {
         cursor.SetActive(false);
         _tween.Kill();
+    }
+
+    private void Start()
+    {
+        ClickAnimation(Vector3.zero, new Vector3(50, 0, 0));
     }
 }
