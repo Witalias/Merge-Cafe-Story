@@ -5,7 +5,7 @@ using UI;
 using Service;
 using Enums;
 using Gameplay.Field;
-using Gameplay;
+
 
 namespace Gameplay.ItemGenerators
 {
@@ -29,6 +29,9 @@ namespace Gameplay.ItemGenerators
         private float _currentGenerationTime = 0f;
         private bool stopped = false;
         private bool forcedStopped = false;
+
+        public ItemType[] GeneratedItems { get => _generatedItems; }
+        public int MaxItemsLevel { get => _statsOnLevels[_upgradable.Level - 1].initItemsLevel; }
 
         public void SetActiveTimer(bool value)
         {

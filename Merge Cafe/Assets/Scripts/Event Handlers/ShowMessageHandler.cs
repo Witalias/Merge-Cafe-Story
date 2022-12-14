@@ -17,6 +17,7 @@ namespace EventHandlers
         private const string _upgradedText = "УЛУЧШЕНО";
         private const string _wrongLevelForCombinatingText = "Неподходящий уровень предмета";
         private const string _notEnougthBrilliantsText = "Не хватает бриллиантов";
+        private const string _noOrderPointsText = "Нет доступных заказов";
 
         private Message _message;
 
@@ -34,6 +35,7 @@ namespace EventHandlers
             TrashCan.TrashCanClicked += ShowDragItemToTrashCan;
             Upgradable.Upgraded += ShowUpgraded;
             PurchaseButton.NotEnougthBrilliants += ShowNotEnougthBrilliants;
+            Box.NoOrderPoints += ShowNoOrderPoints;
         }
 
         private void OnDisable()
@@ -45,6 +47,8 @@ namespace EventHandlers
             TrashCan.TrashCanClicked -= ShowDragItemToTrashCan;
             Upgradable.Upgraded -= ShowUpgraded;
             PurchaseButton.NotEnougthBrilliants -= ShowNotEnougthBrilliants;
+            Box.NoOrderPoints -= ShowNoOrderPoints;
+
         }
 
         private void ShowMaxLevel()
@@ -80,6 +84,11 @@ namespace EventHandlers
         private void ShowNotEnougthBrilliants()
         {
             _message.Show(_notEnougthBrilliantsText);
+        }
+
+        private void ShowNoOrderPoints()
+        {
+            _message.Show(_noOrderPointsText);
         }
     }
 }

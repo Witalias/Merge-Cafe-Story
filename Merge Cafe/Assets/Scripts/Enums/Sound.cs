@@ -4,9 +4,14 @@ namespace Enums
     {
         None,
         Merge,
-        Glass,
+        GlassTake,
+        GlassPut,
         UnlockCell,
         Buy,
-        Magic
+        Magic,
+        KeyTake,
+        KeyPut,
+        Call,
+        NewItem
     }
 }

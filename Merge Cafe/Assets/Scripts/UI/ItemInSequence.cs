@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using Gameplay.Field;
 using Service;
 using Enums;
+using System.Collections;
 
 namespace UI
 {
@@ -14,6 +15,7 @@ namespace UI
 
         [SerializeField] private Image _reward;
         [SerializeField] private GameObject _cross;
+        [SerializeField] private GameObject _ballsParticlePrefab;
 
         private Animator _animator;
         private Image _image;
@@ -22,6 +24,8 @@ namespace UI
         private ItemStorage _rewardStorage;
 
         public bool ContainsPresent { get; private set; } = false;
+
+        public void PlayNewItemParticles() => Instantiate(_ballsParticlePrefab, _reward.transform.position, Quaternion.identity);
 
         public void PayAttentionAnimation()
         {
@@ -35,6 +39,21 @@ namespace UI
             _rewardStorage = _storage.GetRewardForNewItemByLevel(itemLevel);
             _reward.gameObject.SetActive(true);
             _reward.sprite = _rewardStorage.Icon;
+            SoundManager.Instanse.Play(Sound.NewItem, null, itemLevel - 1);
+
+            // Для синхронизации анимации и звука. На более изящное решение пока нет времени.
+            if (itemLevel >= 5 && itemLevel < 7)
+                StartCoroutine(SlowDownAndSpeedUpAnimator(0.5f));
+            else if (itemLevel >= 7)
+                StartCoroutine(SlowDownAndSpeedUpAnimator(1f));
+
+            IEnumerator SlowDownAndSpeedUpAnimator(float delay)
+            {
+                yield return new WaitForSeconds(0.2f);
+                _animator.speed = 0.1f;
+                yield return new WaitForSeconds(delay);
+                _animator.speed = 1f;
+            }
         }
 
         public void SetSprite(Sprite value) => _image.sprite = value;

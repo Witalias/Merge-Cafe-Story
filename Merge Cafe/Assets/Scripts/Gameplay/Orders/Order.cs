@@ -7,6 +7,7 @@ using Service;
 using Enums;
 using TMPro;
 using Gameplay.Counters;
+using System.Linq;
 
 namespace Gameplay.Orders
 {
@@ -38,6 +39,8 @@ namespace Gameplay.Orders
 
         public static event System.Action<int> OrderDone;
         public static event System.Action<ItemStorage> NoEmptyCellsAndRewardGetted;
+
+        public ItemStorage[] OrderPoints { get => _orders.Where(point => point != null).ToArray(); }
 
         public void SetID(int value) => _id = value;
 
@@ -91,23 +94,32 @@ namespace Gameplay.Orders
                     continue;
                 if (_orders[i].EqualTo(item))
                 {
-                    _orderPoints[i].CheckMark.gameObject.SetActive(true);
-                    _orderPoints[i].CheckMark.Play();
-                    _orderPoints[i].Icon.color = _darkenedColor;
-                    _orders[i] = null;
-                    matches = true;
+                    matches = AcceptIncomingItem(i);
                     break;
                 }
             }
             if (IsEmpty())
-            {
-                _actived = false;
-                _currencyAdder.Add(CurrencyType.Star, _stars, _starsSpawnPoint.position);
-                _currencyAdder.Add(CurrencyType.Brilliant, _brilliants, _brilliantsSpawnPoint.position);
-                GetExtraReward();
-                _rewards.SetActive(false);
-                StartCoroutine(Finish(_delayBeforeFinished));
-            }
+                GetRewards();
+        }
+
+        private void GetRewards()
+        {
+            _actived = false;
+            _currencyAdder.Add(CurrencyType.Star, _stars, _starsSpawnPoint.position);
+            _currencyAdder.Add(CurrencyType.Brilliant, _brilliants, _brilliantsSpawnPoint.position);
+            GetExtraReward();
+            _rewards.SetActive(false);
+            StartCoroutine(Finish(_delayBeforeFinished));
+        }
+
+        private bool AcceptIncomingItem(int orderPointIndex)
+        {
+            SoundManager.Instanse.Play(Sound.Call, null);
+            _orderPoints[orderPointIndex].CheckMark.gameObject.SetActive(true);
+            _orderPoints[orderPointIndex].CheckMark.Play();
+            _orderPoints[orderPointIndex].Icon.color = _darkenedColor;
+            _orders[orderPointIndex] = null;
+            return true;
         }
 
         private void Awake()

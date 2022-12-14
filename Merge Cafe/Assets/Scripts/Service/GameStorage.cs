@@ -12,7 +12,7 @@ namespace Service
         public static GameStorage Instanse { get; private set; } = null;
 
         [Header("Settings")]
-        [SerializeField] [Range(1, 5)] private int _gameStage = 1;
+        [SerializeField] private int _gameStage = 1;
         [SerializeField] private int _starsCount = 0;
         [SerializeField] private int _brilliantsCount = 0;
         [SerializeField] private int _generationStarFromLevel = 6;
@@ -85,13 +85,13 @@ namespace Service
             return null;
         }
 
-        public bool IsItemMaxLevel(ItemStorage item)
+        public bool IsItemMaxLevel(ItemType type, int level)
         {
-            if (_generatorStorage.IsGenerator(item.Type))
-                return _generatorStorage.IsMaxLevel(item);
+            if (_generatorStorage.IsGenerator(type))
+                return _generatorStorage.IsMaxLevel(type, level);
 
-            if (_items.ContainsKey(item.Type))
-                return _items[item.Type].Length == item.Level;
+            if (_items.ContainsKey(type))
+                return _items[type].Length == level;
             return true;
         }
 
@@ -261,7 +261,8 @@ namespace Service
         {
             var itemStats = new ItemStorage[item.Icons.Length];
             for (var i = 0; i < itemStats.Length; ++i)
-                itemStats[i] = new ItemStorage(i + 1, item.Icons[i], item.Type, item.Throwable, item.Movable);
+                itemStats[i] = new ItemStorage(i + 1, item.Icons[i], item.Type, item.Throwable, 
+                    item.Movable, false, item.TakeSound, item.PutSound);
             return itemStats;
         }
     }
@@ -272,6 +273,8 @@ namespace Service
         public ItemType Type;
         public bool Throwable = true;
         public bool Movable = true;
+        public Sound TakeSound = default;
+        public Sound PutSound = default;
         public Sprite[] Icons;
     }
 }
