@@ -15,6 +15,7 @@ namespace Service
         private const string BRILLIANTS_COUNT_KEY = "BRILLIANTS_COUNT";
         private const string ITEM_IS_NEW_KEY = "ITEM_IS_NEW_";
         private const string ITEM_UNLOCKED_KEY = "ITEM_UNLOCKED_";
+        private const string GAME_STAGE_KEY = "GAME_STAGE";
 
         [Header("Settings")]
         [SerializeField] private bool _loadData = false;
@@ -82,6 +83,7 @@ namespace Service
         {
             PlayerPrefs.SetInt(STARS_COUNT_KEY, _starsCount);
             PlayerPrefs.SetInt(BRILLIANTS_COUNT_KEY, _brilliantsCount);
+            PlayerPrefs.SetInt(GAME_STAGE_KEY, GameStage);
             foreach (var type in _items.Keys)
             {
                 foreach (var item in _items[type])
@@ -96,6 +98,7 @@ namespace Service
         {
             _starsCount = PlayerPrefs.GetInt(STARS_COUNT_KEY, 0);
             _brilliantsCount = PlayerPrefs.GetInt(BRILLIANTS_COUNT_KEY, 0);
+            GameStage = PlayerPrefs.GetInt(GAME_STAGE_KEY, 1);
             foreach (var type in _items.Keys)
             {
                 foreach (var item in _items[type])

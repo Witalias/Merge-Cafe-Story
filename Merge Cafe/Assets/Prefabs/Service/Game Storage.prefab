@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2737563057547967189}
   - component: {fileID: 2737563057547967186}
   - component: {fileID: 2737563057547967188}
+  - component: {fileID: 815717195}
   m_Layer: 0
   m_Name: Game Storage
   m_TagString: Untagged
@@ -45,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f460b3047373484e831c347e621a2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameStage: 1
+  _loadData: 1
   _starsCount: 0
   _brilliantsCount: 0
   _generationStarFromLevel: 5
@@ -304,3 +305,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _changingCounterDelay: 2.5
   _spawnRadius: 0.5
+--- !u!114 &815717195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2737563057547967187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba34fbed7f54d54f8a7a9a8e71a73f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

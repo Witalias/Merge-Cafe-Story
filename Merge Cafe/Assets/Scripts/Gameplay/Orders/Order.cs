@@ -8,12 +8,19 @@ using Enums;
 using TMPro;
 using Gameplay.Counters;
 using System.Linq;
+using Unity.VisualScripting;
 
 namespace Gameplay.Orders
 {
     [RequireComponent(typeof(Animator))]
-    public class Order : MonoBehaviour
+    public class Order : MonoBehaviour, IStorable
     {
+        private const string ITEM_TYPE_IN_ORDER_POINT_KEY = "ITEM_TYPE_IN_ORDER_POINT";
+        private const string ITEM_LEVEL_IN_ORDER_POINT_KEY = "ITEM_LEVEL_IN_ORDER_POINT";
+        private const string EXTRA_REWARD_TYPE_IN_ORDER_KEY = "EXTRA_REWARD_TYPE_IN_ORDER";
+        private const string EXTRA_REWARD_LEVEL_IN_ORDER_KEY = "EXTRA_REWARD_LEVEL_IN_ORDER";
+        private const string BRILLIANTS_REWARD_IN_ORDER_KEY = "BRILLIANTS_REWARD_IN_ORDER";
+        private const string STARS_REWARD_IN_ORDER_KEY = "STARS_REWARD_IN_ORDER";
         private const string _showAnimatorBool = "Show";
 
         [SerializeField] private OrderPoint[] _orderPoints;
@@ -41,6 +48,65 @@ namespace Gameplay.Orders
         public static event System.Action<ItemStorage> NoEmptyCellsAndRewardGetted;
 
         public ItemStorage[] OrderPoints { get => _orders.Where(point => point != null).ToArray(); }
+
+        public void Save()
+        {
+            var hierarchyIndex = transform.GetSiblingIndex();
+            for (var i = 0; i < _orders.Length; ++i)
+            {
+                if (_orders[i] == null)
+                {
+                    PlayerPrefs.DeleteKey(ITEM_TYPE_IN_ORDER_POINT_KEY + i + hierarchyIndex);
+                    PlayerPrefs.DeleteKey(ITEM_LEVEL_IN_ORDER_POINT_KEY + i + hierarchyIndex);
+                }
+                else
+                {
+                    PlayerPrefs.SetInt(ITEM_TYPE_IN_ORDER_POINT_KEY + i + hierarchyIndex, (int)_orders[i].Type);
+                    PlayerPrefs.SetInt(ITEM_LEVEL_IN_ORDER_POINT_KEY + i + hierarchyIndex, _orders[i].Level);
+                }
+            }
+            if (_extraReward == null)
+            {
+                PlayerPrefs.DeleteKey(EXTRA_REWARD_TYPE_IN_ORDER_KEY + hierarchyIndex);
+                PlayerPrefs.DeleteKey(EXTRA_REWARD_LEVEL_IN_ORDER_KEY + hierarchyIndex);
+            }
+            else
+            {
+                PlayerPrefs.SetInt(EXTRA_REWARD_TYPE_IN_ORDER_KEY + hierarchyIndex, (int)_extraReward.Type);
+                PlayerPrefs.SetInt(EXTRA_REWARD_LEVEL_IN_ORDER_KEY + hierarchyIndex, _extraReward.Level);
+            }
+            PlayerPrefs.SetInt(BRILLIANTS_REWARD_IN_ORDER_KEY + hierarchyIndex, _brilliants);
+            PlayerPrefs.SetInt(STARS_REWARD_IN_ORDER_KEY + hierarchyIndex, _stars);
+        }
+
+        public void Load()
+        {
+            var hierarchyIndex = transform.GetSiblingIndex();
+            var orderPoints = new List<ItemStorage>();
+            for (var i = 0; i < _orders.Length; ++i)
+            {
+                if (PlayerPrefs.HasKey(ITEM_TYPE_IN_ORDER_POINT_KEY + i + hierarchyIndex))
+                {
+                    var itemType = (ItemType)PlayerPrefs.GetInt(ITEM_TYPE_IN_ORDER_POINT_KEY + i + hierarchyIndex);
+                    var level = PlayerPrefs.GetInt(ITEM_LEVEL_IN_ORDER_POINT_KEY + i + hierarchyIndex);
+                    orderPoints.Add(GameStorage.Instanse.GetItem(itemType, level));
+                }
+            }
+            if (orderPoints.Count == 0)
+            {
+                CheckOnEmpty();
+                return;
+            }
+            if (PlayerPrefs.HasKey(EXTRA_REWARD_TYPE_IN_ORDER_KEY + hierarchyIndex))
+            {
+                var itemType = (ItemType)PlayerPrefs.GetInt(EXTRA_REWARD_TYPE_IN_ORDER_KEY + hierarchyIndex);
+                var level = PlayerPrefs.GetInt(EXTRA_REWARD_LEVEL_IN_ORDER_KEY + hierarchyIndex);
+                _extraReward = GameStorage.Instanse.GetItem(itemType, level);
+            }
+            _brilliants = PlayerPrefs.GetInt(BRILLIANTS_REWARD_IN_ORDER_KEY + hierarchyIndex);
+            _stars = PlayerPrefs.GetInt(STARS_REWARD_IN_ORDER_KEY + hierarchyIndex);
+            Generate(orderPoints.ToArray(), _stars, _brilliants, _extraReward);
+        }
 
         public void SetID(int value) => _id = value;
 
@@ -130,6 +196,10 @@ namespace Gameplay.Orders
         private void Start()
         {
             _currencyAdder = GameStorage.Instanse.GetComponent<CurrencyAdder>();
+
+            if (GameStorage.Instanse.LoadData)
+                Load();
+
             started = true;
         }
 
