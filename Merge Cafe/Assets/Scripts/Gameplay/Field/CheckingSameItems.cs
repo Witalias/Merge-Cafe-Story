@@ -1,4 +1,5 @@
 using Enums;
+using Service;
 using System.Collections;
 using UnityEngine;
 
@@ -21,6 +22,8 @@ namespace Gameplay.Field
                 if (!IsItem(i))
                     continue;
                 var firstItem = _cells[i].Item;
+                if (GameStorage.Instanse.IsItemMaxLevel(firstItem.Stats.Type, firstItem.Stats.Level))
+                    continue;
                 for (var j = i + 1; j < _cells.Length; ++j)
                 {
                     if (!IsItem(j))

@@ -12,7 +12,7 @@ namespace Service
         public static GameStorage Instanse { get; private set; } = null;
 
         [Header("Settings")]
-        [SerializeField] private int _gameStage = 1;
+        [SerializeField] private bool _loadData = false;
         [SerializeField] private int _starsCount = 0;
         [SerializeField] private int _brilliantsCount = 0;
         [SerializeField] private int _generationStarFromLevel = 6;
@@ -45,7 +45,9 @@ namespace Service
 
         public static event System.Action NoEmptyCells;
 
-        public int GameStage { get => _gameStage; set => _gameStage = value; }
+        public bool LoadData { get => _loadData; }
+
+        public int GameStage { get; set; } = 1;
 
         public int StarsCount { get => _starsCount; set => _starsCount = value; }
 
@@ -197,7 +199,7 @@ namespace Service
             return false;
         }
 
-        public void IncrementGameStage() => ++_gameStage;
+        public void IncrementGameStage() => ++GameStage;
 
         public void RemoveItemsHighlight()
         {
