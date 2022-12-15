@@ -9,8 +9,10 @@ using System;
 namespace Gameplay.ItemGenerators
 {
     [RequireComponent(typeof(Animator))]
-    public class Upgradable : MonoBehaviour
+    public class Upgradable : MonoBehaviour, IStorable
     {
+        private const string UPGRADABLE_GENERATOR_LEVEL_KEY = "UPGRADABLE_GENERATOR_LEVEL_";
+        private const string UPGRADABLE_GENERATOR_ACTIVATED_KEY = "UPGRADABLE_GENERATOR_ACTIVATED_";
         private const string _burnAnimatorTrigger = "Burn";
 
         [SerializeField] private Image _image;
@@ -28,8 +30,22 @@ namespace Gameplay.ItemGenerators
         public static event Action<ItemType, int> CursorHoveredGenerator;
         public static event Action CursorLeftGenerator;
 
+        public void Save()
+        {
+            PlayerPrefs.SetInt(UPGRADABLE_GENERATOR_LEVEL_KEY + _type, _level);
+            PlayerPrefs.SetInt(UPGRADABLE_GENERATOR_ACTIVATED_KEY + _type, gameObject.activeSelf ? 1 : 0);
+        }
+
+        public void Load()
+        {
+            _level = PlayerPrefs.GetInt(UPGRADABLE_GENERATOR_LEVEL_KEY + _type, 1);
+            if (PlayerPrefs.GetInt(UPGRADABLE_GENERATOR_ACTIVATED_KEY + _type, 0) == 1)
+                Activate();
+        }
+
         public void Activate()
         {
+            SetIcon();
             if (gameObject.activeSelf)
                 return;
 
@@ -82,9 +98,9 @@ namespace Gameplay.ItemGenerators
             GameStorage.Instanse.RemoveItemsHighlight();
             _particles.SetActive(false);
             ++_level;
-            SetIcon();
             SoundManager.Instanse.Play(Sound.UnlockCell, null);
             Upgraded?.Invoke();
+            SetIcon();
         }
 
         private void SetIcon() => _image.sprite = GameStorage.Instanse.GetItemSprite(_type, _level);

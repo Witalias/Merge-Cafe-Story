@@ -3703,6 +3703,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 839318456}
     m_Modifications:
+    - target: {fileID: 4706697974614129786, guid: 6a27e0018bc8b8d46970db5d541e76a5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5549294930172036482, guid: 6a27e0018bc8b8d46970db5d541e76a5, type: 3}
       propertyPath: m_Name
       value: Oven
@@ -4329,6 +4333,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 839318456}
     m_Modifications:
+    - target: {fileID: 1530921672247628217, guid: e40086eb9786ead40b2f9b45e03431a4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1831961945145567296, guid: e40086eb9786ead40b2f9b45e03431a4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4452,6 +4460,7 @@ GameObject:
   - component: {fileID: 839318457}
   - component: {fileID: 839318459}
   - component: {fileID: 839318460}
+  - component: {fileID: 839318461}
   m_Layer: 5
   m_Name: Table
   m_TagString: ItemGeneratorStorage
@@ -4547,6 +4556,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77a37c91bbf35da48b8fd83b2d9d200f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &839318461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839318455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba34fbed7f54d54f8a7a9a8e71a73f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &842246655

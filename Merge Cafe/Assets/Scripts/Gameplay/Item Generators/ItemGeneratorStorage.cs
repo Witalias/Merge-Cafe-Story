@@ -7,11 +7,23 @@ using System.Collections.Generic;
 
 namespace Gameplay.ItemGenerators
 {
-    public class ItemGeneratorStorage : MonoBehaviour
+    public class ItemGeneratorStorage : MonoBehaviour, IStorable
     {
         [SerializeField] private Upgradable[] _upgradables;
 
         private ItemGenerator[] _generators;
+
+        public void Save()
+        {
+            foreach (var upgradable in _upgradables)
+                upgradable.Save();
+        }
+
+        public void Load()
+        {
+            foreach (var upgradable in _upgradables)
+                upgradable.Load();
+        }
 
         public Sprite[] GetProducedItemSprites(ItemType type)
         {
@@ -86,6 +98,12 @@ namespace Gameplay.ItemGenerators
                 .Where(upgradable => upgradable.GetComponent<ItemGenerator>() != null)
                 .Select(upgradable => upgradable.GetComponent<ItemGenerator>())
                 .ToArray();
+        }
+
+        private void Start()
+        {
+            if (GameStorage.Instanse.LoadData)
+                Load();
         }
 
         private Upgradable[] GetUpgradables(ItemType type)
