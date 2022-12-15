@@ -69,6 +69,7 @@ namespace Gameplay.Counters
                 (ItemType)PlayerPrefs.GetInt(CURRENT_STAR_REWARD_TYPE_KEY),
                 PlayerPrefs.GetInt(CURRENT_STAR_REWARD_LEVEL_KEY, 1));
             _needStarsToNextReward = PlayerPrefs.GetInt(NEED_STARS_TO_NEXT_REWARD_KEY, 1);
+            SetNextRewardSprite(_currentReward);
         }
 
         public void AddStars(int value)
@@ -81,13 +82,10 @@ namespace Gameplay.Counters
         {
             _storage = GameStorage.Instanse;
 
-            if (_storage.LoadData)
+            if (_storage.LoadData && PlayerPrefs.HasKey(STAR_REWARD_COUNT_KEY))
                 Load();
-
-            if (_rewards == null)
-                SetRewardsByGameStage();
             else
-                SetNextRewardSprite(_currentReward);
+                SetRewardsByGameStage();
 
             UpdateValueText();
         }

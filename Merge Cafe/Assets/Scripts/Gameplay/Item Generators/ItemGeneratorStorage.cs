@@ -9,6 +9,8 @@ namespace Gameplay.ItemGenerators
 {
     public class ItemGeneratorStorage : MonoBehaviour, IStorable
     {
+        private const string LAUNCHED_FIRST_TIME_KEY = "LAUNCHED_FIRST_TIME";
+
         [SerializeField] private Upgradable[] _upgradables;
 
         private ItemGenerator[] _generators;
@@ -102,8 +104,9 @@ namespace Gameplay.ItemGenerators
 
         private void Start()
         {
-            if (GameStorage.Instanse.LoadData)
+            if (GameStorage.Instanse.LoadData && PlayerPrefs.HasKey(LAUNCHED_FIRST_TIME_KEY))
                 Load();
+            PlayerPrefs.SetInt(LAUNCHED_FIRST_TIME_KEY, 1);
         }
 
         private Upgradable[] GetUpgradables(ItemType type)
