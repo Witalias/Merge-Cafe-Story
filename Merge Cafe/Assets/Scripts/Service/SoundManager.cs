@@ -77,8 +77,6 @@ namespace Service
             else
                 Destroy(gameObject);
 
-            DontDestroyOnLoad(gameObject);
-
             _audioSource = GetComponent<AudioSource>();
 
             foreach (var clip in _clips)

@@ -7,9 +7,12 @@ using System.Linq;
 
 namespace Service
 {
-    public class GameStorage : MonoBehaviour
+    public class GameStorage : MonoBehaviour, IStorable
     {
         public static GameStorage Instanse { get; private set; } = null;
+
+        private const string STARS_COUNT_KEY = "STARS_COUNT";
+        private const string BRILLIANTS_COUNT_KEY = "BRILLIANTS_COUNT";
 
         [Header("Settings")]
         [SerializeField] private bool _loadData = false;
@@ -72,6 +75,18 @@ namespace Service
         public Sprite DialogWindow { get => _dialogWindow; }
 
         public bool OrdersCountMustBeUpdated { get => System.Array.Exists(_stagesForOrderCounts, element => element == GameStage); }
+
+        public void Save()
+        {
+            PlayerPrefs.SetInt(STARS_COUNT_KEY, _starsCount);
+            PlayerPrefs.SetInt(BRILLIANTS_COUNT_KEY, _brilliantsCount);
+        }
+
+        public void Load()
+        {
+            _starsCount = PlayerPrefs.GetInt(STARS_COUNT_KEY, 0);
+            _brilliantsCount = PlayerPrefs.GetInt(BRILLIANTS_COUNT_KEY, 0);
+        }
 
         public ItemStorage GetNextItemByAnotherItem(ItemStorage item)
         {
@@ -219,7 +234,8 @@ namespace Service
             else
                 Destroy(gameObject);
 
-            DontDestroyOnLoad(gameObject);
+            if (_loadData)
+                Load();
 
             ItemsParent = GetObjectByTag(Tags.ItemsParent).transform;
             cells = GetObjectByTag(Tags.CellsParent).GetComponentsInChildren<Cell>();
