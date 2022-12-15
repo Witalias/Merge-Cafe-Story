@@ -13,6 +13,8 @@ namespace Service
 
         private const string STARS_COUNT_KEY = "STARS_COUNT";
         private const string BRILLIANTS_COUNT_KEY = "BRILLIANTS_COUNT";
+        private const string ITEM_IS_NEW_KEY = "ITEM_IS_NEW_";
+        private const string ITEM_UNLOCKED_KEY = "ITEM_UNLOCKED_";
 
         [Header("Settings")]
         [SerializeField] private bool _loadData = false;
@@ -80,12 +82,30 @@ namespace Service
         {
             PlayerPrefs.SetInt(STARS_COUNT_KEY, _starsCount);
             PlayerPrefs.SetInt(BRILLIANTS_COUNT_KEY, _brilliantsCount);
+            foreach (var type in _items.Keys)
+            {
+                foreach (var item in _items[type])
+                {
+                    PlayerPrefs.SetInt(ITEM_UNLOCKED_KEY + type + item.Level, item.Unlocked ? 1 : 0);
+                    PlayerPrefs.SetInt(ITEM_IS_NEW_KEY + type + item.Level, item.IsNew ? 1 : 0);
+                }
+            }
         }
 
         public void Load()
         {
             _starsCount = PlayerPrefs.GetInt(STARS_COUNT_KEY, 0);
             _brilliantsCount = PlayerPrefs.GetInt(BRILLIANTS_COUNT_KEY, 0);
+            foreach (var type in _items.Keys)
+            {
+                foreach (var item in _items[type])
+                {
+                    if (PlayerPrefs.GetInt(ITEM_UNLOCKED_KEY + type + item.Level, 0) == 1)
+                        item.Unlock();
+                    if (PlayerPrefs.GetInt(ITEM_IS_NEW_KEY + type + item.Level, 1) == 0)
+                        item.NotNew();
+                }
+            }
         }
 
         public ItemStorage GetNextItemByAnotherItem(ItemStorage item)
@@ -234,15 +254,18 @@ namespace Service
             else
                 Destroy(gameObject);
 
-            if (_loadData)
-                Load();
-
             ItemsParent = GetObjectByTag(Tags.ItemsParent).transform;
             cells = GetObjectByTag(Tags.CellsParent).GetComponentsInChildren<Cell>();
             _generatorStorage = GetObjectByTag(Tags.ItemGeneratorStorage).GetComponent<ItemGeneratorStorage>();
 
             CreateItemsDictionary();
             CreateItemSpritesDictionary();
+        }
+
+        private void Start()
+        {
+            if (_loadData)
+                Load();
         }
 
         private bool ExistsCombination(ItemCombinations combination, ItemType first, ItemType second)
