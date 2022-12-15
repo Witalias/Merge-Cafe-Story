@@ -84,7 +84,7 @@ namespace Gameplay.Counters
             if (_storage.LoadData)
                 Load();
 
-            if (_rewards == null || _rewards.Count == 0)
+            if (_rewards == null)
                 SetRewardsByGameStage();
             else
                 SetNextRewardSprite(_currentReward);
