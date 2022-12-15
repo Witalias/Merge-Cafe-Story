@@ -2,6 +2,7 @@ using UnityEngine;
 using Enums;
 using Service;
 using UnityEngine.UI;
+using EventHandlers;
 
 namespace Gameplay.Field
 {
@@ -80,6 +81,7 @@ namespace Gameplay.Field
                 case ItemType.Present:
                 case ItemType.OpenPresent:
                     Item.gameObject.AddComponent(typeof(Present));
+                    Item.gameObject.AddComponent(typeof(SaveHandler));
                     break;
                 case ItemType.Star:
                     var starCurrency = Item.gameObject.AddComponent(typeof(ItemCurrency)) as ItemCurrency;

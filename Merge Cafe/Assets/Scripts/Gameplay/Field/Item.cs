@@ -45,6 +45,8 @@ namespace Gameplay.Field
 
         public ItemStorage Stats { get; private set; }
 
+        public Cell CurrentCell { get => _currentCell; }
+
         public void Initialize(ItemStorage stats)
         {
             _image.sprite = stats.Icon;
