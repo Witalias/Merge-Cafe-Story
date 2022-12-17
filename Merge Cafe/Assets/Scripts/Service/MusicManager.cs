@@ -6,24 +6,34 @@ using Enums;
 namespace Service
 {
     [RequireComponent(typeof(AudioSource))]
-    public class MusicManager : MonoBehaviour
+    public class MusicManager : MonoBehaviour, IStorable
     {
         public static MusicManager Instanse { get; private set; }
+
+        private const string VOLUME_MUSIC_KEY = "VOLUME_MUSIC";
 
         [SerializeField] private TypedMusic[] _music;
 
         private AudioSource _audioSource;
-
-        private Dictionary<Music, AudioClip[]> _musicDictionary = new Dictionary<Music, AudioClip[]>();
+        private readonly Dictionary<Music, AudioClip[]> _musicDictionary = new();
         private Music _currentMusic;
         private int _currentIndex = 0;
         private Coroutine _playMusicCoroutine;
+
+        public void Save()
+        {
+            PlayerPrefs.SetFloat(VOLUME_MUSIC_KEY, _audioSource.volume);
+        }
+
+        public void Load()
+        {
+            _audioSource.volume = PlayerPrefs.GetFloat(VOLUME_MUSIC_KEY, _audioSource.volume);
+        }
 
         public void Play(Music music)
         {
             _currentMusic = music;
             Stop();
-            //_currentIndex = Random.Range(0, _musics[music].Length);
             _currentIndex = 0;
             PlayMusic(_currentIndex);
         }
@@ -48,6 +58,12 @@ namespace Service
                 _musicDictionary.Add(music.Type, music.Clips);
 
             Play(Music.Game);
+        }
+
+        private void Start()
+        {
+            if (GameStorage.Instanse.LoadData)
+                Load();
         }
 
         private void OnEnable()
