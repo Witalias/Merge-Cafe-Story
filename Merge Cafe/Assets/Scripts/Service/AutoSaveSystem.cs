@@ -1,3 +1,4 @@
+using EventHandlers;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -8,24 +9,39 @@ namespace Service
     {
         [SerializeField] private float _saveInterval;
 
+        //private SaveHandler[] _saveHandlers;
+
         public static Action Saved;
+
+        public void Save()
+        {
+            Saved?.Invoke();
+        }
 
         private void Start()
         {
-            StartCoroutine(Save());
+            //_saveHandlers = GameObject.FindObjectsOfType<SaveHandler>();
+            StartCoroutine(SaveWithDelay());
         }
 
         private void OnApplicationQuit()
         {
-            Saved?.Invoke();
+            Save();
         }
 
-        private IEnumerator Save()
+        private IEnumerator SaveWithDelay()
         {
             yield return new WaitForSeconds(0.1f);
-            Saved?.Invoke();
+            Save();
             yield return new WaitForSeconds(_saveInterval);
-            StartCoroutine(Save());
+            StartCoroutine(SaveWithDelay());
         }
+
+        //private void Save()
+        //{
+        //    //var _saveHandlers = GameObject.FindObjectsOfType<SaveHandler>();
+        //    foreach (var handler in _saveHandlers)
+        //        handler.Save();
+        //}
     }
 }

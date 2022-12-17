@@ -8,6 +8,8 @@ namespace EventHandlers
     {
         private IStorable _storable;
 
+        public void Save() => _storable.Save();
+
         private void Awake()
         {
             _storable = GetComponent<IStorable>();
@@ -15,12 +17,12 @@ namespace EventHandlers
 
         private void OnEnable()
         {
-            AutoSaveSystem.Saved += _storable.Save;
+            AutoSaveSystem.Saved += Save;
         }
 
         private void OnDisable()
         {
-            AutoSaveSystem.Saved -= _storable.Save;
+            AutoSaveSystem.Saved -= Save;
         }
     }
 }
