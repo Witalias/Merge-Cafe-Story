@@ -7,11 +7,25 @@ using System.Collections.Generic;
 
 namespace Gameplay.ItemGenerators
 {
-    public class ItemGeneratorStorage : MonoBehaviour
+    public class ItemGeneratorStorage : MonoBehaviour, IStorable
     {
+        private const string LAUNCHED_FIRST_TIME_KEY = "LAUNCHED_FIRST_TIME";
+
         [SerializeField] private Upgradable[] _upgradables;
 
         private ItemGenerator[] _generators;
+
+        public void Save()
+        {
+            foreach (var upgradable in _upgradables)
+                upgradable.Save();
+        }
+
+        public void Load()
+        {
+            foreach (var upgradable in _upgradables)
+                upgradable.Load();
+        }
 
         public Sprite[] GetProducedItemSprites(ItemType type)
         {
@@ -86,6 +100,13 @@ namespace Gameplay.ItemGenerators
                 .Where(upgradable => upgradable.GetComponent<ItemGenerator>() != null)
                 .Select(upgradable => upgradable.GetComponent<ItemGenerator>())
                 .ToArray();
+        }
+
+        private void Start()
+        {
+            if (GameStorage.Instanse.LoadData && PlayerPrefs.HasKey(LAUNCHED_FIRST_TIME_KEY))
+                Load();
+            PlayerPrefs.SetInt(LAUNCHED_FIRST_TIME_KEY, 1);
         }
 
         private Upgradable[] GetUpgradables(ItemType type)

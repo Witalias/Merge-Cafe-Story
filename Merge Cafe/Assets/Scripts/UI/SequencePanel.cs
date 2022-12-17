@@ -40,11 +40,10 @@ namespace UI
                 _icons[i].gameObject.SetActive(true);
                 _icons[i].SetSprite(item.Unlocked ? item.Icon : _storage.QuestionMark);
 
-                if (item.IsNew && item.Unlocked)
+                if (item.IsNew && item.Unlocked && !_icons[i].ContainsPresent)
                 {
-                    item.NotNew();
                     _icons[i].PayAttentionAnimation();
-                    _icons[i].ShowReward(i + 1);
+                    _icons[i].ShowReward(item);
                     _busy = true;
                 }
             }

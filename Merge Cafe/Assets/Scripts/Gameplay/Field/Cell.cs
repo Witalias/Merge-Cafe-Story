@@ -2,11 +2,16 @@ using UnityEngine;
 using Enums;
 using Service;
 using UnityEngine.UI;
+using EventHandlers;
 
 namespace Gameplay.Field
 {
-    public class Cell : MonoBehaviour
+    public class Cell : MonoBehaviour, IStorable
     {
+        private const string STORABLE_ITEM_TYPE_KEY = "STORABLE_ITEM_TYPE";
+        private const string STORABLE_ITEM_LEVEL_KEY = "STORABLE_ITEM_LEVEL";
+        private const string CELL_EMPTY_KEY = "CELL_EMPTY_LEVEL";
+
         [SerializeField] private bool empty = true;
         [SerializeField] private ItemType itemType;
         [SerializeField] private int level;
@@ -19,6 +24,27 @@ namespace Gameplay.Field
         public Item Item { get; private set; } = null;
 
         public bool Empty { get => Item == null; }
+
+        public void Save()
+        {
+            PlayerPrefs.SetInt(CELL_EMPTY_KEY + transform.GetSiblingIndex(), Empty ? 1 : 0);
+            if (!Empty)
+            {
+                PlayerPrefs.SetInt(STORABLE_ITEM_TYPE_KEY + transform.GetSiblingIndex(), (int)Item.Stats.Type);
+                PlayerPrefs.SetInt(STORABLE_ITEM_LEVEL_KEY + transform.GetSiblingIndex(), Item.Stats.Level);
+            }
+        }
+
+        public void Load()
+        {
+            var empty = PlayerPrefs.GetInt(CELL_EMPTY_KEY + transform.GetSiblingIndex(), 1) == 1;
+            if (!empty)
+            {
+                var type = (ItemType)PlayerPrefs.GetInt(STORABLE_ITEM_TYPE_KEY + transform.GetSiblingIndex());
+                var level = PlayerPrefs.GetInt(STORABLE_ITEM_LEVEL_KEY + transform.GetSiblingIndex(), 1);
+                CreateItem(new ItemStorage(_storage.GetItem(type, level)));
+            }
+        }
 
         public void Clear()
         {
@@ -55,6 +81,7 @@ namespace Gameplay.Field
                 case ItemType.Present:
                 case ItemType.OpenPresent:
                     Item.gameObject.AddComponent(typeof(Present));
+                    Item.gameObject.AddComponent(typeof(SaveHandler));
                     break;
                 case ItemType.Star:
                     var starCurrency = Item.gameObject.AddComponent(typeof(ItemCurrency)) as ItemCurrency;
@@ -74,13 +101,18 @@ namespace Gameplay.Field
         {
             _image = GetComponent<Image>();
             _initialColor = _image.color;
+
+            //PlayerPrefs.DeleteAll();
         }
 
         private void Start()
         {
             _storage = GameStorage.Instanse;
 
-            if (!empty)
+            if (_storage.LoadData)
+                Load();
+
+            if (!empty && !PlayerPrefs.HasKey(CELL_EMPTY_KEY + transform.GetSiblingIndex()))
             {
                 var maxLevel = _storage.GetItemMaxLevel(itemType);
                 level = Mathf.Clamp(level, 1, maxLevel);

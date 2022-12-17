@@ -25,7 +25,7 @@ namespace Gameplay.ItemGenerators
         private GameStorage _storage;
         private Coroutine _addBarValueCoroutine;
 
-        private List<ItemType> _currentGeneratedItems = new List<ItemType>();
+        private readonly List<ItemType> _currentGeneratedItems = new();
         private float _currentGenerationTime = 0f;
         private bool stopped = false;
         private bool forcedStopped = false;
@@ -62,7 +62,6 @@ namespace Gameplay.ItemGenerators
         private void Start()
         {
             UpdateProducedItems();
-            //_addBarValueCoroutine = StartCoroutine(AddBarValue());
         }
 
         private void OnEnable()
