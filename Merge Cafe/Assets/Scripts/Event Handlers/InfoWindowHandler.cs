@@ -11,6 +11,8 @@ namespace EventHandlers
     [RequireComponent(typeof(InformationWindow))]
     public class InfoWindowHandler : MonoBehaviour
     {
+        private const string _highlightColor = "white";
+
         private InformationWindow _informationWindow;
 
         public static event Func<ItemType, bool> IsGenerator;
@@ -57,15 +59,15 @@ namespace EventHandlers
             {
                 var isGeneratorMaxLevel = IsGeneratorMaxLevel?.Invoke(type, level);
                 if (isGeneratorMaxLevel.GetValueOrDefault())
-                    instruction = $"Перетащи на генератор «{itemDescription.Title}», чтобы улучшить его.\n" +
+                    instruction = $"Перетащи на генератор <color={_highlightColor}>«{itemDescription.Title}»</color>, чтобы улучшить его.\n" +
                         $"Этот предмет нельзя выбросить.";
                 else
                 {
                     var currentLevel = GetGeneratorLevel?.Invoke(type);
                     var titleNextLevel = Translation.GetItemDescription(type, level + 1).Title;
                     var titleNeedLevel = Translation.GetItemDescription(type, currentLevel.GetValueOrDefault()).Title;
-                    instruction = $"Объедини, чтобы получить «{titleNextLevel}» {level + 1}-го уровня.\n" +
-                        $"Получи «{titleNeedLevel}» {currentLevel.GetValueOrDefault()}-го уровня, чтобы улучшить генератор «{titleNeedLevel}».\n" +
+                    instruction = $"Объедини, чтобы получить <color={_highlightColor}>«{titleNextLevel}» {level + 1}-го уровня</color>.\n" +
+                        $"Получи <color={_highlightColor}>«{titleNeedLevel}» {currentLevel.GetValueOrDefault()}-го уровня</color>, чтобы улучшить генератор <color={_highlightColor}>«{titleNeedLevel}»</color>.\n" +
                         $"Этот предмет нельзя выбросить.";
                 }
             }

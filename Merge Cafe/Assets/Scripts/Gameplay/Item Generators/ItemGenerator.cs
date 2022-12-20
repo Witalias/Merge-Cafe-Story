@@ -40,6 +40,7 @@ namespace Gameplay.ItemGenerators
         {
             _remainItemsToSlowingDown += onItemCount;
             _energyIcon.SetActive(true);
+            SoundManager.Instanse.Play(Sound.SpeedUp, null);
         }
 
         public void SetActiveTimer(bool value)
