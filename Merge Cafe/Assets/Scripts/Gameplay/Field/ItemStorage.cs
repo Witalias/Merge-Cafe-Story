@@ -16,7 +16,7 @@ namespace Gameplay.Field
         public Sound TakeSound { get; }
         public Sound PutSound { get; }
 
-        public ItemStorage(int level, Sprite icon, ItemType type, bool throwable, bool movable, 
+        public ItemStorage(int level, Sprite icon, ItemType type, bool throwable, bool movable,
             bool unlocked = false, Sound takeSound = default, Sound putSound = default)
         {
             Icon = icon;

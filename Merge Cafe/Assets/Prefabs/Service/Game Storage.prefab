@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2737563057547967189}
   - component: {fileID: 2737563057547967186}
   - component: {fileID: 2737563057547967188}
+  - component: {fileID: 815717195}
   m_Layer: 0
   m_Name: Game Storage
   m_TagString: Untagged
@@ -45,27 +46,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f460b3047373484e831c347e621a2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameStage: 1
+  _loadData: 1
   _starsCount: 0
   _brilliantsCount: 0
   _generationStarFromLevel: 5
   _starsByItemLevels: 0100000002000000030000000500000007000000090000000c0000000f0000001200000016000000
   _starsRewardForLevels: 0100000003000000070000000f00000020000000
   _brilliantsRewardForLevels: 050000000f000000280000005f000000d2000000
+  _energyRewardForLevels: 0100000003000000070000000f00000020000000
   _rewardsForNewItems:
   - Type: 4
     Level: 1
-  - Type: 4
+  - Type: 16
     Level: 1
   - Type: 4
     Level: 2
-  - Type: 4
+  - Type: 16
     Level: 2
   - Type: 9
     Level: 1
   - Type: 2
     Level: 1
-  - Type: 4
+  - Type: 15
     Level: 3
   - Type: 2
     Level: 2
@@ -270,6 +272,26 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 45ca38eea34ea814a8fe5dc482fb32a9, type: 3}
     - {fileID: 21300000, guid: 01792982d478f9047850ecdaa1daa5a6, type: 3}
     - {fileID: 21300000, guid: ee198af1dc6f23444a2ffec851f3c7db, type: 3}
+  - Type: 15
+    Throwable: 1
+    Movable: 1
+    TakeSound: 0
+    PutSound: 0
+    Icons:
+    - {fileID: 21300000, guid: 7434345e8dd13b445b3f450621311885, type: 3}
+    - {fileID: 21300000, guid: 8ee4f6aba9bf24f41aa8350f70ffebc5, type: 3}
+    - {fileID: 21300000, guid: 92c4200865df5d141a3edb8c5e5b8054, type: 3}
+  - Type: 16
+    Throwable: 1
+    Movable: 1
+    TakeSound: 0
+    PutSound: 0
+    Icons:
+    - {fileID: 21300000, guid: 5dee55af2878df24d8caacaa5bbd4cc4, type: 3}
+    - {fileID: 21300000, guid: 03d416661b98f2646a7cba978dd51a52, type: 3}
+    - {fileID: 21300000, guid: 8d6a524005e41e7459fe9576b867623c, type: 3}
+    - {fileID: 21300000, guid: 8515d9f14901cf44a91fc5f5f7c74e76, type: 3}
+    - {fileID: 21300000, guid: 5aed9bb7c1eb4c04998938951fd89fe2, type: 3}
   _combinations:
   - FirstType: 9
     SecondType: 8
@@ -295,3 +317,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _changingCounterDelay: 2.5
   _spawnRadius: 0.5
+--- !u!114 &815717195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2737563057547967187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba34fbed7f54d54f8a7a9a8e71a73f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

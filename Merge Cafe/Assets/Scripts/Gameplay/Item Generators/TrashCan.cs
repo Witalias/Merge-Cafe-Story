@@ -30,6 +30,7 @@ namespace Gameplay.ItemGenerators
             {
                 var brilliantsCount = (int)(itemLevel * _brilliantsMultiplierForLevels[_upgradable.Level - _initialLevel - 1]);
                 _currencyAdder.Add(CurrencyType.Brilliant, brilliantsCount, transform.position);
+                SoundManager.Instanse.Play(Sound.Sell, null);
             }
         }
 

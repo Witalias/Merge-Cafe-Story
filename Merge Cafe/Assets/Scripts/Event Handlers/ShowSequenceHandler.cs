@@ -31,13 +31,18 @@ namespace EventHandlers
             OrderPoint.CursorHoveredItemInOrder -= Show;
         }
 
+        private void Show(ItemType type, int level)
+        {
+            Show(type);
+        }
+
         private void Show(ItemType type)
         {
             _sequencePanel.Hide();
             _sequencePanel.Show(type);
         }
 
-        private void ShowCombination(ItemType type)
+        private void ShowCombination(ItemType type, int level)
         {
             _sequencePanel.Hide();
             _sequencePanel.ShowCombination(GameStorage.Instanse.GetSecondItemTypeInCombination(type), type);

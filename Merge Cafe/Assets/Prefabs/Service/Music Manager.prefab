@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4913752384453248069}
   - component: {fileID: 4913752384453248068}
   - component: {fileID: 4913752384453248067}
+  - component: {fileID: 8278951589154435814}
   m_Layer: 0
   m_Name: Music Manager
   m_TagString: Untagged
@@ -155,3 +156,15 @@ MonoBehaviour:
     - {fileID: 8300000, guid: a63e234379a8207468f0c2aa29bef778, type: 3}
     - {fileID: 8300000, guid: 0cecb494c68e3cd4daff46717873cad7, type: 3}
     - {fileID: 8300000, guid: 93406782c90ea75419c189a661356dc5, type: 3}
+--- !u!114 &8278951589154435814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4913752384453248066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba34fbed7f54d54f8a7a9a8e71a73f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

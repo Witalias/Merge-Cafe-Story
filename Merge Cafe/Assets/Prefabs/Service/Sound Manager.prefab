@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7508833704888768030}
   - component: {fileID: 7508833704888768025}
   - component: {fileID: 7508833704888768024}
+  - component: {fileID: 347023153144526518}
   m_Layer: 0
   m_Name: Sound Manager
   m_TagString: Untagged
@@ -186,4 +187,31 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 64a429606e9d440468b5c3532093f683, type: 3}
   - Type: 10
     Clips:
-    - {fileID: 8300000, guid: 27d2ea471fb613e41a4ef3859a2d9577, type: 3}
+    - {fileID: 8300000, guid: 704a5041ba1d8b946a3dfa54d442f9f7, type: 3}
+    - {fileID: 8300000, guid: 8e43458cb234dc247a211f57a18d9cb5, type: 3}
+    - {fileID: 8300000, guid: 994a96f21e9c2b64587797ad03d0b4fe, type: 3}
+    - {fileID: 8300000, guid: e6d8dfd97fa55c544bdde84a5e883ad0, type: 3}
+    - {fileID: 8300000, guid: 6096e973be3f17a489384e57449c3194, type: 3}
+    - {fileID: 8300000, guid: 241a5fed502fe39429db7d213bd8444b, type: 3}
+    - {fileID: 8300000, guid: 411859d6fdcbf6c4c877f5805240ef83, type: 3}
+    - {fileID: 8300000, guid: 2d1df1ee6c2757b40a87fbab4488f697, type: 3}
+    - {fileID: 8300000, guid: c2912e1a7eaed144ca614b95de944084, type: 3}
+    - {fileID: 8300000, guid: c2912e1a7eaed144ca614b95de944084, type: 3}
+  - Type: 11
+    Clips:
+    - {fileID: 8300000, guid: 0e16e62216a49774781a3003cb2677d5, type: 3}
+  - Type: 12
+    Clips:
+    - {fileID: 8300000, guid: 660ae320e820cb44bbb05a4bb6dc4b9e, type: 3}
+--- !u!114 &347023153144526518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7508833704888768027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba34fbed7f54d54f8a7a9a8e71a73f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

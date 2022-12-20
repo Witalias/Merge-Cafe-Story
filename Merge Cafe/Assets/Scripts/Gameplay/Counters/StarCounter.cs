@@ -9,8 +9,15 @@ using Gameplay.Field;
 
 namespace Gameplay.Counters
 {
-    public class StarCounter : MonoBehaviour
+    public class StarCounter : MonoBehaviour, IStorable
     {
+        private const string CURRENT_STAR_REWARD_TYPE_KEY = "CURRENT_STAR_REWARD_TYPE";
+        private const string CURRENT_STAR_REWARD_LEVEL_KEY = "CURRENT_STAR_REWARD_LEVEL";
+        private const string STAR_REWARD_TYPE_KEY = "STAR_REWARD_TYPE";
+        private const string STAR_REWARD_LEVEL_KEY = "STAR_REWARD_LEVEL";
+        private const string STAR_REWARD_REQUIRED_STARS_KEY = "STAR_REWARD_REQUIRED_STARS";
+        private const string STAR_REWARD_COUNT_KEY = "STAR_REWARD_COUNT";
+        private const string NEED_STARS_TO_NEXT_REWARD_KEY = "NEED_STARS_TO_NEXT_REWARD";
         private const int _cheatStarsCount = 20;
 
         [SerializeField] private UIBar _bar;
@@ -20,10 +27,10 @@ namespace Gameplay.Counters
 
         private GameStorage _storage;
 
-        private List<(ItemType Type, int Level, int RequiredStars)> _targets;
-        private (ItemType Type, int Level) _currentTarget;
+        private List<(ItemType Type, int Level, int RequiredStars)> _rewards;
+        private (ItemType Type, int Level) _currentReward;
         private float _currentBarValue = 0f;
-        private int _needStarsToNextPresent = 10;
+        private int _needStarsToNextReward = 10;
 
         public static event System.Action<ItemStorage> NoEmptyCellsAndRewardGetted;
         public static event System.Action UpdateOrderCount;
@@ -31,6 +38,39 @@ namespace Gameplay.Counters
         public static event System.Action<ItemType> ActivateGenerator;
         public static event System.Func<ItemType, bool> IsGenerator;
         public static event System.Func<ItemType, bool> GeneratorExistsInGame;
+
+        public void Save()
+        {
+            for (var i = 0; i < _rewards.Count; ++i)
+            {
+                PlayerPrefs.SetInt(STAR_REWARD_TYPE_KEY + i.ToString(), (int)_rewards[i].Type);
+                PlayerPrefs.SetInt(STAR_REWARD_LEVEL_KEY + i.ToString(), _rewards[i].Level);
+                PlayerPrefs.SetInt(STAR_REWARD_REQUIRED_STARS_KEY + i.ToString(), _rewards[i].RequiredStars);
+            }
+            PlayerPrefs.SetInt(STAR_REWARD_COUNT_KEY, _rewards.Count);
+            PlayerPrefs.SetInt(NEED_STARS_TO_NEXT_REWARD_KEY, _needStarsToNextReward);
+            PlayerPrefs.SetInt(CURRENT_STAR_REWARD_TYPE_KEY, (int)_currentReward.Type);
+            PlayerPrefs.SetInt(CURRENT_STAR_REWARD_LEVEL_KEY, _currentReward.Level);
+        }
+
+        public void Load()
+        {
+            _rewards = new List<(ItemType Type, int Level, int RequiredStars)>();
+            var count = PlayerPrefs.GetInt(STAR_REWARD_COUNT_KEY, 0);
+            for (var i = 0; i < count; ++i)
+            {
+                (ItemType, int, int) reward = (
+                    (ItemType)PlayerPrefs.GetInt(STAR_REWARD_TYPE_KEY + i.ToString()),
+                    PlayerPrefs.GetInt(STAR_REWARD_LEVEL_KEY + i.ToString()),
+                    PlayerPrefs.GetInt(STAR_REWARD_REQUIRED_STARS_KEY + i.ToString()));
+                _rewards.Add(reward);
+            }
+            _currentReward = (
+                (ItemType)PlayerPrefs.GetInt(CURRENT_STAR_REWARD_TYPE_KEY),
+                PlayerPrefs.GetInt(CURRENT_STAR_REWARD_LEVEL_KEY, 1));
+            _needStarsToNextReward = PlayerPrefs.GetInt(NEED_STARS_TO_NEXT_REWARD_KEY, 1);
+            SetNextRewardSprite(_currentReward);
+        }
 
         public void AddStars(int value)
         {
@@ -41,14 +81,19 @@ namespace Gameplay.Counters
         private void Start()
         {
             _storage = GameStorage.Instanse;
-            SetTargetsByGameStage();
+
+            if (_storage.LoadData && PlayerPrefs.HasKey(STAR_REWARD_COUNT_KEY))
+                Load();
+            else
+                SetRewardsByGameStage();
+
             UpdateValueText();
         }
 
         private void Update()
         {
             _currentBarValue = Mathf.Lerp(_currentBarValue, _storage.StarsCount, barSpeed * Time.deltaTime);
-            _bar.SetValue(_currentBarValue / _needStarsToNextPresent * 100f);
+            _bar.SetValue(_currentBarValue / _needStarsToNextReward * 100f);
 
             if (_bar.Filled)
                 FinishTarget();
@@ -57,33 +102,33 @@ namespace Gameplay.Counters
                 AddStars(_cheatStarsCount);
         }
 
-        private void SetTargetsByGameStage()
+        private void SetRewardsByGameStage()
         {
             var settings = GameStage.GetSettingsByStage(GameStorage.Instanse.GameStage);
             if (settings == null)
             {
                 _nextPresent.gameObject.SetActive(false);
-                _needStarsToNextPresent = 999999;
+                _needStarsToNextReward = 999999;
                 return;
             }
             if (_storage.OrdersCountMustBeUpdated)
                 UpdateOrderCount?.Invoke();
             NewStageReached?.Invoke();
-            _targets = new List<(ItemType Type, int Level, int RequiredStars)>(settings.Targets);
-            NextTarget();
+            _rewards = new List<(ItemType Type, int Level, int RequiredStars)>(settings.Targets);
+            NextReward();
         }
 
         private void UpdateValueText()
         {
-            _value.text = $"{_storage.StarsCount} / {_needStarsToNextPresent}";
+            _value.text = $"{_storage.StarsCount} / {_needStarsToNextReward}";
         }
 
         private void FinishTarget()
         {
             _currentBarValue = 0f;
-            _storage.StarsCount -= _needStarsToNextPresent;
+            _storage.StarsCount -= _needStarsToNextReward;
 
-            var itemStorage = _storage.GetItem(_currentTarget.Type, _currentTarget.Level);
+            var itemStorage = _storage.GetItem(_currentReward.Type, _currentReward.Level);
             itemStorage.Unlock();
 
             CheckOnNewGenerator(itemStorage.Type, out bool isNewGenerator);
@@ -97,25 +142,33 @@ namespace Gameplay.Counters
                     randomCell.CreateItem(itemStorage, transform.position);
             }
 
-            if (_targets.Count == 0)
+            if (_rewards.Count == 0)
             {
                 _storage.GameStage += 1;
-                SetTargetsByGameStage();
+                SetRewardsByGameStage();
             }
             else
-                NextTarget();
+                NextReward();
 
             UpdateValueText();
         }
 
-        private void NextTarget()
+        private void NextReward()
         {
-            var randomTarget = _targets[Random.Range(0, _targets.Count)];
-            _targets.Remove(randomTarget);
-            _needStarsToNextPresent = randomTarget.RequiredStars;
-            _currentTarget = (randomTarget.Type, randomTarget.Level);
-            _nextPresent.sprite = _storage.GetItemSprite(randomTarget.Type, randomTarget.Level);
+            var randomReward = _rewards[Random.Range(0, _rewards.Count)];
+            _rewards.Remove(randomReward);
+            SetCurrentReward(randomReward);
         }
+
+        private void SetCurrentReward((ItemType Type, int Level, int RequiredStars) reward)
+        {
+            _needStarsToNextReward = reward.RequiredStars;
+            _currentReward = (reward.Type, reward.Level);
+            SetNextRewardSprite(_currentReward);
+        }
+
+        private void SetNextRewardSprite((ItemType Type, int Level) currentReward) => 
+            _nextPresent.sprite = _storage.GetItemSprite(currentReward.Type, currentReward.Level);
 
         private void CheckOnNewGenerator(ItemType type, out bool isNew)
         {

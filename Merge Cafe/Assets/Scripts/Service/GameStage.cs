@@ -32,7 +32,7 @@ namespace Service
                 {
                     (ItemType.TrashCan, 1, 9),
                     (ItemType.Teapot, 1, 7),
-                    (ItemType.Brilliant, 1, 4),
+                    (ItemType.Energy, 1, 4),
                     (ItemType.Brilliant, 2, 6),
                     (ItemType.Key, 1, 5),
                 }, 1),
@@ -50,7 +50,7 @@ namespace Service
                     (ItemType.Teapot, 1, 7),
                     (ItemType.TrashCan, 1, 9),
                     (ItemType.Present, 1, 10),
-                    (ItemType.Brilliant, 1, 5),
+                    (ItemType.Box, 1, 8),
                     (ItemType.Key, 1, 6),
                     (ItemType.Key, 1, 6),
                     (ItemType.Brilliant, 2, 7),
@@ -69,8 +69,9 @@ namespace Service
                 {
                     (ItemType.Oven, 1, 10),
                     (ItemType.Teapot, 1, 7),
-                    (ItemType.Brilliant, 2, 8),
+                    (ItemType.Box, 1, 8),
                     (ItemType.Brilliant, 3, 10),
+                    (ItemType.Energy, 2, 12),
                 }, 2),
 
                 new Settings(new[] // 5
@@ -89,7 +90,7 @@ namespace Service
                     (ItemType.Present, 1, 20),
                     (ItemType.TrashCan, 1, 15),
                     (ItemType.TrashCan, 2, 28),
-                    (ItemType.Brilliant, 1, 8),
+                    (ItemType.Energy, 1, 8),
                     (ItemType.Brilliant, 2, 13),
                 }, 2),
 
@@ -106,10 +107,11 @@ namespace Service
                 }, new[]
                 {
                     (ItemType.TrashCan, 1, 25),
-                    (ItemType.Brilliant, 2, 19),
+                    (ItemType.Energy, 2, 19),
                     (ItemType.Brilliant, 2, 19),
                     (ItemType.Key, 1, 20),
                     (ItemType.Oven, 1, 24),
+                    (ItemType.Box, 1, 16),
                 }, 2),
 
                 new Settings(new[] // 7
@@ -126,8 +128,8 @@ namespace Service
                 {
                     (ItemType.TrashCan, 1, 27),
                     (ItemType.Teapot, 2, 28),
-                    (ItemType.Brilliant, 1, 10),
-                    (ItemType.Key, 1, 23),
+                    (ItemType.Brilliant, 3, 23),
+                    (ItemType.Energy, 1, 10),
                     (ItemType.Present, 1, 30),
                 }, 2),
 
@@ -167,8 +169,9 @@ namespace Service
                 {
                     (ItemType.Teapot, 1, 33),
                     (ItemType.TrashCan, 1, 29),
-                    (ItemType.Brilliant, 2, 22),
+                    (ItemType.Box, 2, 30),
                     (ItemType.Brilliant, 3, 26),
+                    (ItemType.Energy, 3, 27),
                 }),
 
                 new Settings(new[] // 10
@@ -188,7 +191,7 @@ namespace Service
                     (ItemType.Teapot, 2, 40),
                     (ItemType.Present, 2, 31),
                     (ItemType.Toaster, 1, 24),
-                    (ItemType.Brilliant, 1, 18),
+                    (ItemType.Energy, 1, 18),
                     (ItemType.Brilliant, 2, 23),
                 }),
             };
