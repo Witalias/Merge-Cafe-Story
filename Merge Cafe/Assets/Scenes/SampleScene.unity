@@ -7789,6 +7789,18 @@ MonoBehaviour:
   - Type: 15
     Level: 3
     MinOrderDifficulty: 17
+  - Type: 16
+    Level: 1
+    MinOrderDifficulty: 2
+  - Type: 16
+    Level: 2
+    MinOrderDifficulty: 3
+  - Type: 16
+    Level: 3
+    MinOrderDifficulty: 8
+  - Type: 16
+    Level: 4
+    MinOrderDifficulty: 14
 --- !u!114 &1352955131
 MonoBehaviour:
   m_ObjectHideFlags: 0

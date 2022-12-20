@@ -21,6 +21,7 @@ namespace Gameplay.ItemGenerators
         [SerializeField] private int _level = 1;
 
         private Animator _animator;
+        private ItemGenerator _itemGenerator;
 
         public int Level { get => _level; }
 
@@ -53,8 +54,16 @@ namespace Gameplay.ItemGenerators
             _animator.SetTrigger(_burnAnimatorTrigger);
         }
 
-        public bool CheckOnUpgrading(ItemStorage item)
+        public bool CheckIncomingItem(ItemStorage item)
         {
+            if (item.Type == ItemType.Energy)
+            {
+                if (_itemGenerator == null)
+                    return false;
+                _itemGenerator.SpeedUp(GameStorage.Instanse.GetEnergyRewardByItemlevel(item.Level));
+                return true;
+            }
+
             if (_level == GameStorage.Instanse.GetItemMaxLevel(item.Type))
                 return false;
 
@@ -69,6 +78,7 @@ namespace Gameplay.ItemGenerators
         private void Awake()
         {
             _animator = GetComponent<Animator>();
+            _itemGenerator = GetComponent<ItemGenerator>();
             _particles.SetActive(false);
         }
 

@@ -17,6 +17,7 @@ namespace Enums
         Oven,
         Toaster,
         FastFood,
-        Box
+        Box,
+        Energy
     }
 }

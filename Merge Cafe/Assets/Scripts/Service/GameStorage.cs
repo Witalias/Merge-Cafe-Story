@@ -25,6 +25,7 @@ namespace Service
         [SerializeField] private int[] _starsByItemLevels;
         [SerializeField] private int[] _starsRewardForLevels;
         [SerializeField] private int[] _brilliantsRewardForLevels;
+        [SerializeField] private int[] _energyRewardForLevels;
         [SerializeField] private ItemTypeLevel[] _rewardsForNewItems;
         [SerializeField] private int[] _stagesForOrderCounts;
 
@@ -154,6 +155,8 @@ namespace Service
         public int GetStarsRewardByItemLevel(int level) => _starsRewardForLevels[level - 1];
 
         public int GetBrilliantsRewardByItemlevel(int level) => _brilliantsRewardForLevels[level - 1];
+
+        public int GetEnergyRewardByItemlevel(int level) => _energyRewardForLevels[level - 1];
 
         public ItemStorage GetRewardForNewItemByLevel(int level) => GetItem(_rewardsForNewItems[level - 1].Type, _rewardsForNewItems[level - 1].Level);
 

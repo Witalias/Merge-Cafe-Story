@@ -64,19 +64,30 @@ namespace EventHandlers
                     var currentLevel = GetGeneratorLevel?.Invoke(type);
                     var titleNextLevel = Translation.GetItemDescription(type, level + 1).Title;
                     var titleNeedLevel = Translation.GetItemDescription(type, currentLevel.GetValueOrDefault()).Title;
-                    instruction = $"Объедини, чтобы получить предмет «{titleNextLevel}» {level + 1}-го уровня.\n" +
+                    instruction = $"Объедини, чтобы получить «{titleNextLevel}» {level + 1}-го уровня.\n" +
                         $"Получи «{titleNeedLevel}» {currentLevel.GetValueOrDefault()}-го уровня, чтобы улучшить генератор «{titleNeedLevel}».\n" +
                         $"Этот предмет нельзя выбросить.";
                 }
             }
-            else if (type == ItemType.Star || type == ItemType.Brilliant)
+            else if (type == ItemType.Brilliant)
             {
-                var currencyCount = type == ItemType.Star ? storage.GetStarsRewardByItemLevel(level) : storage.GetBrilliantsRewardByItemlevel(level);
+                var currencyCount = storage.GetBrilliantsRewardByItemlevel(level);
+                var brilliantWord = Translation.PluralizeWord(currencyCount, "бриллиант", "бриллианта", "бриллиантов");
                 if (maxLevel)
-                    instruction = $"Нажми, чтобы получить {Translation.GetItemTitle(type)} ({currencyCount}).";
+                    instruction = $"Нажми, чтобы получить {currencyCount} {brilliantWord}.";
                 else
-                    instruction = $"Нажми, чтобы получить {Translation.GetItemTitle(type)} " +
-                        $"({currencyCount}), или объедини, чтобы их стало больше.";
+                    instruction = $"Нажми, чтобы получить {currencyCount} {brilliantWord}, " +
+                        $"или объедини, чтобы их стало больше.";
+            }
+            else if (type == ItemType.Star)
+            {
+                var currencyCount = storage.GetStarsRewardByItemLevel(level);
+                var starWord = Translation.PluralizeWord(currencyCount, "звезду", "звезды", "звёзд");
+                if (maxLevel)
+                    instruction = $"Нажми, чтобы получить {currencyCount} {starWord}.";
+                else
+                    instruction = $"Нажми, чтобы получить {currencyCount} {starWord}, " +
+                        $"или объедини, чтобы их стало больше.";
             }
             else if (type == ItemType.Present)
             {
@@ -105,6 +116,19 @@ namespace EventHandlers
                     instruction = $"Нажми, чтобы получить случайный предмет, необходимый для выполнения заказа, или объедини, чтобы получить «{nextDescription.Title}».";
                 else if (level == 1)
                     instruction = $"Объедини, чтобы получить «{nextDescription.Title}».";
+            }
+            else if (type == ItemType.Energy)
+            {
+                var energyCount = GameStorage.Instanse.GetEnergyRewardByItemlevel(level);
+                if (maxLevel)
+                    instruction = $"Перетащи на генератор, чтобы ускорить его (заряда хватит на {energyCount} " +
+                        $"{Translation.PluralizeWord(energyCount, "предмет", "предмета", "предметов")}).";
+                else
+                instruction = $"Перетащи на генератор, чтобы ускорить его (заряда хватит на {energyCount} " +
+                    $"{Translation.PluralizeWord(energyCount, "предмет", "предмета", "предметов")}), или объедини, " +
+                    $"чтобы усилить эффект.";
+
+
             }
             else
             {

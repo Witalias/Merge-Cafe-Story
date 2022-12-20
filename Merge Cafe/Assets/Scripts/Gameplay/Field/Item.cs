@@ -203,7 +203,7 @@ namespace Gameplay.Field
 
         private void InteractWithUpgradableObject(Upgradable obj, out bool upgraded)
         {
-            if (obj.CheckOnUpgrading(Stats))
+            if (obj.CheckIncomingItem(Stats))
             {
                 upgraded = true;
                 Remove();
@@ -217,7 +217,7 @@ namespace Gameplay.Field
             if (trashCan == null)
                 return;
 
-            if (trashCan.GetComponent<Upgradable>().CheckOnUpgrading(Stats))
+            if (trashCan.GetComponent<Upgradable>().CheckIncomingItem(Stats))
                 return;
 
             if (Stats.Throwable)

@@ -16,7 +16,9 @@ namespace Gameplay.ItemGenerators
         private const float _tick = 0.01f;
         private const string _clickAnimatorBool = "Click";
 
+        [SerializeField] private float _boostSpeedMultiplier;
         [SerializeField] private UIBar _bar;
+        [SerializeField] private GameObject _energyIcon;
         [SerializeField] private ItemType[] _generatedItems;
         [SerializeField] private GeneratorStats[] _statsOnLevels;
 
@@ -29,9 +31,16 @@ namespace Gameplay.ItemGenerators
         private float _currentGenerationTime = 0f;
         private bool stopped = false;
         private bool forcedStopped = false;
+        private int _remainItemsToSlowingDown = 0;
 
         public ItemType[] GeneratedItems { get => _generatedItems; }
         public int MaxItemsLevel { get => _statsOnLevels[_upgradable.Level - 1].initItemsLevel; }
+
+        public void SpeedUp(int onItemCount)
+        {
+            _remainItemsToSlowingDown += onItemCount;
+            _energyIcon.SetActive(true);
+        }
 
         public void SetActiveTimer(bool value)
         {
@@ -93,7 +102,7 @@ namespace Gameplay.ItemGenerators
 
         private IEnumerator AddBarValue()
         {
-            _currentGenerationTime += _tick;
+            _currentGenerationTime += _tick * (_remainItemsToSlowingDown > 0 ? _boostSpeedMultiplier : 1f);
             UpdateBar();
 
             yield return new WaitForSeconds(_tick);
@@ -116,6 +125,9 @@ namespace Gameplay.ItemGenerators
                 CreateItem();
                 if (!stopped)
                     _currentGenerationTime -= reachedTime;
+                if (_remainItemsToSlowingDown > 0)
+                    --_remainItemsToSlowingDown;
+                CheckBoost();
             }
         }
 
@@ -135,6 +147,12 @@ namespace Gameplay.ItemGenerators
             var randomLevel = Random.Range(1, _statsOnLevels[_upgradable.Level - 1].initItemsLevel + 1);
             var item = new ItemStorage(_storage.GetItem(randomType, randomLevel));
             cell.CreateItem(item, transform.position);
+        }
+
+        private void CheckBoost()
+        {
+            if (_remainItemsToSlowingDown <= 0)
+                _energyIcon.SetActive(false);
         }
 
         [System.Serializable]
