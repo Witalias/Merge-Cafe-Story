@@ -62,8 +62,10 @@ namespace EventHandlers
                 else
                 {
                     var currentLevel = GetGeneratorLevel?.Invoke(type);
-                    instruction = $"Объедини, чтобы получить предмет «{itemDescription.Title}» {level + 1}-го уровня.\n" +
-                        $"Получи «{itemDescription.Title}» {currentLevel.GetValueOrDefault()}-го уровня, чтобы улучшить генератор «{itemDescription.Title}».\n" +
+                    var titleNextLevel = Translation.GetItemDescription(type, level + 1).Title;
+                    var titleNeedLevel = Translation.GetItemDescription(type, currentLevel.GetValueOrDefault()).Title;
+                    instruction = $"Объедини, чтобы получить предмет «{titleNextLevel}» {level + 1}-го уровня.\n" +
+                        $"Получи «{titleNeedLevel}» {currentLevel.GetValueOrDefault()}-го уровня, чтобы улучшить генератор «{titleNeedLevel}».\n" +
                         $"Этот предмет нельзя выбросить.";
                 }
             }
