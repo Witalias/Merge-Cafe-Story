@@ -1,4 +1,5 @@
 using Service;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace EventHandlers
@@ -8,7 +9,11 @@ namespace EventHandlers
     {
         private IStorable _storable;
 
-        public void Save() => _storable.Save();
+        public async void Save()
+        {
+            _storable.Save();
+            await Task.Yield();
+        }
 
         private void Awake()
         {
