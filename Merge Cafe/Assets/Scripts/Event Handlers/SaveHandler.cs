@@ -10,6 +10,7 @@ namespace EventHandlers
         private IStorable _storable;
 
         public async void Save()
+
         {
             _storable.Save();
             await Task.Yield();
