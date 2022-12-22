@@ -2,7 +2,6 @@ using UnityEngine;
 using Service;
 using Enums;
 using EventHandlers;
-using UnityEditor.SceneManagement;
 
 namespace Gameplay.DecorationMode
 {
