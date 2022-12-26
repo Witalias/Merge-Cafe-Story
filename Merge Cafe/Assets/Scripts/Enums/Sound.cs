@@ -14,6 +14,9 @@ namespace Enums
         Call,
         NewItem,
         Sell,
-        SpeedUp
+        SpeedUp,
+        MagicV2,
+        Brilliant,
+        NewPresent
     }
 }

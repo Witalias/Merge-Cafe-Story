@@ -76,6 +76,7 @@ namespace Gameplay.Counters
         {
             _storage.StarsCount += value;
             UpdateValueText();
+            SoundManager.Instanse.Play(Sound.MagicV2, null);
         }
 
         private void Start()
@@ -151,6 +152,7 @@ namespace Gameplay.Counters
                 NextReward();
 
             UpdateValueText();
+            SoundManager.Instanse.Play(Sound.NewPresent, null);
         }
 
         private void NextReward()
