@@ -148,6 +148,8 @@ namespace Gameplay.ItemGenerators
             var randomLevel = Random.Range(1, _statsOnLevels[_upgradable.Level - 1].initItemsLevel + 1);
             var item = new ItemStorage(_storage.GetItem(randomType, randomLevel));
             cell.CreateItem(item, transform.position);
+
+            _animator.SetTrigger(_clickAnimatorBool);
         }
 
         private void CheckBoost()
