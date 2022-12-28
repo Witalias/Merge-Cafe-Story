@@ -6,18 +6,38 @@ using Gameplay.DecorationMode;
 
 namespace EventHandlers
 {
-    public class ChangeBrilliantsCountHandler : MonoBehaviour
+    public class ChangeBrilliantsCountHandler : MonoBehaviour, IStorable
     {
+        private const string CAN_BUY_DECOR_KEY = "CAN_BUY_DECOR";
+
         [SerializeField] private TextMeshProUGUI _value;
         [SerializeField] private GameObject _purchaseCanvas;
         [SerializeField] private GameObject _canBuyIcon;
 
         private GameStorage _storage;
 
+        public void Save()
+        {
+            PlayerPrefs.SetInt(CAN_BUY_DECOR_KEY, _canBuyIcon.activeSelf ? 1 : 0);
+        }
+
+        public void Load()
+        {
+            _canBuyIcon.SetActive(PlayerPrefs.GetInt(CAN_BUY_DECOR_KEY, 0) == 1);
+        }
+
+        public void RemoveNotificationIcon() => _canBuyIcon.SetActive(false);
+
         private void Start()
         {
             _storage = GameStorage.Instanse;
             UpdateText();
+
+            if (_storage.LoadData)
+                Load();
+
+            if (!PlayerPrefs.HasKey(CAN_BUY_DECOR_KEY))
+                _canBuyIcon.SetActive(true);
         }
 
         private void OnEnable()
@@ -52,7 +72,7 @@ namespace EventHandlers
                     return;
                 }
             }
-            _canBuyIcon.SetActive(false);
+            
         }
 
         private void UpdateText()

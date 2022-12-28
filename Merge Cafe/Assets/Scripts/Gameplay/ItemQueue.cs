@@ -49,7 +49,10 @@ namespace Gameplay
                 _items.Enqueue(GameStorage.Instanse.GetItem(type, level));
             }
             if (itemQueueCount > 0)
+            {
                 Show(_items.Peek().Icon);
+                UpdateCountText();
+            }
         }
 
         public void Add(ItemStorage item)
@@ -57,7 +60,7 @@ namespace Gameplay
             if (_items.Count == 0)
                 Show(item.Icon);
             _items.Enqueue(item);
-            _count.text = _items.Count.ToString();
+            UpdateCountText();
         }
 
         private void Awake()
@@ -116,5 +119,7 @@ namespace Gameplay
             yield return new WaitForSeconds(_twitchAnimationClip.length + _animationDelay);
             _playAnimationCoroutine = StartCoroutine(PlayAnimation());
         }
+
+        private void UpdateCountText() => _count.text = _items.Count.ToString();
     }
 }
