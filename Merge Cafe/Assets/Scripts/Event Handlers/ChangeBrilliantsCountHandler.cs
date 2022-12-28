@@ -13,7 +13,6 @@ namespace EventHandlers
         [SerializeField] private GameObject _canBuyIcon;
 
         private GameStorage _storage;
-        private bool _playerCanBuy;
 
         private void Start()
         {
@@ -42,21 +41,17 @@ namespace EventHandlers
 
         private void CheckSum()
         {
-            if (!_playerCanBuy)
+            var purchases = _purchaseCanvas.GetComponentsInChildren<PurchaseButton>();
+            foreach (var purchase in purchases)
             {
-                if (_purchaseCanvas.GetComponentInChildren<PurchaseButton>() != null)
+                var cost = purchase.ShowCost();
+                if (cost <= _storage.BrilliantsCount)
                 {
-                    var cost = _purchaseCanvas.GetComponentInChildren<PurchaseButton>().ShowCost();
-                    if (cost <= _storage.BrilliantsCount)
-                    {
-                        _canBuyIcon.SetActive(true);
-                        _playerCanBuy = true;
-                        return;
-                    }
+                    _canBuyIcon.SetActive(true);
+                    return;
                 }
-
-                _canBuyIcon.SetActive(false);
             }
+            _canBuyIcon.SetActive(false);
         }
 
         private void UpdateText()
