@@ -56,6 +56,8 @@ namespace Gameplay.ItemGenerators
         {
             _currentGeneratedItems.Clear();
             var settings = GameStage.GetSettingsByStage(_storage.GameStage);
+            if (settings == null)
+                settings = GameStage.GetSettingsByLastStage();
             foreach (var item in settings.Items)
             {
                 if (System.Array.Exists(_generatedItems, type => type == item.Type))
@@ -71,6 +73,8 @@ namespace Gameplay.ItemGenerators
 
         private void Start()
         {
+            if (_storage == null)
+                _storage = GameStorage.Instanse;
             UpdateProducedItems();
         }
 

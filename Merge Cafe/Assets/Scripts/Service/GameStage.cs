@@ -204,6 +204,8 @@ namespace Service
             return _storage[value - 1];
         }
 
+        public static Settings GetSettingsByLastStage() => _storage[_storage.Length - 1];
+
         public class Settings
         {
             public (ItemType Type, int MinLevel, int MaxLevel, int RewardLevel)[] Items { get; }
