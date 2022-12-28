@@ -129,10 +129,12 @@ namespace Gameplay.ItemGenerators
             {
                 CreateItem();
                 if (!stopped)
+                {
                     _currentGenerationTime -= reachedTime;
-                if (_remainItemsToSlowingDown > 0)
-                    --_remainItemsToSlowingDown;
-                CheckBoost();
+                    if (_remainItemsToSlowingDown > 0)
+                        --_remainItemsToSlowingDown;
+                    CheckBoost();
+                }
             }
         }
 
