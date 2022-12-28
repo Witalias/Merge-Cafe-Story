@@ -60,6 +60,14 @@ namespace Service
                 [9] = new ItemDescription("Кофейник", "Теперь в 3 раза больше, для насущной бодрости."),
                 [10] = new ItemDescription("Кофейник", "Лучшее кофе в заведении."),
             },
+            [ItemType.Energy] = new Dictionary<int, ItemDescription>
+            {
+                [1] = new ItemDescription("Энергия", "Пища для кухонных приборов."),
+                [2] = new ItemDescription("Возобновляемая энергия", "Природа очень умна."),
+                [3] = new ItemDescription("Солнечная энергия", "Очень экологично."),
+                [4] = new ItemDescription("Атомная энергия", "Углубимся в ядерную физику..."),
+                [5] = new ItemDescription("Мощная батарея", "На весах сегодня села батарейка. Только я, ведь точно знаю — похудела!"),
+            },
             [ItemType.FastFood] = new Dictionary<int, ItemDescription>
             {
                 [1] = new ItemDescription("Хлеб", "Такая булка, большая и румяная."),
@@ -178,6 +186,19 @@ namespace Service
             if (_itemDescriptions.ContainsKey(type) && _itemDescriptions[type].ContainsKey(level))
                 return _itemDescriptions[type][level];
             return null;
+        }
+
+        public static string PluralizeWord(int count, string one, string twoFour, string fiveTen)
+        {
+            var remains100 = count % 100;
+            var remains10 = count % 10;
+            if (((remains100 < 11) || (remains100 > 14)) && (remains10 >= 1) && (remains10 <= 4))
+            {
+                if (remains10 == 1)
+                    return one;
+                return twoFour;
+            }
+            return fiveTen;
         }
 
         public class ItemDescription

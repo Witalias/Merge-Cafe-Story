@@ -12,6 +12,11 @@ namespace Enums
         KeyTake,
         KeyPut,
         Call,
-        NewItem
+        NewItem,
+        Sell,
+        SpeedUp,
+        MagicV2,
+        Brilliant,
+        NewPresent
     }
 }

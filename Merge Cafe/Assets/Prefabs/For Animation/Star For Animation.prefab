@@ -71,6 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c8c53dd66b14554ea052c43eef48473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroyIn: 0
 --- !u!114 &1592056527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,6 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 6292305270728971641}
   _targetTag: 2
+  _disappearParticle: {fileID: 8182832277577719845, guid: 290158b0a5bcd594a8a0e4ab5d491e63, type: 3}
   _minWaitingTime: 1
   _maxWaitingTime: 1.5
   _enableMoveAnimation: 1

@@ -14,6 +14,7 @@ namespace Service
                 new[]
                 {
                     new Content(ItemType.Star, 1, 2, 2),
+                    new Content(ItemType.Energy, 1, 2, 2),
                     new Content(ItemType.Brilliant, 1, 2, 3),
                     new Content(ItemType.Key, 1, 1, 1),
                     new Content(ItemType.Box, 1, 1, 2),
@@ -21,6 +22,7 @@ namespace Service
                 new[]
                 {
                     new Content(ItemType.Star, 2, 3, 3),
+                    new Content(ItemType.Energy, 1, 3, 3),
                     new Content(ItemType.Brilliant, 2, 3, 5),
                     new Content(ItemType.Key, 1, 1, 2),
                     new Content(ItemType.Box, 1, 2, 2),
@@ -28,6 +30,7 @@ namespace Service
                 new[]
                 {
                     new Content(ItemType.Star, 2, 4, 4),
+                    new Content(ItemType.Energy, 2, 4, 4),
                     new Content(ItemType.Brilliant, 2, 4, 7),
                     new Content(ItemType.Key, 1, 2, 3),
                     new Content(ItemType.Box, 1, 2, 3),

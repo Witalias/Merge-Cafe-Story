@@ -11,6 +11,8 @@ namespace EventHandlers
     [RequireComponent(typeof(InformationWindow))]
     public class InfoWindowHandler : MonoBehaviour
     {
+        private const string _highlightColor = "white";
+
         private InformationWindow _informationWindow;
 
         public static event Func<ItemType, bool> IsGenerator;
@@ -57,24 +59,37 @@ namespace EventHandlers
             {
                 var isGeneratorMaxLevel = IsGeneratorMaxLevel?.Invoke(type, level);
                 if (isGeneratorMaxLevel.GetValueOrDefault())
-                    instruction = $"Перетащи на генератор «{itemDescription.Title}», чтобы улучшить его.\n" +
+                    instruction = $"Перетащи на генератор <color={_highlightColor}>«{itemDescription.Title}»</color>, чтобы улучшить его.\n" +
                         $"Этот предмет нельзя выбросить.";
                 else
                 {
                     var currentLevel = GetGeneratorLevel?.Invoke(type);
-                    instruction = $"Объедини, чтобы получить предмет «{itemDescription.Title}» {level + 1}-го уровня.\n" +
-                        $"Получи «{itemDescription.Title}» {currentLevel.GetValueOrDefault()}-го уровня, чтобы улучшить генератор «{itemDescription.Title}».\n" +
+                    var titleNextLevel = Translation.GetItemDescription(type, level + 1).Title;
+                    var titleNeedLevel = Translation.GetItemDescription(type, currentLevel.GetValueOrDefault()).Title;
+                    instruction = $"Объедини, чтобы получить <color={_highlightColor}>«{titleNextLevel}» {level + 1}-го уровня</color>.\n" +
+                        $"Получи <color={_highlightColor}>«{titleNeedLevel}» {currentLevel.GetValueOrDefault()}-го уровня</color>, чтобы улучшить генератор <color={_highlightColor}>«{titleNeedLevel}»</color>.\n" +
                         $"Этот предмет нельзя выбросить.";
                 }
             }
-            else if (type == ItemType.Star || type == ItemType.Brilliant)
+            else if (type == ItemType.Brilliant)
             {
-                var currencyCount = type == ItemType.Star ? storage.GetStarsRewardByItemLevel(level) : storage.GetBrilliantsRewardByItemlevel(level);
+                var currencyCount = storage.GetBrilliantsRewardByItemlevel(level);
+                var brilliantWord = Translation.PluralizeWord(currencyCount, "бриллиант", "бриллианта", "бриллиантов");
                 if (maxLevel)
-                    instruction = $"Нажми, чтобы получить {Translation.GetItemTitle(type)} ({currencyCount}).";
+                    instruction = $"Нажми, чтобы получить {currencyCount} {brilliantWord}.";
                 else
-                    instruction = $"Нажми, чтобы получить {Translation.GetItemTitle(type)} " +
-                        $"({currencyCount}), или объедини, чтобы их стало больше.";
+                    instruction = $"Нажми, чтобы получить {currencyCount} {brilliantWord}, " +
+                        $"или объедини, чтобы их стало больше.";
+            }
+            else if (type == ItemType.Star)
+            {
+                var currencyCount = storage.GetStarsRewardByItemLevel(level);
+                var starWord = Translation.PluralizeWord(currencyCount, "звезду", "звезды", "звёзд");
+                if (maxLevel)
+                    instruction = $"Нажми, чтобы получить {currencyCount} {starWord}.";
+                else
+                    instruction = $"Нажми, чтобы получить {currencyCount} {starWord}, " +
+                        $"или объедини, чтобы их стало больше.";
             }
             else if (type == ItemType.Present)
             {
@@ -103,6 +118,19 @@ namespace EventHandlers
                     instruction = $"Нажми, чтобы получить случайный предмет, необходимый для выполнения заказа, или объедини, чтобы получить «{nextDescription.Title}».";
                 else if (level == 1)
                     instruction = $"Объедини, чтобы получить «{nextDescription.Title}».";
+            }
+            else if (type == ItemType.Energy)
+            {
+                var energyCount = GameStorage.Instanse.GetEnergyRewardByItemlevel(level);
+                if (maxLevel)
+                    instruction = $"Перетащи на генератор, чтобы ускорить его (заряда хватит на {energyCount} " +
+                        $"{Translation.PluralizeWord(energyCount, "предмет", "предмета", "предметов")}).";
+                else
+                instruction = $"Перетащи на генератор, чтобы ускорить его (заряда хватит на {energyCount} " +
+                    $"{Translation.PluralizeWord(energyCount, "предмет", "предмета", "предметов")}), или объедини, " +
+                    $"чтобы усилить эффект.";
+
+
             }
             else
             {

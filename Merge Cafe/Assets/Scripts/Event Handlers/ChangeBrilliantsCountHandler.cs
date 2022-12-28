@@ -35,6 +35,7 @@ namespace EventHandlers
         private void Add(int brilliants)
         {
             _storage.BrilliantsCount += brilliants;
+            SoundManager.Instanse.Play(Enums.Sound.Brilliant, null);
             UpdateText();
             CheckSum();
         }

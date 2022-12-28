@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using Enums;
+using Service;
 
 namespace AnimationEngine
 {
