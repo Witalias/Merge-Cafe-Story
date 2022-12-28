@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections;
 using Gameplay.Field;
 using Service;
+using TMPro;
 
 namespace Gameplay
 {
@@ -16,6 +17,7 @@ namespace Gameplay
         [SerializeField] private GameObject _particles;
         [SerializeField] private AnimationClip _twitchAnimationClip;
         [SerializeField] private float _animationDelay = 5f;
+        [SerializeField] private TextMeshProUGUI _count;
 
         private Animator _animator;
 
@@ -27,6 +29,7 @@ namespace Gameplay
             if (_items.Count == 0)
                 Show(item.Icon);
             _items.Enqueue(item);
+            _count.text = _items.Count.ToString();
         }
 
         private void Awake()
@@ -43,10 +46,13 @@ namespace Gameplay
             if (randomCell == null)
                 return;
 
-            randomCell.CreateItem(_items.Dequeue(), transform.position);
+            var nextItem = _items.Dequeue();
+            randomCell.CreateItem(nextItem, transform.position);
+            _count.text = _items.Count.ToString();
 
             if (_items.Count == 0)
                 Hide();
+
             else
                 SetIcon(_items.Peek().Icon);
         }
@@ -57,6 +63,7 @@ namespace Gameplay
             SetIcon(icon);
             _particles.SetActive(true);
             _playAnimationCoroutine = StartCoroutine(PlayAnimation());
+            _count.transform.parent.gameObject.SetActive(true);
         }
 
         private void Hide()
@@ -64,6 +71,7 @@ namespace Gameplay
             _icon.gameObject.SetActive(false);
             _particles.SetActive(false);
             StopCoroutine(_playAnimationCoroutine);
+            _count.transform.parent.gameObject.SetActive(false);
         }
 
         private void SetIcon(Sprite icon) => _icon.sprite = icon;

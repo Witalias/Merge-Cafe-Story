@@ -25,7 +25,7 @@ namespace Gameplay.DecorationMode
         private float _initialOpacity;
         private int _cost;
 
-        public static event Action NotEnougthBrilliants;
+        public static event Action NotEnoughBrilliants;
 
         public void SetIcon(Sprite icon) => _icon.sprite = icon;
 
@@ -33,6 +33,11 @@ namespace Gameplay.DecorationMode
         {
             _cost = value;
             _valueText.text = value.ToString();
+        }
+
+        public int ShowCost()
+        {
+            return _cost;
         }
 
         public void SetPurchaseAction(Action value) => _purchaseAction = value;
@@ -68,7 +73,7 @@ namespace Gameplay.DecorationMode
         {
             if (_storage.BrilliantsCount < _cost)
             {
-                NotEnougthBrilliants?.Invoke();
+                NotEnoughBrilliants?.Invoke();
                 return;
             }
 
@@ -79,6 +84,7 @@ namespace Gameplay.DecorationMode
             Destroy(gameObject);
         }
 
-        private void SetCircleOpacity(float value) => _circle.color = new Color(_circle.color.r, _circle.color.g, _circle.color.b, value);
+        private void SetCircleOpacity(float value) =>
+            _circle.color = new Color(_circle.color.r, _circle.color.g, _circle.color.b, value);
     }
 }

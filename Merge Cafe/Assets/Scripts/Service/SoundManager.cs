@@ -5,16 +5,27 @@ using Enums;
 namespace Service
 {
     [RequireComponent(typeof(AudioSource))]
-    public class SoundManager : MonoBehaviour
+    public class SoundManager : MonoBehaviour, IStorable
     {
         public static SoundManager Instanse { get; private set; }
+
+        private const string VOLUME_SOUNDS_KEY = "VOLUME_SOUNDS";
 
         [SerializeField] private TypedAudio[] _clips;
 
         private AudioSource _audioSource;
-
         private Dictionary<Sound, AudioClip[]> _sounds = new Dictionary<Sound, AudioClip[]>();
         private readonly Dictionary<Sound, AudioSource> _playingSounds = new Dictionary<Sound, AudioSource>();
+
+        public void Save()
+        {
+            PlayerPrefs.SetFloat(VOLUME_SOUNDS_KEY, _audioSource.volume);
+        }
+
+        public void Load()
+        {
+            _audioSource.volume = PlayerPrefs.GetFloat(VOLUME_SOUNDS_KEY, _audioSource.volume);
+        }
 
         public void Play(Sound sound, AudioSource source, int index)
         {
@@ -77,12 +88,16 @@ namespace Service
             else
                 Destroy(gameObject);
 
-            DontDestroyOnLoad(gameObject);
-
             _audioSource = GetComponent<AudioSource>();
 
             foreach (var clip in _clips)
                 _sounds.Add(clip.Type, clip.Clips);
+        }
+
+        private void Start()
+        {
+            if (GameStorage.Instanse.LoadData)
+                Load();
         }
 
         private void Update()

@@ -5,7 +5,7 @@ using UI;
 using Service;
 using Enums;
 using Gameplay.Field;
-using Gameplay;
+
 
 namespace Gameplay.ItemGenerators
 {
@@ -25,10 +25,13 @@ namespace Gameplay.ItemGenerators
         private GameStorage _storage;
         private Coroutine _addBarValueCoroutine;
 
-        private List<ItemType> _currentGeneratedItems = new List<ItemType>();
+        private readonly List<ItemType> _currentGeneratedItems = new();
         private float _currentGenerationTime = 0f;
         private bool stopped = false;
         private bool forcedStopped = false;
+
+        public ItemType[] GeneratedItems { get => _generatedItems; }
+        public int MaxItemsLevel { get => _statsOnLevels[_upgradable.Level - 1].initItemsLevel; }
 
         public void SetActiveTimer(bool value)
         {
@@ -59,7 +62,6 @@ namespace Gameplay.ItemGenerators
         private void Start()
         {
             UpdateProducedItems();
-            //_addBarValueCoroutine = StartCoroutine(AddBarValue());
         }
 
         private void OnEnable()

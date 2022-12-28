@@ -7,8 +7,13 @@ using Enums;
 
 namespace Gameplay.Orders
 {
-    public class OrderManager : MonoBehaviour
+    public class OrderManager : MonoBehaviour, IStorable
     {
+        private const string CURRENT_ORDERS_COUNT_KEY = "CURRENT_ORDERS_COUNT";
+        private const string REMAINS_ORDERS_TO_RARE_ORDER_KEY = "REMAINS_ORDERS_TO_RARE_ORDER";
+        private const string RARE_ITEM_TYPE_IN_QUEUE_KEY = "RARE_ITEM_IN_QUEUE";
+        private const string RARE_ITEM_LEVEL_IN_QUEUE_KEY = "RARE_ITEM_LEVEL_IN_QUEUE";
+        private const string RARE_ITEMS_QUEUE_COUNT_KEY = "RARE_ITEMS_QUEUE_COUNT";
         private const int _maxOrdersCount = 3;
 
         [SerializeField] private Order[] _orders;
@@ -26,7 +31,37 @@ namespace Gameplay.Orders
 
         private int _ordersCount = 1;
         private int _remainsToRareOrder = 1;
-        private readonly Queue<ItemStorage> _rareItemsQueue = new Queue<ItemStorage>();
+        private readonly Queue<ItemStorage> _rareItemsQueue = new();
+
+        public void Save()
+        {
+            PlayerPrefs.SetInt(CURRENT_ORDERS_COUNT_KEY, _ordersCount);
+            PlayerPrefs.SetInt(REMAINS_ORDERS_TO_RARE_ORDER_KEY, _remainsToRareOrder);
+            var rareItems = new List<ItemStorage>(_rareItemsQueue);
+            for (var i = 0; i < rareItems.Count; ++i)
+            {
+                PlayerPrefs.SetInt(RARE_ITEM_TYPE_IN_QUEUE_KEY + i, (int)rareItems[i].Type);
+                PlayerPrefs.SetInt(RARE_ITEM_LEVEL_IN_QUEUE_KEY + i, rareItems[i].Level);
+            }
+            PlayerPrefs.SetInt(RARE_ITEMS_QUEUE_COUNT_KEY, _rareItemsQueue.Count);
+        }
+
+        public void Load()
+        {
+            _ordersCount = PlayerPrefs.GetInt(CURRENT_ORDERS_COUNT_KEY, 1);
+
+            for (var i = 0; i < _ordersCount; ++i)
+                _orders[i].gameObject.SetActive(true);
+
+            _remainsToRareOrder = PlayerPrefs.GetInt(REMAINS_ORDERS_TO_RARE_ORDER_KEY, 1);
+            var rareItemsCount = PlayerPrefs.GetInt(RARE_ITEMS_QUEUE_COUNT_KEY, 0);
+            for (var i = 0; i < rareItemsCount; ++i)
+            {
+                var itemType = (ItemType)PlayerPrefs.GetInt(RARE_ITEM_TYPE_IN_QUEUE_KEY + i);
+                var level = PlayerPrefs.GetInt(RARE_ITEM_LEVEL_IN_QUEUE_KEY + i);
+                _rareItemsQueue.Enqueue(_storage.GetItem(itemType, level));
+            }
+        }
 
         public void GenerateOrder(int id)
         {
@@ -52,6 +87,24 @@ namespace Gameplay.Orders
             if (_rareItemsQueue.Count > 0)
                 --_remainsToRareOrder;
         }
+
+        public ItemStorage GetRandomOrderItem()
+        {
+            var orderPoints = GetOrderPoints();
+            if (orderPoints.Length == 0)
+                return null;
+            return orderPoints[Random.Range(0, orderPoints.Length)];
+        }
+
+        public ItemStorage GetOrderItemMaxLevel()
+        {
+            var orderPoints = GetOrderPoints();
+            if (orderPoints.Length == 0)
+                return null;
+            return orderPoints.OrderByDescending(point => point.Level).ToArray()[0];
+        }
+
+        private ItemStorage[] GetOrderPoints() => _orders.SelectMany(order => order.OrderPoints).ToArray();
 
         private void GenerateOrdinaryOrder(int id, GameStage.Settings settings)
         {
@@ -105,10 +158,17 @@ namespace Gameplay.Orders
         private void Start()
         {
             _storage = GameStorage.Instanse;
+
             for (var i = 0; i < _orders.Length; ++i)
                 _orders[i].SetID(i);
-            UpdateRemainToRareOrder();
-            GenerateOrder(0);
+
+            if (_storage.LoadData && PlayerPrefs.HasKey(RARE_ITEMS_QUEUE_COUNT_KEY))
+                Load();
+            else
+            {
+                UpdateRemainToRareOrder();
+                GenerateOrder(0);
+            }
         }
 
         private int GetBrilliantsReward(int starsReward)

@@ -19,11 +19,13 @@ namespace Gameplay.Field
         private const string _zoomAnimatorBool = "Mouse Enter";
         private const string _burnAnimatorTrigger = "Burn";
         private const string _disappearAnimatorTrigger = "Disappear";
+        private const string _highlightAnimatorTrigger = "Highlight";
 
         [SerializeField] private float _returningSpeed;
         [SerializeField] private float _followSpeed;
         [SerializeField] private Image _image;
-        [SerializeField] private GameObject _particles;
+        [SerializeField] private GameObject _highlightParticlePrefab;
+        [SerializeField] private GameObject _mergeParticlePrefab;
 
         private Animator _animator;
         private Cell _currentCell;
@@ -32,14 +34,18 @@ namespace Gameplay.Field
         private QuickClickTracking _quickClickTracking;
 
         private bool _isReturning = false;
+        private bool _dragged = false;
 
         public static event Action MergingItemsOfMaxLevelTried;
-        public static event Action<ItemType> CursorHoveredMovableItem;
-        public static event Action<ItemType> CursorHoveredNotMovableItem;
+        public static event Action<ItemType, int> CursorHoveredMovableItem;
+        public static event Action<ItemType, int> CursorHoveredNotMovableItem;
+        public static event Action CursorLeftItem;
         public static event Action CannotBeThrownAway;
         public static event Action WrongLevelForCombinating;
 
         public ItemStorage Stats { get; private set; }
+
+        public Cell CurrentCell { get => _currentCell; }
 
         public void Initialize(ItemStorage stats)
         {
@@ -79,7 +85,9 @@ namespace Gameplay.Field
             Destroy(gameObject);
         }
 
-        public void SetActiveParticles(bool value) => _particles.SetActive(value);
+        public void SetActiveParticles(bool value) => _highlightParticlePrefab.SetActive(value);
+
+        public void PlayHighlight() => _animator.SetTrigger(_highlightAnimatorTrigger);
 
         private void Awake()
         {
@@ -103,16 +111,20 @@ namespace Gameplay.Field
         private void OnMouseEnter()
         {
             if (Stats.Movable)
+            {
                 _animator.SetBool(_zoomAnimatorBool, true);
-
-            if (Stats.Movable)
-                CursorHoveredMovableItem?.Invoke(Stats.Type);
-            else
-                CursorHoveredNotMovableItem?.Invoke(Stats.Type);
+                if (!_dragged)
+                    CursorHoveredMovableItem?.Invoke(Stats.Type, Stats.Level);
+                Stats.Unlock();
+            }
+            else if (!_dragged)
+                CursorHoveredNotMovableItem?.Invoke(Stats.Type, Stats.Level);
         }
 
         private void OnMouseExit()
         {
+            CursorLeftItem?.Invoke();
+
             if (!Stats.Movable)
                 return;
 
@@ -121,6 +133,8 @@ namespace Gameplay.Field
 
         private void OnMouseDrag()
         {
+            _dragged = true;
+
             if (_quickClickTracking.IsChecking || !Stats.Movable)
                 return;
 
@@ -133,10 +147,13 @@ namespace Gameplay.Field
         {
             _isReturning = false;
             transform.SetAsLastSibling();
+            SoundManager.Instanse.Play(Stats.TakeSound, null);
         }
 
         private void OnMouseUp()
         {
+            _dragged = false;
+
             if (!Stats.Movable)
                 return;
 
@@ -235,7 +252,7 @@ namespace Gameplay.Field
                 if (_currentCell == cell)
                     return;
 
-                if (_storage.IsItemMaxLevel(Stats))
+                if (_storage.IsItemMaxLevel(Stats.Type, Stats.Level))
                     MergingItemsOfMaxLevelTried?.Invoke();
                 else
                     Join(cell);
@@ -256,6 +273,7 @@ namespace Gameplay.Field
             _currentCell.Clear();
             toCell.SetItem(this);
             _currentCell = toCell;
+            SoundManager.Instanse.Play(Stats.PutSound, null);
         }
 
         private void Swap(Cell withCell)
@@ -266,6 +284,7 @@ namespace Gameplay.Field
             withCell.Clear();
             withCell.SetItem(this);
             _currentCell = withCell;
+            SoundManager.Instanse.Play(Stats.PutSound, null);
         }
 
         private void Join(Cell withCell)
@@ -281,6 +300,7 @@ namespace Gameplay.Field
                 var randomCell = _storage.GetRandomEmptyCell();
                 randomCell.CreateItem(_storage.GetItem(ItemType.Star, 1), transform.position);
             }
+            Instantiate(_mergeParticlePrefab, withCell.transform.position, Quaternion.identity);
         }
 
         private void Combinate(Cell withCell)

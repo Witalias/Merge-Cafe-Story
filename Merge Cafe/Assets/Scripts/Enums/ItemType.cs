@@ -14,6 +14,9 @@ namespace Enums
         Key,
         BakeryProduct,
         BakeryProductWithCream,
-        Oven
+        Oven,
+        Toaster,
+        FastFood,
+        Box
     }
 }

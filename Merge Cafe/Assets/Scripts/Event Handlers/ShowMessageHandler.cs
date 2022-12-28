@@ -10,13 +10,14 @@ namespace EventHandlers
     [RequireComponent(typeof(Message))]
     public class ShowMessageHandler : MonoBehaviour
     {
-        private const string _maxLevelText = "Максимальный уровень";
-        private const string _noEmptyCellsText = "Нет свободных ячеек";
-        private const string _cannotBeThrownAwayText = "Этот предмет нельзя выбросить";
-        private const string _dragItemToTrashCanText = "Перетащите ненужный предмет";
-        private const string _upgradedText = "УЛУЧШЕНО";
-        private const string _wrongLevelForCombinatingText = "Неподходящий уровень предмета";
-        private const string _notEnougthBrilliantsText = "Не хватает бриллиантов";
+        private const string _maxLevelText = "РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СѓСЂРѕРІРµРЅСЊ";
+        private const string _noEmptyCellsText = "РќРµС‚ СЃРІРѕР±РѕРґРЅС‹С… СЏС‡РµРµРє";
+        private const string _cannotBeThrownAwayText = "Р­С‚РѕС‚ РїСЂРµРґРјРµС‚ РЅРµР»СЊР·СЏ РІС‹Р±СЂРѕСЃРёС‚СЊ";
+        private const string _dragItemToTrashCanText = "РџРµСЂРµС‚Р°С‰РёС‚Рµ РЅРµРЅСѓР¶РЅС‹Р№ РїСЂРµРґРјРµС‚";
+        private const string _upgradedText = "РЈР›РЈР§РЁР•РќРћ";
+        private const string _wrongLevelForCombinatingText = "РќРµРїРѕРґС…РѕРґСЏС‰РёР№ СѓСЂРѕРІРµРЅСЊ РїСЂРµРґРјРµС‚Р°";
+        private const string _notEnougthBrilliantsText = "РќРµ С…РІР°С‚Р°РµС‚ Р±СЂРёР»Р»РёР°РЅС‚РѕРІ";
+        private const string _noOrderPointsText = "РќРµС‚ РґРѕСЃС‚СѓРїРЅС‹С… Р·Р°РєР°Р·РѕРІ";
 
         private Message _message;
 
@@ -33,7 +34,8 @@ namespace EventHandlers
             GameStorage.NoEmptyCells += ShowNoEmptyCells;
             TrashCan.TrashCanClicked += ShowDragItemToTrashCan;
             Upgradable.Upgraded += ShowUpgraded;
-            PurchaseButton.NotEnougthBrilliants += ShowNotEnougthBrilliants;
+            PurchaseButton.NotEnoughBrilliants += ShowNotEnoughBrilliants;
+            Box.NoOrderPoints += ShowNoOrderPoints;
         }
 
         private void OnDisable()
@@ -44,7 +46,9 @@ namespace EventHandlers
             GameStorage.NoEmptyCells -= ShowNoEmptyCells;
             TrashCan.TrashCanClicked -= ShowDragItemToTrashCan;
             Upgradable.Upgraded -= ShowUpgraded;
-            PurchaseButton.NotEnougthBrilliants -= ShowNotEnougthBrilliants;
+            PurchaseButton.NotEnoughBrilliants -= ShowNotEnoughBrilliants;
+            Box.NoOrderPoints -= ShowNoOrderPoints;
+
         }
 
         private void ShowMaxLevel()
@@ -77,9 +81,14 @@ namespace EventHandlers
             _message.Show(_wrongLevelForCombinatingText);
         }
 
-        private void ShowNotEnougthBrilliants()
+        private void ShowNotEnoughBrilliants()
         {
             _message.Show(_notEnougthBrilliantsText);
+        }
+
+        private void ShowNoOrderPoints()
+        {
+            _message.Show(_noOrderPointsText);
         }
     }
 }

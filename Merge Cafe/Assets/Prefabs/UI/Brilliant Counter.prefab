@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _value: {fileID: 3355318060985133204}
+  _purchaseCanvas: {fileID: 0}
+  _canBuyIcon: {fileID: 0}
 --- !u!1 &3355318060985133206
 GameObject:
   m_ObjectHideFlags: 0

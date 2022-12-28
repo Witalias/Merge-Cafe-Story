@@ -7,12 +7,18 @@ using System.Linq;
 
 namespace Service
 {
-    public class GameStorage : MonoBehaviour
+    public class GameStorage : MonoBehaviour, IStorable
     {
         public static GameStorage Instanse { get; private set; } = null;
 
+        private const string STARS_COUNT_KEY = "STARS_COUNT";
+        private const string BRILLIANTS_COUNT_KEY = "BRILLIANTS_COUNT";
+        private const string ITEM_IS_NEW_KEY = "ITEM_IS_NEW_";
+        private const string ITEM_UNLOCKED_KEY = "ITEM_UNLOCKED_";
+        private const string GAME_STAGE_KEY = "GAME_STAGE";
+
         [Header("Settings")]
-        [SerializeField] [Range(1, 5)] private int _gameStage = 1;
+        [SerializeField] private bool _loadData = false;
         [SerializeField] private int _starsCount = 0;
         [SerializeField] private int _brilliantsCount = 0;
         [SerializeField] private int _generationStarFromLevel = 6;
@@ -45,7 +51,9 @@ namespace Service
 
         public static event System.Action NoEmptyCells;
 
-        public int GameStage { get => _gameStage; set => _gameStage = value; }
+        public bool LoadData { get => _loadData; }
+
+        public int GameStage { get; set; } = 1;
 
         public int StarsCount { get => _starsCount; set => _starsCount = value; }
 
@@ -71,6 +79,38 @@ namespace Service
 
         public bool OrdersCountMustBeUpdated { get => System.Array.Exists(_stagesForOrderCounts, element => element == GameStage); }
 
+        public void Save()
+        {
+            PlayerPrefs.SetInt(STARS_COUNT_KEY, _starsCount);
+            PlayerPrefs.SetInt(BRILLIANTS_COUNT_KEY, _brilliantsCount);
+            PlayerPrefs.SetInt(GAME_STAGE_KEY, GameStage);
+            foreach (var type in _items.Keys)
+            {
+                foreach (var item in _items[type])
+                {
+                    PlayerPrefs.SetInt(ITEM_UNLOCKED_KEY + type + item.Level, item.Unlocked ? 1 : 0);
+                    PlayerPrefs.SetInt(ITEM_IS_NEW_KEY + type + item.Level, item.IsNew ? 1 : 0);
+                }
+            }
+        }
+
+        public void Load()
+        {
+            _starsCount = PlayerPrefs.GetInt(STARS_COUNT_KEY, 0);
+            _brilliantsCount = PlayerPrefs.GetInt(BRILLIANTS_COUNT_KEY, 0);
+            GameStage = PlayerPrefs.GetInt(GAME_STAGE_KEY, 1);
+            foreach (var type in _items.Keys)
+            {
+                foreach (var item in _items[type])
+                {
+                    if (PlayerPrefs.GetInt(ITEM_UNLOCKED_KEY + type + item.Level, 0) == 1)
+                        item.Unlock();
+                    if (PlayerPrefs.GetInt(ITEM_IS_NEW_KEY + type + item.Level, 1) == 0)
+                        item.NotNew();
+                }
+            }
+        }
+
         public ItemStorage GetNextItemByAnotherItem(ItemStorage item)
         {
             var nextItemStats = _items[item.Type][item.Level];
@@ -85,13 +125,13 @@ namespace Service
             return null;
         }
 
-        public bool IsItemMaxLevel(ItemStorage item)
+        public bool IsItemMaxLevel(ItemType type, int level)
         {
-            if (_generatorStorage.IsGenerator(item.Type))
-                return _generatorStorage.IsMaxLevel(item);
+            if (_generatorStorage.IsGenerator(type))
+                return _generatorStorage.IsMaxLevel(type, level);
 
-            if (_items.ContainsKey(item.Type))
-                return _items[item.Type].Length == item.Level;
+            if (_items.ContainsKey(type))
+                return _items[type].Length == level;
             return true;
         }
 
@@ -197,7 +237,7 @@ namespace Service
             return false;
         }
 
-        public void IncrementGameStage() => ++_gameStage;
+        public void IncrementGameStage() => ++GameStage;
 
         public void RemoveItemsHighlight()
         {
@@ -217,14 +257,18 @@ namespace Service
             else
                 Destroy(gameObject);
 
-            DontDestroyOnLoad(gameObject);
-
             ItemsParent = GetObjectByTag(Tags.ItemsParent).transform;
             cells = GetObjectByTag(Tags.CellsParent).GetComponentsInChildren<Cell>();
             _generatorStorage = GetObjectByTag(Tags.ItemGeneratorStorage).GetComponent<ItemGeneratorStorage>();
 
             CreateItemsDictionary();
             CreateItemSpritesDictionary();
+        }
+
+        private void Start()
+        {
+            if (_loadData)
+                Load();
         }
 
         private bool ExistsCombination(ItemCombinations combination, ItemType first, ItemType second)
@@ -261,7 +305,8 @@ namespace Service
         {
             var itemStats = new ItemStorage[item.Icons.Length];
             for (var i = 0; i < itemStats.Length; ++i)
-                itemStats[i] = new ItemStorage(i + 1, item.Icons[i], item.Type, item.Throwable, item.Movable);
+                itemStats[i] = new ItemStorage(i + 1, item.Icons[i], item.Type, item.Throwable, 
+                    item.Movable, false, item.TakeSound, item.PutSound);
             return itemStats;
         }
     }
@@ -272,6 +317,8 @@ namespace Service
         public ItemType Type;
         public bool Throwable = true;
         public bool Movable = true;
+        public Sound TakeSound = default;
+        public Sound PutSound = default;
         public Sprite[] Icons;
     }
 }
