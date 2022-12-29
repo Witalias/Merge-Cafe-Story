@@ -42,6 +42,8 @@ namespace Gameplay.Field
         public static event Action CursorLeftItem;
         public static event Action CannotBeThrownAway;
         public static event Action WrongLevelForCombinating;
+        public static event Action<int, int> CellChanged;
+        public static event Action<int> ItemRemoved;
 
         public ItemStorage Stats { get; private set; }
 
@@ -81,6 +83,7 @@ namespace Gameplay.Field
 
         public void Remove()
         {
+            ItemRemoved?.Invoke(CurrentCell.transform.GetSiblingIndex());
             _currentCell.Clear();
             Destroy(gameObject);
         }
@@ -270,6 +273,7 @@ namespace Gameplay.Field
 
         private void Move(Cell toCell)
         {
+            CellChanged?.Invoke(_currentCell.transform.GetSiblingIndex(), toCell.transform.GetSiblingIndex());
             _currentCell.Clear();
             toCell.SetItem(this);
             _currentCell = toCell;
@@ -278,6 +282,7 @@ namespace Gameplay.Field
 
         private void Swap(Cell withCell)
         {
+            CellChanged?.Invoke(_currentCell.transform.GetSiblingIndex(), withCell.transform.GetSiblingIndex());
             _currentCell.Clear();
             _currentCell.SetItem(withCell.Item);
             withCell.Item.ReturnToCell();

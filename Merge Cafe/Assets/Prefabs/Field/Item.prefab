@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _returningSpeed: 8
-  _followSpeed: 12
+  _followSpeed: 20
   _image: {fileID: 2040678641470170926}
   _highlightParticlePrefab: {fileID: 7846292620911177381}
   _mergeParticlePrefab: {fileID: 8182832277577719845, guid: 290158b0a5bcd594a8a0e4ab5d491e63, type: 3}
