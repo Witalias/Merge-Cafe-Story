@@ -18,11 +18,14 @@ namespace Gameplay.Counters
         private const string STAR_REWARD_REQUIRED_STARS_KEY = "STAR_REWARD_REQUIRED_STARS";
         private const string STAR_REWARD_COUNT_KEY = "STAR_REWARD_COUNT";
         private const string NEED_STARS_TO_NEXT_REWARD_KEY = "NEED_STARS_TO_NEXT_REWARD";
+        private const string STAR_LEVEL_KEY = "STAR_LEVEL";
         private const int _cheatStarsCount = 20;
 
         [SerializeField] private UIBar _bar;
-        [SerializeField] private TextMeshProUGUI _value;
+        [SerializeField] private TextMeshProUGUI _starsText;
+        [SerializeField] private TextMeshProUGUI _levelText;
         [SerializeField] private Image _nextPresent;
+        [SerializeField] private Animation _starIcon;
         [SerializeField] private float barSpeed = 1f;
 
         private GameStorage _storage;
@@ -31,6 +34,8 @@ namespace Gameplay.Counters
         private (ItemType Type, int Level) _currentReward;
         private float _currentBarValue = 0f;
         private int _needStarsToNextReward = 10;
+
+        public int Level { get; private set; } = 1;
 
         public static event System.Action<ItemStorage> NoEmptyCellsAndRewardGetted;
         public static event System.Action UpdateOrderCount;
@@ -51,6 +56,7 @@ namespace Gameplay.Counters
             PlayerPrefs.SetInt(NEED_STARS_TO_NEXT_REWARD_KEY, _needStarsToNextReward);
             PlayerPrefs.SetInt(CURRENT_STAR_REWARD_TYPE_KEY, (int)_currentReward.Type);
             PlayerPrefs.SetInt(CURRENT_STAR_REWARD_LEVEL_KEY, _currentReward.Level);
+            PlayerPrefs.SetInt(STAR_LEVEL_KEY, Level);
         }
 
         public void Load()
@@ -69,13 +75,14 @@ namespace Gameplay.Counters
                 (ItemType)PlayerPrefs.GetInt(CURRENT_STAR_REWARD_TYPE_KEY),
                 PlayerPrefs.GetInt(CURRENT_STAR_REWARD_LEVEL_KEY, 1));
             _needStarsToNextReward = PlayerPrefs.GetInt(NEED_STARS_TO_NEXT_REWARD_KEY, 1);
+            Level = PlayerPrefs.GetInt(STAR_LEVEL_KEY, 1);
             SetNextRewardSprite(_currentReward);
         }
 
         public void AddStars(int value)
         {
             _storage.StarsCount += value;
-            UpdateValueText();
+            UpdateValuesText();
             SoundManager.Instanse.Play(Sound.MagicV2, null);
         }
 
@@ -88,7 +95,7 @@ namespace Gameplay.Counters
             else
                 SetRewardsByGameStage();
 
-            UpdateValueText();
+            UpdateValuesText();
         }
 
         private void Update()
@@ -119,20 +126,24 @@ namespace Gameplay.Counters
             NextReward();
         }
 
-        private void UpdateValueText()
+        private void UpdateValuesText()
         {
-            _value.text = $"{_storage.StarsCount} / {_needStarsToNextReward}";
+            _levelText.text = Level.ToString();
+            _starsText.text = $"{_storage.StarsCount} / {_needStarsToNextReward}";
         }
 
         private void FinishTarget()
         {
             _currentBarValue = 0f;
             _storage.StarsCount -= _needStarsToNextReward;
+            ++Level;
 
             var itemStorage = _storage.GetItem(_currentReward.Type, _currentReward.Level);
             itemStorage.Unlock();
 
             CheckOnNewGenerator(itemStorage.Type, out bool isNewGenerator);
+
+            _starIcon.Play();
 
             if (!isNewGenerator)
             {
@@ -151,7 +162,7 @@ namespace Gameplay.Counters
             else
                 NextReward();
 
-            UpdateValueText();
+            UpdateValuesText();
             SoundManager.Instanse.Play(Sound.NewPresent, null);
         }
 
