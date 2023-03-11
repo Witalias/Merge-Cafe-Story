@@ -17,7 +17,7 @@ namespace CameraEngine
 
         public float RightLimit { get => rightLimit; }
 
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawLine(new Vector2(leftLimit, topLimit), new Vector2(rightLimit, topLimit));

@@ -59,15 +59,15 @@ namespace EventHandlers
             {
                 var isGeneratorMaxLevel = IsGeneratorMaxLevel?.Invoke(type, level);
                 if (isGeneratorMaxLevel.GetValueOrDefault())
-                    instruction = $"Перетащи на генератор <color={_highlightColor}>«{itemDescription.Title}»</color>, чтобы улучшить его.\n" +
+                    instruction = $"Перетащи на оборудование <color={_highlightColor}>«{itemDescription.Title}»</color>, чтобы улучшить его.\n\n" +
                         $"Этот предмет нельзя выбросить.";
                 else
                 {
                     var currentLevel = GetGeneratorLevel?.Invoke(type);
                     var titleNextLevel = Translation.GetItemDescription(type, level + 1).Title;
                     var titleNeedLevel = Translation.GetItemDescription(type, currentLevel.GetValueOrDefault()).Title;
-                    instruction = $"Объедини, чтобы получить <color={_highlightColor}>«{titleNextLevel}» {level + 1}-го уровня</color>.\n" +
-                        $"Получи <color={_highlightColor}>«{titleNeedLevel}» {currentLevel.GetValueOrDefault()}-го уровня</color>, чтобы улучшить генератор <color={_highlightColor}>«{titleNeedLevel}»</color>.\n" +
+                    instruction = $"Объедини, чтобы получить <color={_highlightColor}>«{titleNextLevel}» {level + 1}-го уровня</color>.\n\n" +
+                        $"Получи <color={_highlightColor}>«{titleNeedLevel}» {currentLevel.GetValueOrDefault()}-го уровня</color>, чтобы улучшить оборудование <color={_highlightColor}>«{titleNeedLevel}»</color>.\n\n" +
                         $"Этот предмет нельзя выбросить.";
                 }
             }
@@ -149,9 +149,9 @@ namespace EventHandlers
 
             if (type == ItemType.TrashCan)
             {
-                var instruction = "Перетащи сюда предмет, чтобы выбросить его.\nУлучши, чтобы можно было продавать предметы.";
+                var instruction = "Перетащи сюда предмет, чтобы выбросить его.\n\nУлучши, чтобы можно было продавать предметы.";
                 if (level > 2)
-                    instruction = "Перетащи сюда предмет, чтобы продать его.\nУлучши, чтобы продажа приносила больше бриллиантов.";
+                    instruction = "Перетащи сюда предмет, чтобы продать его.\n\nУлучши, чтобы продажа приносила больше бриллиантов.";
                 _informationWindow.ShowGenerator(itemDescription.Title, level, itemDescription.Description, null, instruction);
             }
             else

@@ -86,7 +86,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 6292305270728971641}
   _targetTag: 2
-  _disappearParticle: {fileID: 8182832277577719845, guid: 290158b0a5bcd594a8a0e4ab5d491e63, type: 3}
   _minWaitingTime: 1
   _maxWaitingTime: 1.5
   _enableMoveAnimation: 1
@@ -159,7 +158,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5f150fe190467a04e8bc5d4f2eaf7ac8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 76a744dd9e487c24485e001601896915, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

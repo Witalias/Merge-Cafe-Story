@@ -144,11 +144,11 @@ MonoBehaviour:
     TakeSound: 0
     PutSound: 0
     Icons:
-    - {fileID: 21300000, guid: 5f150fe190467a04e8bc5d4f2eaf7ac8, type: 3}
-    - {fileID: 21300000, guid: bcf3487918a6eb24c823b2276b68ebf5, type: 3}
-    - {fileID: 21300000, guid: 7fbcc5a0d3b38914fb86020faf75ba08, type: 3}
-    - {fileID: 21300000, guid: 4257413881787274a9d4b4b4e0e080b1, type: 3}
-    - {fileID: 21300000, guid: e011eaa2caf88a841b2cbfef129852e6, type: 3}
+    - {fileID: 21300000, guid: 76a744dd9e487c24485e001601896915, type: 3}
+    - {fileID: 21300000, guid: 9e5f9e12c85201943a5e277d9995517d, type: 3}
+    - {fileID: 21300000, guid: 6382c502220da284ba429a17d12329c6, type: 3}
+    - {fileID: 21300000, guid: 64d6e71b767f35c4f99a9c3bb2effdba, type: 3}
+    - {fileID: 21300000, guid: d5d1c5d33e89eb74badb468b19f1d7a4, type: 3}
   - Type: 6
     Throwable: 0
     Movable: 1
@@ -169,8 +169,8 @@ MonoBehaviour:
     TakeSound: 2
     PutSound: 3
     Icons:
-    - {fileID: 21300000, guid: 0ecdf2a08a7d83e49be996bc047c78bb, type: 3}
-    - {fileID: 21300000, guid: 310f6e5dd673e47498a68f6aa843bdf9, type: 3}
+    - {fileID: 21300000, guid: b10027acc99e08644b6dad3b4e1f7058, type: 3}
+    - {fileID: 21300000, guid: 5dfae85e6bcc6c54c9ca4d1b7db433ba, type: 3}
     - {fileID: 21300000, guid: a16f904cac8d04a47812d86964ccfff4, type: 3}
     - {fileID: 21300000, guid: fa4235f082f7ec941890453dbf24bae9, type: 3}
     - {fileID: 21300000, guid: bde505cc88b3a46449ed568fc1c605cf, type: 3}
