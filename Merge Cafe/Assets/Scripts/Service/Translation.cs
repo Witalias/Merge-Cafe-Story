@@ -41,11 +41,11 @@ namespace Service
             },
             [ItemType.Brilliant] = new Dictionary<int, ItemDescription>
             {
-                [1] = new ItemDescription("Бриллиант", "Что это там блестит?"),
-                [2] = new ItemDescription("Парочка бриллиантов", "А может больше?"),
-                [3] = new ItemDescription("Горсть бриллиантов", "Это ещё не предел!"),
-                [4] = new ItemDescription("Куча бриллиантов", "Хватит на яхту."),
-                [5] = new ItemDescription("Гора бриллиантов", "Да вы богаты!"),
+                [1] = new ItemDescription("Кристалл", "Что это там блестит?"),
+                [2] = new ItemDescription("Парочка кристаллов", "А может больше?"),
+                [3] = new ItemDescription("Горсть кристаллов", "Это ещё не предел!"),
+                [4] = new ItemDescription("Куча кристаллов", "Хватит на яхту."),
+                [5] = new ItemDescription("Гора кристаллов", "Да вы богаты!"),
             },
             [ItemType.Coffee] = new Dictionary<int, ItemDescription>
             {
@@ -175,7 +175,7 @@ namespace Service
 
         private static Dictionary<ItemType, string> _itemNames = new Dictionary<ItemType, string>
         {
-            [ItemType.Star] = "звёзды",
+            [ItemType.Star] = "кристаллы",
             [ItemType.Brilliant] = "бриллианты",
         };
 

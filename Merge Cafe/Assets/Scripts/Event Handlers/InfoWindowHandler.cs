@@ -74,7 +74,7 @@ namespace EventHandlers
             else if (type == ItemType.Brilliant)
             {
                 var currencyCount = storage.GetBrilliantsRewardByItemlevel(level);
-                var brilliantWord = Translation.PluralizeWord(currencyCount, "бриллиант", "бриллианта", "бриллиантов");
+                var brilliantWord = Translation.PluralizeWord(currencyCount, "кристалл", "кристалла", "кристаллов");
                 if (maxLevel)
                     instruction = $"Ќажми, чтобы получить {currencyCount} {brilliantWord}.";
                 else

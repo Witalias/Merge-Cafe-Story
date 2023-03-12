@@ -15,10 +15,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 177258564464263411, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 27
-      objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _generatedItems.Array.size
       value: 2
