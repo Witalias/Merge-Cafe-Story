@@ -145,17 +145,9 @@ MonoBehaviour:
   _music:
   - Type: 0
     Clips:
-    - {fileID: 8300000, guid: eadde681f0296054fbcab0b5de61c256, type: 3}
-    - {fileID: 8300000, guid: a08e975ebaf67e84187ccb3e9d108393, type: 3}
-    - {fileID: 8300000, guid: 09b0d86de8a9ac941a1fb83c44c09c51, type: 3}
-    - {fileID: 8300000, guid: 0656d3048705f964aa072d1664dadac1, type: 3}
-    - {fileID: 8300000, guid: 68726b34006796d46a73d6d07a1b32b9, type: 3}
-    - {fileID: 8300000, guid: 2992bed2ef590db4fa5a16045c9aa713, type: 3}
-    - {fileID: 8300000, guid: d30bdb653b138634fa7b8ed8d479dd3c, type: 3}
-    - {fileID: 8300000, guid: 146674994e162bb4d96327827794422b, type: 3}
-    - {fileID: 8300000, guid: a63e234379a8207468f0c2aa29bef778, type: 3}
-    - {fileID: 8300000, guid: 0cecb494c68e3cd4daff46717873cad7, type: 3}
-    - {fileID: 8300000, guid: 93406782c90ea75419c189a661356dc5, type: 3}
+    - {fileID: 8300000, guid: 2e6ff2b28aefe8242ba0c97de5ccf205, type: 3}
+    - {fileID: 8300000, guid: fec1d816c8ff99c4eb81e91968be4a92, type: 3}
+    - {fileID: 8300000, guid: 22fa304427737b64cb16bb5cac20b96b, type: 3}
 --- !u!114 &8278951589154435814
 MonoBehaviour:
   m_ObjectHideFlags: 0

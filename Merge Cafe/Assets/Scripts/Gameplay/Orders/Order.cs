@@ -242,6 +242,7 @@ namespace Gameplay.Orders
                 NoEmptyCellsAndRewardGetted?.Invoke(_extraReward);
             else
                 randomCell.CreateItem(_extraReward, transform.position);
+            _extraReward.UnlockFirstly();
         }
 
         private void CheckOnEmpty()

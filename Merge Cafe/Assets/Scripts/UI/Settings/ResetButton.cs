@@ -16,6 +16,7 @@ namespace UI.Settings
         {
             PlayerPrefs.DeleteAll();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Time.timeScale = 1.0f;
         }
     }
 }

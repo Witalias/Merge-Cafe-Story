@@ -17,6 +17,8 @@ namespace Enums
         SpeedUp,
         MagicV2,
         Brilliant,
-        NewPresent
+        NewPresent,
+        Achivement,
+        Switch
     }
 }

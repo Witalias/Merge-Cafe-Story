@@ -4,6 +4,7 @@ using System.Linq;
 using Enums;
 using Service;
 using System.Collections.Generic;
+using System;
 
 namespace Gameplay.ItemGenerators
 {
@@ -14,6 +15,8 @@ namespace Gameplay.ItemGenerators
         [SerializeField] private Upgradable[] _upgradables;
 
         private ItemGenerator[] _generators;
+
+        public static event Action<ItemType, float> NewGenerator;
 
         public void Save()
         {
@@ -67,6 +70,7 @@ namespace Gameplay.ItemGenerators
         {
             var generatorsToActivate = _upgradables.Where(upgradable => upgradable.Type == type).ToArray();
             foreach (var generator in generatorsToActivate) generator.Activate();
+            NewGenerator?.Invoke(type, 1f);
         }
 
         public bool IsGenerator(ItemType type)

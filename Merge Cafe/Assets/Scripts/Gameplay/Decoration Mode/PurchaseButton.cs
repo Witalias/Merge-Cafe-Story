@@ -5,11 +5,12 @@ using Service;
 using System;
 using Enums;
 using Gameplay.Counters;
+using UnityEngine.EventSystems;
 
 namespace Gameplay.DecorationMode
 {
     [RequireComponent(typeof(Animator))]
-    public class PurchaseButton : MonoBehaviour
+    public class PurchaseButton : MonoBehaviour, IPointerDownHandler
     {
         private const string _appearAnimatorTrigger = "Appear";
 
@@ -42,6 +43,21 @@ namespace Gameplay.DecorationMode
 
         public void SetPurchaseAction(Action value) => _purchaseAction = value;
 
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            if (_storage.BrilliantsCount < _cost)
+            {
+                NotEnoughBrilliants?.Invoke();
+                return;
+            }
+
+            SoundManager.Instanse.Play(Sound.Buy, null);
+            SoundManager.Instanse.Play(Sound.Magic, null);
+            GameStorage.Instanse.GetComponent<CurrencyAdder>().Add(CurrencyType.Brilliant, -_cost);
+            _purchaseAction?.Invoke();
+            Destroy(gameObject);
+        }
+
         private void Awake()
         {
             _animator = GetComponent<Animator>();
@@ -67,21 +83,6 @@ namespace Gameplay.DecorationMode
         private void OnMouseExit()
         {
             SetCircleOpacity(_initialOpacity);
-        }
-
-        private void OnMouseDown()
-        {
-            if (_storage.BrilliantsCount < _cost)
-            {
-                NotEnoughBrilliants?.Invoke();
-                return;
-            }
-
-            SoundManager.Instanse.Play(Sound.Buy, null);
-            SoundManager.Instanse.Play(Sound.Magic, null);
-            GameStorage.Instanse.GetComponent<CurrencyAdder>().Add(CurrencyType.Brilliant, -_cost);
-            _purchaseAction?.Invoke();
-            Destroy(gameObject);
         }
 
         private void SetCircleOpacity(float value) =>

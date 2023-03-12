@@ -3,6 +3,7 @@ using Gameplay;
 using Gameplay.Field;
 using Gameplay.Counters;
 using Gameplay.Orders;
+using UI;
 
 namespace EventHandlers
 {
@@ -20,12 +21,14 @@ namespace EventHandlers
         {
             StarCounter.NoEmptyCellsAndRewardGetted += Add;
             Order.NoEmptyCellsAndRewardGetted += Add;
+            ScreenInfoWindow.AddItemInQueue += Add;
         }
 
         private void OnDisable()
         {
             StarCounter.NoEmptyCellsAndRewardGetted -= Add;
             Order.NoEmptyCellsAndRewardGetted -= Add;
+            ScreenInfoWindow.AddItemInQueue -= Add;
         }
 
         private void Add(ItemStorage item)

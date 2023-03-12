@@ -14,7 +14,7 @@ namespace Gameplay.Field
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(QuickClickTracking))]
-    public class Item : MonoBehaviour
+    public class Item : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler, IDragHandler
     {
         private const string _zoomAnimatorBool = "Mouse Enter";
         private const string _burnAnimatorTrigger = "Burn";
@@ -92,6 +92,13 @@ namespace Gameplay.Field
 
         public void PlayHighlight() => _animator.SetTrigger(_highlightAnimatorTrigger);
 
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            _isReturning = false;
+            transform.SetAsLastSibling();
+            SoundManager.Instanse.Play(Stats.TakeSound, null);
+        }
+
         private void Awake()
         {
             _animator = GetComponent<Animator>();
@@ -109,59 +116,6 @@ namespace Gameplay.Field
                 if (Vector3.Distance(transform.position, _currentCell.transform.position) <= 0.01f)
                     _isReturning = false;
             }
-        }
-
-        private void OnMouseEnter()
-        {
-            if (Stats.Movable)
-            {
-                _animator.SetBool(_zoomAnimatorBool, true);
-                if (!_dragged)
-                    CursorHoveredMovableItem?.Invoke(Stats.Type, Stats.Level);
-                Stats.Unlock();
-            }
-            else if (!_dragged)
-                CursorHoveredNotMovableItem?.Invoke(Stats.Type, Stats.Level);
-        }
-
-        private void OnMouseExit()
-        {
-            CursorLeftItem?.Invoke();
-
-            if (!Stats.Movable)
-                return;
-
-            _animator.SetBool(_zoomAnimatorBool, false);
-        }
-
-        private void OnMouseDrag()
-        {
-            _dragged = true;
-
-            if (_quickClickTracking.IsChecking || !Stats.Movable)
-                return;
-
-            var mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            var followPosition = new Vector3(mousePosition.x, mousePosition.y, 0f);
-            transform.position = Vector3.Lerp(transform.position, followPosition, _followSpeed * Time.fixedDeltaTime);
-        }
-
-        private void OnMouseDown()
-        {
-            _isReturning = false;
-            transform.SetAsLastSibling();
-            SoundManager.Instanse.Play(Stats.TakeSound, null);
-        }
-
-        private void OnMouseUp()
-        {
-            _dragged = false;
-
-            if (!Stats.Movable)
-                return;
-
-            ReturnToCell();
-            CheckCursorOver();
         }
 
         private IEnumerator Disappear()
@@ -314,6 +268,52 @@ namespace Gameplay.Field
             StartCoroutine(Disappear());
             StartCoroutine(withCell.Item.Disappear());
             SoundManager.Instanse.Play(_storage.GetCombinateSound(Stats.Type, withCell.Item.Stats.Type), null);
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            _dragged = false;
+
+            if (!Stats.Movable)
+                return;
+
+            ReturnToCell();
+            CheckCursorOver();
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (Stats.Movable)
+            {
+                _animator.SetBool(_zoomAnimatorBool, true);
+                if (!_dragged)
+                    CursorHoveredMovableItem?.Invoke(Stats.Type, Stats.Level);
+                Stats.Unlock();
+            }
+            else if (!_dragged)
+                CursorHoveredNotMovableItem?.Invoke(Stats.Type, Stats.Level);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            CursorLeftItem?.Invoke();
+
+            if (!Stats.Movable)
+                return;
+
+            _animator.SetBool(_zoomAnimatorBool, false);
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            _dragged = true;
+
+            if (_quickClickTracking.IsChecking || !Stats.Movable)
+                return;
+
+            var mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            var followPosition = new Vector3(mousePosition.x, mousePosition.y, 0f);
+            transform.position = Vector3.Lerp(transform.position, followPosition, _followSpeed * Time.fixedDeltaTime);
         }
     }
 }

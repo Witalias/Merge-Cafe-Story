@@ -36,6 +36,7 @@ namespace Service
         [Header("Sprites")]
         [SerializeField] private Sprite _questionMark;
         [SerializeField] private Sprite _dialogWindow;
+        [SerializeField] private Sprite _star;
 
         [Header("Prefabs")]
         [SerializeField] private GameObject _itemPrefab;
@@ -78,6 +79,8 @@ namespace Service
 
         public Sprite DialogWindow { get => _dialogWindow; }
 
+        public Sprite Star { get => _star; }
+
         public bool OrdersCountMustBeUpdated { get => System.Array.Exists(_stagesForOrderCounts, element => element == GameStage); }
 
         public void Save()
@@ -115,7 +118,7 @@ namespace Service
         public ItemStorage GetNextItemByAnotherItem(ItemStorage item)
         {
             var nextItemStats = _items[item.Type][item.Level];
-            nextItemStats.Unlock();
+            nextItemStats.UnlockFirstly();
             return nextItemStats;
         }
 

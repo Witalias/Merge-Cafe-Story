@@ -32,8 +32,17 @@ namespace Gameplay
         }
 
         public void ShowGenerator(string title, int level, string description, Sprite[] producedItemSprites,
-            string instruction = "Нажми для ускорения производства.\nУлучши, чтобы производить предметы более высокого уровня.\n\nПроизводит:")
+            string instruction = null)
         {
+            if (instruction == null || instruction == "")
+            {
+                instruction = "Нажми для ускорения производства.\n\n";
+                if (level == 1 || level == 4)
+                    instruction += "Улучши, чтобы быстрее производить предметы.";
+                else
+                    instruction += "Улучши, чтобы повысить уровень производимых предметов.";
+                instruction += "\n\nПроизводит:";
+            }
             ClearProducedItemsList();
             Show(title, level, description, instruction);
             //_producedItemsGroup.gameObject.SetActive(true);

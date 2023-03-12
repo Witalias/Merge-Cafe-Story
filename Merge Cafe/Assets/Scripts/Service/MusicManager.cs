@@ -75,15 +75,16 @@ namespace Service
         {
             yield return new WaitForSeconds(2f);
             if (!_audioSource.isPlaying)
-                Finish();
+                StartCoroutine(Finish());
             else
                 _playMusicCoroutine = StartCoroutine(CheckMusicEnd());
         }
 
-        private void Finish()
+        private IEnumerator Finish()
         {
             if (++_currentIndex >= _musicDictionary[_currentMusic].Length)
                 _currentIndex = 0;
+            yield return new WaitForSeconds(0f);
             PlayMusic(_currentIndex);
         }
 

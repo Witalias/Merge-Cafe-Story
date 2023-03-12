@@ -5,20 +5,24 @@ using UI;
 using Service;
 using Enums;
 using Gameplay.Field;
-
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace Gameplay.ItemGenerators
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(Upgradable))]
-    public class ItemGenerator : MonoBehaviour
+    public class ItemGenerator : MonoBehaviour, IPointerDownHandler
     {
         private const float _tick = 0.01f;
         private const string _clickAnimatorBool = "Click";
 
         [SerializeField] private float _boostSpeedMultiplier;
+        [SerializeField] private Image _image;
         [SerializeField] private UIBar _bar;
         [SerializeField] private GameObject _energyIcon;
+        [SerializeField] private Toggle _toggle;
+        [SerializeField] private Color _disabledColor;
         [SerializeField] private ItemType[] _generatedItems;
         [SerializeField] private GeneratorStats[] _statsOnLevels;
 
@@ -29,8 +33,9 @@ namespace Gameplay.ItemGenerators
 
         private readonly List<ItemType> _currentGeneratedItems = new();
         private float _currentGenerationTime = 0f;
-        private bool stopped = false;
-        private bool forcedStopped = false;
+        private bool _stopped = false;
+        private bool _enabled = true;
+        private bool _forcedStopped = false;
         private int _remainItemsToSlowingDown = 0;
 
         public ItemType[] GeneratedItems { get => _generatedItems; }
@@ -45,7 +50,7 @@ namespace Gameplay.ItemGenerators
 
         public void SetActiveTimer(bool value)
         {
-            forcedStopped = !value;
+            _forcedStopped = !value;
             if (value == true)
                 _addBarValueCoroutine = StartCoroutine(AddBarValue());
             else
@@ -65,10 +70,23 @@ namespace Gameplay.ItemGenerators
             }
         }
 
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            if (_stopped || _forcedStopped || !_enabled)
+                return;
+
+            _animator.SetTrigger(_clickAnimatorBool);
+            _currentGenerationTime += _statsOnLevels[_upgradable.Level - 1].clickIncreaseSeconds;
+            UpdateBar();
+            CheckBarFilled();
+        }
+
         private void Awake()
         {
             _animator = GetComponent<Animator>();
             _upgradable = GetComponent<Upgradable>();
+
+            _toggle.onValueChanged.AddListener(OnChangeToggleValue);
         }
 
         private void Start()
@@ -81,28 +99,17 @@ namespace Gameplay.ItemGenerators
         private void OnEnable()
         {
             _storage = GameStorage.Instanse;
-            if (!stopped)
+            if (!_stopped)
                 _addBarValueCoroutine = StartCoroutine(AddBarValue());
         }
 
         private void Update()
         {
-            if (stopped && !forcedStopped && _storage.GetFirstEmptyCell() != null)
+            if (_stopped && _enabled && !_forcedStopped && _storage.GetFirstEmptyCell() != null)
             {
-                stopped = false;
+                _stopped = false;
                 _addBarValueCoroutine = StartCoroutine(AddBarValue());
             }
-        }
-
-        private void OnMouseDown()
-        {
-            if (stopped || forcedStopped)
-                return;
-
-            _animator.SetTrigger(_clickAnimatorBool);
-            _currentGenerationTime += _statsOnLevels[_upgradable.Level - 1].clickIncreaseSeconds;
-            UpdateBar();
-            CheckBarFilled();
         }
 
         private IEnumerator AddBarValue()
@@ -113,7 +120,7 @@ namespace Gameplay.ItemGenerators
             yield return new WaitForSeconds(_tick);
 
             CheckBarFilled();
-            if (!stopped)
+            if (!_stopped && _enabled)
                 _addBarValueCoroutine = StartCoroutine(AddBarValue());
         }
 
@@ -128,7 +135,7 @@ namespace Gameplay.ItemGenerators
             if (_currentGenerationTime >= reachedTime)
             {
                 CreateItem();
-                if (!stopped)
+                if (!_stopped && _enabled)
                 {
                     _currentGenerationTime -= reachedTime;
                     if (_remainItemsToSlowingDown > 0)
@@ -144,7 +151,7 @@ namespace Gameplay.ItemGenerators
             if (cell == null)
             {
                 StopCoroutine(_addBarValueCoroutine);
-                stopped = true;
+                _stopped = true;
                 return;
             }
             var randomType = _generatedItems[0];
@@ -162,6 +169,15 @@ namespace Gameplay.ItemGenerators
         {
             if (_remainItemsToSlowingDown <= 0)
                 _energyIcon.SetActive(false);
+        }
+
+        private void OnChangeToggleValue(bool value)
+        {
+            _enabled = value;
+            _image.color = value ? Color.white : _disabledColor;
+            SoundManager.Instanse.Play(Sound.Switch, null);
+            if (value)
+                _addBarValueCoroutine = StartCoroutine(AddBarValue());
         }
 
         [System.Serializable]

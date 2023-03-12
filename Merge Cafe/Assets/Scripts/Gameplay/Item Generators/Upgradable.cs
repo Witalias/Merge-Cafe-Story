@@ -30,6 +30,7 @@ namespace Gameplay.ItemGenerators
         public static event Action Upgraded;
         public static event Action<ItemType, int> CursorHoveredGenerator;
         public static event Action CursorLeftGenerator;
+        public static event Action<ItemStorage, float> ShowCongratulation;
 
         public void Save()
         {
@@ -111,6 +112,7 @@ namespace Gameplay.ItemGenerators
             SoundManager.Instanse.Play(Sound.UnlockCell, null);
             Upgraded?.Invoke();
             SetIcon();
+            ShowCongratulation?.Invoke(GameStorage.Instanse.GetItem(_type, _level), 1f);
         }
 
         private void SetIcon() => _image.sprite = GameStorage.Instanse.GetItemSprite(_type, _level);

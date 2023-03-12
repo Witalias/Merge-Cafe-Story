@@ -218,6 +218,12 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 750638cde2e87674f8a6a72d2c5ca63d, type: 3}
     - {fileID: 8300000, guid: 95fdeb039a37edd41b7c22f8d674e76e, type: 3}
     - {fileID: 8300000, guid: ae92f1efa1dd7c1478be1087bd0bf719, type: 3}
+  - Type: 16
+    Clips:
+    - {fileID: 8300000, guid: a1c71a3d067c5e7479782b49c1e8b217, type: 3}
+  - Type: 17
+    Clips:
+    - {fileID: 8300000, guid: 0e5898785e42a75419ebdd4c0f371bb3, type: 3}
 --- !u!114 &347023153144526518
 MonoBehaviour:
   m_ObjectHideFlags: 0

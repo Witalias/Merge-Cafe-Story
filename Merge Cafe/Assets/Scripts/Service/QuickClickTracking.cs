@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
-public class QuickClickTracking : MonoBehaviour
+public class QuickClickTracking : MonoBehaviour, IPointerDownHandler
 {
     private const float _checkingTime = 0.15f;
 
@@ -20,7 +21,7 @@ public class QuickClickTracking : MonoBehaviour
 
     public bool IsChecking { get; private set; } = false;
 
-    private void OnMouseDown()
+    public void OnPointerDown(PointerEventData eventData)
     {
         StartCoroutine(CheckQuickClick());
     }

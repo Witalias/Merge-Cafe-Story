@@ -42,6 +42,7 @@ namespace Gameplay.Field
 
                 _item.Remove();
                 GameStorage.Instanse.GetRandomEmptyCell().CreateItem(item, transform.position);
+                item.UnlockFirstly();
             }
         }
     }

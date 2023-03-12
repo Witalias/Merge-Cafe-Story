@@ -1,6 +1,7 @@
 using UnityEngine;
 using Enums;
 using Service;
+using System;
 
 namespace Gameplay.Field
 {
@@ -15,6 +16,8 @@ namespace Gameplay.Field
         public bool Movable { get; private set; } = true;
         public Sound TakeSound { get; }
         public Sound PutSound { get; }
+
+        public static event Action<ItemStorage, float> NewItem;
 
         public ItemStorage(int level, Sprite icon, ItemType type, bool throwable, bool movable,
             bool unlocked = false, Sound takeSound = default, Sound putSound = default)
@@ -34,9 +37,22 @@ namespace Gameplay.Field
 
         public ItemStorage(ItemStorage other, bool unlocked = true) : this(other.Level, other.Icon, other.Type, other.Throwable, other.Movable, unlocked) { }
 
-        public void Unlock() => Unlocked = true;
+        public void Unlock()
+        {
+            Unlocked = true;
+        }
 
-        public void NotNew() => IsNew = false;
+        public void UnlockFirstly()
+        {
+            if (!Unlocked)
+                NewItem?.Invoke(this, 2f);
+            Unlock();
+        }
+
+        public void NotNew()
+        {
+            IsNew = false;
+        }
 
         public void OpenPresent()
         {

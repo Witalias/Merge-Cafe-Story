@@ -298,6 +298,7 @@ MonoBehaviour:
     CombinateSound: 4
   _questionMark: {fileID: 21300000, guid: abb3b55f573e57349b00631515a50614, type: 3}
   _dialogWindow: {fileID: 21300000, guid: d6c5be0a54b99494fa7f4581d9a0c2ed, type: 3}
+  _star: {fileID: 21300000, guid: 76a744dd9e487c24485e001601896915, type: 3}
   _itemPrefab: {fileID: 5818615698071924154, guid: 09bff0b57a355a443b533ea962f15876, type: 3}
   _starForAnimation: {fileID: 6292305270132265545, guid: a10a6f79787d7b4438baac93bdf8bb80, type: 3}
   _brilliantForAnimation: {fileID: 4586205405515532584, guid: 651c76dbca8f4e649bd401641c565975, type: 3}

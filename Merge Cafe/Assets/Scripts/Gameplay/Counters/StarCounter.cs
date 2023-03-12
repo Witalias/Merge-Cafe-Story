@@ -41,6 +41,7 @@ namespace Gameplay.Counters
         public static event System.Action UpdateOrderCount;
         public static event System.Action NewStageReached;
         public static event System.Action<ItemType> ActivateGenerator;
+        public static event System.Action<int, float> NewGlobalLevel;
         public static event System.Func<ItemType, bool> IsGenerator;
         public static event System.Func<ItemType, bool> GeneratorExistsInGame;
 
@@ -137,9 +138,10 @@ namespace Gameplay.Counters
             _currentBarValue = 0f;
             _storage.StarsCount -= _needStarsToNextReward;
             ++Level;
+            NewGlobalLevel?.Invoke(Level, 0f);
 
             var itemStorage = _storage.GetItem(_currentReward.Type, _currentReward.Level);
-            itemStorage.Unlock();
+            itemStorage.UnlockFirstly();
 
             CheckOnNewGenerator(itemStorage.Type, out bool isNewGenerator);
 
