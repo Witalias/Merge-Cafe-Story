@@ -1,3 +1,4 @@
+using Gameplay.Tutorial;
 using Service;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -10,8 +11,10 @@ namespace EventHandlers
         private IStorable _storable;
 
         public async void Save()
-
         {
+            if (!TutorialSystem.TutorialDone)
+                return;
+
             _storable.Save();
             await Task.Yield();
         }

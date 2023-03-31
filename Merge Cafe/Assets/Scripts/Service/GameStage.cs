@@ -15,8 +15,7 @@ namespace Service
                     (ItemType.Tea, 1, 3, 1),
                 }, null, new[]
                 {
-                    (ItemType.Teapot, 1, 5),
-                    (ItemType.Brilliant, 1, 2),
+                    (ItemType.Teapot, 1, 4),
                     (ItemType.Key, 1, 4),
                 }, 1),
 

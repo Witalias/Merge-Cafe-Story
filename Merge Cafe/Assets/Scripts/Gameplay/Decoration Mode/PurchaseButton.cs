@@ -6,6 +6,7 @@ using System;
 using Enums;
 using Gameplay.Counters;
 using UnityEngine.EventSystems;
+using Gameplay.Tutorial;
 
 namespace Gameplay.DecorationMode
 {
@@ -27,6 +28,7 @@ namespace Gameplay.DecorationMode
         private int _cost;
 
         public static event Action NotEnoughBrilliants;
+        public static event Action Purchased;
 
         public void SetIcon(Sprite icon) => _icon.sprite = icon;
 
@@ -45,6 +47,9 @@ namespace Gameplay.DecorationMode
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            if (!TutorialSystem.TutorialDone && GetComponent<TutorialTarget>() == null)
+                return;
+
             if (_storage.BrilliantsCount < _cost)
             {
                 NotEnoughBrilliants?.Invoke();
@@ -53,8 +58,9 @@ namespace Gameplay.DecorationMode
 
             SoundManager.Instanse.Play(Sound.Buy, null);
             SoundManager.Instanse.Play(Sound.Magic, null);
-            GameStorage.Instanse.GetComponent<CurrencyAdder>().Add(CurrencyType.Brilliant, -_cost);
+            GameStorage.Instance.GetComponent<CurrencyAdder>().Add(CurrencyType.Brilliant, -_cost);
             _purchaseAction?.Invoke();
+            Purchased?.Invoke();
             Destroy(gameObject);
         }
 
@@ -67,7 +73,7 @@ namespace Gameplay.DecorationMode
 
         private void Start()
         {
-            _storage = GameStorage.Instanse;
+            _storage = GameStorage.Instance;
         }
 
         private void Update()

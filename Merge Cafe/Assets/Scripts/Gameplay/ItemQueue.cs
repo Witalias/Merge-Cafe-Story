@@ -46,7 +46,7 @@ namespace Gameplay
             {
                 var type = (ItemType)PlayerPrefs.GetInt(ITEM_TYPE_IN_QUEUE_KEY + i);
                 var level = PlayerPrefs.GetInt(ITEM_LEVEL_IN_QUEUE_KEY + i);
-                _items.Enqueue(GameStorage.Instanse.GetItem(type, level));
+                _items.Enqueue(GameStorage.Instance.GetItem(type, level));
             }
             if (itemQueueCount > 0)
             {
@@ -70,7 +70,7 @@ namespace Gameplay
 
         private void Start()
         {
-            if (GameStorage.Instanse.LoadData)
+            if (GameStorage.Instance.LoadData)
                 Load();
         }
 
@@ -79,7 +79,7 @@ namespace Gameplay
             if (_items.Count == 0)
                 return;
 
-            var randomCell = GameStorage.Instanse.GetRandomEmptyCell(true);
+            var randomCell = GameStorage.Instance.GetRandomEmptyCell(true);
             if (randomCell == null)
                 return;
 

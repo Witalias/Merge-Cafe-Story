@@ -15,6 +15,8 @@ namespace UI
         private bool _busy = false;
         private ItemType _currentType;
 
+        public ItemInSequence GetItemInSequence(int level) => _icons[level - 1];
+
         public void Show(ItemType type)
         {
             if (type == ItemType.OpenPresent)
@@ -88,7 +90,7 @@ namespace UI
 
         private void Start()
         {
-            _storage = GameStorage.Instanse;
+            _storage = GameStorage.Instance;
         }
 
         private void Update()

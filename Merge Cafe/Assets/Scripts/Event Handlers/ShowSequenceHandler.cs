@@ -4,6 +4,7 @@ using Gameplay.Field;
 using Gameplay.Orders;
 using Enums;
 using Service;
+using Gameplay.Tutorial;
 
 namespace EventHandlers
 {
@@ -22,6 +23,7 @@ namespace EventHandlers
             Item.CursorHoveredMovableItem += Show;
             Item.CursorHoveredNotMovableItem += ShowCombination;
             OrderPoint.CursorHoveredItemInOrder += Show;
+            TutorialSystem.GetItemInSequence += _sequencePanel.GetItemInSequence;
         }
 
         private void OnDisable()
@@ -29,6 +31,7 @@ namespace EventHandlers
             Item.CursorHoveredMovableItem -= Show;
             Item.CursorHoveredNotMovableItem -= ShowCombination;
             OrderPoint.CursorHoveredItemInOrder -= Show;
+            TutorialSystem.GetItemInSequence -= _sequencePanel.GetItemInSequence;
         }
 
         private void Show(ItemType type, int level)
@@ -45,7 +48,7 @@ namespace EventHandlers
         private void ShowCombination(ItemType type, int level)
         {
             _sequencePanel.Hide();
-            _sequencePanel.ShowCombination(GameStorage.Instanse.GetSecondItemTypeInCombination(type), type);
+            _sequencePanel.ShowCombination(GameStorage.Instance.GetSecondItemTypeInCombination(type), type);
         }
     }
 }

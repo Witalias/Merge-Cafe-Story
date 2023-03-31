@@ -60,7 +60,7 @@ namespace Gameplay.Field
                 return;
 
             Type = ItemType.OpenPresent;
-            Icon = GameStorage.Instanse.GetItemSprite(Type, Level);
+            Icon = GameStorage.Instance.GetItemSprite(Type, Level);
         }
 
         public bool EqualTo(ItemStorage other) => other.Type == Type && other.Level == Level;

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Gameplay.Field;
 using Enums;
+using Gameplay.Tutorial;
 
 namespace Gameplay.Orders
 {
@@ -65,6 +66,9 @@ namespace Gameplay.Orders
 
         public void GenerateOrder(int id)
         {
+            if (!TutorialSystem.CanRandomOrders)
+                return;
+
             if (id > _ordersCount - 1)
             {
                 Debug.LogWarning($"“екущее максимальное количество заказов: {_ordersCount}.");
@@ -82,11 +86,13 @@ namespace Gameplay.Orders
                 GenerateRareOrder(id);
                 return;
             }
-            GenerateOrdinaryOrder(id, settings);
+            GenerateRandomOrdinaryOrder(id, settings);
 
             if (_rareItemsQueue.Count > 0)
                 --_remainsToRareOrder;
         }
+
+        public Transform GetOrderTransform(int id) => _orders[id].transform;
 
         public ItemStorage GetRandomOrderItem()
         {
@@ -106,7 +112,12 @@ namespace Gameplay.Orders
 
         private ItemStorage[] GetOrderPoints() => _orders.SelectMany(order => order.OrderPoints).ToArray();
 
-        private void GenerateOrdinaryOrder(int id, GameStage.Settings settings)
+        public void GenerateCustomOrder(int id, ItemStorage[] items, int stars, int crystalls, ItemStorage extraReward)
+        {
+            _orders[id].Generate(items, stars, crystalls, extraReward);
+        }
+
+        private void GenerateRandomOrdinaryOrder(int id, GameStage.Settings settings)
         {
             var possibleItems = new List<(ItemType Type, int MinLevel, int MaxLevel, int RewardLevel)>(settings.Items);
             var pointsCount = Random.Range(1, settings.MaxOrderPoints + 1);
@@ -132,7 +143,7 @@ namespace Gameplay.Orders
             if (Random.Range(0f, 100f) > _extraRewardChance)
                 extraReward = GetRandomExtraReward(difficulty);
 
-            _orders[id].Generate(itemsToOrder, starsReward, brilliantsReward, extraReward);
+            GenerateCustomOrder(id, itemsToOrder, starsReward, brilliantsReward, extraReward);
         }
 
         private void GenerateRareOrder(int id)
@@ -157,7 +168,7 @@ namespace Gameplay.Orders
 
         private void Start()
         {
-            _storage = GameStorage.Instanse;
+            _storage = GameStorage.Instance;
 
             for (var i = 0; i < _orders.Length; ++i)
                 _orders[i].SetID(i);
@@ -167,7 +178,7 @@ namespace Gameplay.Orders
             else
             {
                 UpdateRemainToRareOrder();
-                GenerateOrder(0);
+                //GenerateOrder(0);
             }
         }
 
@@ -183,7 +194,7 @@ namespace Gameplay.Orders
             if (settings.RareItems != null && settings.RareItems.Length > 0)
             {
                 foreach (var (type, level) in settings.RareItems)
-                    _rareItemsQueue.Enqueue(GameStorage.Instanse.GetItem(type, level));
+                    _rareItemsQueue.Enqueue(GameStorage.Instance.GetItem(type, level));
                 settings.ClearRareItems();
             }
         }
@@ -203,7 +214,7 @@ namespace Gameplay.Orders
                 return null;
 
             var randomReward = rewards[Random.Range(0, rewards.Length)];
-            var item = GameStorage.Instanse.GetItem(randomReward.Type, randomReward.Level);
+            var item = GameStorage.Instance.GetItem(randomReward.Type, randomReward.Level);
             return item;
         }
     }

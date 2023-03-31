@@ -9,6 +9,7 @@ using System;
 using Enums;
 using Gameplay.Orders;
 using Gameplay.ItemGenerators;
+using Gameplay.Tutorial;
 
 namespace Gameplay.Field
 {
@@ -44,6 +45,9 @@ namespace Gameplay.Field
         public static event Action WrongLevelForCombinating;
         public static event Action<int, int> CellChanged;
         public static event Action<int> ItemRemoved;
+        public static event Action ItemCaptured;
+        public static event Action ItemsMerged;
+        public static event Action ItemsCombinated;
 
         public ItemStorage Stats { get; private set; }
 
@@ -94,9 +98,60 @@ namespace Gameplay.Field
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            if (!TutorialSystem.TutorialDone && GetComponent<TutorialTarget>() == null)
+                return;
+
+            ItemCaptured?.Invoke();
             _isReturning = false;
             transform.SetAsLastSibling();
             SoundManager.Instanse.Play(Stats.TakeSound, null);
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            _dragged = false;
+            ReturnToCell();
+
+            if (!Stats.Movable || (!TutorialSystem.TutorialDone && GetComponent<TutorialTarget>() == null))
+                return;
+
+            CheckCursorOver();
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (Stats.Movable)
+            {
+                _animator.SetBool(_zoomAnimatorBool, true);
+                if (!_dragged)
+                    CursorHoveredMovableItem?.Invoke(Stats.Type, Stats.Level);
+                Stats.Unlock();
+            }
+            else if (!_dragged)
+                CursorHoveredNotMovableItem?.Invoke(Stats.Type, Stats.Level);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            CursorLeftItem?.Invoke();
+
+            if (!Stats.Movable)
+                return;
+
+            _animator.SetBool(_zoomAnimatorBool, false);
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            _dragged = true;
+
+            if (_quickClickTracking.IsChecking || !Stats.Movable ||
+                (!TutorialSystem.TutorialDone && GetComponent<TutorialTarget>() == null))
+                return;
+
+            var mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            var followPosition = new Vector3(mousePosition.x, mousePosition.y, 0f);
+            transform.position = Vector3.Lerp(transform.position, followPosition, _followSpeed * Time.fixedDeltaTime);
         }
 
         private void Awake()
@@ -104,7 +159,7 @@ namespace Gameplay.Field
             _animator = GetComponent<Animator>();
             _quickClickTracking = GetComponent<QuickClickTracking>();
             _mainCamera = Camera.main;
-            _storage = GameStorage.Instanse;
+            _storage = GameStorage.Instance;
             SetActiveParticles(false);
         }
 
@@ -171,7 +226,7 @@ namespace Gameplay.Field
 
         private void InteractWithTrashCan(TrashCan trashCan)
         {
-            if (trashCan == null)
+            if (trashCan == null || (!TutorialSystem.TutorialDone && GetComponent<TutorialExtraTarget>() == null))
                 return;
 
             if (trashCan.GetComponent<Upgradable>().CheckIncomingItem(Stats))
@@ -203,7 +258,9 @@ namespace Gameplay.Field
             if (cell == null)
                 return;
             else if (cell.Empty)
+            {
                 Move(cell);
+            }
             else if (EqualTo(cell.Item))
             {
                 if (_currentCell == cell)
@@ -227,6 +284,9 @@ namespace Gameplay.Field
 
         private void Move(Cell toCell)
         {
+            if (!TutorialSystem.TutorialDone)
+                return;
+
             CellChanged?.Invoke(_currentCell.transform.GetSiblingIndex(), toCell.transform.GetSiblingIndex());
             _currentCell.Clear();
             toCell.SetItem(this);
@@ -236,6 +296,9 @@ namespace Gameplay.Field
 
         private void Swap(Cell withCell)
         {
+            if (!TutorialSystem.TutorialDone)
+                return;
+
             CellChanged?.Invoke(_currentCell.transform.GetSiblingIndex(), withCell.transform.GetSiblingIndex());
             _currentCell.Clear();
             _currentCell.SetItem(withCell.Item);
@@ -260,6 +323,7 @@ namespace Gameplay.Field
                 randomCell.CreateItem(_storage.GetItem(ItemType.Star, 1), transform.position);
             }
             Instantiate(_mergeParticlePrefab, withCell.transform.position, Quaternion.identity);
+            ItemsMerged?.Invoke();
         }
 
         private void Combinate(Cell withCell)
@@ -268,52 +332,7 @@ namespace Gameplay.Field
             StartCoroutine(Disappear());
             StartCoroutine(withCell.Item.Disappear());
             SoundManager.Instanse.Play(_storage.GetCombinateSound(Stats.Type, withCell.Item.Stats.Type), null);
-        }
-
-        public void OnPointerUp(PointerEventData eventData)
-        {
-            _dragged = false;
-
-            if (!Stats.Movable)
-                return;
-
-            ReturnToCell();
-            CheckCursorOver();
-        }
-
-        public void OnPointerEnter(PointerEventData eventData)
-        {
-            if (Stats.Movable)
-            {
-                _animator.SetBool(_zoomAnimatorBool, true);
-                if (!_dragged)
-                    CursorHoveredMovableItem?.Invoke(Stats.Type, Stats.Level);
-                Stats.Unlock();
-            }
-            else if (!_dragged)
-                CursorHoveredNotMovableItem?.Invoke(Stats.Type, Stats.Level);
-        }
-
-        public void OnPointerExit(PointerEventData eventData)
-        {
-            CursorLeftItem?.Invoke();
-
-            if (!Stats.Movable)
-                return;
-
-            _animator.SetBool(_zoomAnimatorBool, false);
-        }
-
-        public void OnDrag(PointerEventData eventData)
-        {
-            _dragged = true;
-
-            if (_quickClickTracking.IsChecking || !Stats.Movable)
-                return;
-
-            var mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            var followPosition = new Vector3(mousePosition.x, mousePosition.y, 0f);
-            transform.position = Vector3.Lerp(transform.position, followPosition, _followSpeed * Time.fixedDeltaTime);
+            ItemsCombinated?.Invoke();
         }
     }
 }

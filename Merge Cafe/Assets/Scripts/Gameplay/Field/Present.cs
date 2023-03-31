@@ -40,7 +40,7 @@ namespace Gameplay.Field
             {
                 var itemType = (ItemType)PlayerPrefs.GetInt(ITEM_TYPE_IN_PRESENT_KEY + i + hierarchyIndex);
                 var level = PlayerPrefs.GetInt(ITEM_LEVEL_IN_PRESENT_KEY + i + hierarchyIndex);
-                _content.Add(GameStorage.Instanse.GetItem(itemType, level));
+                _content.Add(GameStorage.Instance.GetItem(itemType, level));
             }
             PlayerPrefs.DeleteKey(ITEMS_COUNT_IN_PRESENT_KEY + hierarchyIndex);
         }
@@ -60,7 +60,7 @@ namespace Gameplay.Field
         private void Start()
         {
             _currentCellIndex = _item.CurrentCell.transform.GetSiblingIndex();
-            if (GameStorage.Instanse.LoadData && 
+            if (GameStorage.Instance.LoadData && 
                 PlayerPrefs.HasKey(ITEMS_COUNT_IN_PRESENT_KEY + _currentCellIndex))
                 Load();
             else
@@ -68,7 +68,7 @@ namespace Gameplay.Field
                 foreach (var item in PresentsInfo.GetContent(_item.Stats.Level))
                 {
                     for (var i = 0; i < item.Count; ++i)
-                        _content.Add(GameStorage.Instanse.GetItem(item.Type, Random.Range(item.MinLevel, item.MaxLevel + 1)));
+                        _content.Add(GameStorage.Instance.GetItem(item.Type, Random.Range(item.MinLevel, item.MaxLevel + 1)));
                 }
                 Save();
             }
@@ -98,7 +98,7 @@ namespace Gameplay.Field
 
         private void GetItem()
         {
-            if (!GameStorage.Instanse.HasEmptyCells(true))
+            if (!GameStorage.Instance.HasEmptyCells(true))
                 return;
 
             var nextItem = _content[Random.Range(0, _content.Count)];
@@ -112,7 +112,7 @@ namespace Gameplay.Field
             else
                 Save();
 
-            GameStorage.Instanse.GetRandomEmptyCell(true).CreateItem(nextItem, transform.position);
+            GameStorage.Instance.GetRandomEmptyCell(true).CreateItem(nextItem, transform.position);
         }
 
         private void DeleteSave(int cellIndex)

@@ -9,6 +9,7 @@ using TMPro;
 using Gameplay.Counters;
 using System.Linq;
 using Unity.VisualScripting;
+using Gameplay.Tutorial;
 
 namespace Gameplay.Orders
 {
@@ -89,10 +90,10 @@ namespace Gameplay.Orders
                 {
                     var itemType = (ItemType)PlayerPrefs.GetInt(ITEM_TYPE_IN_ORDER_POINT_KEY + i + hierarchyIndex);
                     var level = PlayerPrefs.GetInt(ITEM_LEVEL_IN_ORDER_POINT_KEY + i + hierarchyIndex);
-                    orderPoints.Add(GameStorage.Instanse.GetItem(itemType, level));
+                    orderPoints.Add(GameStorage.Instance.GetItem(itemType, level));
                 }
             }
-            if (orderPoints.Count == 0)
+            if (orderPoints.Count == 0 && TutorialSystem.TutorialDone)
             {
                 CheckOnEmpty();
                 return;
@@ -101,7 +102,7 @@ namespace Gameplay.Orders
             {
                 var itemType = (ItemType)PlayerPrefs.GetInt(EXTRA_REWARD_TYPE_IN_ORDER_KEY + hierarchyIndex);
                 var level = PlayerPrefs.GetInt(EXTRA_REWARD_LEVEL_IN_ORDER_KEY + hierarchyIndex);
-                _extraReward = GameStorage.Instanse.GetItem(itemType, level);
+                _extraReward = GameStorage.Instance.GetItem(itemType, level);
             }
             _brilliants = PlayerPrefs.GetInt(BRILLIANTS_REWARD_IN_ORDER_KEY + hierarchyIndex);
             _stars = PlayerPrefs.GetInt(STARS_REWARD_IN_ORDER_KEY + hierarchyIndex);
@@ -195,9 +196,9 @@ namespace Gameplay.Orders
 
         private void Start()
         {
-            _currencyAdder = GameStorage.Instanse.GetComponent<CurrencyAdder>();
+            _currencyAdder = GameStorage.Instance.GetComponent<CurrencyAdder>();
 
-            if (GameStorage.Instanse.LoadData)
+            if (GameStorage.Instance.LoadData)
                 Load();
 
             started = true;
@@ -237,7 +238,7 @@ namespace Gameplay.Orders
             if (_extraReward == null)
                 return;
 
-            var randomCell = GameStorage.Instanse.GetRandomEmptyCell();
+            var randomCell = GameStorage.Instance.GetRandomEmptyCell();
             if (randomCell == null)
                 NoEmptyCellsAndRewardGetted?.Invoke(_extraReward);
             else

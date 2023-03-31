@@ -18,6 +18,7 @@ namespace Enums
         Toaster,
         FastFood,
         Box,
-        Energy
+        Energy,
+        Trash
     }
 }

@@ -44,7 +44,7 @@ namespace Gameplay.ItemGenerators
             for (var i = 1; i <= generator.MaxItemsLevel; ++i)
             {
                 foreach (var generatedItem in generatedItems)
-                    sprites.Add(GameStorage.Instanse.GetItemSprite(generatedItem, i));
+                    sprites.Add(GameStorage.Instance.GetItemSprite(generatedItem, i));
             }
             return sprites.ToArray();
 
@@ -98,6 +98,29 @@ namespace Gameplay.ItemGenerators
             return generators[0].Level;
         }
 
+        public Upgradable GetGenerator(ItemType type)
+        {
+            var generators = GetUpgradables(type);
+
+            if (generators.Length == 0)
+                Debug.LogError($"Generator {type} wasn't found");
+
+            return generators[0];
+        }
+
+        /// <summary>
+        /// Warning! Only for tutorial!
+        /// </summary>
+        public void SetLevel(ItemType type, int level)
+        {
+            var generators = GetUpgradables(type);
+
+            if (generators.Length == 0)
+                Debug.LogError($"Generator {type} wasn't found");
+
+            generators[0].SetLevel(level);
+        }
+
         private void Awake()
         {
             _generators = _upgradables
@@ -108,7 +131,7 @@ namespace Gameplay.ItemGenerators
 
         private void Start()
         {
-            if (GameStorage.Instanse.LoadData && PlayerPrefs.HasKey(LAUNCHED_FIRST_TIME_KEY))
+            if (GameStorage.Instance.LoadData && PlayerPrefs.HasKey(LAUNCHED_FIRST_TIME_KEY))
                 Load();
             PlayerPrefs.SetInt(LAUNCHED_FIRST_TIME_KEY, 1);
         }

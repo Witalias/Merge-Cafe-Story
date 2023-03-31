@@ -9,7 +9,7 @@ namespace Service
 {
     public class GameStorage : MonoBehaviour, IStorable
     {
-        public static GameStorage Instanse { get; private set; } = null;
+        public static GameStorage Instance { get; private set; } = null;
 
         private const string STARS_COUNT_KEY = "STARS_COUNT";
         private const string BRILLIANTS_COUNT_KEY = "BRILLIANTS_COUNT";
@@ -192,6 +192,25 @@ namespace Service
             return emptyCells[Random.Range(0, emptyCells.Count)];
         }
 
+        public Item[] GetItemsOnField(ItemType type, int level, int count)
+        {
+            if (count <= 0)
+                return new Item[0];
+
+            var item = GetItem(type, level);
+            var results = new List<Item>();
+            foreach (var cell in cells)
+            {
+                if (cell.Empty)
+                    continue;
+                if (cell.Item.Stats.EqualTo(item))
+                    results.Add(cell.Item);
+                if (results.Count == count)
+                    break;
+            }
+            return results.ToArray();
+        }
+
         public Sound GetCombinateSound(ItemType current, ItemType with)
         {
             foreach (var combination in _combinations)
@@ -258,8 +277,8 @@ namespace Service
 
         private void Awake()
         {
-            if (Instanse == null)
-                Instanse = this;
+            if (Instance == null)
+                Instance = this;
             else
                 Destroy(gameObject);
 

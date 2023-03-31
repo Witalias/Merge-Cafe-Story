@@ -62,7 +62,7 @@ namespace Service
 
         private void Start()
         {
-            if (GameStorage.Instanse.LoadData)
+            if (GameStorage.Instance.LoadData)
                 Load();
         }
 

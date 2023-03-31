@@ -45,7 +45,7 @@ namespace EventHandlers
 
         private void OnCursorHoveredItem(ItemType type, int level)
         {
-            var storage = GameStorage.Instanse;
+            var storage = GameStorage.Instance;
             var itemDescription = Translation.GetItemDescription(type, level);
             var instruction = "";
             var maxLevel = storage.IsItemMaxLevel(type, level);
@@ -121,7 +121,7 @@ namespace EventHandlers
             }
             else if (type == ItemType.Energy)
             {
-                var energyCount = GameStorage.Instanse.GetEnergyRewardByItemlevel(level);
+                var energyCount = GameStorage.Instance.GetEnergyRewardByItemlevel(level);
                 if (maxLevel)
                     instruction = $"Перетащи на генератор, чтобы ускорить его (заряда хватит на {energyCount} " +
                         $"{Translation.PluralizeWord(energyCount, "предмет", "предмета", "предметов")}).";

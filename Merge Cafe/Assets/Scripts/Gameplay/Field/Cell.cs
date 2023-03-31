@@ -107,7 +107,7 @@ namespace Gameplay.Field
 
         private void Start()
         {
-            _storage = GameStorage.Instanse;
+            _storage = GameStorage.Instance;
 
             if (_storage.LoadData)
                 Load();

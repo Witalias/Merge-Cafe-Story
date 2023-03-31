@@ -171,6 +171,10 @@ namespace Service
                 [7] = new ItemDescription("Современная касса", "— Ой забыли туалетную бумагу взять.\n— Не надо, у нас чек 60 метров будет."),
                 [8] = new ItemDescription("Касса самообслуживания", "Пенсионерам тут не место..."),
             },
+            [ItemType.Trash] = new Dictionary<int, ItemDescription>
+            {
+                [1] = new ItemDescription("Рыбья кость", "Фу!")
+            }
         };
 
         private static Dictionary<ItemType, string> _itemNames = new Dictionary<ItemType, string>

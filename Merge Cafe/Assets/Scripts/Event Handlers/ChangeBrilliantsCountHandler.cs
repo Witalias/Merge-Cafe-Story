@@ -30,14 +30,14 @@ namespace EventHandlers
 
         private void Start()
         {
-            _storage = GameStorage.Instanse;
+            _storage = GameStorage.Instance;
             UpdateText();
 
             if (_storage.LoadData)
                 Load();
 
-            if (!PlayerPrefs.HasKey(CAN_BUY_DECOR_KEY))
-                _canBuyIcon.SetActive(true);
+            //if (!PlayerPrefs.HasKey(CAN_BUY_DECOR_KEY))
+            //    _canBuyIcon.SetActive(true);
         }
 
         private void OnEnable()

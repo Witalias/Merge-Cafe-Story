@@ -4,6 +4,7 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using Enums;
+using System;
 
 namespace Gameplay.DecorationMode.Dialogs
 {
@@ -28,6 +29,8 @@ namespace Gameplay.DecorationMode.Dialogs
         private int _currentIndex = 0;
         private DialogTitle _currentDialogTitle;
         private bool _phraseIsPrinting = false;
+
+        public static event Action Ended;
 
         public void Begin(DialogTitle title)
         {
@@ -122,10 +125,13 @@ namespace Gameplay.DecorationMode.Dialogs
 
         private IEnumerator SetActive(bool value)
         {
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForEndOfFrame();
             _background.SetActive(value);
             _blackFilter.SetActive(value);
             _purchaseCanvas.SetActive(!value);
+
+            if (!value)
+                Ended?.Invoke();
         }
     }
 }

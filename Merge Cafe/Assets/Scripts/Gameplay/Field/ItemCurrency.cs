@@ -2,6 +2,8 @@ using UnityEngine;
 using Enums;
 using Service;
 using Gameplay.Counters;
+using Gameplay.Tutorial;
+using System;
 
 namespace Gameplay.Field
 {
@@ -14,6 +16,8 @@ namespace Gameplay.Field
 
         private CurrencyType _type;
 
+        public static event Action Collected;
+
         private void Awake()
         {
             _item = GetComponent<Item>();
@@ -24,13 +28,13 @@ namespace Gameplay.Field
 
         private void Update()
         {
-            if (_quickClickTracking.QuickClicked)
+            if (_quickClickTracking.QuickClicked && (TutorialSystem.TutorialDone || GetComponent<TutorialExtraTarget>() != null))
                 GetReward();
         }
 
         private void GetReward()
         {
-            var storage = GameStorage.Instanse;
+            var storage = GameStorage.Instance;
             var currencyAdder = storage.GetComponent<CurrencyAdder>();
             var reward = 0;
             if (_type == CurrencyType.Star) reward = storage.GetStarsRewardByItemLevel(_item.Stats.Level);
@@ -38,6 +42,7 @@ namespace Gameplay.Field
             currencyAdder.Add(_type, reward, transform.position);
             _item.Remove();
             SoundManager.Instanse.Play(Sound.Brilliant, null);
+            Collected?.Invoke();
         }
     }
 }

@@ -37,11 +37,11 @@ namespace Gameplay.Field
                     NoOrderPoints?.Invoke();
                     return;
                 }
-                if (!GameStorage.Instanse.HasEmptyCells(true))
+                if (!GameStorage.Instance.HasEmptyCells(true))
                     return;
 
                 _item.Remove();
-                GameStorage.Instanse.GetRandomEmptyCell().CreateItem(item, transform.position);
+                GameStorage.Instance.GetRandomEmptyCell().CreateItem(item, transform.position);
                 item.UnlockFirstly();
             }
         }

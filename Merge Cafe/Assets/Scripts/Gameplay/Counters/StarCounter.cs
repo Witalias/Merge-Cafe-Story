@@ -89,7 +89,7 @@ namespace Gameplay.Counters
 
         private void Start()
         {
-            _storage = GameStorage.Instanse;
+            _storage = GameStorage.Instance;
 
             if (_storage.LoadData && PlayerPrefs.HasKey(STAR_REWARD_COUNT_KEY))
                 Load();
@@ -113,7 +113,7 @@ namespace Gameplay.Counters
 
         private void SetRewardsByGameStage()
         {
-            var settings = GameStage.GetSettingsByStage(GameStorage.Instanse.GameStage);
+            var settings = GameStage.GetSettingsByStage(GameStorage.Instance.GameStage);
             if (settings == null)
             {
                 _nextPresent.gameObject.SetActive(false);

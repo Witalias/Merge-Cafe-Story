@@ -19,6 +19,7 @@ namespace Gameplay.ItemGenerators
         private int _initialLevel;
 
         public static event Action TrashCanClicked;
+        public static event Action Throwed;
 
         public void Throw(int itemLevel)
         {
@@ -32,6 +33,7 @@ namespace Gameplay.ItemGenerators
                 _currencyAdder.Add(CurrencyType.Brilliant, brilliantsCount, transform.position);
                 SoundManager.Instanse.Play(Sound.Sell, null);
             }
+            Throwed?.Invoke();
         }
 
         private void Awake()
@@ -42,7 +44,7 @@ namespace Gameplay.ItemGenerators
 
         private void Start()
         {
-            _currencyAdder = GameStorage.Instanse.GetComponent<CurrencyAdder>();
+            _currencyAdder = GameStorage.Instance.GetComponent<CurrencyAdder>();
         }
 
         private void OnMouseDown()

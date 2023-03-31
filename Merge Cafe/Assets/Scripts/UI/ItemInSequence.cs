@@ -4,6 +4,8 @@ using Gameplay.Field;
 using Service;
 using Enums;
 using System.Collections;
+using Gameplay.Tutorial;
+using System;
 
 namespace UI
 {
@@ -26,6 +28,9 @@ namespace UI
 
         public bool ContainsPresent { get; private set; } = false;
 
+        public static event Action PresentGetted;
+        public Image GetRewardImage() => _reward;
+
         public void PlayNewItemParticles() => Instantiate(_ballsParticlePrefab, _reward.transform.position, Quaternion.identity);
 
         public void PayAttentionAnimation()
@@ -35,7 +40,7 @@ namespace UI
 
         public void ShowReward(ItemStorage item)
         {
-            _storage = GameStorage.Instanse;
+            _storage = GameStorage.Instance;
             _item = item;
             ContainsPresent = true;
             _rewardStorage = _storage.GetRewardForNewItemByLevel(item.Level);
@@ -70,12 +75,12 @@ namespace UI
 
         private void Start()
         {
-            _storage = GameStorage.Instanse;
+            _storage = GameStorage.Instance;
         }
 
         private void OnMouseDown()
         {
-            if (!ContainsPresent)
+            if (!ContainsPresent || (!TutorialSystem.TutorialDone && GetComponent<TutorialTarget>() == null))
                 return;
 
             var randomCell = _storage.GetRandomEmptyCell(true);
@@ -86,6 +91,8 @@ namespace UI
             _reward.gameObject.SetActive(false);
             ContainsPresent = false;
             _item.NotNew();
+
+            PresentGetted?.Invoke();
         }
     }
 }

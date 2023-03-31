@@ -1,4 +1,5 @@
 using EventHandlers;
+using Gameplay.Tutorial;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -26,15 +27,19 @@ namespace Service
 
         private void OnApplicationQuit()
         {
-            Save();
+            if (TutorialSystem.TutorialDone)
+                Save();
         }
 
         private IEnumerator SaveWithDelay()
         {
-            yield return new WaitForSeconds(0.1f);
-            Save();
-            yield return new WaitForSeconds(_saveInterval);
-            StartCoroutine(SaveWithDelay());
+            while (true)
+            {
+                yield return new WaitForSeconds(0.1f);
+                if (TutorialSystem.TutorialDone)
+                    Save();
+                yield return new WaitForSeconds(_saveInterval);
+            }
         }
 
         //private void Save()

@@ -1,4 +1,5 @@
 using Gameplay.Field;
+using Gameplay.Tutorial;
 using Service;
 using System.Collections.Generic;
 using TMPro;
@@ -73,6 +74,9 @@ namespace Gameplay
 
         private void Show(string title, int level, string description, string instruction)
         {
+            if (!TutorialSystem.TutorialDone)
+                return;
+
             _panel.SetActive(true);
 
             _title.text = title;

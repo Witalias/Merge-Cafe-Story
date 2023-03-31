@@ -3,6 +3,7 @@ using Gameplay.Orders;
 using System.Collections;
 using Gameplay.Counters;
 using Gameplay.Field;
+using Gameplay.Tutorial;
 
 namespace EventHandlers
 {
@@ -22,6 +23,8 @@ namespace EventHandlers
             StarCounter.UpdateOrderCount += _orderManager.AddNewOrder;
             Box.GetRandomOrderItem += _orderManager.GetRandomOrderItem;
             Box.GetOrderItemMaxLevel += _orderManager.GetOrderItemMaxLevel;
+            TutorialSystem.GenerateOrder += _orderManager.GenerateCustomOrder;
+            TutorialSystem.GetOrderTransform += _orderManager.GetOrderTransform;
         }
 
         private void OnDisable()
@@ -30,6 +33,8 @@ namespace EventHandlers
             StarCounter.UpdateOrderCount -= _orderManager.AddNewOrder;
             Box.GetRandomOrderItem -= _orderManager.GetRandomOrderItem;
             Box.GetOrderItemMaxLevel -= _orderManager.GetOrderItemMaxLevel;
+            TutorialSystem.GenerateOrder -= _orderManager.GenerateCustomOrder;
+            TutorialSystem.GetOrderTransform -= _orderManager.GetOrderTransform;
         }
     }
 }

@@ -85,6 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7107695862283789720}
+  - component: {fileID: 1990307858526794061}
   m_Layer: 5
   m_Name: Decor Mode Button
   m_TagString: Untagged
@@ -113,6 +114,19 @@ RectTransform:
   m_AnchoredPosition: {x: 45.38159, y: 155}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1990307858526794061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7107695862283789727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb8ae0dbab68cb842a429e7ee009d38c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 7107695863108206259}
 --- !u!1 &7107695863108206257
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +231,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.69803923, g: 0.68235296, b: 0.93333334, a: 1}
     m_PressedColor: {r: 0.5176471, g: 0.49803922, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.56078434, g: 0.5411765, b: 0.8352942, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.56078434, g: 0.5411765, b: 0.8352942, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.01
   m_SpriteState:

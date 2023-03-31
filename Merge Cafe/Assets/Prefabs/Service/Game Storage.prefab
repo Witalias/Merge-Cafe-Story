@@ -292,6 +292,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 8d6a524005e41e7459fe9576b867623c, type: 3}
     - {fileID: 21300000, guid: 8515d9f14901cf44a91fc5f5f7c74e76, type: 3}
     - {fileID: 21300000, guid: 5aed9bb7c1eb4c04998938951fd89fe2, type: 3}
+  - Type: 17
+    Throwable: 1
+    Movable: 1
+    TakeSound: 0
+    PutSound: 0
+    Icons:
+    - {fileID: 21300000, guid: 1b01e2f62417e824fa268d85703503a5, type: 3}
   _combinations:
   - FirstType: 9
     SecondType: 8

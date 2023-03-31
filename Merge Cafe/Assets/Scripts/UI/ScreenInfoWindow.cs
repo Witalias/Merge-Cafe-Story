@@ -35,7 +35,7 @@ namespace UI
         public void Show(ItemType newGenerator, float delay)
         {
             var text = $"Вы получили новое оборудование «{Translation.GetItemDescription(newGenerator, 1).Title}» и опередили ...% игроков! Ваше меню обновлено!";
-            StartCoroutine(Show(GameStorage.Instanse.GetItemSprite(newGenerator, 1), text, ItemType.Key, 1, delay));
+            StartCoroutine(Show(GameStorage.Instance.GetItemSprite(newGenerator, 1), text, ItemType.Key, 1, delay));
         }
 
         public void Show(int globalLevel, float delay)
@@ -44,7 +44,7 @@ namespace UI
                 return;
             var text = $"Вы достигли {globalLevel} уровня и опередили ...% игроков!";
             var randomReward = _randomRewardsForNewGlobalLevels[UnityEngine.Random.Range(0, _randomRewardsForNewGlobalLevels.Length)];
-            StartCoroutine(Show(GameStorage.Instanse.Star, text, randomReward.Type, randomReward.Level, delay, globalLevel.ToString()));
+            StartCoroutine(Show(GameStorage.Instance.Star, text, randomReward.Type, randomReward.Level, delay, globalLevel.ToString()));
         }
 
         public void Show(ItemStorage newItem, float delay)
@@ -64,7 +64,7 @@ namespace UI
             _icon.sprite = icon;
             _mainText.text = text;
             _levelText.text = level;
-            _rewardIcon.sprite = GameStorage.Instanse.GetItemSprite(rewardItem, rewardLevel);
+            _rewardIcon.sprite = GameStorage.Instance.GetItemSprite(rewardItem, rewardLevel);
             _shareToggle.isOn = true;
             _content.SetActive(true);
             Time.timeScale = 0f;
@@ -86,8 +86,8 @@ namespace UI
 
         private void GiveReward()
         {
-            var item = GameStorage.Instanse.GetItem(_rewardItem, _rewardLevel);
-            var randomCell = GameStorage.Instanse.GetRandomEmptyCell();
+            var item = GameStorage.Instance.GetItem(_rewardItem, _rewardLevel);
+            var randomCell = GameStorage.Instance.GetRandomEmptyCell();
             if (randomCell == null)
                 AddItemInQueue?.Invoke(item);
             else
