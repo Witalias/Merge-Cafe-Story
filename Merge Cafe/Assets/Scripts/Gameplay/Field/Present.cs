@@ -21,6 +21,9 @@ namespace Gameplay.Field
 
         private readonly List<ItemStorage> _content = new();
 
+        public static event System.Action Opened;
+        public static event System.Action ClickedOpen;
+
         public void Save()
         {
             var hierarchyIndex = _currentCellIndex;
@@ -94,10 +97,12 @@ namespace Gameplay.Field
         private void OpenPresent()
         {
             _item.OpenPresent();
+            Opened?.Invoke();
         }
 
         private void GetItem()
         {
+            ClickedOpen?.Invoke();
             if (!GameStorage.Instance.HasEmptyCells(true))
                 return;
 

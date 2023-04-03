@@ -31,6 +31,7 @@ namespace Gameplay.ItemGenerators
         public static event Action<ItemType, int> CursorHoveredGenerator;
         public static event Action CursorLeftGenerator;
         public static event Action<ItemStorage, float> ShowCongratulation;
+        public static event Action<ItemType> NewGenerator;
 
         public void Save()
         {
@@ -53,6 +54,7 @@ namespace Gameplay.ItemGenerators
 
             gameObject.SetActive(true);
             _animator.SetTrigger(_burnAnimatorTrigger);
+            NewGenerator?.Invoke(Type);
         }
 
         public bool CheckIncomingItem(ItemStorage item)

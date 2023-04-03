@@ -44,6 +44,7 @@ namespace Gameplay.Tutorial
 
         private IEnumerator Refresh()
         {
+            _panel.SetActive(true);
             yield return new WaitForEndOfFrame();
             _panel.SetActive(false);
             _panel.SetActive(true);

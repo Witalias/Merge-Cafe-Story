@@ -37,6 +37,10 @@ namespace EventHandlers
             Item.ItemsCombinated += _tutorialSystem.OnItemsCombinated;
             Upgradable.Upgraded += _tutorialSystem.OnGeneratorUpgraded;
             ItemGenerator.Speeded += _tutorialSystem.OnGeneratorSpeeded;
+            Present.Opened += _tutorialSystem.OnOpenedPresent;
+            Present.ClickedOpen += _tutorialSystem.OnClickedOpenPresent;
+            Box.Opened += _tutorialSystem.OnOpenedBox;
+            Upgradable.NewGenerator += _tutorialSystem.OnNewGeneratorAppears;
         }
 
         private void OnDisable()
@@ -56,6 +60,10 @@ namespace EventHandlers
             Item.ItemsCombinated -= _tutorialSystem.OnItemsCombinated;
             Upgradable.Upgraded -= _tutorialSystem.OnGeneratorUpgraded;
             ItemGenerator.Speeded -= _tutorialSystem.OnGeneratorSpeeded;
+            Present.Opened -= _tutorialSystem.OnOpenedPresent;
+            Present.ClickedOpen -= _tutorialSystem.OnClickedOpenPresent;
+            Box.Opened -= _tutorialSystem.OnOpenedBox;
+            Upgradable.NewGenerator -= _tutorialSystem.OnNewGeneratorAppears;
         }
     }
 }

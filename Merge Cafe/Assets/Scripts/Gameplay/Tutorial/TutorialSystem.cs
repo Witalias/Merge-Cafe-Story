@@ -19,6 +19,7 @@ namespace Gameplay.Tutorial
         private const string TUTORIAL_ITEMS_COUNT_KEY = "TUTORIAL_ITEMS_COUNT";
 
         [SerializeField] private Transform _rightTopSpawnWindowPoint;
+        [SerializeField] private bool _skipStartTutorial;
 
         public static bool TutorialDone { get; private set; } = false;
 
@@ -89,6 +90,12 @@ namespace Gameplay.Tutorial
             SetActiveGeneratorTimers?.Invoke(true);
             StopAnimationCursor?.Invoke();
             _currentStage = TutorialStage.None;
+        }
+
+        public void EndTutorialModeAndHideWindow()
+        {
+            EndTutorialMode();
+            HideTutorialWindow?.Invoke();
         }
 
         public void CheckTutorialItem(ItemStorage item)
@@ -262,8 +269,53 @@ namespace Gameplay.Tutorial
             switch (_currentStage)
             {
                 case TutorialStage.StepEnergy1MoveEnergyToGenerator:
-                    EndTutorialMode();
-                    HideTutorialWindow?.Invoke();
+                    EndTutorialModeAndHideWindow();
+                    break;
+            }
+        }
+
+        public void OnOpenedPresent()
+        {
+            switch (_currentStage)
+            {
+                case TutorialStage.StepPresent1OpenPresent:
+                    StepPresent2GetContains();
+                    break;
+            }
+        }
+
+        public void OnClickedOpenPresent()
+        {
+            switch (_currentStage)
+            {
+                case TutorialStage.StepPresent2GetContains:
+                    EndTutorialModeAndHideWindow();
+                    break;
+            }
+        }
+
+        public void OnOpenedBox()
+        {
+            switch (_currentStage)
+            {
+                case TutorialStage.StepBox1OpenBox:
+                    StepBox2End();
+                    break;
+            }
+        }
+
+        public void OnNewGeneratorAppears(ItemType type)
+        {
+            if (type is ItemType.Oven)
+                StartCoroutine(StepSwitch1());  
+        }
+
+        public void OnGeneratorSwitched(bool arg)
+        {
+            switch (_currentStage)
+            {
+                case TutorialStage.StepSwitch1:
+                    EndTutorialModeAndHideWindow();
                     break;
             }
         }
@@ -462,6 +514,58 @@ namespace Gameplay.Tutorial
             ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Energy!", "Speed up the kettle!");
         }
 
+        private void StepPresent1OpenPresent()
+        {
+            _currentStage = TutorialStage.StepPresent1OpenPresent;
+            var present = GameStorage.Instance.GetItemsOnField(ItemType.Present, 1, 1)[0];
+            SetNewTutorialTarget(present.gameObject);
+            PlayClickAnimationCursor?.Invoke(present.transform.position);
+            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Present!", "It contains useful items. Open it!");
+        }
+
+        private void StepPresent2GetContains()
+        {
+            _currentStage = TutorialStage.StepPresent2GetContains;
+            var openPresent = GameStorage.Instance.GetItemsOnField(ItemType.OpenPresent, 1, 1)[0];
+            SetNewTutorialTarget(openPresent.gameObject);
+            PlayClickAnimationCursor?.Invoke(openPresent.transform.position);
+            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "What's inside?", "Look what's in there!");
+        }
+
+        private void StepBox1OpenBox()
+        {
+            if (!GameStorage.Instance.HasEmptyCells())
+            {
+                _tutorialItems.Add((ItemType.Box, 2));
+                EndTutorialMode();
+                return;
+            }
+            _currentStage = TutorialStage.StepBox1OpenBox;
+            SetNewTutorialTarget(GameStorage.Instance.GetItemsOnField(ItemType.Box, 2, 1)[0].gameObject);
+            PlayClickAnimationCursor?.Invoke(_target.transform.position);
+            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Box!", "It contains an item from the order. Try our luck?");
+        }
+
+        private void StepBox2End()
+        {
+            _currentStage = TutorialStage.StepBox2End;
+            EndTutorialMode();
+            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Great!", "It looks like this is what we need. And what happens if we merge boxes? :)");
+            HideTutorialWindowWithDelay?.Invoke(10f);
+        }
+
+        private IEnumerator StepSwitch1()
+        {
+            yield return new WaitForSeconds(2f);
+            StartTutorialMode();
+            _currentStage = TutorialStage.StepSwitch1;
+            var teapotToggle = GetGenerator?.Invoke(ItemType.Teapot).GetComponent<ItemGenerator>().GetToggle();
+            teapotToggle.interactable = true;
+            teapotToggle.onValueChanged.AddListener(OnGeneratorSwitched);
+            PlayClickAnimationCursor?.Invoke(teapotToggle.transform.position);
+            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Shutdown", "As the equipment expands, you may need to temporarily disable unnecessary ones.");
+        }
+
         private void SetNewTutorialTarget(GameObject target)
         {
             RemoveTarget();
@@ -485,6 +589,8 @@ namespace Gameplay.Tutorial
                 [(ItemType.Key, 1)] = () => StartCoroutine(StepKey1MoveKeyToLock()),
                 [(ItemType.Teapot, 1)] = StepUpgrade1UpgradeGenerator,
                 [(ItemType.Energy, 2)] = StepEnergy1MoveEnergyToGenerator,
+                [(ItemType.Present, 1)] = StepPresent1OpenPresent,
+                [(ItemType.Box, 2)] = StepBox1OpenBox,
             };
         }
 
@@ -494,10 +600,18 @@ namespace Gameplay.Tutorial
 
             if (!TutorialDone)
             {
-                PlayerPrefs.DeleteAll();
                 _tutorialItems = _conditionsForTutorial.Keys.ToList();
-                StartTutorialMode();
-                Step1ClickTeapot();
+                if (_skipStartTutorial)
+                {
+                    TutorialDone = true;
+                    GenerateOrder?.Invoke(0, new[] { GameStorage.Instance.GetItem(ItemType.Tea, 1) }, 1, 10, null);
+                }
+                else
+                {
+                    PlayerPrefs.DeleteAll();
+                    StartTutorialMode();
+                    Step1ClickTeapot();
+                }
             }
         }
     }

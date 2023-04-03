@@ -46,6 +46,8 @@ namespace Gameplay.ItemGenerators
         public static event System.Action ItemProduced;
         public static event System.Action Speeded;
 
+        public Toggle GetToggle() => _toggle;
+
         public void SpeedUp(int onItemCount)
         {
             _remainItemsToSlowingDown += onItemCount;

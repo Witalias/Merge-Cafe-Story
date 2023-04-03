@@ -25,4 +25,7 @@ public enum TutorialStage
     StepPresent2GetContains,
     StepUpgrade1UpgradeGenerator,
     StepUpgrade2End,
+    StepBox1OpenBox,
+    StepBox2End,
+    StepSwitch1
 }
