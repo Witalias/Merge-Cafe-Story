@@ -464,7 +464,7 @@ namespace Gameplay.Tutorial
 
         private IEnumerator StepKey1MoveKeyToLock()
         {
-            yield return new WaitForSeconds(0f);
+            yield return new WaitForSeconds(0.5f);
             _currentStage = TutorialStage.StepKey1MoveKeyToLock;
             var key = GameStorage.Instance.GetItemsOnField(ItemType.Key, 1, 1)[0];
             var cellLock = GameStorage.Instance.GetItemsOnField(ItemType.Lock, 1, 1)[0];
@@ -481,14 +481,15 @@ namespace Gameplay.Tutorial
             HideTutorialWindowWithDelay?.Invoke(6f);
         }
 
-        private void StepUpgrade1UpgradeGenerator()
+        private IEnumerator StepUpgrade1UpgradeGenerator()
         {
+            yield return new WaitForSeconds(0.5f);
             var teapot = GetGenerator(ItemType.Teapot);
             if (teapot.Level > 1)
             {
                 _tutorialItems.Remove((ItemType.Teapot, 1));
                 EndTutorialMode();
-                return;
+                yield break;
             }
             _currentStage = TutorialStage.StepUpgrade1UpgradeGenerator;
             var teapotItem = GameStorage.Instance.GetItemsOnField(ItemType.Teapot, 1, 1)[0];
@@ -505,8 +506,9 @@ namespace Gameplay.Tutorial
             HideTutorialWindowWithDelay?.Invoke(6f);
         }
 
-        private void StepEnergy1MoveEnergyToGenerator()
+        private IEnumerator StepEnergy1MoveEnergyToGenerator()
         {
+            yield return new WaitForSeconds(0.5f);
             _currentStage = TutorialStage.StepEnergy1MoveEnergyToGenerator;
             var energy = GameStorage.Instance.GetItemsOnField(ItemType.Energy, 2, 1)[0];
             SetNewTutorialTarget(energy.gameObject);
@@ -514,8 +516,9 @@ namespace Gameplay.Tutorial
             ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Energy!", "Speed up the kettle!");
         }
 
-        private void StepPresent1OpenPresent()
+        private IEnumerator StepPresent1OpenPresent()
         {
+            yield return new WaitForSeconds(0.5f);
             _currentStage = TutorialStage.StepPresent1OpenPresent;
             var present = GameStorage.Instance.GetItemsOnField(ItemType.Present, 1, 1)[0];
             SetNewTutorialTarget(present.gameObject);
@@ -532,13 +535,14 @@ namespace Gameplay.Tutorial
             ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "What's inside?", "Look what's in there!");
         }
 
-        private void StepBox1OpenBox()
+        private IEnumerator StepBox1OpenBox()
         {
+            yield return new WaitForSeconds(0.5f);
             if (!GameStorage.Instance.HasEmptyCells())
             {
                 _tutorialItems.Add((ItemType.Box, 2));
                 EndTutorialMode();
-                return;
+                yield break;
             }
             _currentStage = TutorialStage.StepBox1OpenBox;
             SetNewTutorialTarget(GameStorage.Instance.GetItemsOnField(ItemType.Box, 2, 1)[0].gameObject);
@@ -587,10 +591,10 @@ namespace Gameplay.Tutorial
             _conditionsForTutorial = new Dictionary<(ItemType, int), Action>
             {
                 [(ItemType.Key, 1)] = () => StartCoroutine(StepKey1MoveKeyToLock()),
-                [(ItemType.Teapot, 1)] = StepUpgrade1UpgradeGenerator,
-                [(ItemType.Energy, 2)] = StepEnergy1MoveEnergyToGenerator,
-                [(ItemType.Present, 1)] = StepPresent1OpenPresent,
-                [(ItemType.Box, 2)] = StepBox1OpenBox,
+                [(ItemType.Teapot, 1)] = () => StartCoroutine(StepUpgrade1UpgradeGenerator()),
+                [(ItemType.Energy, 2)] = () => StartCoroutine(StepEnergy1MoveEnergyToGenerator()),
+                [(ItemType.Present, 1)] = () => StartCoroutine(StepPresent1OpenPresent()),
+                [(ItemType.Box, 2)] = () => StartCoroutine(StepBox1OpenBox()),
             };
         }
 
