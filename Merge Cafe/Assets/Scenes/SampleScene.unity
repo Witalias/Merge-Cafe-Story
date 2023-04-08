@@ -9585,8 +9585,8 @@ MonoBehaviour:
   _ordersCountBeforeRareOrderSpread: 3
   _diffucultyMultiplierForRareOrder: 2
   _starsMultiplierForRareOrders: 3
-  _brilliantsMultiplier: 10
-  _brilliantsSpread: 7
+  _brilliantsMultiplier: 5
+  _brilliantsSpread: 10
   _extraRewardChance: 25
   _extraRewardSpread: 5
   _extraRewards:

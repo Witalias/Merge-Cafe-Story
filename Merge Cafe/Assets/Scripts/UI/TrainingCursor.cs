@@ -1,9 +1,11 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TrainingCursor : MonoBehaviour
 {
     [SerializeField] private GameObject cursor;
+    [SerializeField] private Image _image;
     [SerializeField] private float defaultScale;
     [SerializeField] private float clickScale;
     [SerializeField] private float _scaleDuration;
@@ -31,10 +33,13 @@ public class TrainingCursor : MonoBehaviour
         cursor.transform.position = pickPoint;
         var target = cursor.transform;
         _tween = DOTween.Sequence()
+            .Append(_image.DOColor(new Color(_image.color.r, _image.color.g, _image.color.b, 0f), 0f))
             .Append(target.DOScale(defaultScale, 0f))
             .Append(target.DOScale(clickScale, _scaleDuration))
             .Append(target.DOMove(endPoint, _moveDuration))
             .Append(target.DOScale(defaultScale, _scaleDuration))
+            .Insert(0f, _image.DOColor(new Color(_image.color.r, _image.color.g, _image.color.b, 1f), _scaleDuration))
+            .Insert(_scaleDuration + _moveDuration, _image.DOColor(new Color(_image.color.r, _image.color.g, _image.color.b, 0f), _scaleDuration))
             .SetLoops(-1);
     }
 
