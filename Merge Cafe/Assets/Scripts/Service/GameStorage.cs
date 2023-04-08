@@ -16,6 +16,7 @@ namespace Service
         private const string ITEM_IS_NEW_KEY = "ITEM_IS_NEW_";
         private const string ITEM_UNLOCKED_KEY = "ITEM_UNLOCKED_";
         private const string GAME_STAGE_KEY = "GAME_STAGE";
+        private const string LANGUAGE_KEY = "LANGUAGE";
 
         [Header("Settings")]
         [SerializeField] private bool _loadData = false;
@@ -48,10 +49,12 @@ namespace Service
         private ItemGeneratorStorage _generatorStorage;
 
         private Cell[] cells;
-        private Dictionary<ItemType, ItemStorage[]> _items = new Dictionary<ItemType, ItemStorage[]>();
-        private Dictionary<ItemType, Dictionary<int, Sprite>> _itemSprites = new Dictionary<ItemType, Dictionary<int, Sprite>>();
+        private readonly Dictionary<ItemType, ItemStorage[]> _items = new();
+        private readonly Dictionary<ItemType, Dictionary<int, Sprite>> _itemSprites = new();
 
         public static event System.Action NoEmptyCells;
+
+        public Language Language { get; set; } = Language.English;
 
         public bool LoadData { get => _loadData; }
 
@@ -88,6 +91,7 @@ namespace Service
             PlayerPrefs.SetInt(STARS_COUNT_KEY, _starsCount);
             PlayerPrefs.SetInt(BRILLIANTS_COUNT_KEY, _brilliantsCount);
             PlayerPrefs.SetInt(GAME_STAGE_KEY, GameStage);
+            PlayerPrefs.SetInt(LANGUAGE_KEY, (int)Language);
             foreach (var type in _items.Keys)
             {
                 foreach (var item in _items[type])
@@ -103,6 +107,7 @@ namespace Service
             _starsCount = PlayerPrefs.GetInt(STARS_COUNT_KEY, 0);
             _brilliantsCount = PlayerPrefs.GetInt(BRILLIANTS_COUNT_KEY, 0);
             GameStage = PlayerPrefs.GetInt(GAME_STAGE_KEY, 1);
+            Language = (Language)PlayerPrefs.GetInt(LANGUAGE_KEY, 0);
             foreach (var type in _items.Keys)
             {
                 foreach (var item in _items[type])

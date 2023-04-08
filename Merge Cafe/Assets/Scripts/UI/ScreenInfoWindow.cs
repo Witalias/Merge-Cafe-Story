@@ -13,8 +13,11 @@ namespace UI
     {
         [SerializeField] private GameObject _content;
         [SerializeField] private Image _icon;
+        [SerializeField] private TextMeshProUGUI _title;
         [SerializeField] private TextMeshProUGUI _mainText;
         [SerializeField] private TextMeshProUGUI _levelText;
+        [SerializeField] private TextMeshProUGUI _viewAdsText;
+        [SerializeField] private TextMeshProUGUI _greatText;
         [SerializeField] private Toggle _shareToggle;
         [SerializeField] private Image _rewardIcon;
         [SerializeField] private Button _confirmButton;
@@ -28,13 +31,15 @@ namespace UI
 
         public void ShowUpgradedGenerator(ItemStorage generator, float delay)
         {
-            var text = $"Вы улучшили «{Translation.GetItemDescription(generator.Type, generator.Level).Title}» и опередили ...% игроков! Выполняйте заказы ещё эффективнее!";
+            var parts = Translation.GetUpgradedGeneratorTextParts(GameStorage.Instance.Language);
+            var text = $"{parts[0]} «{Translation.GetItemDescription(generator.Type, generator.Level).Title}»! {parts[1]}!";
             StartCoroutine(Show(generator.Icon, text, ItemType.Energy, (generator.Level - 1) > 5 ? 5 : generator.Level, delay));
         }
 
         public void Show(ItemType newGenerator, float delay)
         {
-            var text = $"Вы получили новое оборудование «{Translation.GetItemDescription(newGenerator, 1).Title}» и опередили ...% игроков! Ваше меню обновлено!";
+            var parts = Translation.GetNewGeneratorTextParts(GameStorage.Instance.Language);
+            var text = $"{parts[0]} «{Translation.GetItemDescription(newGenerator, 1).Title}»! {parts[1]}!";
             StartCoroutine(Show(GameStorage.Instance.GetItemSprite(newGenerator, 1), text, ItemType.Key, 1, delay));
         }
 
@@ -42,7 +47,8 @@ namespace UI
         {
             if (globalLevel % 5 != 0)
                 return;
-            var text = $"Вы достигли {globalLevel} уровня и опередили ...% игроков!";
+            var parts = Translation.GetNewLevelTextParts(GameStorage.Instance.Language);
+            var text = $"{parts[0]} {globalLevel}{parts[1]}!";
             var randomReward = _randomRewardsForNewGlobalLevels[UnityEngine.Random.Range(0, _randomRewardsForNewGlobalLevels.Length)];
             StartCoroutine(Show(GameStorage.Instance.Star, text, randomReward.Type, randomReward.Level, delay, globalLevel.ToString()));
         }
@@ -51,7 +57,8 @@ namespace UI
         {
             if (newItem.Level < 5)
                 return;
-            var text = $"Вы впервые открыли «{Translation.GetItemDescription(newItem.Type, newItem.Level).Title}» {newItem.Level}-го уровня и опередили ...% игроков!";
+            var parts = Translation.GetNewItemTextParts(GameStorage.Instance.Language);
+            var text = $"{parts[0]}«{Translation.GetItemDescription(newItem.Type, newItem.Level).Title}»{parts[1]}{newItem.Level}{parts[2]}!";
             var reward = _rewardsForNewItems[newItem.Level - 5];
             StartCoroutine(Show(newItem.Icon, text, reward.Type, reward.Level, delay));
         }
@@ -59,11 +66,15 @@ namespace UI
         public IEnumerator Show(Sprite icon, string text, ItemType rewardItem, int rewardLevel, float delay, string level = "")
         {
             yield return new WaitForSeconds(delay);
+            var language = GameStorage.Instance.Language;
             _rewardItem = rewardItem;
             _rewardLevel = rewardLevel;
             _icon.sprite = icon;
+            _title.text = Translation.GetCongratulationsText(language);
             _mainText.text = text;
             _levelText.text = level;
+            _viewAdsText.text = Translation.GetViewAdsText(language);
+            _greatText.text = Translation.GetGreatText(language);
             _rewardIcon.sprite = GameStorage.Instance.GetItemSprite(rewardItem, rewardLevel);
             _shareToggle.isOn = true;
             _content.SetActive(true);

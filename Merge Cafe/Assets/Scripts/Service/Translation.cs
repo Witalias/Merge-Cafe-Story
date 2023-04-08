@@ -5,7 +5,7 @@ namespace Service
 {
     public static class Translation
     {
-        private static Dictionary<ItemType, Dictionary<int, ItemDescription>> _itemDescriptions = new Dictionary<ItemType, Dictionary<int, ItemDescription>>
+        private static Dictionary<ItemType, Dictionary<int, ItemDescription>> _itemDescriptions = new()
         {
             [ItemType.BakeryProduct] = new Dictionary<int, ItemDescription>
             {
@@ -177,10 +177,116 @@ namespace Service
             }
         };
 
-        private static Dictionary<ItemType, string> _itemNames = new Dictionary<ItemType, string>
+        private static Dictionary<ItemType, string> _itemNames = new()
         {
-            [ItemType.Star] = "кристаллы",
-            [ItemType.Brilliant] = "бриллианты",
+            [ItemType.Star] = "звёзды",
+            [ItemType.Brilliant] = "кристаллы",
+        };
+
+        private static Dictionary<Language, string> _viewAddTexts = new()
+        {
+            [Language.English] = "View ads",
+            [Language.Russian] = "Посмотреть рекламу",
+        };
+
+        private static Dictionary<Language, string> _congratulateTexts = new()
+        {
+            [Language.English] = "CONGRATULATIONS!",
+            [Language.Russian] = "ПОЗДРАВЛЯЕМ!",
+        };
+
+        private static Dictionary<Language, string> _greatTexts = new()
+        {
+            [Language.English] = "GREAT",
+            [Language.Russian] = "ОТЛИЧНО",
+        };
+
+        private static Dictionary<Language, string[]> _newGeneratorTexts = new()
+        {
+            [Language.English] = new[] 
+            { 
+                "You have received new equipment",
+                "Your menu has been updated!"
+            },
+            [Language.Russian] = new[]
+            {
+                "Вы получили новое оборудование",
+                "Ваше меню обновлено!"
+            },
+        };
+
+        private static Dictionary<Language, string[]> _upgradedGeneratorTexts = new()
+        {
+            [Language.English] = new[]
+            {
+                "You have improved",
+                "Fulfill orders even more efficiently!"
+            },
+            [Language.Russian] = new[]
+            {
+                "Вы улучшили",
+                "Выполняйте заказы ещё эффективнее!"
+            },
+        };
+
+        private static Dictionary<Language, string[]> _newLevelTexts = new()
+        {
+            [Language.English] = new[]
+            {
+                "You have reached level",
+                ""
+            },
+            [Language.Russian] = new[]
+            {
+                "Вы достигли",
+                " уровня"
+            },
+        };
+
+        private static Dictionary<Language, string[]> _newItemTexts = new()
+        {
+            [Language.English] = new[]
+            {
+                "You have unlocked ",
+                " with level ",
+                " for the first time"
+            },
+            [Language.Russian] = new[]
+            {
+                "Вы впервые открыли ",
+                " ",
+                "-го уровня"
+            },
+        };
+
+        private static Dictionary<Language, string> _settingsTexts = new()
+        {
+            [Language.English] = "Settings",
+            [Language.Russian] = "Настройки",
+        };
+
+        private static Dictionary<Language, string> _soundsTexts = new()
+        {
+            [Language.English] = "Sounds",
+            [Language.Russian] = "Звуки",
+        };
+
+        private static Dictionary<Language, string> _musicTexts = new()
+        {
+            [Language.English] = "Music",
+            [Language.Russian] = "Музыка",
+        };
+
+        private static Dictionary<Language, string> _languageTexts = new()
+        {
+            [Language.English] = "Language",
+            [Language.Russian] = "Язык",
+        };
+
+        private static Dictionary<Language, string> _resetTexts = new()
+        {
+            [Language.English] = "Reset progress",
+            [Language.Russian] = "Сбросить прогресс",
         };
 
         public static string GetItemTitle(ItemType type) => _itemNames[type];
@@ -191,6 +297,31 @@ namespace Service
                 return _itemDescriptions[type][level];
             return null;
         }
+
+        public static string GetGreatText(Language language) => _greatTexts[language];
+
+        public static string GetCongratulationsText(Language language) => _congratulateTexts[language];
+
+        public static string GetViewAdsText(Language language) => _viewAddTexts[language];
+
+        public static string[] GetNewGeneratorTextParts(Language language) => _newGeneratorTexts[language];
+
+        public static string[] GetUpgradedGeneratorTextParts(Language language) => _upgradedGeneratorTexts[language];
+
+        public static string[] GetNewLevelTextParts(Language language) => _newLevelTexts[language];
+
+        public static string[] GetNewItemTextParts(Language language) => _newItemTexts[language];
+
+        public static string GetSettingsText(Language language) => _settingsTexts[language];
+
+        public static string GetSoundsText(Language language) => _soundsTexts[language];
+
+        public static string GetMusicText(Language language) => _musicTexts[language];
+
+        public static string GetLanguageText(Language language) => _languageTexts[language];
+
+        public static string GetResetText(Language language) => _resetTexts[language];
+
 
         public static string PluralizeWord(int count, string one, string twoFour, string fiveTen)
         {
