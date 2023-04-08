@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Service;
 using System.Linq;
 using EventHandlers;
+using Gameplay.Tutorial;
 
 namespace Gameplay.Field
 {
@@ -79,7 +80,7 @@ namespace Gameplay.Field
 
         private void Update()
         {
-            if (_quickClickTracking.QuickClicked)
+            if (_quickClickTracking.QuickClicked && (TutorialSystem.TutorialDone || GetComponent<TutorialTarget>() != null))
             {
                 if (_item.Stats.Type == ItemType.Present)
                     OpenPresent();

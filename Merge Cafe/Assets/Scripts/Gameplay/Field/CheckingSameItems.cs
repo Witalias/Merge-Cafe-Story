@@ -29,7 +29,8 @@ namespace Gameplay.Field
                     var firstItem = _cells[i].Item;
                     yield return new WaitForEndOfFrame();
                     CheckTutorialItem?.Invoke(firstItem.Stats);
-                    if (GameStorage.Instance.IsItemMaxLevel(firstItem.Stats.Type, firstItem.Stats.Level))
+                    if (GameStorage.Instance.IsItemMaxLevel(firstItem.Stats.Type, firstItem.Stats.Level) 
+                        || firstItem.Stats.Type == ItemType.OpenPresent)
                         continue;
                     for (var j = i + 1; j < _cells.Length; ++j)
                     {

@@ -255,17 +255,14 @@ namespace Gameplay.Field
 
         private void InteractWithCell(Cell cell)
         {
-            if (cell == null)
+            if (cell == null || _currentCell == cell)
                 return;
             else if (cell.Empty)
             {
                 Move(cell);
             }
-            else if (EqualTo(cell.Item))
+            else if (EqualTo(cell.Item) && cell.Item.Stats.Type != ItemType.OpenPresent)
             {
-                if (_currentCell == cell)
-                    return;
-
                 if (_storage.IsItemMaxLevel(Stats.Type, Stats.Level))
                     MergingItemsOfMaxLevelTried?.Invoke();
                 else

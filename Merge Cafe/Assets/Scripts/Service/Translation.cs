@@ -220,12 +220,12 @@ namespace Service
             [Language.English] = new[]
             {
                 "You have improved",
-                "Fulfill orders even more efficiently!"
+                "Fulfill orders even more efficiently"
             },
             [Language.Russian] = new[]
             {
                 "Вы улучшили",
-                "Выполняйте заказы ещё эффективнее!"
+                "Выполняйте заказы ещё эффективнее"
             },
         };
 

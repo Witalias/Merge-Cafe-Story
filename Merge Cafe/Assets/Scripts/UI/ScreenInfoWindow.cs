@@ -78,6 +78,9 @@ namespace UI
             _rewardIcon.sprite = GameStorage.Instance.GetItemSprite(rewardItem, rewardLevel);
             _shareToggle.isOn = true;
             _content.SetActive(true);
+            yield return new WaitForEndOfFrame();
+            _content.SetActive(false);
+            _content.SetActive(true);
             Time.timeScale = 0f;
             SoundManager.Instanse.Play(Sound.Achivement, null);
         }
