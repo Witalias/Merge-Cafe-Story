@@ -19,6 +19,7 @@ public class TrainingCursor : MonoBehaviour
         cursor.SetActive(true);
         cursor.transform.position = point;
         var target = cursor.transform;
+        _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, 1f);
         _tween = DOTween.Sequence()
             .Append(target.DOScale(defaultScale, 0f))
             .Append(target.DOScale(clickScale, _scaleDuration))

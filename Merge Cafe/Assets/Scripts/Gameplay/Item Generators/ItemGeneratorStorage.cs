@@ -131,7 +131,7 @@ namespace Gameplay.ItemGenerators
 
         private void Start()
         {
-            if (GameStorage.Instance.LoadData && PlayerPrefs.HasKey(LAUNCHED_FIRST_TIME_KEY))
+            if (GameStorage.Instance.LoadData) //&& PlayerPrefs.HasKey(LAUNCHED_FIRST_TIME_KEY))
                 Load();
             PlayerPrefs.SetInt(LAUNCHED_FIRST_TIME_KEY, 1);
         }

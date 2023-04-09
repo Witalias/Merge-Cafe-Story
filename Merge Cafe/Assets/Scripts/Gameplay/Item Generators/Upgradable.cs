@@ -41,6 +41,8 @@ namespace Gameplay.ItemGenerators
 
         public void Load()
         {
+            if (!PlayerPrefs.HasKey(UPGRADABLE_GENERATOR_ACTIVATED_KEY + _type))
+                return;
             _level = PlayerPrefs.GetInt(UPGRADABLE_GENERATOR_LEVEL_KEY + _type, 1);
             if (PlayerPrefs.GetInt(UPGRADABLE_GENERATOR_ACTIVATED_KEY + _type, 0) == 1)
                 Activate();
