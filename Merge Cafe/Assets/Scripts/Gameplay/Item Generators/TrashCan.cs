@@ -25,7 +25,7 @@ namespace Gameplay.ItemGenerators
         {
             if (_upgradable.Level <= _initialLevel)
             {
-                
+                SoundManager.Instanse.Play(Sound.TrashCan, null);
             }
             else
             {

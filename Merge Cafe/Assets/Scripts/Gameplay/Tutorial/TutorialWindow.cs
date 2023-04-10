@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -12,15 +13,15 @@ namespace Gameplay.Tutorial
 
         private Coroutine _hideWithDelay;
 
+        public static event Action HidedAfterDelay;
+
         public void Show(Vector2 position, string title, string mainText)
         {
             if (_hideWithDelay != null)
                 StopCoroutine(_hideWithDelay);
 
             transform.position = position;
-            _title.text = title;
-            _mainText.text = mainText;
-            StartCoroutine(Refresh());
+            UpdateText(title, mainText);
         }
 
         public void Hide()
@@ -29,6 +30,13 @@ namespace Gameplay.Tutorial
                 StopCoroutine(_hideWithDelay);
 
             _panel.SetActive(false);
+        }
+
+        public void UpdateText(string title, string mainText)
+        {
+            _title.text = title;
+            _mainText.text = mainText;
+            StartCoroutine(Refresh());
         }
 
         public void HideWithDelay(float delay)
@@ -40,6 +48,7 @@ namespace Gameplay.Tutorial
         {
             yield return new WaitForSeconds(delay);
             Hide();
+            HidedAfterDelay?.Invoke();
         }
 
         private IEnumerator Refresh()

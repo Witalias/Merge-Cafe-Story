@@ -33,20 +33,10 @@ namespace Gameplay
         }
 
         public void ShowGenerator(string title, int level, string description, Sprite[] producedItemSprites,
-            string instruction = null)
+            string instruction)
         {
-            if (instruction == null || instruction == "")
-            {
-                instruction = "Нажми для ускорения производства.\n\n";
-                if (level == 1 || level == 4)
-                    instruction += "Улучши, чтобы быстрее производить предметы.";
-                else
-                    instruction += "Улучши, чтобы повысить уровень производимых предметов.";
-                instruction += "\n\nПроизводит:";
-            }
             ClearProducedItemsList();
             Show(title, level, description, instruction);
-            //_producedItemsGroup.gameObject.SetActive(true);
 
             if (producedItemSprites == null)
                 return;
@@ -77,10 +67,8 @@ namespace Gameplay
             if (!TutorialSystem.TutorialDone)
                 return;
 
-            _panel.SetActive(true);
-
             _title.text = title;
-            _level.text = $"Уровень {level}";
+            _level.text = $"{Translation.GetLevelText(GameStorage.Instance.Language)} {level}";
             _description.text = description;
             _instruction.text = instruction;
 
@@ -94,7 +82,8 @@ namespace Gameplay
 
         private System.Collections.IEnumerator UpdateWindow()
         {
-            yield return new WaitForSeconds(0.01f);
+            _panel.SetActive(true);
+            yield return new WaitForEndOfFrame();
             _panel.SetActive(false);
             _panel.SetActive(true);
         }

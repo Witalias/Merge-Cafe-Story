@@ -40,6 +40,7 @@ namespace Enums
         BoxPut,
         StarTake,
         Teapot,
-        Toaster
+        Toaster,
+        TrashCan
     }
 }

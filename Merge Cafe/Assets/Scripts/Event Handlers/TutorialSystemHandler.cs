@@ -6,6 +6,7 @@ using Gameplay.Orders;
 using Gameplay.Tutorial;
 using UI;
 using UI.Buttons;
+using UI.Settings;
 using UnityEngine;
 
 namespace EventHandlers
@@ -41,6 +42,8 @@ namespace EventHandlers
             Present.ClickedOpen += _tutorialSystem.OnClickedOpenPresent;
             Box.Opened += _tutorialSystem.OnOpenedBox;
             Upgradable.NewGenerator += _tutorialSystem.OnNewGeneratorAppears;
+            DropdownLanguage.LanguageChanged += _tutorialSystem.UpdateTutorialText;
+            TutorialWindow.HidedAfterDelay += _tutorialSystem.OnHideTutorialWindowAfterDelay;
         }
 
         private void OnDisable()
@@ -64,6 +67,8 @@ namespace EventHandlers
             Present.ClickedOpen -= _tutorialSystem.OnClickedOpenPresent;
             Box.Opened -= _tutorialSystem.OnOpenedBox;
             Upgradable.NewGenerator -= _tutorialSystem.OnNewGeneratorAppears;
+            DropdownLanguage.LanguageChanged -= _tutorialSystem.UpdateTutorialText;
+            TutorialWindow.HidedAfterDelay -= _tutorialSystem.OnHideTutorialWindowAfterDelay;
         }
     }
 }

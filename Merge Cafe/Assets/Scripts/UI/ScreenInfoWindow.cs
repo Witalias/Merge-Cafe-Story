@@ -32,14 +32,14 @@ namespace UI
         public void ShowUpgradedGenerator(ItemStorage generator, float delay)
         {
             var parts = Translation.GetUpgradedGeneratorTextParts(GameStorage.Instance.Language);
-            var text = $"{parts[0]} «{Translation.GetItemDescription(generator.Type, generator.Level).Title}»! {parts[1]}!";
+            var text = $"{parts[0]} «{Translation.GetItemDescription(GameStorage.Instance.Language, generator.Type, generator.Level).Title}»! {parts[1]}!";
             StartCoroutine(Show(generator.Icon, text, ItemType.Energy, (generator.Level - 1) > 5 ? 5 : generator.Level, delay));
         }
 
         public void Show(ItemType newGenerator, float delay)
         {
             var parts = Translation.GetNewGeneratorTextParts(GameStorage.Instance.Language);
-            var text = $"{parts[0]} «{Translation.GetItemDescription(newGenerator, 1).Title}»! {parts[1]}!";
+            var text = $"{parts[0]} «{Translation.GetItemDescription(GameStorage.Instance.Language, newGenerator, 1).Title}»! {parts[1]}!";
             StartCoroutine(Show(GameStorage.Instance.GetItemSprite(newGenerator, 1), text, ItemType.Key, 1, delay));
         }
 
@@ -58,7 +58,7 @@ namespace UI
             if (newItem.Level < 5)
                 return;
             var parts = Translation.GetNewItemTextParts(GameStorage.Instance.Language);
-            var text = $"{parts[0]}«{Translation.GetItemDescription(newItem.Type, newItem.Level).Title}»{parts[1]}{newItem.Level}{parts[2]}!";
+            var text = $"{parts[0]}«{Translation.GetItemDescription(GameStorage.Instance.Language, newItem.Type, newItem.Level).Title}»{parts[1]}{newItem.Level}{parts[2]}!";
             var reward = _rewardsForNewItems[newItem.Level - 5];
             StartCoroutine(Show(newItem.Icon, text, reward.Type, reward.Level, delay));
         }

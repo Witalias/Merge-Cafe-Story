@@ -18,6 +18,7 @@ namespace EventHandlers
             TutorialSystem.ShowTutorialWindow += _tutorialWindow.Show;
             TutorialSystem.HideTutorialWindow += _tutorialWindow.Hide;
             TutorialSystem.HideTutorialWindowWithDelay += _tutorialWindow.HideWithDelay;
+            TutorialSystem.UpdateTutorialWindow += _tutorialWindow.UpdateText;
         }
 
         private void OnDisable()
@@ -25,6 +26,7 @@ namespace EventHandlers
             TutorialSystem.ShowTutorialWindow -= _tutorialWindow.Show;
             TutorialSystem.HideTutorialWindow -= _tutorialWindow.Hide;
             TutorialSystem.HideTutorialWindowWithDelay -= _tutorialWindow.HideWithDelay;
+            TutorialSystem.UpdateTutorialWindow -= _tutorialWindow.UpdateText;
         }
     }
 }

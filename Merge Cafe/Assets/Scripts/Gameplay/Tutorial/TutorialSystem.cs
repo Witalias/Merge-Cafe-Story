@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UI;
 using UnityEngine;
+using static Unity.VisualScripting.Icons;
 
 namespace Gameplay.Tutorial
 {
@@ -31,6 +32,67 @@ namespace Gameplay.Tutorial
         private GameObject _target = null;
         private Dictionary<(ItemType, int), Action> _conditionsForTutorial;
         private List<(ItemType, int)> _tutorialItems = new();
+        private Dictionary<Language, Dictionary<TutorialStage, TutorialText>> _tutorialTexts = new()
+        {
+            [Language.English] = new()
+            {
+                [TutorialStage.Step1ClickTeapot] = new TutorialText("Let's get started!", "Make some tea."),
+                [TutorialStage.Step2ContinueClickTeapot] = new TutorialText("Great!", "Keep clicking until the bar fills up."),
+                [TutorialStage.Step3ExecuteFirstOrder] = new TutorialText("Complete the order!", "Drag the tea leaf to order."),
+                [TutorialStage.Step4GetSequenceReward] = new TutorialText("What's shining there?", "You have completed the first order! Get a reward!"),
+                [TutorialStage.Step5MergeCrystalls] = new TutorialText("Crystal!", "Merge crystals to get more!"),
+                [TutorialStage.Step6CollectCrystalls] = new TutorialText("More crystals!", "Collect them!"),
+                [TutorialStage.Step7_1GetFirstTeaLeaf] = new TutorialText("New order!", "You need a tea bag. First let's get 2 tea leaves."),
+                [TutorialStage.Step7_2GetSecondTeaLeaf] = new TutorialText("New order!", "You need a tea bag. First let's get 2 tea leaves."),
+                [TutorialStage.Step8MergeTeaLeafs] = new TutorialText("Merge!", "You know what to do."),
+                [TutorialStage.Step9ExecuteSecondOrder] = new TutorialText("Done!", "Merge items to unlock new ones! Now complete the order."),
+                [TutorialStage.Step10ThrowTrash] = new TutorialText("Ugh!", "The customer left the garbage. Throw it away!"),
+                [TutorialStage.Step11GoToDecoreMode] = new TutorialText("Shopping time!", "Let's decorate the cafe."),
+                [TutorialStage.Step12RemoveBoxes] = new TutorialText("What a mess!", "Put the boxes away."),
+                [TutorialStage.Step13StartDialog] = new TutorialText("Talk!", "Listen to what the characters are talking about."),
+                [TutorialStage.Step14ReturnToMainScreen] = new TutorialText("Customers are waiting!", "Let's go back to the orders."),
+                [TutorialStage.Step15End] = new TutorialText("That's it!", "Fulfill orders, receive crystals, equip the cafe and try to MERGE EVERYTHING possible!"),
+                [TutorialStage.StepKey1MoveKeyToLock] = new TutorialText("The key to happiness!", "Unlock an additional cell."),
+                [TutorialStage.StepKey2End] = new TutorialText("Great!", "Now you have more free space!"),
+                [TutorialStage.StepPresent1OpenPresent] = new TutorialText("Present!", "It contains useful items. Open it!"),
+                [TutorialStage.StepPresent2GetContains] = new TutorialText("What's inside?", "Look what's in there!"),
+                [TutorialStage.StepSwitch1] = new TutorialText("Shutdown", "As the equipment expands, you may need to temporarily disable unnecessary ones."),
+                [TutorialStage.StepUpgrade1UpgradeGenerator] = new TutorialText("Upgrade time!", "How about merging the kettle?"),
+                [TutorialStage.StepUpgrade2End] = new TutorialText("Level up!", "Now the kettle works faster!"),
+                [TutorialStage.StepEnergy1MoveEnergyToGenerator] = new TutorialText("Energy!", "Speed up the kettle!"),
+                [TutorialStage.StepBox1OpenBox] = new TutorialText("Box!", "It contains an item from the order. Try our luck?"),
+                [TutorialStage.StepBox2End] = new TutorialText("Great!", "It looks like this is what we need. And what happens if we merge boxes? :)"),
+            },
+            [Language.Russian] = new()
+            {
+                [TutorialStage.Step1ClickTeapot] = new TutorialText("Начнём!", "Завари чай."),
+                [TutorialStage.Step2ContinueClickTeapot] = new TutorialText("Отлично!", "Продолжай кликать до заполнения полосы."),
+                [TutorialStage.Step3ExecuteFirstOrder] = new TutorialText("Выполни заказ!", "Перетащи чайный лист на заказ."),
+                [TutorialStage.Step4GetSequenceReward] = new TutorialText("Что там блестит?", "Первый заказ выполнен! Забери награду!"),
+                [TutorialStage.Step5MergeCrystalls] = new TutorialText("Кристалл!", "Объедини кристаллы, чтобы получить больше."),
+                [TutorialStage.Step6CollectCrystalls] = new TutorialText("Больше кристаллов!", "Собери их!"),
+                [TutorialStage.Step7_1GetFirstTeaLeaf] = new TutorialText("Новый заказ!", "Нужен чайный пакетик. Тебе потребуется 2 чайных листа."),
+                [TutorialStage.Step7_2GetSecondTeaLeaf] = new TutorialText("Новый заказ!", "Нужен чайный пакетик. Тебе потребуется 2 чайных листа."),
+                [TutorialStage.Step8MergeTeaLeafs] = new TutorialText("Объедини!", "Ты знаешь, что делать."),
+                [TutorialStage.Step9ExecuteSecondOrder] = new TutorialText("Отлично!", "Объединяй предметы, чтобы открывать новые! А сейчас заверши заказ."),
+                [TutorialStage.Step10ThrowTrash] = new TutorialText("Фу!", "Клиент оставил мусор. Выброси его!"),
+                [TutorialStage.Step11GoToDecoreMode] = new TutorialText("Время покупок!", "Давай обустроим кафе."),
+                [TutorialStage.Step12RemoveBoxes] = new TutorialText("Какой бардак!", "Убери коробки."),
+                [TutorialStage.Step13StartDialog] = new TutorialText("Поговори!", "Послушай разговор персонажей."),
+                [TutorialStage.Step14ReturnToMainScreen] = new TutorialText("Клиенты заждались!", "Давай вернёмся обратно к заказам."),
+                [TutorialStage.Step15End] = new TutorialText("Вот и всё!", "Выполняй заказы, зарабатывай кристаллы, обустраивай кафе и пробуй ОБЪЕДИНЯТЬ всё возможное!"),
+                [TutorialStage.StepKey1MoveKeyToLock] = new TutorialText("Ключ к счастью!", "Открой дополнительную ячейку."),
+                [TutorialStage.StepKey2End] = new TutorialText("Отлично!", "Теперь у тебя больше свободного пространства!"),
+                [TutorialStage.StepPresent1OpenPresent] = new TutorialText("Подарок!", "В нём крутые штуки. Открой же его!"),
+                [TutorialStage.StepPresent2GetContains] = new TutorialText("Что внутри?", "Посмотри, что там!"),
+                [TutorialStage.StepSwitch1] = new TutorialText("Выключение", "По мере расширения оборудования может появиться необходимость временно отключать ненужное."),
+                [TutorialStage.StepUpgrade1UpgradeGenerator] = new TutorialText("Время улучшения!", "А что, если объединить чайники?"),
+                [TutorialStage.StepUpgrade2End] = new TutorialText("Новый уровень!", "Теперь чайник работает быстрее!"),
+                [TutorialStage.StepEnergy1MoveEnergyToGenerator] = new TutorialText("Энергия!", "Ускорь чайник!"),
+                [TutorialStage.StepBox1OpenBox] = new TutorialText("Коробка!", "Она содержит случайный предмет из заказа. Испытаем удачу?"),
+                [TutorialStage.StepBox2End] = new TutorialText("Отлично!", "Похоже, это именно то, что нам нужно. А что, если мы объединим коробки? :)"),
+            }
+        };
 
         public static event Action<Vector2, bool> PlayClickAnimationCursor;
         public static event Action<Vector2, Vector2> PlayDragAnimationCursor;
@@ -51,6 +113,7 @@ namespace Gameplay.Tutorial
         public static event Action TutorialEnded;
 
         public static event Action<Vector2, string, string> ShowTutorialWindow;
+        public static event Action<string, string> UpdateTutorialWindow;
         public static event Action HideTutorialWindow;
         public static event Action<float> HideTutorialWindowWithDelay;
 
@@ -90,7 +153,7 @@ namespace Gameplay.Tutorial
             TutorialEnded?.Invoke();
             SetActiveGeneratorTimers?.Invoke(true);
             StopAnimationCursor?.Invoke();
-            _currentStage = TutorialStage.None;
+            //_currentStage = TutorialStage.None;
         }
 
         public void EndTutorialModeAndHideWindow()
@@ -107,6 +170,20 @@ namespace Gameplay.Tutorial
             StartTutorialMode();
             _conditionsForTutorial[key]?.Invoke();
             _tutorialItems.Remove(key);
+        }
+
+        public void UpdateTutorialText()
+        {
+            var language = GameStorage.Instance.Language;
+            if (!_tutorialTexts.ContainsKey(language) || !_tutorialTexts[language].ContainsKey(_currentStage))
+                return;
+            var texts = _tutorialTexts[language][_currentStage];
+            UpdateTutorialWindow?.Invoke(texts.Title, texts.Text);
+        }
+
+        public void OnHideTutorialWindowAfterDelay()
+        {
+            _currentStage = TutorialStage.None;
         }
 
         public void OnGeneratorClicked()
@@ -321,282 +398,6 @@ namespace Gameplay.Tutorial
             }
         }
 
-        private void Step1ClickTeapot()
-        {
-            _currentStage = TutorialStage.Step1ClickTeapot;
-            CanRandomOrders = false;
-            SetGeneratorLevel?.Invoke(ItemType.Teapot, 7);
-            GenerateOrder?.Invoke(0, new[] { _storage.GetItem(ItemType.Tea, 1) }, 1, 5, _storage.GetItem(ItemType.Brilliant, 1));
-            SetNewTutorialTarget(GetGenerator(ItemType.Teapot).gameObject);
-            PlayClickAnimationCursor?.Invoke(_target.transform.position, true);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Let's get started!", "Make some tea.");
-        }
-
-        private void Step2ContinueClickTeapot()
-        {
-            _currentStage = TutorialStage.Step2ContinueClickTeapot;
-            StopAnimationCursor?.Invoke();
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Great!", "Keep clicking until the bar fills up.");
-        }
-
-        private IEnumerator Step3ExecuteFirstOrder()
-        {
-            yield return new WaitForSeconds(0.5f);
-            _currentStage = TutorialStage.Step3ExecuteFirstOrder;
-            SetNewTutorialTarget(_storage.GetItemsOnField(ItemType.Tea, 1, 1)[0].gameObject);
-            PlayDragAnimationCursor?.Invoke(_target.transform.position, GetOrderTransform(0).position);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Complete the order!", "Drag the tea leaf to order.");
-        }
-
-        private IEnumerator Step4GetSequenceReward()
-        {
-            yield return new WaitForSeconds(0f);
-            _currentStage = TutorialStage.Step4GetSequenceReward;
-            SoundManager.Instanse.Play(Sound.Achivement, null);
-            GenerateOrder?.Invoke(0, new[] { _storage.GetItem(ItemType.Tea, 2) }, 2, 10, _storage.GetItem(ItemType.Trash, 1));
-            var itemInSequence = GetItemInSequence(1);
-            SetNewTutorialTarget(itemInSequence.gameObject);
-            RotateCursor?.Invoke(-120f);
-            PlayClickAnimationCursor?.Invoke(itemInSequence.GetRewardImage().transform.position, true);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "What's shining there?", "You have completed the first order! Get a reward!");
-        }
-
-        private IEnumerator Step5MergeCrystalls()
-        {
-            StopAnimationCursor?.Invoke();
-            yield return new WaitForSeconds(0.5f);
-            _currentStage = TutorialStage.Step5MergeCrystalls;
-            var crystalls = _storage.GetItemsOnField(ItemType.Brilliant, 1, 2);
-            SetNewTutorialTarget(crystalls[0].gameObject);
-            RotateCursor?.Invoke(0f);
-            PlayDragAnimationCursor?.Invoke(crystalls[0].transform.position, crystalls[1].transform.position);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Crystal!", "Merge crystals to get more!");
-        }
-
-        private void Step6CollectCrystalls()
-        {
-            _currentStage = TutorialStage.Step6CollectCrystalls;
-            _storage.GetItemsOnField(ItemType.Brilliant, 2, 1)[0].gameObject.AddComponent<TutorialExtraTarget>();
-            PlayClickAnimationCursor?.Invoke(_target.transform.position, true);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "More crystals!", "Collect them!");
-        }
-
-        private void Step7GetTwoTeaLeaf()
-        {
-            _currentStage = TutorialStage.Step7_1GetFirstTeaLeaf;
-            SetNewTutorialTarget(GetGenerator(ItemType.Teapot).gameObject);
-            PlayClickAnimationCursor?.Invoke(_target.transform.position, true);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "New order!", "You need a tea bag. First let's get 2 tea leaves.");
-        }
-
-        private IEnumerator Step8MergeTeaLeafs()
-        {
-            yield return new WaitForSeconds(0.5f);
-            _currentStage = TutorialStage.Step8MergeTeaLeafs;
-            var teaLeafs = _storage.GetItemsOnField(ItemType.Tea, 1, 2);
-            SetNewTutorialTarget(teaLeafs[0].gameObject);
-            PlayDragAnimationCursor(teaLeafs[0].transform.position, teaLeafs[1].transform.position);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Merge!", "You know what to do.");
-        }
-
-        private void Step9ExecuteSecondOrder()
-        {
-            _currentStage = TutorialStage.Step9ExecuteSecondOrder;
-            SetNewTutorialTarget(_storage.GetItemsOnField(ItemType.Tea, 2, 1)[0].gameObject);
-            PlayDragAnimationCursor?.Invoke(_target.transform.position, GetOrderTransform(0).position);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Done!", "Merge items to unlock new ones! Now complete the order.");
-        }
-
-        private void Step10ThrowTrash()
-        {
-            _currentStage = TutorialStage.Step10ThrowTrash;
-            CanRandomOrders = true;
-            SetGeneratorLevel?.Invoke(ItemType.Teapot, 1);
-            SetNewTutorialTarget(_storage.GetItemsOnField(ItemType.Trash, 1, 1)[0].gameObject);
-            _target.AddComponent<TutorialExtraTarget>();
-            PlayDragAnimationCursor(_target.transform.position, GetTrashCanTransform().position);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Ugh!", "The customer left the garbage. Throw it away!");
-        }
-
-        private void Step11GoToDecoreMode()
-        {
-            _currentStage = TutorialStage.Step11GoToDecoreMode;
-            RemoveTarget();
-            SetActiveDecoreModeButton?.Invoke(true);
-            RotateCursor?.Invoke(90f);
-            PlayClickAnimationCursor(GetDecoreModeButtonTransform().position, true);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Shopping time!", "Let's decorate the cafe.");
-        }
-
-        private IEnumerator Step12RemoveBoxes()
-        {
-            yield return new WaitForEndOfFrame();
-            _currentStage = TutorialStage.Step12RemoveBoxes;
-            SetActiveDecoreModeButton?.Invoke(false);
-            SetNewTutorialTarget(GetPurchaseButtonTransform().gameObject);
-            StopAnimationCursor?.Invoke();
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "What a mess!", "Put the boxes away.");
-        }
-
-        private IEnumerator Step13StartDialog()
-        {
-            yield return new WaitForEndOfFrame();
-            _currentStage = TutorialStage.Step13StartDialog;
-            SetNewTutorialTarget(GetPurchaseButtonTransform().gameObject);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Talk!", "Listen to what the characters are talking about.");
-        }
-
-        private void Step14ReturnToMainScreen()
-        {
-            _currentStage = TutorialStage.Step14ReturnToMainScreen;
-            SetActiveDecoreModeButton?.Invoke(true);
-            PlayClickAnimationCursor(GetDecoreModeButtonTransform().position, true);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Customers are waiting!", "Let's go back to the orders.");
-        }
-
-        private void Step15End()
-        {
-            _currentStage = TutorialStage.Step15End;
-            EndTutorialMode();
-            RotateCursor?.Invoke(0f);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "That's it!", "Fulfill orders, receive crystals, equip the cafe and try to MERGE EVERYTHING possible!");
-            HideTutorialWindowWithDelay?.Invoke(10f);
-        }
-
-        private IEnumerator StepKey1MoveKeyToLock()
-        {
-            yield return new WaitForSeconds(0.5f);
-            _currentStage = TutorialStage.StepKey1MoveKeyToLock;
-            var keys = GameStorage.Instance.GetItemsOnField(ItemType.Key, 1, 1);
-            var cellLocks = GameStorage.Instance.GetItemsOnField(ItemType.Lock, 1, 1);
-            if (keys.Length == 0 || cellLocks.Length == 0)
-                yield break;
-            SetNewTutorialTarget(keys[0].gameObject);
-            PlayDragAnimationCursor?.Invoke(keys[0].transform.position, cellLocks[0].transform.position);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "The key to happiness!", "Unlock an additional cell.");
-        }
-
-        private void StepKey2End()
-        {
-            _currentStage = TutorialStage.StepKey2End;
-            EndTutorialMode();
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Great!", "Now you have more free space!");
-            HideTutorialWindowWithDelay?.Invoke(6f);
-        }
-
-        private IEnumerator StepUpgrade1UpgradeGenerator()
-        {
-            yield return new WaitForSeconds(0.5f);
-            var teapot = GetGenerator(ItemType.Teapot);
-            if (teapot.Level > 1)
-            {
-                _tutorialItems.Remove((ItemType.Teapot, 1));
-                EndTutorialMode();
-                yield break;
-            }
-            _currentStage = TutorialStage.StepUpgrade1UpgradeGenerator;
-            var teapotItems = GameStorage.Instance.GetItemsOnField(ItemType.Teapot, 1, 1);
-            if (teapotItems.Length == 0)
-                yield break;
-            SetNewTutorialTarget(teapotItems[0].gameObject);
-            PlayDragAnimationCursor?.Invoke(teapotItems[0].transform.position, teapot.transform.position);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Upgrade time!", "How about merging the kettle?");
-        }
-
-        private void StepUpgrade2End()
-        {
-            _currentStage = TutorialStage.StepUpgrade2End;
-            EndTutorialMode();
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Level up!", "Now the kettle works faster!");
-            HideTutorialWindowWithDelay?.Invoke(6f);
-        }
-
-        private IEnumerator StepEnergy1MoveEnergyToGenerator()
-        {
-            yield return new WaitForSeconds(0.5f);
-            _currentStage = TutorialStage.StepEnergy1MoveEnergyToGenerator;
-            var energy = GameStorage.Instance.GetItemsOnField(ItemType.Energy, 2, 1);
-            if (energy.Length == 0)
-                yield break;
-            SetNewTutorialTarget(energy[0].gameObject);
-            PlayDragAnimationCursor?.Invoke(energy[0].transform.position, GetGenerator(ItemType.Teapot).transform.position);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Energy!", "Speed up the kettle!");
-        }
-
-        private IEnumerator StepPresent1OpenPresent()
-        {
-            yield return new WaitForSeconds(0.5f);
-            _currentStage = TutorialStage.StepPresent1OpenPresent;
-            var presents = GameStorage.Instance.GetItemsOnField(ItemType.Present, 1, 1);
-            if (presents.Length == 0)
-                yield break;
-            SetNewTutorialTarget(presents[0].gameObject);
-            PlayClickAnimationCursor?.Invoke(presents[0].transform.position, true);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Present!", "It contains useful items. Open it!");
-        }
-
-        private void StepPresent2GetContains()
-        {
-            _currentStage = TutorialStage.StepPresent2GetContains;
-            var openPresent = GameStorage.Instance.GetItemsOnField(ItemType.OpenPresent, 1, 1)[0];
-            SetNewTutorialTarget(openPresent.gameObject);
-            PlayClickAnimationCursor?.Invoke(openPresent.transform.position, true);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "What's inside?", "Look what's in there!");
-        }
-
-        private IEnumerator StepBox1OpenBox()
-        {
-            yield return new WaitForSeconds(0.5f);
-            if (!GameStorage.Instance.HasEmptyCells())
-            {
-                _tutorialItems.Add((ItemType.Box, 2));
-                EndTutorialMode();
-                yield break;
-            }
-            _currentStage = TutorialStage.StepBox1OpenBox;
-            var boxes = GameStorage.Instance.GetItemsOnField(ItemType.Box, 2, 1);
-            if (boxes.Length == 0)
-                yield break;
-            SetNewTutorialTarget(boxes[0].gameObject);
-            PlayClickAnimationCursor?.Invoke(_target.transform.position, true);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Box!", "It contains an item from the order. Try our luck?");
-        }
-
-        private void StepBox2End()
-        {
-            _currentStage = TutorialStage.StepBox2End;
-            EndTutorialMode();
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Great!", "It looks like this is what we need. And what happens if we merge boxes? :)");
-            HideTutorialWindowWithDelay?.Invoke(10f);
-        }
-
-        private IEnumerator StepSwitch1()
-        {
-            yield return new WaitForSeconds(2f);
-            PlayerPrefs.SetInt(TUTORIAL_GENERATOR_SWITCH_COMPLETED_KEY, 1);
-            StartTutorialMode();
-            _currentStage = TutorialStage.StepSwitch1;
-            var teapotToggle = GetGenerator?.Invoke(ItemType.Teapot).GetComponent<ItemGenerator>().GetToggle();
-            teapotToggle.interactable = true;
-            teapotToggle.onValueChanged.AddListener(OnGeneratorSwitched);
-            PlayClickAnimationCursor?.Invoke(teapotToggle.transform.position, true);
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Shutdown", "As the equipment expands, you may need to temporarily disable unnecessary ones.");
-        }
-
-        private void SetNewTutorialTarget(GameObject target)
-        {
-            RemoveTarget();
-            _target = target;
-            _target.AddComponent<TutorialTarget>();
-        }
-
-        private void RemoveTarget()
-        {
-            if (_target != null)
-                Destroy(_target.GetComponent<TutorialTarget>());
-            _target = null;
-        }
-
         private void Awake()
         {
             Load();
@@ -629,6 +430,300 @@ namespace Gameplay.Tutorial
                     StartTutorialMode();
                     Step1ClickTeapot();
                 }
+            }
+        }
+
+        private void Step1ClickTeapot()
+        {
+            _currentStage = TutorialStage.Step1ClickTeapot;
+            CanRandomOrders = false;
+            SetGeneratorLevel?.Invoke(ItemType.Teapot, 7);
+            GenerateOrder?.Invoke(0, new[] { _storage.GetItem(ItemType.Tea, 1) }, 1, 5, _storage.GetItem(ItemType.Brilliant, 1));
+            SetNewTutorialTarget(GetGenerator(ItemType.Teapot).gameObject);
+            PlayClickAnimationCursor?.Invoke(_target.transform.position, true);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private void Step2ContinueClickTeapot()
+        {
+            _currentStage = TutorialStage.Step2ContinueClickTeapot;
+            StopAnimationCursor?.Invoke();
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private IEnumerator Step3ExecuteFirstOrder()
+        {
+            yield return new WaitForSeconds(0.5f);
+            _currentStage = TutorialStage.Step3ExecuteFirstOrder;
+            SetNewTutorialTarget(_storage.GetItemsOnField(ItemType.Tea, 1, 1)[0].gameObject);
+            PlayDragAnimationCursor?.Invoke(_target.transform.position, GetOrderTransform(0).position);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private IEnumerator Step4GetSequenceReward()
+        {
+            yield return new WaitForSeconds(0f);
+            _currentStage = TutorialStage.Step4GetSequenceReward;
+            SoundManager.Instanse.Play(Sound.Achivement, null);
+            GenerateOrder?.Invoke(0, new[] { _storage.GetItem(ItemType.Tea, 2) }, 2, 10, _storage.GetItem(ItemType.Trash, 1));
+            var itemInSequence = GetItemInSequence(1);
+            SetNewTutorialTarget(itemInSequence.gameObject);
+            RotateCursor?.Invoke(-120f);
+            PlayClickAnimationCursor?.Invoke(itemInSequence.GetRewardImage().transform.position, true);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private IEnumerator Step5MergeCrystalls()
+        {
+            StopAnimationCursor?.Invoke();
+            yield return new WaitForSeconds(0.5f);
+            _currentStage = TutorialStage.Step5MergeCrystalls;
+            var crystalls = _storage.GetItemsOnField(ItemType.Brilliant, 1, 2);
+            SetNewTutorialTarget(crystalls[0].gameObject);
+            RotateCursor?.Invoke(0f);
+            PlayDragAnimationCursor?.Invoke(crystalls[0].transform.position, crystalls[1].transform.position);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private void Step6CollectCrystalls()
+        {
+            _currentStage = TutorialStage.Step6CollectCrystalls;
+            _storage.GetItemsOnField(ItemType.Brilliant, 2, 1)[0].gameObject.AddComponent<TutorialExtraTarget>();
+            PlayClickAnimationCursor?.Invoke(_target.transform.position, true);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private void Step7GetTwoTeaLeaf()
+        {
+            _currentStage = TutorialStage.Step7_1GetFirstTeaLeaf;
+            SetNewTutorialTarget(GetGenerator(ItemType.Teapot).gameObject);
+            PlayClickAnimationCursor?.Invoke(_target.transform.position, true);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private IEnumerator Step8MergeTeaLeafs()
+        {
+            yield return new WaitForSeconds(0.5f);
+            _currentStage = TutorialStage.Step8MergeTeaLeafs;
+            var teaLeafs = _storage.GetItemsOnField(ItemType.Tea, 1, 2);
+            SetNewTutorialTarget(teaLeafs[0].gameObject);
+            PlayDragAnimationCursor(teaLeafs[0].transform.position, teaLeafs[1].transform.position);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private void Step9ExecuteSecondOrder()
+        {
+            _currentStage = TutorialStage.Step9ExecuteSecondOrder;
+            SetNewTutorialTarget(_storage.GetItemsOnField(ItemType.Tea, 2, 1)[0].gameObject);
+            PlayDragAnimationCursor?.Invoke(_target.transform.position, GetOrderTransform(0).position);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private void Step10ThrowTrash()
+        {
+            _currentStage = TutorialStage.Step10ThrowTrash;
+            CanRandomOrders = true;
+            SetGeneratorLevel?.Invoke(ItemType.Teapot, 1);
+            SetNewTutorialTarget(_storage.GetItemsOnField(ItemType.Trash, 1, 1)[0].gameObject);
+            _target.AddComponent<TutorialExtraTarget>();
+            PlayDragAnimationCursor(_target.transform.position, GetTrashCanTransform().position);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private void Step11GoToDecoreMode()
+        {
+            _currentStage = TutorialStage.Step11GoToDecoreMode;
+            RemoveTarget();
+            SetActiveDecoreModeButton?.Invoke(true);
+            RotateCursor?.Invoke(90f);
+            PlayClickAnimationCursor(GetDecoreModeButtonTransform().position, true);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private IEnumerator Step12RemoveBoxes()
+        {
+            yield return new WaitForEndOfFrame();
+            _currentStage = TutorialStage.Step12RemoveBoxes;
+            SetActiveDecoreModeButton?.Invoke(false);
+            SetNewTutorialTarget(GetPurchaseButtonTransform().gameObject);
+            StopAnimationCursor?.Invoke();
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private IEnumerator Step13StartDialog()
+        {
+            yield return new WaitForEndOfFrame();
+            _currentStage = TutorialStage.Step13StartDialog;
+            SetNewTutorialTarget(GetPurchaseButtonTransform().gameObject);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private void Step14ReturnToMainScreen()
+        {
+            _currentStage = TutorialStage.Step14ReturnToMainScreen;
+            SetActiveDecoreModeButton?.Invoke(true);
+            PlayClickAnimationCursor(GetDecoreModeButtonTransform().position, true);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private void Step15End()
+        {
+            _currentStage = TutorialStage.Step15End;
+            RotateCursor?.Invoke(0f);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+            HideTutorialWindowWithDelay?.Invoke(10f);
+            EndTutorialMode();
+        }
+
+        private IEnumerator StepKey1MoveKeyToLock()
+        {
+            yield return new WaitForSeconds(0.5f);
+            _currentStage = TutorialStage.StepKey1MoveKeyToLock;
+            var keys = GameStorage.Instance.GetItemsOnField(ItemType.Key, 1, 1);
+            var cellLocks = GameStorage.Instance.GetItemsOnField(ItemType.Lock, 1, 1);
+            if (keys.Length == 0 || cellLocks.Length == 0)
+                yield break;
+            SetNewTutorialTarget(keys[0].gameObject);
+            PlayDragAnimationCursor?.Invoke(keys[0].transform.position, cellLocks[0].transform.position);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private void StepKey2End()
+        {
+            _currentStage = TutorialStage.StepKey2End;
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+            HideTutorialWindowWithDelay?.Invoke(6f);
+            EndTutorialMode();
+        }
+
+        private IEnumerator StepUpgrade1UpgradeGenerator()
+        {
+            yield return new WaitForSeconds(0.5f);
+            var teapot = GetGenerator(ItemType.Teapot);
+            if (teapot.Level > 1)
+            {
+                _tutorialItems.Remove((ItemType.Teapot, 1));
+                EndTutorialMode();
+                yield break;
+            }
+            _currentStage = TutorialStage.StepUpgrade1UpgradeGenerator;
+            var teapotItems = GameStorage.Instance.GetItemsOnField(ItemType.Teapot, 1, 1);
+            if (teapotItems.Length == 0)
+                yield break;
+            SetNewTutorialTarget(teapotItems[0].gameObject);
+            PlayDragAnimationCursor?.Invoke(teapotItems[0].transform.position, teapot.transform.position);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private void StepUpgrade2End()
+        {
+            _currentStage = TutorialStage.StepUpgrade2End;
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+            HideTutorialWindowWithDelay?.Invoke(6f);
+            EndTutorialMode();
+        }
+
+        private IEnumerator StepEnergy1MoveEnergyToGenerator()
+        {
+            yield return new WaitForSeconds(0.5f);
+            _currentStage = TutorialStage.StepEnergy1MoveEnergyToGenerator;
+            var energy = GameStorage.Instance.GetItemsOnField(ItemType.Energy, 2, 1);
+            if (energy.Length == 0)
+                yield break;
+            SetNewTutorialTarget(energy[0].gameObject);
+            PlayDragAnimationCursor?.Invoke(energy[0].transform.position, GetGenerator(ItemType.Teapot).transform.position);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private IEnumerator StepPresent1OpenPresent()
+        {
+            yield return new WaitForSeconds(0.5f);
+            _currentStage = TutorialStage.StepPresent1OpenPresent;
+            var presents = GameStorage.Instance.GetItemsOnField(ItemType.Present, 1, 1);
+            if (presents.Length == 0)
+                yield break;
+            SetNewTutorialTarget(presents[0].gameObject);
+            PlayClickAnimationCursor?.Invoke(presents[0].transform.position, true);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private void StepPresent2GetContains()
+        {
+            _currentStage = TutorialStage.StepPresent2GetContains;
+            var openPresent = GameStorage.Instance.GetItemsOnField(ItemType.OpenPresent, 1, 1)[0];
+            SetNewTutorialTarget(openPresent.gameObject);
+            PlayClickAnimationCursor?.Invoke(openPresent.transform.position, true);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private IEnumerator StepBox1OpenBox()
+        {
+            yield return new WaitForSeconds(0.5f);
+            if (!GameStorage.Instance.HasEmptyCells())
+            {
+                _tutorialItems.Add((ItemType.Box, 2));
+                EndTutorialMode();
+                yield break;
+            }
+            _currentStage = TutorialStage.StepBox1OpenBox;
+            var boxes = GameStorage.Instance.GetItemsOnField(ItemType.Box, 2, 1);
+            if (boxes.Length == 0)
+                yield break;
+            SetNewTutorialTarget(boxes[0].gameObject);
+            PlayClickAnimationCursor?.Invoke(_target.transform.position, true);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private void StepBox2End()
+        {
+            _currentStage = TutorialStage.StepBox2End;
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+            HideTutorialWindowWithDelay?.Invoke(10f);
+            EndTutorialMode();
+        }
+
+        private IEnumerator StepSwitch1()
+        {
+            yield return new WaitForSeconds(2f);
+            PlayerPrefs.SetInt(TUTORIAL_GENERATOR_SWITCH_COMPLETED_KEY, 1);
+            StartTutorialMode();
+            _currentStage = TutorialStage.StepSwitch1;
+            var teapotToggle = GetGenerator?.Invoke(ItemType.Teapot).GetComponent<ItemGenerator>().GetToggle();
+            teapotToggle.interactable = true;
+            teapotToggle.onValueChanged.AddListener(OnGeneratorSwitched);
+            PlayClickAnimationCursor?.Invoke(teapotToggle.transform.position, true);
+            ShowTutorialWin(_rightTopSpawnWindowPoint.position);
+        }
+
+        private void SetNewTutorialTarget(GameObject target)
+        {
+            RemoveTarget();
+            _target = target;
+            _target.AddComponent<TutorialTarget>();
+        }
+
+        private void RemoveTarget()
+        {
+            if (_target != null)
+                Destroy(_target.GetComponent<TutorialTarget>());
+            _target = null;
+        }
+
+        private void ShowTutorialWin(Vector2 position)
+        {
+            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "", "");
+            UpdateTutorialText();
+        }
+
+        public class TutorialText
+        {
+            public string Title { get; }
+            public string Text { get; }
+
+            public TutorialText(string title, string text)
+            {
+                Title = title;
+                Text = text;
             }
         }
     }

@@ -1,4 +1,5 @@
 using Service;
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ namespace UI.Settings
     public class DropdownLanguage : MonoBehaviour
     {
         [SerializeField] private TMP_Dropdown _dropdown;
+
+        public static event Action LanguageChanged;
 
         private void Awake()
         {
@@ -22,6 +25,7 @@ namespace UI.Settings
         private void OnValueChanged(int index)
         {
             GameStorage.Instance.Language = (Language)index;
+            LanguageChanged?.Invoke();
         }
     }
 }

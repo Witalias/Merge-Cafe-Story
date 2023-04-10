@@ -5,13 +5,14 @@ using Gameplay.ItemGenerators;
 using Service;
 using System;
 using UnityEngine;
+using static Unity.VisualScripting.Icons;
 
 namespace EventHandlers
 {
     [RequireComponent(typeof(InformationWindow))]
     public class InfoWindowHandler : MonoBehaviour
     {
-        private const string _highlightColor = "white";
+        [SerializeField] private Color _highlightColor;
 
         private InformationWindow _informationWindow;
 
@@ -46,98 +47,114 @@ namespace EventHandlers
         private void OnCursorHoveredItem(ItemType type, int level)
         {
             var storage = GameStorage.Instance;
-            var itemDescription = Translation.GetItemDescription(type, level);
+            var language = storage.Language;
+            var highlightColor = ColorUtility.ToHtmlStringRGB(_highlightColor);
+            var itemDescription = Translation.GetItemDescription(language, type, level);
             var instruction = "";
             var maxLevel = storage.IsItemMaxLevel(type, level);
             Translation.ItemDescription nextDescription = null;
 
             if (!maxLevel)
-                nextDescription = Translation.GetItemDescription(type, level + 1);
+                nextDescription = Translation.GetItemDescription(language, type, level + 1);
 
             var isGenerator = IsGenerator?.Invoke(type);
             if (isGenerator.GetValueOrDefault())
             {
                 var isGeneratorMaxLevel = IsGeneratorMaxLevel?.Invoke(type, level);
                 if (isGeneratorMaxLevel.GetValueOrDefault())
-                    instruction = $"Перетащи на оборудование <color={_highlightColor}>«{itemDescription.Title}»</color>, чтобы улучшить его.\n\n" +
-                        $"Этот предмет нельзя выбросить.";
+                {
+                    var parts = Translation.GetDragEquipUpgradeGeneratorInfoParts(language);
+                    instruction = $"{parts[0]}<color=#{highlightColor}>«{itemDescription.Title}»</color>{parts[1]}.\n\n" +
+                        $"{Translation.GetCannotBeThrownText(language)}.";
+                }
                 else
                 {
                     var currentLevel = GetGeneratorLevel?.Invoke(type);
-                    var titleNextLevel = Translation.GetItemDescription(type, level + 1).Title;
-                    var titleNeedLevel = Translation.GetItemDescription(type, currentLevel.GetValueOrDefault()).Title;
-                    instruction = $"Объедини, чтобы получить <color={_highlightColor}>«{titleNextLevel}» {level + 1}-го уровня</color>.\n\n" +
-                        $"Получи <color={_highlightColor}>«{titleNeedLevel}» {currentLevel.GetValueOrDefault()}-го уровня</color>, чтобы улучшить оборудование <color={_highlightColor}>«{titleNeedLevel}»</color>.\n\n" +
-                        $"Этот предмет нельзя выбросить.";
+                    var titleNextLevel = Translation.GetItemDescription(language, type, level + 1).Title;
+                    var titleNeedLevel = Translation.GetItemDescription(language, type, currentLevel.GetValueOrDefault()).Title;
+                    var parts = Translation.GetMergeGeneratorInfoParts(language);
+                    instruction = $"{parts[0]}<color=#{highlightColor}>«{titleNextLevel}»{parts[1]}{level + 1}{parts[2]}</color>.\n\n" +
+                        $"{parts[3]}<color=#{highlightColor}>«{titleNeedLevel}»{parts[4]}{currentLevel.GetValueOrDefault()}{parts[5]}</color>{parts[6]}<color=#{highlightColor}>«{titleNeedLevel}»</color>.\n\n" +
+                        $"{Translation.GetCannotBeThrownText(language)}.";
                 }
             }
             else if (type == ItemType.Brilliant)
             {
                 var currencyCount = storage.GetBrilliantsRewardByItemlevel(level);
-                var brilliantWord = Translation.PluralizeWord(currencyCount, "кристалл", "кристалла", "кристаллов");
+                var brilliantWord = language == Language.Russian
+                    ? Translation.PluralizeWord(currencyCount, "кристалл", "кристалла", "кристаллов")
+                    : Translation.GetItemTitle(language, ItemType.Brilliant);
+                var parts = Translation.GetMergeOrGetCurrencyInfoParts(language);
                 if (maxLevel)
-                    instruction = $"Нажми, чтобы получить {currencyCount} {brilliantWord}.";
+                    instruction = $"{parts[0]}<color=#{highlightColor}>{currencyCount} {brilliantWord}</color>.";
                 else
-                    instruction = $"Нажми, чтобы получить {currencyCount} {brilliantWord}, " +
-                        $"или объедини, чтобы их стало больше.";
+                    instruction = $"{parts[0]}<color=#{highlightColor}>{currencyCount} {brilliantWord}</color>{parts[1]}.";
             }
             else if (type == ItemType.Star)
             {
                 var currencyCount = storage.GetStarsRewardByItemLevel(level);
-                var starWord = Translation.PluralizeWord(currencyCount, "звезду", "звезды", "звёзд");
+                var starWord = language == Language.Russian 
+                    ? Translation.PluralizeWord(currencyCount, "звезду", "звезды", "звёзд")
+                    : Translation.GetItemTitle(language, ItemType.Star);
+                var parts = Translation.GetMergeOrGetCurrencyInfoParts(language);
                 if (maxLevel)
-                    instruction = $"Нажми, чтобы получить {currencyCount} {starWord}.";
+                    instruction = $"{parts[0]}<color=#{highlightColor}>{currencyCount} {starWord}</color>.";
                 else
-                    instruction = $"Нажми, чтобы получить {currencyCount} {starWord}, " +
-                        $"или объедини, чтобы их стало больше.";
+                    instruction = $"{parts[0]}<color=#{highlightColor}>{currencyCount} {starWord}</color>{parts[1]}.";
             }
             else if (type == ItemType.Present)
             {
+                var parts = Translation.GetMergeOrOpenPresentInfoParts(language);
                 if (maxLevel)
-                    instruction = "Нажми, чтобы открыть.";
+                    instruction = $"{parts[0]}.";
                 else
-                    instruction = "Нажми, чтобы открыть, или объедини, чтобы получить более ценный подарок.";
+                    instruction = $"{parts[0]}{parts[1]}.";
             }
             else if (type == ItemType.OpenPresent)
-                instruction = "Нажми, чтобы получить награды!";
+                instruction = $"{Translation.GetFromPresentInfo(language)}!";
             else if (type == ItemType.Key)
             {
+                var parts = Translation.GetDragKeyToLockInfoParts(language);
                 if (maxLevel)
-                    instruction = $"Перетащи на замок {level}-го уровня, чтобы разблокировать ячейку.";
+                    instruction = $"{parts[0]}<color=#{highlightColor}>{level}{parts[1]}</color>.";
                 else
-                    instruction = $"Перетащи на замок {level}-го уровня, чтобы разблокировать ячейку, " +
-                        $"или объедини, чтобы открывать замки более высоких уровней.";
+                    instruction = $"{parts[0]}<color=#{highlightColor}>{level}{parts[1]}</color>{parts[2]}.";
             }
             else if (type == ItemType.Lock)
-                instruction = $"Перетащи сюда ключ {level}-го уровня, чтобы разблокировать ячейку.";
+            {
+                var parts = Translation.GetHowRemoveLockInfoParts(language);
+                instruction = $"{parts[0]}<color=#{highlightColor}>{level}{parts[1]}</color>.";
+            }
             else if (type == ItemType.Box)
             {
                 if (maxLevel)
-                    instruction = "Нажми, чтобы получить предмет максимального уровня, необходимый для выполнения заказа.";
+                    instruction = $"{Translation.GetBoxInfoPart(language, 3)}.";
                 else if (level == 2)
-                    instruction = $"Нажми, чтобы получить случайный предмет, необходимый для выполнения заказа, или объедини, чтобы получить «{nextDescription.Title}».";
+                    instruction = $"{Translation.GetBoxInfoPart(language, 2)}<color=#{highlightColor}>«{nextDescription.Title}»</color>.";
                 else if (level == 1)
-                    instruction = $"Объедини, чтобы получить «{nextDescription.Title}».";
+                    instruction = $"{Translation.GetBoxInfoPart(language, 1)}<color=#{highlightColor}>«{nextDescription.Title}»</color>.";
             }
             else if (type == ItemType.Energy)
             {
                 var energyCount = GameStorage.Instance.GetEnergyRewardByItemlevel(level);
+                var itemWord = language == Language.Russian
+                    ? Translation.PluralizeWord(energyCount, "предмет", "предмета", "предметов")
+                    : Translation.GetItemText(language);
+                var parts = Translation.GetEnergyInfoParts(language);
                 if (maxLevel)
-                    instruction = $"Перетащи на генератор, чтобы ускорить его (заряда хватит на {energyCount} " +
-                        $"{Translation.PluralizeWord(energyCount, "предмет", "предмета", "предметов")}).";
+                    instruction = $"{parts[0]}<color=#{highlightColor}>{energyCount} {itemWord}</color>).";
                 else
-                instruction = $"Перетащи на генератор, чтобы ускорить его (заряда хватит на {energyCount} " +
-                    $"{Translation.PluralizeWord(energyCount, "предмет", "предмета", "предметов")}), или объедини, " +
-                    $"чтобы усилить эффект.";
+                instruction = $"{parts[0]}<color=#{highlightColor}>{energyCount} {itemWord}</color>){parts[1]}.";
 
 
             }
             else
             {
+                var parts = Translation.GetOrdinaryItemInfoParts(language);
                 if (maxLevel)
-                    instruction = $"Перетащи на окно заказа, чтобы выполнить его, если он содержит «{itemDescription.Title}».";
+                    instruction = $"{parts[0]}<color=#{highlightColor}>«{itemDescription.Title}»</color>.";
                 else
-                    instruction = $"Перетащи на окно заказа, чтобы выполнить его, если он содержит «{itemDescription.Title}», или объедини, чтобы получить «{nextDescription.Title}».";
+                    instruction = $"{parts[0]}«{itemDescription.Title}»{parts[1]}<color=#{highlightColor}>«{nextDescription.Title}»</color>.";
             }
 
             _informationWindow.ShowItem(itemDescription.Title, level, itemDescription.Description, instruction);
@@ -145,19 +162,25 @@ namespace EventHandlers
 
         private void OnCursorHoveredGenerator(ItemType type, int level)
         {
-            var itemDescription = Translation.GetItemDescription(type, level);
+            var itemDescription = Translation.GetItemDescription(GameStorage.Instance.Language, type, level);
 
             if (type == ItemType.TrashCan)
             {
-                var instruction = "Перетащи сюда предмет, чтобы выбросить его.\n\nУлучши, чтобы можно было продавать предметы.";
+                var parts = Translation.GetTrashCanInfoParts(GameStorage.Instance.Language);
+                var instruction = $"{parts[0]}.\n\n{parts[1]}.";
                 if (level > 2)
-                    instruction = "Перетащи сюда предмет, чтобы продать его.\n\nУлучши, чтобы продажа приносила больше бриллиантов.";
+                    instruction = $"{parts[0]}.\n\n{parts[2]}.";
                 _informationWindow.ShowGenerator(itemDescription.Title, level, itemDescription.Description, null, instruction);
             }
             else
             {
+                var parts = Translation.GetUpgradeGeneratorInfoParts(GameStorage.Instance.Language);
+                var instruction = $"{parts[0]}.";
+                if (level == 1 || level == 4)
+                    instruction = $"{parts[1]}.";
+                instruction += $"\n\n{parts[2]}:";
                 _informationWindow.ShowGenerator(itemDescription.Title, level,
-                    itemDescription.Description, GetProducedItemSprites?.Invoke(type));
+                    itemDescription.Description, GetProducedItemSprites?.Invoke(type), instruction);
             }
         }
     }

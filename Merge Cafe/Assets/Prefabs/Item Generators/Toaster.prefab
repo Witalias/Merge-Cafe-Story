@@ -37,31 +37,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _statsOnLevels.Array.data[0].generationTimeInSec
-      value: 24
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _statsOnLevels.Array.data[1].generationTimeInSec
-      value: 22
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _statsOnLevels.Array.data[2].generationTimeInSec
-      value: 22
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _statsOnLevels.Array.data[3].generationTimeInSec
-      value: 22
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _statsOnLevels.Array.data[4].generationTimeInSec
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _statsOnLevels.Array.data[5].generationTimeInSec
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _statsOnLevels.Array.data[6].generationTimeInSec
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _statsOnLevels.Array.data[0].clickIncreaseSeconds
@@ -69,27 +69,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _statsOnLevels.Array.data[1].clickIncreaseSeconds
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
-      propertyPath: _statsOnLevels.Array.data[2].clickIncreaseSeconds
       value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
-      propertyPath: _statsOnLevels.Array.data[3].clickIncreaseSeconds
+      propertyPath: _statsOnLevels.Array.data[2].clickIncreaseSeconds
       value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
-      propertyPath: _statsOnLevels.Array.data[4].clickIncreaseSeconds
+      propertyPath: _statsOnLevels.Array.data[3].clickIncreaseSeconds
       value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
-      propertyPath: _statsOnLevels.Array.data[5].clickIncreaseSeconds
+      propertyPath: _statsOnLevels.Array.data[4].clickIncreaseSeconds
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
+      propertyPath: _statsOnLevels.Array.data[5].clickIncreaseSeconds
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _statsOnLevels.Array.data[6].clickIncreaseSeconds
-      value: 2.25
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147122, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: m_Pivot.x
