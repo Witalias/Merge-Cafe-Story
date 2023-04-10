@@ -31,7 +31,7 @@ namespace Service
         [SerializeField] private int[] _stagesForOrderCounts;
 
         [Header("Items")]
-        [SerializeField] private TypedItem[] _typedItems;
+        [SerializeField] private TypedItemPost[] _typedItems;
         [SerializeField] private ItemCombinations[] _combinations;
 
         [Header("Sprites")]
@@ -331,24 +331,13 @@ namespace Service
                 _items.Add(item.Type, GetItemStorageArray(item));
         }
 
-        private ItemStorage[] GetItemStorageArray(TypedItem item)
+        private ItemStorage[] GetItemStorageArray(TypedItemPost item)
         {
-            var itemStats = new ItemStorage[item.Icons.Length];
+            var itemStats = new ItemStorage[item.Items.Length];
             for (var i = 0; i < itemStats.Length; ++i)
-                itemStats[i] = new ItemStorage(i + 1, item.Icons[i], item.Type, item.Throwable, 
-                    item.Movable, false, item.TakeSound, item.PutSound);
+                itemStats[i] = new ItemStorage(i + 1, item.Items[i].Icon, item.Type, item.Throwable, 
+                    item.Movable, false, item.Items[i].TakeSound, item.Items[i].PutSound);
             return itemStats;
         }
-    }
-
-    [System.Serializable]
-    public class TypedItem
-    {
-        public ItemType Type;
-        public bool Throwable = true;
-        public bool Movable = true;
-        public Sound TakeSound = default;
-        public Sound PutSound = default;
-        public Sprite[] Icons;
     }
 }

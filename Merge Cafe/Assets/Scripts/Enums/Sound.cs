@@ -20,6 +20,26 @@ namespace Enums
         NewPresent,
         Achivement,
         Switch,
-        Cash
+        Cash,
+        TakeNeutral,
+        PutNeutral,
+        PaperTake,
+        PaperPut,
+        MetallPotTake,
+        MetallPotPut,
+        CoinsTake,
+        CoinsPut,
+        Click,
+        EnergyTake,
+        EnergyPut,
+        EquipmentTake,
+        EquipmentPut,
+        OvenSwitch,
+        OvenDoor,
+        BoxTake,
+        BoxPut,
+        StarTake,
+        Teapot,
+        Toaster
     }
 }

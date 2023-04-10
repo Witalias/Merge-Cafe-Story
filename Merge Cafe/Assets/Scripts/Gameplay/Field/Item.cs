@@ -104,7 +104,7 @@ namespace Gameplay.Field
             ItemCaptured?.Invoke();
             _isReturning = false;
             transform.SetAsLastSibling();
-            SoundManager.Instanse.Play(Stats.TakeSound, null);
+            SoundManager.Instanse.Play(_storage.GetItem(Stats.Type, Stats.Level).TakeSound, null);
         }
 
         public void OnPointerUp(PointerEventData eventData)
@@ -257,7 +257,10 @@ namespace Gameplay.Field
         private void InteractWithCell(Cell cell)
         {
             if (cell == null || _currentCell == cell)
+            {
+                //SoundManager.Instanse.Play(_storage.GetItem(Stats.Type, Stats.Level).PutSound, null);
                 return;
+            }
             else if (cell.Empty)
             {
                 Move(cell);
@@ -289,7 +292,7 @@ namespace Gameplay.Field
             _currentCell.Clear();
             toCell.SetItem(this);
             _currentCell = toCell;
-            SoundManager.Instanse.Play(Stats.PutSound, null);
+            SoundManager.Instanse.Play(_storage.GetItem(Stats.Type, Stats.Level).PutSound, null);
         }
 
         private void Swap(Cell withCell)
@@ -304,7 +307,7 @@ namespace Gameplay.Field
             withCell.Clear();
             withCell.SetItem(this);
             _currentCell = withCell;
-            SoundManager.Instanse.Play(Stats.PutSound, null);
+            SoundManager.Instanse.Play(_storage.GetItem(Stats.Type, Stats.Level).PutSound, null);
         }
 
         private void Join(Cell withCell)
