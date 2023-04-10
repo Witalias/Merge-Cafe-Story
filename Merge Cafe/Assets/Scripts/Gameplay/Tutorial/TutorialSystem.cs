@@ -17,6 +17,7 @@ namespace Gameplay.Tutorial
         private const string TUTORIAL_ITEM_TYPE_KEY = "TUTORIAL_ITEM_TYPE_";
         private const string TUTORIAL_ITEM_LEVEL_KEY = "TUTORIAL_ITEM_LEVEL_";
         private const string TUTORIAL_ITEMS_COUNT_KEY = "TUTORIAL_ITEMS_COUNT";
+        private const string TUTORIAL_GENERATOR_SWITCH_COMPLETED_KEY = "TUTORIAL_GENERATOR_SWITCH_COMPLETED";
 
         [SerializeField] private Transform _rightTopSpawnWindowPoint;
         [SerializeField] private bool _skipStartTutorial;
@@ -306,8 +307,8 @@ namespace Gameplay.Tutorial
 
         public void OnNewGeneratorAppears(ItemType type)
         {
-            if (type is ItemType.Oven)
-                StartCoroutine(StepSwitch1());  
+            if (type is ItemType.Oven && PlayerPrefs.GetInt(TUTORIAL_GENERATOR_SWITCH_COMPLETED_KEY, 0) == 0)
+                StartCoroutine(StepSwitch1());
         }
 
         public void OnGeneratorSwitched(bool arg)
@@ -561,6 +562,7 @@ namespace Gameplay.Tutorial
         private IEnumerator StepSwitch1()
         {
             yield return new WaitForSeconds(2f);
+            PlayerPrefs.SetInt(TUTORIAL_GENERATOR_SWITCH_COMPLETED_KEY, 1);
             StartTutorialMode();
             _currentStage = TutorialStage.StepSwitch1;
             var teapotToggle = GetGenerator?.Invoke(ItemType.Teapot).GetComponent<ItemGenerator>().GetToggle();
