@@ -7434,6 +7434,19 @@ MonoBehaviour:
   - {fileID: 1272028923}
   - {fileID: 1915451186}
   - {fileID: 1678890028}
+  _itemsCanBeCollected:
+  - Type: 2
+    Level: 3
+  - Type: 3
+    Level: 1
+  - Type: 3
+    Level: 2
+  - Type: 3
+    Level: 3
+  - Type: 4
+    Level: 5
+  - Type: 5
+    Level: 5
 --- !u!114 &1236105488
 MonoBehaviour:
   m_ObjectHideFlags: 0

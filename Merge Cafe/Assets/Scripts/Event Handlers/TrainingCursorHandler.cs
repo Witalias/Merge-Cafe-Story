@@ -1,3 +1,4 @@
+using Gameplay.Field;
 using Gameplay.Tutorial;
 using UnityEngine;
 
@@ -19,6 +20,7 @@ namespace EventHandlers
             TutorialSystem.PlayDragAnimationCursor += _cursor.DragAnimation;
             TutorialSystem.StopAnimationCursor += _cursor.Kill;
             TutorialSystem.RotateCursor += _cursor.SetRotation;
+            CheckingSameItems.PlayClickAnimationCursor += _cursor.ClickAnimation;
         }
 
         private void OnDisable()
@@ -27,6 +29,7 @@ namespace EventHandlers
             TutorialSystem.PlayDragAnimationCursor -= _cursor.DragAnimation;
             TutorialSystem.StopAnimationCursor -= _cursor.Kill;
             TutorialSystem.RotateCursor -= _cursor.SetRotation;
+            CheckingSameItems.PlayClickAnimationCursor -= _cursor.ClickAnimation;
         }
     }
 }

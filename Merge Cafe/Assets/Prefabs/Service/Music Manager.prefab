@@ -145,6 +145,7 @@ MonoBehaviour:
   _music:
   - Type: 0
     Clips:
+    - {fileID: 8300000, guid: 2cea660ec752c154692765ca5496623a, type: 3}
     - {fileID: 8300000, guid: 2e6ff2b28aefe8242ba0c97de5ccf205, type: 3}
     - {fileID: 8300000, guid: fec1d816c8ff99c4eb81e91968be4a92, type: 3}
     - {fileID: 8300000, guid: 22fa304427737b64cb16bb5cac20b96b, type: 3}

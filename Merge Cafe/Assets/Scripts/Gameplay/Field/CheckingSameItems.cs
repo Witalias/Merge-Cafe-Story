@@ -10,8 +10,10 @@ namespace Gameplay.Field
     {
         [SerializeField] private float _checkingDelay = 5f;
         [SerializeField] private Cell[] _cells;
+        [SerializeField] private ItemTypeLevel[] _itemsCanBeCollected;
 
         public static event Action<ItemStorage> CheckTutorialItem;
+        public static event Action<Vector2, bool> PlayClickAnimationCursor;
 
         private void OnEnable()
         {
@@ -26,12 +28,23 @@ namespace Gameplay.Field
                 {
                     if (!IsItem(i))
                         continue;
+
                     var firstItem = _cells[i].Item;
                     yield return new WaitForEndOfFrame();
+
                     CheckTutorialItem?.Invoke(firstItem.Stats);
+
+                    if (Array.Exists(_itemsCanBeCollected, 
+                        item => item.Type == firstItem.Stats.Type && item.Level == firstItem.Stats.Level))
+                    {
+                        PlayClickAnimationCursor?.Invoke(firstItem.transform.position, false);
+                        break;
+                    }
+
                     if (GameStorage.Instance.IsItemMaxLevel(firstItem.Stats.Type, firstItem.Stats.Level) 
                         || firstItem.Stats.Type == ItemType.OpenPresent)
                         continue;
+
                     for (var j = i + 1; j < _cells.Length; ++j)
                     {
                         if (!IsItem(j))

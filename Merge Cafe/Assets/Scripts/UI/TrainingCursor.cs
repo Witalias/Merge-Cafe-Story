@@ -13,7 +13,7 @@ public class TrainingCursor : MonoBehaviour
 
     private Sequence _tween;
     
-    public void ClickAnimation(Vector2 point)
+    public void ClickAnimation(Vector2 point, bool loop = true)
     {
         _tween.Kill();
         cursor.SetActive(true);
@@ -23,8 +23,12 @@ public class TrainingCursor : MonoBehaviour
         _tween = DOTween.Sequence()
             .Append(target.DOScale(defaultScale, 0f))
             .Append(target.DOScale(clickScale, _scaleDuration))
-            .Append(target.DOScale(defaultScale, _scaleDuration))
-            .SetLoops(-1);
+            .Append(target.DOScale(defaultScale, _scaleDuration));
+
+        if (loop)
+            _tween.SetLoops(-1);
+
+        _tween.OnComplete(Kill);
     }
 
     public void DragAnimation(Vector2 pickPoint, Vector2 endPoint)

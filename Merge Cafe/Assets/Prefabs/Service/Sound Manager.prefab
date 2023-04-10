@@ -224,6 +224,9 @@ MonoBehaviour:
   - Type: 17
     Clips:
     - {fileID: 8300000, guid: 0e5898785e42a75419ebdd4c0f371bb3, type: 3}
+  - Type: 18
+    Clips:
+    - {fileID: 8300000, guid: 1455c8a6a6b61e34a941fa440e4b9ee3, type: 3}
 --- !u!114 &347023153144526518
 MonoBehaviour:
   m_ObjectHideFlags: 0

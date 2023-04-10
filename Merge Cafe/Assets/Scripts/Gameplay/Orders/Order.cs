@@ -221,6 +221,7 @@ namespace Gameplay.Orders
 
         private IEnumerator Finish(float delay)
         {
+            SoundManager.Instanse.Play(Sound.Cash, null);
             yield return new WaitForSeconds(delay);
             Hide();
             yield return new WaitForSeconds(0.5f);

@@ -177,6 +177,7 @@ namespace Gameplay.Field
         {
             _isReturning = false;
             _animator.SetTrigger(_disappearAnimatorTrigger);
+            _currentCell.Clear();
             yield return new WaitForSeconds(0.5f);
             Remove();
         }
@@ -326,9 +327,9 @@ namespace Gameplay.Field
         private void Combinate(Cell withCell)
         {
             _isReturning = false;
+            SoundManager.Instanse.Play(_storage.GetCombinateSound(Stats.Type, withCell.Item.Stats.Type), null);
             StartCoroutine(Disappear());
             StartCoroutine(withCell.Item.Disappear());
-            SoundManager.Instanse.Play(_storage.GetCombinateSound(Stats.Type, withCell.Item.Stats.Type), null);
             ItemsCombinated?.Invoke();
         }
     }

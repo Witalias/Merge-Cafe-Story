@@ -19,6 +19,7 @@ namespace Enums
         Brilliant,
         NewPresent,
         Achivement,
-        Switch
+        Switch,
+        Cash
     }
 }

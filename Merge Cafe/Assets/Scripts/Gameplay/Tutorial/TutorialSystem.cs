@@ -32,7 +32,7 @@ namespace Gameplay.Tutorial
         private Dictionary<(ItemType, int), Action> _conditionsForTutorial;
         private List<(ItemType, int)> _tutorialItems = new();
 
-        public static event Action<Vector2> PlayClickAnimationCursor;
+        public static event Action<Vector2, bool> PlayClickAnimationCursor;
         public static event Action<Vector2, Vector2> PlayDragAnimationCursor;
         public static event Action StopAnimationCursor;
         public static event Action<float> RotateCursor;
@@ -328,7 +328,7 @@ namespace Gameplay.Tutorial
             SetGeneratorLevel?.Invoke(ItemType.Teapot, 7);
             GenerateOrder?.Invoke(0, new[] { _storage.GetItem(ItemType.Tea, 1) }, 1, 5, _storage.GetItem(ItemType.Brilliant, 1));
             SetNewTutorialTarget(GetGenerator(ItemType.Teapot).gameObject);
-            PlayClickAnimationCursor?.Invoke(_target.transform.position);
+            PlayClickAnimationCursor?.Invoke(_target.transform.position, true);
             ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Let's get started!", "Make some tea.");
         }
 
@@ -336,7 +336,7 @@ namespace Gameplay.Tutorial
         {
             _currentStage = TutorialStage.Step2ContinueClickTeapot;
             StopAnimationCursor?.Invoke();
-            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Let's get started!", "Great! Keep clicking until the bar fills up.");
+            ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Great!", "Keep clicking until the bar fills up.");
         }
 
         private IEnumerator Step3ExecuteFirstOrder()
@@ -357,7 +357,7 @@ namespace Gameplay.Tutorial
             var itemInSequence = GetItemInSequence(1);
             SetNewTutorialTarget(itemInSequence.gameObject);
             RotateCursor?.Invoke(-120f);
-            PlayClickAnimationCursor?.Invoke(itemInSequence.GetRewardImage().transform.position);
+            PlayClickAnimationCursor?.Invoke(itemInSequence.GetRewardImage().transform.position, true);
             ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "What's shining there?", "You have completed the first order! Get a reward!");
         }
 
@@ -377,7 +377,7 @@ namespace Gameplay.Tutorial
         {
             _currentStage = TutorialStage.Step6CollectCrystalls;
             _storage.GetItemsOnField(ItemType.Brilliant, 2, 1)[0].gameObject.AddComponent<TutorialExtraTarget>();
-            PlayClickAnimationCursor?.Invoke(_target.transform.position);
+            PlayClickAnimationCursor?.Invoke(_target.transform.position, true);
             ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "More crystals!", "Collect them!");
         }
 
@@ -385,7 +385,7 @@ namespace Gameplay.Tutorial
         {
             _currentStage = TutorialStage.Step7_1GetFirstTeaLeaf;
             SetNewTutorialTarget(GetGenerator(ItemType.Teapot).gameObject);
-            PlayClickAnimationCursor?.Invoke(_target.transform.position);
+            PlayClickAnimationCursor?.Invoke(_target.transform.position, true);
             ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "New order!", "You need a tea bag. First let's get 2 tea leaves.");
         }
 
@@ -424,7 +424,7 @@ namespace Gameplay.Tutorial
             RemoveTarget();
             SetActiveDecoreModeButton?.Invoke(true);
             RotateCursor?.Invoke(90f);
-            PlayClickAnimationCursor(GetDecoreModeButtonTransform().position);
+            PlayClickAnimationCursor(GetDecoreModeButtonTransform().position, true);
             ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Shopping time!", "Let's decorate the cafe.");
         }
 
@@ -450,7 +450,7 @@ namespace Gameplay.Tutorial
         {
             _currentStage = TutorialStage.Step14ReturnToMainScreen;
             SetActiveDecoreModeButton?.Invoke(true);
-            PlayClickAnimationCursor(GetDecoreModeButtonTransform().position);
+            PlayClickAnimationCursor(GetDecoreModeButtonTransform().position, true);
             ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Customers are waiting!", "Let's go back to the orders.");
         }
 
@@ -467,10 +467,12 @@ namespace Gameplay.Tutorial
         {
             yield return new WaitForSeconds(0.5f);
             _currentStage = TutorialStage.StepKey1MoveKeyToLock;
-            var key = GameStorage.Instance.GetItemsOnField(ItemType.Key, 1, 1)[0];
-            var cellLock = GameStorage.Instance.GetItemsOnField(ItemType.Lock, 1, 1)[0];
-            SetNewTutorialTarget(key.gameObject);
-            PlayDragAnimationCursor?.Invoke(key.transform.position, cellLock.transform.position);
+            var keys = GameStorage.Instance.GetItemsOnField(ItemType.Key, 1, 1);
+            var cellLocks = GameStorage.Instance.GetItemsOnField(ItemType.Lock, 1, 1);
+            if (keys.Length == 0 || cellLocks.Length == 0)
+                yield break;
+            SetNewTutorialTarget(keys[0].gameObject);
+            PlayDragAnimationCursor?.Invoke(keys[0].transform.position, cellLocks[0].transform.position);
             ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "The key to happiness!", "Unlock an additional cell.");
         }
 
@@ -493,9 +495,11 @@ namespace Gameplay.Tutorial
                 yield break;
             }
             _currentStage = TutorialStage.StepUpgrade1UpgradeGenerator;
-            var teapotItem = GameStorage.Instance.GetItemsOnField(ItemType.Teapot, 1, 1)[0];
-            SetNewTutorialTarget(teapotItem.gameObject);
-            PlayDragAnimationCursor?.Invoke(teapotItem.transform.position, teapot.transform.position);
+            var teapotItems = GameStorage.Instance.GetItemsOnField(ItemType.Teapot, 1, 1);
+            if (teapotItems.Length == 0)
+                yield break;
+            SetNewTutorialTarget(teapotItems[0].gameObject);
+            PlayDragAnimationCursor?.Invoke(teapotItems[0].transform.position, teapot.transform.position);
             ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Upgrade time!", "How about merging the kettle?");
         }
 
@@ -511,9 +515,11 @@ namespace Gameplay.Tutorial
         {
             yield return new WaitForSeconds(0.5f);
             _currentStage = TutorialStage.StepEnergy1MoveEnergyToGenerator;
-            var energy = GameStorage.Instance.GetItemsOnField(ItemType.Energy, 2, 1)[0];
-            SetNewTutorialTarget(energy.gameObject);
-            PlayDragAnimationCursor?.Invoke(energy.transform.position, GetGenerator(ItemType.Teapot).transform.position);
+            var energy = GameStorage.Instance.GetItemsOnField(ItemType.Energy, 2, 1);
+            if (energy.Length == 0)
+                yield break;
+            SetNewTutorialTarget(energy[0].gameObject);
+            PlayDragAnimationCursor?.Invoke(energy[0].transform.position, GetGenerator(ItemType.Teapot).transform.position);
             ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Energy!", "Speed up the kettle!");
         }
 
@@ -521,9 +527,11 @@ namespace Gameplay.Tutorial
         {
             yield return new WaitForSeconds(0.5f);
             _currentStage = TutorialStage.StepPresent1OpenPresent;
-            var present = GameStorage.Instance.GetItemsOnField(ItemType.Present, 1, 1)[0];
-            SetNewTutorialTarget(present.gameObject);
-            PlayClickAnimationCursor?.Invoke(present.transform.position);
+            var presents = GameStorage.Instance.GetItemsOnField(ItemType.Present, 1, 1);
+            if (presents.Length == 0)
+                yield break;
+            SetNewTutorialTarget(presents[0].gameObject);
+            PlayClickAnimationCursor?.Invoke(presents[0].transform.position, true);
             ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Present!", "It contains useful items. Open it!");
         }
 
@@ -532,7 +540,7 @@ namespace Gameplay.Tutorial
             _currentStage = TutorialStage.StepPresent2GetContains;
             var openPresent = GameStorage.Instance.GetItemsOnField(ItemType.OpenPresent, 1, 1)[0];
             SetNewTutorialTarget(openPresent.gameObject);
-            PlayClickAnimationCursor?.Invoke(openPresent.transform.position);
+            PlayClickAnimationCursor?.Invoke(openPresent.transform.position, true);
             ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "What's inside?", "Look what's in there!");
         }
 
@@ -546,8 +554,11 @@ namespace Gameplay.Tutorial
                 yield break;
             }
             _currentStage = TutorialStage.StepBox1OpenBox;
-            SetNewTutorialTarget(GameStorage.Instance.GetItemsOnField(ItemType.Box, 2, 1)[0].gameObject);
-            PlayClickAnimationCursor?.Invoke(_target.transform.position);
+            var boxes = GameStorage.Instance.GetItemsOnField(ItemType.Box, 2, 1);
+            if (boxes.Length == 0)
+                yield break;
+            SetNewTutorialTarget(boxes[0].gameObject);
+            PlayClickAnimationCursor?.Invoke(_target.transform.position, true);
             ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Box!", "It contains an item from the order. Try our luck?");
         }
 
@@ -568,7 +579,7 @@ namespace Gameplay.Tutorial
             var teapotToggle = GetGenerator?.Invoke(ItemType.Teapot).GetComponent<ItemGenerator>().GetToggle();
             teapotToggle.interactable = true;
             teapotToggle.onValueChanged.AddListener(OnGeneratorSwitched);
-            PlayClickAnimationCursor?.Invoke(teapotToggle.transform.position);
+            PlayClickAnimationCursor?.Invoke(teapotToggle.transform.position, true);
             ShowTutorialWindow?.Invoke(_rightTopSpawnWindowPoint.position, "Shutdown", "As the equipment expands, you may need to temporarily disable unnecessary ones.");
         }
 
