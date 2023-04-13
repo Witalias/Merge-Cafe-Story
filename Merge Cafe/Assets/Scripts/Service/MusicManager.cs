@@ -66,11 +66,6 @@ namespace Service
                 Load();
         }
 
-        //private void OnEnable()
-        //{
-        //    _playMusicCoroutine = StartCoroutine(CheckMusicEnd());
-        //}
-
         private IEnumerator CheckMusicEnd()
         {
             while (true)
@@ -92,6 +87,7 @@ namespace Service
 
         private void PlayMusic(int index)
         {
+            Stop();
             var musicToPlay = _musicDictionary[_currentMusic][index];
             _audioSource.PlayOneShot(musicToPlay);
             _playMusicCoroutine = StartCoroutine(CheckMusicEnd());

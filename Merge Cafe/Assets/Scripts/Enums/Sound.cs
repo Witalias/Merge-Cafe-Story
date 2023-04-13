@@ -41,6 +41,8 @@ namespace Enums
         StarTake,
         Teapot,
         Toaster,
-        TrashCan
+        TrashCan,
+        OpenWindow,
+        CloseWindow,
     }
 }

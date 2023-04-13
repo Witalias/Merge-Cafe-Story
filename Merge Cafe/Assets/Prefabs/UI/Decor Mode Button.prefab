@@ -86,6 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7107695862283789720}
   - component: {fileID: 1990307858526794061}
+  - component: {fileID: 7936360423345434041}
   m_Layer: 5
   m_Name: Decor Mode Button
   m_TagString: Untagged
@@ -127,6 +128,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 7107695863108206259}
+--- !u!114 &7936360423345434041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7107695862283789727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de35c604e252bb459e4a9d3bc4b5def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 7107695863108206259}
+  _sound: 27
 --- !u!1 &7107695863108206257
 GameObject:
   m_ObjectHideFlags: 0

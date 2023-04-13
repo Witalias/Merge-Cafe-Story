@@ -296,6 +296,13 @@ MonoBehaviour:
   - Type: 39
     Clips:
     - {fileID: 8300000, guid: 86c41584195e5a04cb86748a240c7356, type: 3}
+  - Type: 40
+    Clips:
+    - {fileID: 8300000, guid: 72288ec9d2be43a4bb990a4fb9e385eb, type: 3}
+  - Type: 41
+    Clips:
+    - {fileID: 8300000, guid: cec48dc7ae5080b4587201e596ac77ff, type: 3}
+    - {fileID: 8300000, guid: 921973f6fa39f7449bdabea5762a53a6, type: 3}
 --- !u!114 &347023153144526518
 MonoBehaviour:
   m_ObjectHideFlags: 0
