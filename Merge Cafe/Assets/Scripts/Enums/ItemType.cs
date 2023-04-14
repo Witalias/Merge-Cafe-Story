@@ -19,6 +19,8 @@ namespace Enums
         FastFood,
         Box,
         Energy,
-        Trash
+        Trash,
+        Duplicator,
+        Doubler
     }
 }

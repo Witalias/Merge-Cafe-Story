@@ -176,6 +176,12 @@ namespace Service
                 [ItemType.Trash] = new()
                 {
                     [1] = new ItemDescription("Fish bone", "Ugh!")
+                },
+                [ItemType.Duplicator] = new()
+                {
+                    [1] = new ItemDescription("Duplicator", "Makes a copy of the item level below"),
+                    [2] = new ItemDescription("Duplicator", "Makes a copy of the item"),
+                    [3] = new ItemDescription("Duplicator", "Makes a copy of the item level above")
                 }
             },
             [Language.Russian] = new()
@@ -347,6 +353,12 @@ namespace Service
                 [ItemType.Trash] = new()
                 {
                     [1] = new ItemDescription("Рыбья кость", "Фу!")
+                },
+                [ItemType.Duplicator] = new()
+                {
+                    [1] = new ItemDescription("Дубликатор", "Делает копию предмета уровня ниже"),
+                    [2] = new ItemDescription("Дубликатор", "Делает копию предмета"),
+                    [3] = new ItemDescription("Дубликатор", "Делает копию предмета уровня выше")
                 }
             }
         };
