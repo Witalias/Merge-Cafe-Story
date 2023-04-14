@@ -279,6 +279,12 @@ namespace Gameplay.Field
                 else
                     WrongLevelForCombinating?.Invoke();
             }
+            else if (Stats.Type == ItemType.Duplicator
+                && cell.Item.Stats.Type != ItemType.Lock
+                && cell.Item.Stats.Type != ItemType.Duplicator)
+            {
+                Duplicate(cell);
+            }
             else if (Stats.Movable && cell.Item.Stats.Movable)
                 Swap(cell);
         }
@@ -334,6 +340,23 @@ namespace Gameplay.Field
             StartCoroutine(Disappear());
             StartCoroutine(withCell.Item.Disappear());
             ItemsCombinated?.Invoke();
+        }
+
+        private void Duplicate(Cell withCell)
+        {
+            SoundManager.Instanse.Play(Sound.Merge, null, Stats.Level - 1);
+            var itemMaxLevel = GameStorage.Instance.GetItemMaxLevel(withCell.Item.Stats.Type);
+            var duplicatorNormalLevel = 2;
+            Remove();
+            var duplicatedItemLevel = withCell.Item.Stats.Level - (duplicatorNormalLevel - Stats.Level);
+            
+            if (duplicatedItemLevel < 1)
+                duplicatedItemLevel = 1;
+
+            if (duplicatedItemLevel > itemMaxLevel)
+                duplicatedItemLevel = itemMaxLevel;
+
+            _currentCell.CreateItem(GameStorage.Instance.GetItem(withCell.Item.Stats.Type, duplicatedItemLevel));
         }
     }
 }
