@@ -177,7 +177,7 @@ namespace Gameplay.Field
         {
             _isReturning = false;
             _animator.SetTrigger(_disappearAnimatorTrigger);
-            _currentCell.Clear();
+            //_currentCell.Clear();
             yield return new WaitForSeconds(0.5f);
             Remove();
         }

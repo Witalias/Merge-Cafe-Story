@@ -28,6 +28,7 @@ namespace UI
         private int _rewardLevel;
 
         public static event Action<ItemStorage> AddItemInQueue;
+        public static event Action AchivementRewardGetted;
 
         public void ShowUpgradedGenerator(ItemStorage generator, float delay)
         {
@@ -92,10 +93,10 @@ namespace UI
 
         private void Hide()
         {
-            if (_shareToggle.isOn)
-                GiveReward();
             _content.SetActive(false);
             Time.timeScale = 1f;
+            if (_shareToggle.isOn)
+                GiveReward();
         }
 
         private void GiveReward()
@@ -107,6 +108,7 @@ namespace UI
             else
                 randomCell.CreateItem(item, _rewardIcon.transform.position);
             item.UnlockFirstly();
+            AchivementRewardGetted?.Invoke();
         }
     }
 }
