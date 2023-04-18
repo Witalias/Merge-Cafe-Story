@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UI;
 using UnityEngine;
-using static Unity.VisualScripting.Icons;
 
 namespace Gameplay.Tutorial
 {

@@ -5,7 +5,6 @@ using Gameplay.ItemGenerators;
 using Service;
 using System;
 using UnityEngine;
-using static Unity.VisualScripting.Icons;
 
 namespace EventHandlers
 {
