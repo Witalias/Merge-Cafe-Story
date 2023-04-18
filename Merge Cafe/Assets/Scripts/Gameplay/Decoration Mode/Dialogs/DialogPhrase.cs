@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Enums;
 
 namespace Gameplay.DecorationMode.Dialogs
@@ -6,9 +7,8 @@ namespace Gameplay.DecorationMode.Dialogs
     [Serializable]
     public class DialogPhrase
     {
-        public CharacterName Character;
+        public CharacterType Character;
         public Emotion Emotion;
-        [UnityEngine.Multiline]
         public string Phrase;
     }
 }

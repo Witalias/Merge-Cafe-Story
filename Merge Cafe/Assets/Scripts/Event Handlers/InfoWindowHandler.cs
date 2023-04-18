@@ -148,6 +148,10 @@ namespace EventHandlers
 
 
             }
+            else if (type == ItemType.Duplicator)
+            {
+                instruction = $"{Translation.GetDuplicatorInfoPart(language, level)}.";
+            }
             else
             {
                 var parts = Translation.GetOrdinaryItemInfoParts(language);

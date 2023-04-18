@@ -179,9 +179,9 @@ namespace Service
                 },
                 [ItemType.Duplicator] = new()
                 {
-                    [1] = new ItemDescription("Duplicator", "Makes a copy of the item level below"),
-                    [2] = new ItemDescription("Duplicator", "Makes a copy of the item"),
-                    [3] = new ItemDescription("Duplicator", "Makes a copy of the item level above")
+                    [1] = new ItemDescription("Duplicator", "Smile!"),
+                    [2] = new ItemDescription("Duplicator", "Smile for the birdie!"),
+                    [3] = new ItemDescription("Duplicator", "Well, pose sometime!")
                 }
             },
             [Language.Russian] = new()
@@ -356,9 +356,9 @@ namespace Service
                 },
                 [ItemType.Duplicator] = new()
                 {
-                    [1] = new ItemDescription("Дубликатор", "Делает копию предмета уровня ниже"),
-                    [2] = new ItemDescription("Дубликатор", "Делает копию предмета"),
-                    [3] = new ItemDescription("Дубликатор", "Делает копию предмета уровня выше")
+                    [1] = new ItemDescription("Дубликатор", "Улыбочку!"),
+                    [2] = new ItemDescription("Дубликатор", "Сейчас вылетит птичка!"),
+                    [3] = new ItemDescription("Дубликатор", "Ну попозируй как-нибудь!")
                 }
             }
         };
@@ -533,6 +533,18 @@ namespace Service
             [Language.Russian] = "Нажми, чтобы получить награды",
         };
 
+        private static Dictionary<Language, string> _skipTexts = new()
+        {
+            [Language.English] = "Skip",
+            [Language.Russian] = "Пропустить",
+        };
+
+        private static Dictionary<Language, string> _clickTexts = new()
+        {
+            [Language.English] = "Click",
+            [Language.Russian] = "Нажми",
+        };
+
         private static Dictionary<Language, string[]> _dragEquipToUpgradeGeneratorInfo = new()
         {
             [Language.English] = new[]
@@ -705,6 +717,22 @@ namespace Service
             },
         };
 
+        private static Dictionary<Language, Dictionary<int, string>> _duplicatorInfo = new()
+        {
+            [Language.English] = new()
+            {
+                [1] = "Drag on an ordinary item to make a copy of it 1 level lower, or merge it to improve the duplicator",
+                [2] = "Drag on an ordinary item to make a copy of it, or merge it to improve the duplicator",
+                [3] = "Drag on an ordinary item to make a copy of it 1 level higher"
+            },
+            [Language.Russian] = new()
+            {
+                [1] = "Перетащи на обычный предмет, чтобы сделать его копию на 1 уровень ниже, или объедини, чтобы улучшить дубликатор",
+                [2] = "Перетащи на обычный предмет, чтобы сделать его копию, или объедини, чтобы улучшить дубликатор",
+                [3] = "Перетащи на обычный предмет, чтобы сделать его копию на 1 уровень выше"
+            },
+        };
+
         public static string GetItemTitle(Language language, ItemType type) => _itemNames[language][type];
 
         public static ItemDescription GetItemDescription(Language language, ItemType type, int level)
@@ -769,6 +797,12 @@ namespace Service
         public static string[] GetUpgradeGeneratorInfoParts(Language language) => _upgradeGeneratorInfo[language];
 
         public static string GetLevelText(Language language) => _levelTexts[language];
+
+        public static string GetSkipText(Language language) => _skipTexts[language];
+
+        public static string GetClickText(Language language) => _clickTexts[language];
+
+        public static string GetDuplicatorInfoPart(Language language, int level) => _duplicatorInfo[language][level];
 
 
         public static string PluralizeWord(int count, string one, string twoFour, string fiveTen)

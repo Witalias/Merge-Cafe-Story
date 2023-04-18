@@ -9,14 +9,14 @@ namespace Service
 
         public void ShowRewarded()
         {
-            if (_enabled && !TutorialSystem.TutorialDone)
+            if (!_enabled || !TutorialSystem.TutorialDone)
                 return;
             YandexSDK.instance.ShowRewarded("O");
         }
 
         public void ShowInterstitial()
         {
-            if (_enabled && !TutorialSystem.TutorialDone)
+            if (!_enabled || !TutorialSystem.TutorialDone)
                 return;
             YandexSDK.instance.ShowInterstitial();
         }

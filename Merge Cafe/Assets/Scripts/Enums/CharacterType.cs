@@ -1,6 +1,6 @@
 namespace Enums
 {
-    public enum CharacterName
+    public enum CharacterType
     {
         Magdalena,
         Matilda,
