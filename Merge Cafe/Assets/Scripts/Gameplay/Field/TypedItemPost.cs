@@ -10,6 +10,7 @@ namespace Gameplay.Field
         public ItemType Type;
         public bool Throwable = true;
         public bool Movable = true;
+        public bool Special = false;
         public ItemTypeSoundsPost[] Items;
     }
 }

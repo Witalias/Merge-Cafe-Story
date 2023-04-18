@@ -70,6 +70,7 @@ namespace Service
                     (ItemType.Teapot, 1, 9),
                     (ItemType.Box, 1, 10),
                     (ItemType.Energy, 2, 16),
+                    (ItemType.Duplicator, 1, 22),
                     (ItemType.Brilliant, 3, 13),
                 }, 2),
 
@@ -129,6 +130,7 @@ namespace Service
                     (ItemType.Teapot, 2, 37),
                     (ItemType.Energy, 1, 13),
                     (ItemType.Brilliant, 3, 28),
+                    (ItemType.Duplicator, 1, 37),
                     (ItemType.Present, 1, 40),
                 }, 2),
 

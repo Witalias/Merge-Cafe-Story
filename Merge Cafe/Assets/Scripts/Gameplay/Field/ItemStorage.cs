@@ -14,12 +14,13 @@ namespace Gameplay.Field
         public bool IsNew { get; private set; } = true;
         public bool Throwable { get; private set; } = true;
         public bool Movable { get; private set; } = true;
+        public bool Special { get; private set; } = true;
         public Sound TakeSound { get; }
         public Sound PutSound { get; }
 
         public static event Action<ItemStorage, float> NewItem;
 
-        public ItemStorage(int level, Sprite icon, ItemType type, bool throwable, bool movable,
+        public ItemStorage(int level, Sprite icon, ItemType type, bool throwable, bool movable, bool special,
             bool unlocked = false, Sound takeSound = default, Sound putSound = default)
         {
             Icon = icon;
@@ -28,6 +29,7 @@ namespace Gameplay.Field
             Unlocked = unlocked;
             Throwable = throwable;
             Movable = movable;
+            Special = special;
             TakeSound = takeSound;
             PutSound = putSound;
 
@@ -35,7 +37,7 @@ namespace Gameplay.Field
                 Unlock();
         }
 
-        public ItemStorage(ItemStorage other, bool unlocked = true) : this(other.Level, other.Icon, other.Type, other.Throwable, other.Movable, unlocked) { }
+        public ItemStorage(ItemStorage other, bool unlocked = true) : this(other.Level, other.Icon, other.Type, other.Throwable, other.Movable, other.Special, unlocked) { }
 
         public void Unlock()
         {

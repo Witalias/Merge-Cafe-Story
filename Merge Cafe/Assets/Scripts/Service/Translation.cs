@@ -721,15 +721,15 @@ namespace Service
         {
             [Language.English] = new()
             {
-                [1] = "Drag on an ordinary item to make a copy of it 1 level lower, or merge it to improve the duplicator",
-                [2] = "Drag on an ordinary item to make a copy of it, or merge it to improve the duplicator",
-                [3] = "Drag on an ordinary item to make a copy of it 1 level higher"
+                [1] = "Drag on an item (which is only needed to fulfill orders) to make a copy of it 1 level lower, or merge it to improve the duplicator",
+                [2] = "Drag on an item (which is only needed to fulfill orders) to make a copy of it, or merge it to improve the duplicator",
+                [3] = "Drag on an item (which is only needed to fulfill orders) to make a copy of it 1 level higher"
             },
             [Language.Russian] = new()
             {
-                [1] = "Перетащи на обычный предмет, чтобы сделать его копию на 1 уровень ниже, или объедини, чтобы улучшить дубликатор",
-                [2] = "Перетащи на обычный предмет, чтобы сделать его копию, или объедини, чтобы улучшить дубликатор",
-                [3] = "Перетащи на обычный предмет, чтобы сделать его копию на 1 уровень выше"
+                [1] = "Перетащи на предмет (который нужен только для выполнения заказов), чтобы сделать его копию на 1 уровень ниже, или объедини, чтобы улучшить дубликатор",
+                [2] = "Перетащи на предмет (который нужен только для выполнения заказов), чтобы сделать его копию, или объедини, чтобы улучшить дубликатор",
+                [3] = "Перетащи на предмет (который нужен только для выполнения заказов), чтобы сделать его копию на 1 уровень выше"
             },
         };
 

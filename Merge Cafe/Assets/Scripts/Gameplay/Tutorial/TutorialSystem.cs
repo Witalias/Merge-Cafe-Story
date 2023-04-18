@@ -582,7 +582,10 @@ namespace Gameplay.Tutorial
             var keys = GameStorage.Instance.GetItemsOnField(ItemType.Key, 1, 1);
             var cellLocks = GameStorage.Instance.GetItemsOnField(ItemType.Lock, 1, 1);
             if (keys.Length == 0 || cellLocks.Length == 0)
+            {
+                EndTutorialMode();
                 yield break;
+            }
             SetNewTutorialTarget(keys[0].gameObject);
             PlayDragAnimationCursor?.Invoke(keys[0].transform.position, cellLocks[0].transform.position);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
@@ -609,7 +612,10 @@ namespace Gameplay.Tutorial
             _currentStage = TutorialStage.StepUpgrade1UpgradeGenerator;
             var teapotItems = GameStorage.Instance.GetItemsOnField(ItemType.Teapot, 1, 1);
             if (teapotItems.Length == 0)
+            {
+                EndTutorialMode();
                 yield break;
+            }
             SetNewTutorialTarget(teapotItems[0].gameObject);
             PlayDragAnimationCursor?.Invoke(teapotItems[0].transform.position, teapot.transform.position);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
@@ -629,7 +635,10 @@ namespace Gameplay.Tutorial
             _currentStage = TutorialStage.StepEnergy1MoveEnergyToGenerator;
             var energy = GameStorage.Instance.GetItemsOnField(ItemType.Energy, 2, 1);
             if (energy.Length == 0)
+            {
+                EndTutorialMode();
                 yield break;
+            }
             SetNewTutorialTarget(energy[0].gameObject);
             PlayDragAnimationCursor?.Invoke(energy[0].transform.position, GetGenerator(ItemType.Teapot).transform.position);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
@@ -641,7 +650,10 @@ namespace Gameplay.Tutorial
             _currentStage = TutorialStage.StepPresent1OpenPresent;
             var presents = GameStorage.Instance.GetItemsOnField(ItemType.Present, 1, 1);
             if (presents.Length == 0)
+            {
+                EndTutorialMode();
                 yield break;
+            }
             SetNewTutorialTarget(presents[0].gameObject);
             PlayClickAnimationCursor?.Invoke(presents[0].transform.position, true);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
@@ -668,7 +680,10 @@ namespace Gameplay.Tutorial
             _currentStage = TutorialStage.StepBox1OpenBox;
             var boxes = GameStorage.Instance.GetItemsOnField(ItemType.Box, 2, 1);
             if (boxes.Length == 0)
+            {
+                EndTutorialMode();
                 yield break;
+            }
             SetNewTutorialTarget(boxes[0].gameObject);
             PlayClickAnimationCursor?.Invoke(_target.transform.position, true);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
