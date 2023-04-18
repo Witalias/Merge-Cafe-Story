@@ -1,6 +1,6 @@
 using Gameplay.Tutorial;
 using Service;
-using System.Threading.Tasks;
+using System.Collections;
 using UnityEngine;
 
 namespace EventHandlers
@@ -10,13 +10,16 @@ namespace EventHandlers
     {
         private IStorable _storable;
 
-        public async void Save()
+        public void Save()
         {
             if (!TutorialSystem.TutorialDone)
                 return;
-
-            _storable.Save();
-            await Task.Yield();
+            StartCoroutine(SaveCoroutine());
+            IEnumerator SaveCoroutine()
+            {
+                yield return new WaitForSeconds(Random.Range(0f, 1f));
+                _storable.Save();
+            }
         }
 
         private void Awake()
