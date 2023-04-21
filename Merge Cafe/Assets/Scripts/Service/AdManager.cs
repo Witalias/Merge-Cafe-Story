@@ -1,5 +1,6 @@
 using Gameplay.Tutorial;
 using UnityEngine;
+using YG;
 
 namespace Service
 {
@@ -12,6 +13,7 @@ namespace Service
             if (!_enabled || !TutorialSystem.TutorialDone)
                 return;
             //YandexSDK.instance.ShowRewarded("O");
+            YandexGame.RewVideoShow(0);
         }
 
         public void ShowInterstitial()
@@ -19,6 +21,7 @@ namespace Service
             if (!_enabled || !TutorialSystem.TutorialDone)
                 return;
             //YandexSDK.instance.ShowInterstitial();
+            YandexGame.FullscreenShow();
         }
     }
 }
