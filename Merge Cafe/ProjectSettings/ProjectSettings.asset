@@ -411,6 +411,10 @@ PlayerSettings:
   m_TemplateCustomTags:
     BANNER_DYNAMIC_1: 
     BANNER_DYNAMIC_2: 
+    BANNER_DYNAMIC_3: 
+    BANNER_DYNAMIC_4: 
+    BANNER_DYNAMIC_5: 
+    BANNER_DYNAMIC_6: 
     BANNER_STATIC_1: 
     BANNER_STATIC_2: 
   mobileMTRendering:
