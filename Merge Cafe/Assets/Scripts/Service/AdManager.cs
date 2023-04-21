@@ -11,14 +11,14 @@ namespace Service
         {
             if (!_enabled || !TutorialSystem.TutorialDone)
                 return;
-            YandexSDK.instance.ShowRewarded("O");
+            //YandexSDK.instance.ShowRewarded("O");
         }
 
         public void ShowInterstitial()
         {
             if (!_enabled || !TutorialSystem.TutorialDone)
                 return;
-            YandexSDK.instance.ShowInterstitial();
+            //YandexSDK.instance.ShowInterstitial();
         }
     }
 }
