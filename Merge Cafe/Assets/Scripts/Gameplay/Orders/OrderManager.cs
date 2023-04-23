@@ -30,6 +30,9 @@ namespace Gameplay.Orders
 
         private GameStorage _storage;
 
+        private bool _isDoublerActive = false;
+        private int _doubledRewardsOrdersAmount = 0;
+
         private int _ordersCount = 1;
         private int _remainsToRareOrder = 1;
         private readonly Queue<ItemStorage> _rareItemsQueue = new();
