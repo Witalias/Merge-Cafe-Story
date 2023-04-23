@@ -32,6 +32,20 @@ namespace Gameplay.Orders
 
         private bool _isDoublerActive = false;
         private int _doubledRewardsOrdersAmount = 0;
+        private int doubledRewardsOrdersAmount { 
+            get => _doubledRewardsOrdersAmount;
+            set 
+            {
+                if (value < 0)
+                {
+                    _doubledRewardsOrdersAmount = 0;
+                }
+                else
+                {
+                    _doubledRewardsOrdersAmount = value;
+                }
+            } 
+        }
 
         private int _ordersCount = 1;
         private int _remainsToRareOrder = 1;
@@ -111,6 +125,14 @@ namespace Gameplay.Orders
             if (orderPoints.Length == 0)
                 return null;
             return orderPoints.OrderByDescending(point => point.Level).ToArray()[0];
+        }
+
+        public void ActivateDoubler(int ordersAmount)
+        {
+            _isDoublerActive = true;
+            doubledRewardsOrdersAmount += ordersAmount;
+            Debug.Log($"Orders to double added: {ordersAmount}");
+            Debug.Log($"Total order to double: {doubledRewardsOrdersAmount}");
         }
 
         private ItemStorage[] GetOrderPoints() => _orders.SelectMany(order => order.OrderPoints).ToArray();
