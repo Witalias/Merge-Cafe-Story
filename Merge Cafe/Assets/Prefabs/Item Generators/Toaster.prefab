@@ -37,31 +37,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _statsOnLevels.Array.data[0].generationTimeInSec
-      value: 35
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _statsOnLevels.Array.data[1].generationTimeInSec
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _statsOnLevels.Array.data[2].generationTimeInSec
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _statsOnLevels.Array.data[3].generationTimeInSec
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _statsOnLevels.Array.data[4].generationTimeInSec
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _statsOnLevels.Array.data[5].generationTimeInSec
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _statsOnLevels.Array.data[6].generationTimeInSec
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _statsOnLevels.Array.data[0].clickIncreaseSeconds
