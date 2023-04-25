@@ -21,7 +21,9 @@ namespace Gameplay.Tutorial
                 StopCoroutine(_hideWithDelay);
 
             transform.position = position;
-            UpdateText(title, mainText);
+            _title.text = title;
+            _mainText.text = mainText;
+            StartCoroutine(Refresh());
         }
 
         public void Hide()
