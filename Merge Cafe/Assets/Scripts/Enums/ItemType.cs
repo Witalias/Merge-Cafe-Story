@@ -21,6 +21,9 @@ namespace Enums
         Energy,
         Trash,
         Duplicator,
-        Doubler
+        Doubler,
+        Blender,
+        Juice,
+        Cocktail
     }
 }

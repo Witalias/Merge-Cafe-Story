@@ -182,7 +182,44 @@ namespace Service
                     [1] = new ItemDescription("Duplicator", "Smile!"),
                     [2] = new ItemDescription("Duplicator", "Smile for the birdie!"),
                     [3] = new ItemDescription("Duplicator", "Well, pose sometime!")
-                }
+                },
+                [ItemType.Blender] = new()
+                {
+                    [1] = new ItemDescription("Blender", "The perfect gift for Mom."),
+                    [2] = new ItemDescription("Blender", "The perfect gift for Mom."),
+                    [3] = new ItemDescription("Blender", "The perfect gift for Mom."),
+                    [4] = new ItemDescription("Blender", "The perfect gift for Mom."),
+                    [5] = new ItemDescription("Blender", "The perfect gift for Mom."),
+                    [6] = new ItemDescription("Blender", "The perfect gift for Mom."),
+                    [7] = new ItemDescription("Blender", "The perfect gift for Mom."),
+                    [8] = new ItemDescription("Blender", "The perfect gift for Mom."),
+                },
+                [ItemType.Juice] = new()
+                {
+                    [1] = new ItemDescription("A small box of juice", "With a straw."),
+                    [2] = new ItemDescription("Juice box", "Take it for the holiday."),
+                    [3] = new ItemDescription("Apple juice", "From selected apples."),
+                    [4] = new ItemDescription("Carrot juice", "A storehouse of vitamins!"),
+                    [5] = new ItemDescription("Cherry juice", "Sour!"),
+                    [6] = new ItemDescription("Pineapple juice", "Mmm, exotic."),
+                    [7] = new ItemDescription("Orange juice", "I love this smell."),
+                    [8] = new ItemDescription("Lemonade", "Dyes, citric acid, all sorts of nonsense..."),
+                    [8] = new ItemDescription("Cold lemonade", "Lemonade is doubly delicious if it is..."),
+                    [10] = new ItemDescription("Berry punch", "A mix of berries and fruits."),
+                },
+                [ItemType.Cocktail] = new()
+                {
+                    [1] = new ItemDescription("Milkshake", ""),
+                    [2] = new ItemDescription("Milkshake with cream", ""),
+                    [3] = new ItemDescription("Banana milkshake", ""),
+                    [4] = new ItemDescription("Strawberry milkshake", ""),
+                    [5] = new ItemDescription("«Blue Lagoon»", ""),
+                    [6] = new ItemDescription("Milkshake «Festive»", ""),
+                    [7] = new ItemDescription("Nut milkshake", ""),
+                    [8] = new ItemDescription("«Margarita»", ""),
+                    [8] = new ItemDescription("Chocolate milkshake", ""),
+                    [10] = new ItemDescription("«Triple Combo»", ""),
+                },
             },
             [Language.Russian] = new()
             {
@@ -359,7 +396,44 @@ namespace Service
                     [1] = new ItemDescription("Дубликатор", "Улыбочку!"),
                     [2] = new ItemDescription("Дубликатор", "Сейчас вылетит птичка!"),
                     [3] = new ItemDescription("Дубликатор", "Ну попозируй как-нибудь!")
-                }
+                },
+                [ItemType.Blender] = new()
+                {
+                    [1] = new ItemDescription("Блендер", "Идеальный подарок маме."),
+                    [2] = new ItemDescription("Блендер", "Идеальный подарок маме."),
+                    [3] = new ItemDescription("Блендер", "Идеальный подарок маме."),
+                    [4] = new ItemDescription("Блендер", "Идеальный подарок маме."),
+                    [5] = new ItemDescription("Блендер", "Идеальный подарок маме."),
+                    [6] = new ItemDescription("Блендер", "Идеальный подарок маме."),
+                    [7] = new ItemDescription("Блендер", "Идеальный подарок маме."),
+                    [8] = new ItemDescription("Блендер", "Идеальный подарок маме."),
+                },
+                [ItemType.Juice] = new()
+                {
+                    [1] = new ItemDescription("Коробочка сока", "С трубочкой."),
+                    [2] = new ItemDescription("Коробка сока", "Возьми на праздник."),
+                    [3] = new ItemDescription("Яблочный сок", "Из отборных, наливных яблок."),
+                    [4] = new ItemDescription("Морковный сок", "Кладезь витаминов!"),
+                    [5] = new ItemDescription("Вишнёвый сок", "Кислый!"),
+                    [6] = new ItemDescription("Ананасовый сок", "Ммм, экзотика."),
+                    [7] = new ItemDescription("Апельсиновый сок", "Люблю этот запах."),
+                    [8] = new ItemDescription("Лимонад", "Красители, лимонная кислота, всякие глупости..."),
+                    [8] = new ItemDescription("Холодный лимонад", "Лимонад вдвойне вкусней, если это..."),
+                    [10] = new ItemDescription("Ягодный пунш", "Микс из ягод и фруктов."),
+                },
+                [ItemType.Cocktail] = new()
+                {
+                    [1] = new ItemDescription("Молочный коктейль", ""),
+                    [2] = new ItemDescription("Коктейль со сливками", ""),
+                    [3] = new ItemDescription("Банановый коктейль", ""),
+                    [4] = new ItemDescription("Клубничный коктейль", ""),
+                    [5] = new ItemDescription("«Голубая лагуна»", ""),
+                    [6] = new ItemDescription("Коктейль «Праздничный»", ""),
+                    [7] = new ItemDescription("Ореховый коктейль", ""),
+                    [8] = new ItemDescription("«Маргарита»", ""),
+                    [8] = new ItemDescription("Шоколадный коктейль", ""),
+                    [10] = new ItemDescription("«Тройное комбо»", ""),
+                },
             }
         };
 
