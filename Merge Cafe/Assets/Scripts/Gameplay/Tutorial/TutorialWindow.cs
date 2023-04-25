@@ -36,7 +36,8 @@ namespace Gameplay.Tutorial
         {
             _title.text = title;
             _mainText.text = mainText;
-            StartCoroutine(Refresh());
+            if (_panel.activeSelf)
+                StartCoroutine(Refresh());
         }
 
         public void HideWithDelay(float delay)
