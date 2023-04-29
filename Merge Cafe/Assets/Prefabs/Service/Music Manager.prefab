@@ -145,11 +145,11 @@ MonoBehaviour:
   _music:
   - Type: 0
     Clips:
-    - {fileID: 8300000, guid: 2cea660ec752c154692765ca5496623a, type: 3}
-    - {fileID: 8300000, guid: 7871a240315ca484abe02db6060789b1, type: 3}
-    - {fileID: 8300000, guid: 2e6ff2b28aefe8242ba0c97de5ccf205, type: 3}
-    - {fileID: 8300000, guid: fec1d816c8ff99c4eb81e91968be4a92, type: 3}
-    - {fileID: 8300000, guid: 22fa304427737b64cb16bb5cac20b96b, type: 3}
+    - {fileID: 8300000, guid: add55f4dbfd34be4980b98f43df2be06, type: 3}
+    - {fileID: 8300000, guid: edd441d5e8ddd2844b07836a2283d875, type: 3}
+    - {fileID: 8300000, guid: 7b419fced55eefd4fa9ea8bb2efc6ce9, type: 3}
+    - {fileID: 8300000, guid: ba7b34bf51d99404cbe6aee4bc536723, type: 3}
+    - {fileID: 8300000, guid: 9eb36fb09db90604d9472c8841df213c, type: 3}
 --- !u!114 &8278951589154435814
 MonoBehaviour:
   m_ObjectHideFlags: 0

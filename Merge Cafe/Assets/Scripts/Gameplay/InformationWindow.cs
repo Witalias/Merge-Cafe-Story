@@ -11,6 +11,7 @@ namespace Gameplay
     [RequireComponent(typeof(Animation))]
     public class InformationWindow : MonoBehaviour
     {
+        [SerializeField] private bool _enabled;
         [SerializeField] private GameObject _panel;
         [SerializeField] private TextMeshProUGUI _title;
         [SerializeField] private TextMeshProUGUI _level;
@@ -64,7 +65,7 @@ namespace Gameplay
 
         private void Show(string title, int level, string description, string instruction)
         {
-            if (!TutorialSystem.TutorialDone)
+            if (!TutorialSystem.TutorialDone || !_enabled)
                 return;
 
             _title.text = title;

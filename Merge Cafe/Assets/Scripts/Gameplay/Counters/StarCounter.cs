@@ -107,7 +107,7 @@ namespace Gameplay.Counters
             if (_bar.Filled)
                 FinishTarget();
 
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.S) && GameStorage.Instance.Cheats)
                 AddStars(_cheatStarsCount);
         }
 

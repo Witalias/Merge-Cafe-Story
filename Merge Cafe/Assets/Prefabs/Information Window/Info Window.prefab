@@ -204,6 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258370a5c6fa1604d8e8dd9f329cfdfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enabled: 1
   _panel: {fileID: 6635714159534031532}
   _title: {fileID: 6635714158683256789}
   _level: {fileID: 6635714159961317063}

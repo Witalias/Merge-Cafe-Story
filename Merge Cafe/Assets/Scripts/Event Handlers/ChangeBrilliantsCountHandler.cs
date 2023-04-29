@@ -52,6 +52,12 @@ namespace EventHandlers
             CurrencyAdder.BrilliantsChanged -= Add;
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.B) && GameStorage.Instance.Cheats)
+                Add(1000);
+        }
+
         private void Add(int brilliants)
         {
             _storage.BrilliantsCount += brilliants;

@@ -20,6 +20,7 @@ namespace Service
 
         [Header("Settings")]
         [SerializeField] private bool _loadData = false;
+        [SerializeField] private bool _cheats = false;
         [SerializeField] private int _starsCount = 0;
         [SerializeField] private int _brilliantsCount = 0;
         [SerializeField] private int _generationStarFromLevel = 6;
@@ -57,6 +58,8 @@ namespace Service
         public Language Language { get; set; } = Language.English;
 
         public bool LoadData { get => _loadData; }
+
+        public bool Cheats { get => _cheats; }
 
         public int GameStage { get; set; } = 1;
 

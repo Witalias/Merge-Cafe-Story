@@ -248,17 +248,17 @@ MonoBehaviour:
     LeftSide: 1
     Emotions:
     - Type: 0
-      Face: {fileID: 21300000, guid: a11974cd47d611c4fa152dd672e797f0, type: 3}
+      Face: {fileID: 21300000, guid: cc0fa19c9f649f84a9a6a773b5454986, type: 3}
     - Type: 1
-      Face: {fileID: 21300000, guid: 68dc0b77a92ae35439106a2f30f94c59, type: 3}
+      Face: {fileID: 21300000, guid: cc0fa19c9f649f84a9a6a773b5454986, type: 3}
     - Type: 2
-      Face: {fileID: 21300000, guid: 35e80c783afa1564c9a693aef224cd98, type: 3}
+      Face: {fileID: 21300000, guid: cc0fa19c9f649f84a9a6a773b5454986, type: 3}
     - Type: 3
-      Face: {fileID: 21300000, guid: 039e24d58b02173409b9384485060852, type: 3}
+      Face: {fileID: 21300000, guid: cc0fa19c9f649f84a9a6a773b5454986, type: 3}
     - Type: 4
-      Face: {fileID: 21300000, guid: 82c9d8782a66eee48a678a8c3083f4f6, type: 3}
+      Face: {fileID: 21300000, guid: cc0fa19c9f649f84a9a6a773b5454986, type: 3}
     - Type: 5
-      Face: {fileID: 21300000, guid: fb1b39f633402df448e9b7cbe5595f98, type: 3}
+      Face: {fileID: 21300000, guid: cc0fa19c9f649f84a9a6a773b5454986, type: 3}
   - Type: 1
     Names:
     - Language: 0
@@ -268,17 +268,17 @@ MonoBehaviour:
     LeftSide: 0
     Emotions:
     - Type: 0
-      Face: {fileID: 21300000, guid: 6581a57316b37bd419fb36f92562c7d2, type: 3}
+      Face: {fileID: 21300000, guid: 7ef82c18be5d63e40ad596e7f19c4dd1, type: 3}
     - Type: 1
-      Face: {fileID: 21300000, guid: 18646f6368819b041a35c7fff3e0f073, type: 3}
+      Face: {fileID: 21300000, guid: 7ef82c18be5d63e40ad596e7f19c4dd1, type: 3}
     - Type: 2
-      Face: {fileID: 21300000, guid: 9c7fdec789ad43945992e19bfc3d820e, type: 3}
+      Face: {fileID: 21300000, guid: 7ef82c18be5d63e40ad596e7f19c4dd1, type: 3}
     - Type: 3
-      Face: {fileID: 21300000, guid: 392abb4dd3e256047be903abec012b11, type: 3}
+      Face: {fileID: 21300000, guid: 7ef82c18be5d63e40ad596e7f19c4dd1, type: 3}
     - Type: 4
-      Face: {fileID: 21300000, guid: 8c76e795354e26e408305ef8bac0faab, type: 3}
+      Face: {fileID: 21300000, guid: 7ef82c18be5d63e40ad596e7f19c4dd1, type: 3}
     - Type: 5
-      Face: {fileID: 21300000, guid: 9d00e1194c577ee4cb765eaae736ee75, type: 3}
+      Face: {fileID: 21300000, guid: 7ef82c18be5d63e40ad596e7f19c4dd1, type: 3}
   - Type: 2
     Names:
     - Language: 0
@@ -1931,7 +1931,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.69, y: 142.03}
+  m_AnchoredPosition: {x: 172.66, y: 140}
   m_SizeDelta: {x: 280, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3899636262737963739
@@ -1962,7 +1962,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a11974cd47d611c4fa152dd672e797f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc0fa19c9f649f84a9a6a773b5454986, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2713,7 +2713,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -148, y: 140}
+  m_AnchoredPosition: {x: -171.2, y: 140}
   m_SizeDelta: {x: 280, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3899636264448874923
@@ -2744,7 +2744,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6581a57316b37bd419fb36f92562c7d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7ef82c18be5d63e40ad596e7f19c4dd1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

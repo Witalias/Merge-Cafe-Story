@@ -11,6 +11,7 @@ namespace UI
 {
     public class ScreenInfoWindow : MonoBehaviour
     {
+        [SerializeField] private bool _enabled;
         [SerializeField] private GameObject _content;
         [SerializeField] private Image _icon;
         [SerializeField] private TextMeshProUGUI _title;
@@ -66,6 +67,9 @@ namespace UI
 
         public IEnumerator Show(Sprite icon, string text, ItemType rewardItem, int rewardLevel, float delay, string level = "")
         {
+            if (!_enabled)
+                yield break;
+
             yield return new WaitForSeconds(delay);
             var language = GameStorage.Instance.Language;
             _rewardItem = rewardItem;
