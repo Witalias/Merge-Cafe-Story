@@ -21,33 +21,18 @@ namespace Gameplay.Field
             { 3, 9 }
         };
 
-/*        public void Load()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Save()
-        {
-            throw new System.NotImplementedException();
-        }*/
-
         private void Awake()
         {
             _item = GetComponent<Item>();
             _quickClickTracking = GetComponent<QuickClickTracking>();
         }
 
-        void Start()
-        {
-
-        }
-
         void Update()
         {
             if (_quickClickTracking.QuickClicked)
             {
-                Debug.Log("Doubler clicked");
-                Activated?.Invoke(_ordersToDoubleDependingOnLevel[_item.Stats.Level]);   
+                Activated?.Invoke(_ordersToDoubleDependingOnLevel[_item.Stats.Level]);
+                Destroy(gameObject);
             }
         }
     }

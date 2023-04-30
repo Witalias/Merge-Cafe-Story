@@ -182,6 +182,12 @@ namespace Service
                     [1] = new ItemDescription("Duplicator", "Makes a copy of the item level below"),
                     [2] = new ItemDescription("Duplicator", "Makes a copy of the item"),
                     [3] = new ItemDescription("Duplicator", "Makes a copy of the item level above")
+                },
+                [ItemType.Doubler] = new()
+                {
+                    [1] = new ItemDescription("Doubler", "Doubles rewards for 1 order"),
+                    [2] = new ItemDescription("Doubler", "Doubles rewards for 4 orders"),
+                    [3] = new ItemDescription("Doubler", "Doubles rewards for 9 orders")
                 }
             },
             [Language.Russian] = new()
@@ -359,6 +365,12 @@ namespace Service
                     [1] = new ItemDescription("Дубликатор", "Делает копию предмета уровня ниже"),
                     [2] = new ItemDescription("Дубликатор", "Делает копию предмета"),
                     [3] = new ItemDescription("Дубликатор", "Делает копию предмета уровня выше")
+                },
+                [ItemType.Doubler] = new()
+                {
+                    [1] = new ItemDescription("Удвоитель", "Удваивает награды за 1 заказ"),
+                    [2] = new ItemDescription("Удвоитель", "Удваивает награды за 4 заказа"),
+                    [3] = new ItemDescription("Удвоитель", "Удваивает награды за 9 заказов")
                 }
             }
         };

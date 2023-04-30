@@ -5,6 +5,7 @@ using System.Linq;
 using Gameplay.Field;
 using Enums;
 using Gameplay.Tutorial;
+using UnityEngine.Rendering;
 
 namespace Gameplay.Orders
 {
@@ -15,6 +16,7 @@ namespace Gameplay.Orders
         private const string RARE_ITEM_TYPE_IN_QUEUE_KEY = "RARE_ITEM_IN_QUEUE";
         private const string RARE_ITEM_LEVEL_IN_QUEUE_KEY = "RARE_ITEM_LEVEL_IN_QUEUE";
         private const string RARE_ITEMS_QUEUE_COUNT_KEY = "RARE_ITEMS_QUEUE_COUNT";
+        private const string REMAINS_ORDERS_TO_DOUBLE_KEY = "REMAINS_ORDERS_TO_DOUBLE";
         private const int _maxOrdersCount = 3;
 
         [SerializeField] private Order[] _orders;
@@ -30,13 +32,14 @@ namespace Gameplay.Orders
 
         private GameStorage _storage;
 
-        private bool _isDoublerActive = false;
+        private bool _isDoublerActive => doubledRewardsOrdersAmount > 0 ;
+       
         private int _doubledRewardsOrdersAmount = 0;
         private int doubledRewardsOrdersAmount { 
             get => _doubledRewardsOrdersAmount;
             set 
             {
-                if (value < 0)
+                if (value <= 0)
                 {
                     _doubledRewardsOrdersAmount = 0;
                 }
@@ -44,8 +47,13 @@ namespace Gameplay.Orders
                 {
                     _doubledRewardsOrdersAmount = value;
                 }
+
+                Debug.Log($"Total orders to double: {_doubledRewardsOrdersAmount}");
+                DoublerStatusChanged?.Invoke(_isDoublerActive, _doubledRewardsOrdersAmount);
             } 
         }
+
+        public static event System.Action<bool, int> DoublerStatusChanged;
 
         private int _ordersCount = 1;
         private int _remainsToRareOrder = 1;
@@ -53,6 +61,7 @@ namespace Gameplay.Orders
 
         public void Save()
         {
+            PlayerPrefs.SetInt(REMAINS_ORDERS_TO_DOUBLE_KEY, _doubledRewardsOrdersAmount);
             PlayerPrefs.SetInt(CURRENT_ORDERS_COUNT_KEY, _ordersCount);
             PlayerPrefs.SetInt(REMAINS_ORDERS_TO_RARE_ORDER_KEY, _remainsToRareOrder);
             var rareItems = new List<ItemStorage>(_rareItemsQueue);
@@ -67,6 +76,7 @@ namespace Gameplay.Orders
         public void Load()
         {
             _ordersCount = PlayerPrefs.GetInt(CURRENT_ORDERS_COUNT_KEY, 1);
+            _doubledRewardsOrdersAmount = PlayerPrefs.GetInt(REMAINS_ORDERS_TO_DOUBLE_KEY, 0);
 
             for (var i = 0; i < _ordersCount; ++i)
                 _orders[i].gameObject.SetActive(true);
@@ -78,6 +88,14 @@ namespace Gameplay.Orders
                 var itemType = (ItemType)PlayerPrefs.GetInt(RARE_ITEM_TYPE_IN_QUEUE_KEY + i);
                 var level = PlayerPrefs.GetInt(RARE_ITEM_LEVEL_IN_QUEUE_KEY + i);
                 _rareItemsQueue.Enqueue(_storage.GetItem(itemType, level));
+            }
+        }
+
+        public void DecreaseOrdersToDoubleAmout()
+        {
+            if (_isDoublerActive)
+            {
+                doubledRewardsOrdersAmount--;
             }
         }
 
@@ -127,19 +145,18 @@ namespace Gameplay.Orders
             return orderPoints.OrderByDescending(point => point.Level).ToArray()[0];
         }
 
-        public void ActivateDoubler(int ordersAmount)
+        public void ChangeDoublerOrdersAmount(int ordersAmount)
         {
-            _isDoublerActive = true;
+
             doubledRewardsOrdersAmount += ordersAmount;
-            Debug.Log($"Orders to double added: {ordersAmount}");
-            Debug.Log($"Total order to double: {doubledRewardsOrdersAmount}");
+      
         }
 
         private ItemStorage[] GetOrderPoints() => _orders.SelectMany(order => order.OrderPoints).ToArray();
 
         public void GenerateCustomOrder(int id, ItemStorage[] items, int stars, int crystalls, ItemStorage extraReward)
         {
-            _orders[id].Generate(items, stars, crystalls, extraReward);
+            _orders[id].Generate(items, stars, crystalls, _isDoublerActive ? 2 : 1, extraReward);
         }
 
         private void GenerateRandomOrdinaryOrder(int id, GameStage.Settings settings)
@@ -176,7 +193,7 @@ namespace Gameplay.Orders
             UpdateRemainToRareOrder();
             var rareItem = _rareItemsQueue.Dequeue();
             var stars = _storage.GetStarsCountByItemLevel(rareItem.Level) * _starsMultiplierForRareOrders;
-            _orders[id].Generate(new[] { rareItem }, stars, GetBrilliantsReward(stars), GetRandomExtraReward((int)(rareItem.Level * _diffucultyMultiplierForRareOrder)));
+            _orders[id].Generate(new[] { rareItem }, stars, GetBrilliantsReward(stars), _isDoublerActive? 2 : 1, GetRandomExtraReward((int)(rareItem.Level * _diffucultyMultiplierForRareOrder)));
         }
 
         public void AddNewOrder()
@@ -194,7 +211,6 @@ namespace Gameplay.Orders
         private void Start()
         {
             _storage = GameStorage.Instance;
-
             for (var i = 0; i < _orders.Length; ++i)
                 _orders[i].SetID(i);
 

@@ -10,6 +10,7 @@ using Gameplay.Counters;
 using System.Linq;
 using Unity.VisualScripting;
 using Gameplay.Tutorial;
+using System;
 
 namespace Gameplay.Orders
 {
@@ -23,6 +24,7 @@ namespace Gameplay.Orders
         private const string BRILLIANTS_REWARD_IN_ORDER_KEY = "BRILLIANTS_REWARD_IN_ORDER";
         private const string STARS_REWARD_IN_ORDER_KEY = "STARS_REWARD_IN_ORDER";
         private const string _showAnimatorBool = "Show";
+        private const string REWARD_COEFFICIENT_KEY = "REWARD_COEFFICIENT";
 
         [SerializeField] private OrderPoint[] _orderPoints;
         [SerializeField] private Transform _starsSpawnPoint;
@@ -45,6 +47,11 @@ namespace Gameplay.Orders
         private bool _actived = false;
         private bool started = false;
 
+        private int _reward—oefficient;
+        private Color _defaultColor = Color.white;
+        private Color _doubledRewardValueColor = Color.green;
+
+        public static event System.Action RewardsAdded;
         public static event System.Action<int> OrderDone;
         public static event System.Action<ItemStorage> NoEmptyCellsAndRewardGetted;
 
@@ -52,6 +59,7 @@ namespace Gameplay.Orders
 
         public void Save()
         {
+
             var hierarchyIndex = transform.GetSiblingIndex();
             for (var i = 0; i < _orders.Length; ++i)
             {
@@ -78,6 +86,7 @@ namespace Gameplay.Orders
             }
             PlayerPrefs.SetInt(BRILLIANTS_REWARD_IN_ORDER_KEY + hierarchyIndex, _brilliants);
             PlayerPrefs.SetInt(STARS_REWARD_IN_ORDER_KEY + hierarchyIndex, _stars);
+            PlayerPrefs.SetInt(REWARD_COEFFICIENT_KEY + hierarchyIndex, _reward—oefficient);
         }
 
         public void Load()
@@ -106,19 +115,20 @@ namespace Gameplay.Orders
             }
             _brilliants = PlayerPrefs.GetInt(BRILLIANTS_REWARD_IN_ORDER_KEY + hierarchyIndex);
             _stars = PlayerPrefs.GetInt(STARS_REWARD_IN_ORDER_KEY + hierarchyIndex);
-            Generate(orderPoints.ToArray(), _stars, _brilliants, _extraReward);
+            _reward—oefficient = PlayerPrefs.GetInt(REWARD_COEFFICIENT_KEY + hierarchyIndex, 1);
+            Generate(orderPoints.ToArray(), _stars, _brilliants, _reward—oefficient, _extraReward);
         }
 
         public void SetID(int value) => _id = value;
 
-        public void Generate(ItemStorage[] items, int stars, int brilliants, ItemStorage extraReward)
+        public void Generate(ItemStorage[] items, int stars, int brilliants, int reward—oefficient, ItemStorage extraReward)
         {
             _actived = true;
 
             _stars = stars;
             _brilliants = brilliants;
             _extraReward = extraReward;
-
+            _reward—oefficient = reward—oefficient;
             _starsValueText.text = stars.ToString();
             _brilliantsValueText.text = brilliants.ToString();
 
@@ -146,6 +156,7 @@ namespace Gameplay.Orders
                     _orderPoints[i].gameObject.SetActive(false);
                 }
             }
+            ChangeRewardText();
             Show();
         }
 
@@ -172,9 +183,10 @@ namespace Gameplay.Orders
         private void GetRewards()
         {
             _actived = false;
-            _currencyAdder.Add(CurrencyType.Star, _stars, _starsSpawnPoint.position);
-            _currencyAdder.Add(CurrencyType.Brilliant, _brilliants, _brilliantsSpawnPoint.position);
+            _currencyAdder.Add(CurrencyType.Star, _stars * _reward—oefficient, _starsSpawnPoint.position);
+            _currencyAdder.Add(CurrencyType.Brilliant, _brilliants * _reward—oefficient, _brilliantsSpawnPoint.position);
             GetExtraReward();
+            RewardsAdded?.Invoke();
             _rewards.SetActive(false);
             StartCoroutine(Finish(_delayBeforeFinished));
         }
@@ -187,6 +199,36 @@ namespace Gameplay.Orders
             _orderPoints[orderPointIndex].Icon.color = _darkenedColor;
             _orders[orderPointIndex] = null;
             return true;
+        }
+
+        public void ChangeRewardCoefficent(bool isDoublerActive, int ordersToDoubleAmount)
+        {
+            if (isDoublerActive)
+            {
+                _reward—oefficient = 2;
+            }
+            else 
+            {
+                _reward—oefficient = 1;
+            }
+            ChangeRewardText();
+        }
+
+        private void ChangeRewardText()
+        {
+  
+            _starsValueText.SetText(Convert.ToString(_reward—oefficient * _stars));
+            _brilliantsValueText.SetText(Convert.ToString(_reward—oefficient * _brilliants));
+            if (_reward—oefficient == 2) // Doubler is active
+            {
+                _starsValueText.color = _doubledRewardValueColor;
+                _brilliantsValueText.color = _doubledRewardValueColor;
+            }
+            else
+            {
+                _starsValueText.color = _defaultColor;
+                _brilliantsValueText.color = _defaultColor;
+            }
         }
 
         private void Awake()
