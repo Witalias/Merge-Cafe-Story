@@ -13,11 +13,11 @@ public class TrainingCursor : MonoBehaviour
 
     private Sequence _tween;
     
-    public void ClickAnimation(Vector2 point, bool loop = true)
+    public void ClickAnimation(Transform point, bool loop = true)
     {
         _tween.Kill();
         cursor.SetActive(true);
-        cursor.transform.position = point;
+        cursor.transform.position = point.position;
         var target = cursor.transform;
         _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, 1f);
         _tween = DOTween.Sequence()
@@ -31,17 +31,18 @@ public class TrainingCursor : MonoBehaviour
         _tween.OnComplete(Kill);
     }
 
-    public void DragAnimation(Vector2 pickPoint, Vector2 endPoint)
+    public void DragAnimation(Transform pickPoint, Transform endPoint)
     {
         _tween.Kill();
         cursor.SetActive(true);
-        cursor.transform.position = pickPoint;
+        cursor.transform.position = pickPoint.position;
         var target = cursor.transform;
         _tween = DOTween.Sequence()
+            //.Append(target.DOMove(pickPoint.position, 0f))
             .Append(_image.DOColor(new Color(_image.color.r, _image.color.g, _image.color.b, 0f), 0f))
             .Append(target.DOScale(defaultScale, 0f))
             .Append(target.DOScale(clickScale, _scaleDuration))
-            .Append(target.DOMove(endPoint, _moveDuration))
+            .Append(target.DOMove(endPoint.position, _moveDuration))
             .Append(target.DOScale(defaultScale, _scaleDuration))
             .Insert(0f, _image.DOColor(new Color(_image.color.r, _image.color.g, _image.color.b, 1f), _scaleDuration))
             .Insert(_scaleDuration + _moveDuration, _image.DOColor(new Color(_image.color.r, _image.color.g, _image.color.b, 0f), _scaleDuration))

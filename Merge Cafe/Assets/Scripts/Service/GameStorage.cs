@@ -319,10 +319,7 @@ namespace Service
                 var spritesDict = new Dictionary<int, Sprite>();
 
                 foreach (var item in element.Value)
-                {
-                    //item.SetType(element.Key);
                     spritesDict.Add(item.Level, item.Icon);
-                }
 
                 _itemSprites.Add(element.Key, spritesDict);
             }

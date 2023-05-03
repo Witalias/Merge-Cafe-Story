@@ -980,9 +980,9 @@ RectTransform:
   m_Father: {fileID: 2347922243542820610}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1832, y: -87}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -88, y: -87}
   m_SizeDelta: {x: 130, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2347922242649247102
@@ -1531,6 +1531,8 @@ GameObject:
   - component: {fileID: 2347922243443827168}
   - component: {fileID: 2347922243443827175}
   - component: {fileID: 2347922243443827174}
+  - component: {fileID: 607639658809093222}
+  - component: {fileID: 2609633942057294714}
   m_Layer: 5
   m_Name: Settings Menu Canvas
   m_TagString: Untagged
@@ -1597,7 +1599,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1620,6 +1622,36 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &607639658809093222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2347922243443827173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a9d091f9641054aabe9cd13b5a3ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dropdown: {fileID: 5155675131759565771}
+--- !u!114 &2609633942057294714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2347922243443827173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec8b392533447f468874d210acdd444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _title: {fileID: 3925330363094763006}
+  _sound: {fileID: 2347922244424563320}
+  _music: {fileID: 2347922242853823232}
+  _language: {fileID: 5517141074933302188}
+  _reset: {fileID: 1447770202285704982}
 --- !u!1 &2347922243454269325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,7 +1739,6 @@ GameObject:
   - component: {fileID: 2347922243542820610}
   - component: {fileID: 2347922243542820620}
   - component: {fileID: 2347922243542820611}
-  - component: {fileID: 2347922243542820621}
   m_Layer: 5
   m_Name: SettingsMenuPanel
   m_TagString: Untagged
@@ -1781,23 +1812,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2347922243542820621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2347922243542820609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ec8b392533447f468874d210acdd444, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _title: {fileID: 3925330363094763006}
-  _sound: {fileID: 2347922244424563320}
-  _music: {fileID: 2347922242853823232}
-  _language: {fileID: 5517141074933302188}
-  _reset: {fileID: 1447770202285704982}
 --- !u!1 &2347922243748235281
 GameObject:
   m_ObjectHideFlags: 0
@@ -2504,7 +2518,6 @@ GameObject:
   - component: {fileID: 2398856365125963355}
   - component: {fileID: 2822418391303532030}
   - component: {fileID: 5155675131759565771}
-  - component: {fileID: 8798240951569372593}
   m_Layer: 0
   m_Name: Dropdown
   m_TagString: Untagged
@@ -2630,7 +2643,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2347922243542820621}
+      - m_Target: {fileID: 2609633942057294714}
         m_TargetAssemblyTypeName: UI.Settings.SettingsMenu, Assembly-CSharp
         m_MethodName: UpdateTexts
         m_Mode: 1
@@ -2643,19 +2656,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_AlphaFadeSpeed: 0.15
---- !u!114 &8798240951569372593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2673455590234110149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a9d091f9641054aabe9cd13b5a3ddc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dropdown: {fileID: 0}
 --- !u!1 &3083394309862280322
 GameObject:
   m_ObjectHideFlags: 0

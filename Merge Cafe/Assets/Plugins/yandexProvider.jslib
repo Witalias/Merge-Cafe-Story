@@ -191,7 +191,15 @@ var FileIO = {
 		console.error('Has key in Local Storage error: ', e.message);
 		return 0;
 	}
-  }
+  },
+
+  GetLang : function() {
+	var lang = GetLanguage();
+	var bufferSize = lengthBytesUTF8(lang) + 1;
+	var buffer = _malloc(bufferSize);
+	stringToUTF8(lang, buffer, bufferSize);
+	return buffer;
+  },
 };
 
 mergeInto(LibraryManager.library, FileIO);

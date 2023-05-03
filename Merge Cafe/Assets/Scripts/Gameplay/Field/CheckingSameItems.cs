@@ -13,7 +13,7 @@ namespace Gameplay.Field
         [SerializeField] private ItemTypeLevel[] _itemsCanBeCollected;
 
         public static event Action<ItemStorage> CheckTutorialItem;
-        public static event Action<Vector2, bool> PlayClickAnimationCursor;
+        public static event Action<Transform, bool> PlayClickAnimationCursor;
 
         private void OnEnable()
         {
@@ -37,7 +37,7 @@ namespace Gameplay.Field
                     if (Array.Exists(_itemsCanBeCollected, 
                         item => item.Type == firstItem.Stats.Type && item.Level == firstItem.Stats.Level))
                     {
-                        PlayClickAnimationCursor?.Invoke(firstItem.transform.position, false);
+                        PlayClickAnimationCursor?.Invoke(firstItem.transform, false);
                         break;
                     }
 

@@ -13,19 +13,33 @@ namespace UI.Settings
 
         private void Awake()
         {
-            _dropdown = GetComponent<TMP_Dropdown>();
-            _dropdown.onValueChanged.AddListener(OnValueChanged);
+
         }
 
         private void Start()
         {
-            _dropdown.value = (int)GameStorage.Instance.Language;
+            InitializeLanguage();
+            _dropdown.onValueChanged.AddListener(OnValueChanged);
         }
 
         private void OnValueChanged(int index)
         {
-            GameStorage.Instance.Language = (Language)index;
+            SetLanguage((Language)index);
             LanguageChanged?.Invoke();
         }
+
+        private void InitializeLanguage()
+        {
+            //YG.YandexGame.LoadLocal();
+            //var languageYG = YG.YandexGame.savesData.language;
+            //switch (languageYG)
+            //{
+            //    case "en": SetLanguage(Language.English); break;
+            //    case "ru": SetLanguage(Language.Russian); break;
+            //}
+            _dropdown.value = (int)GameStorage.Instance.Language;
+        }
+
+        private void SetLanguage(Language value) => GameStorage.Instance.Language = value;
     }
 }

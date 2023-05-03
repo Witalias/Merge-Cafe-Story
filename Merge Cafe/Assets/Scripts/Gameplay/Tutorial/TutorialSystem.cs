@@ -93,8 +93,8 @@ namespace Gameplay.Tutorial
             }
         };
 
-        public static event Action<Vector2, bool> PlayClickAnimationCursor;
-        public static event Action<Vector2, Vector2> PlayDragAnimationCursor;
+        public static event Action<Transform, bool> PlayClickAnimationCursor;
+        public static event Action<Transform, Transform> PlayDragAnimationCursor;
         public static event Action StopAnimationCursor;
         public static event Action<float> RotateCursor;
 
@@ -439,7 +439,7 @@ namespace Gameplay.Tutorial
             SetGeneratorLevel?.Invoke(ItemType.Teapot, 7);
             GenerateOrder?.Invoke(0, new[] { _storage.GetItem(ItemType.Tea, 1) }, 1, 5, _storage.GetItem(ItemType.Brilliant, 1));
             SetNewTutorialTarget(GetGenerator(ItemType.Teapot).gameObject);
-            PlayClickAnimationCursor?.Invoke(_target.transform.position, true);
+            PlayClickAnimationCursor?.Invoke(_target.transform, true);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
         }
 
@@ -455,7 +455,7 @@ namespace Gameplay.Tutorial
             yield return new WaitForSeconds(0.5f);
             _currentStage = TutorialStage.Step3ExecuteFirstOrder;
             SetNewTutorialTarget(_storage.GetItemsOnField(ItemType.Tea, 1, 1)[0].gameObject);
-            PlayDragAnimationCursor?.Invoke(_target.transform.position, GetOrderTransform(0).position);
+            PlayDragAnimationCursor?.Invoke(_target.transform, GetOrderTransform(0));
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
         }
 
@@ -468,7 +468,7 @@ namespace Gameplay.Tutorial
             var itemInSequence = GetItemInSequence(1);
             SetNewTutorialTarget(itemInSequence.gameObject);
             RotateCursor?.Invoke(-120f);
-            PlayClickAnimationCursor?.Invoke(itemInSequence.GetRewardImage().transform.position, true);
+            PlayClickAnimationCursor?.Invoke(itemInSequence.GetRewardImage().transform, true);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
         }
 
@@ -480,7 +480,7 @@ namespace Gameplay.Tutorial
             var crystalls = _storage.GetItemsOnField(ItemType.Brilliant, 1, 2);
             SetNewTutorialTarget(crystalls[0].gameObject);
             RotateCursor?.Invoke(0f);
-            PlayDragAnimationCursor?.Invoke(crystalls[0].transform.position, crystalls[1].transform.position);
+            PlayDragAnimationCursor?.Invoke(crystalls[0].transform, crystalls[1].transform);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
         }
 
@@ -488,7 +488,7 @@ namespace Gameplay.Tutorial
         {
             _currentStage = TutorialStage.Step6CollectCrystalls;
             _storage.GetItemsOnField(ItemType.Brilliant, 2, 1)[0].gameObject.AddComponent<TutorialExtraTarget>();
-            PlayClickAnimationCursor?.Invoke(_target.transform.position, true);
+            PlayClickAnimationCursor?.Invoke(_target.transform, true);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
         }
 
@@ -496,7 +496,7 @@ namespace Gameplay.Tutorial
         {
             _currentStage = TutorialStage.Step7_1GetFirstTeaLeaf;
             SetNewTutorialTarget(GetGenerator(ItemType.Teapot).gameObject);
-            PlayClickAnimationCursor?.Invoke(_target.transform.position, true);
+            PlayClickAnimationCursor?.Invoke(_target.transform, true);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
         }
 
@@ -506,7 +506,7 @@ namespace Gameplay.Tutorial
             _currentStage = TutorialStage.Step8MergeTeaLeafs;
             var teaLeafs = _storage.GetItemsOnField(ItemType.Tea, 1, 2);
             SetNewTutorialTarget(teaLeafs[0].gameObject);
-            PlayDragAnimationCursor(teaLeafs[0].transform.position, teaLeafs[1].transform.position);
+            PlayDragAnimationCursor(teaLeafs[0].transform, teaLeafs[1].transform);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
         }
 
@@ -514,7 +514,7 @@ namespace Gameplay.Tutorial
         {
             _currentStage = TutorialStage.Step9ExecuteSecondOrder;
             SetNewTutorialTarget(_storage.GetItemsOnField(ItemType.Tea, 2, 1)[0].gameObject);
-            PlayDragAnimationCursor?.Invoke(_target.transform.position, GetOrderTransform(0).position);
+            PlayDragAnimationCursor?.Invoke(_target.transform, GetOrderTransform(0));
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
         }
 
@@ -525,7 +525,7 @@ namespace Gameplay.Tutorial
             SetGeneratorLevel?.Invoke(ItemType.Teapot, 1);
             SetNewTutorialTarget(_storage.GetItemsOnField(ItemType.Trash, 1, 1)[0].gameObject);
             _target.AddComponent<TutorialExtraTarget>();
-            PlayDragAnimationCursor(_target.transform.position, GetTrashCanTransform().position);
+            PlayDragAnimationCursor(_target.transform, GetTrashCanTransform());
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
         }
 
@@ -535,7 +535,7 @@ namespace Gameplay.Tutorial
             RemoveTarget();
             SetActiveDecoreModeButton?.Invoke(true);
             RotateCursor?.Invoke(90f);
-            PlayClickAnimationCursor(GetDecoreModeButtonTransform().position, true);
+            PlayClickAnimationCursor(GetDecoreModeButtonTransform(), true);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
         }
 
@@ -561,7 +561,7 @@ namespace Gameplay.Tutorial
         {
             _currentStage = TutorialStage.Step14ReturnToMainScreen;
             SetActiveDecoreModeButton?.Invoke(true);
-            PlayClickAnimationCursor(GetDecoreModeButtonTransform().position, true);
+            PlayClickAnimationCursor(GetDecoreModeButtonTransform(), true);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
         }
 
@@ -586,7 +586,7 @@ namespace Gameplay.Tutorial
                 yield break;
             }
             SetNewTutorialTarget(keys[0].gameObject);
-            PlayDragAnimationCursor?.Invoke(keys[0].transform.position, cellLocks[0].transform.position);
+            PlayDragAnimationCursor?.Invoke(keys[0].transform, cellLocks[0].transform);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
         }
 
@@ -616,7 +616,7 @@ namespace Gameplay.Tutorial
                 yield break;
             }
             SetNewTutorialTarget(teapotItems[0].gameObject);
-            PlayDragAnimationCursor?.Invoke(teapotItems[0].transform.position, teapot.transform.position);
+            PlayDragAnimationCursor?.Invoke(teapotItems[0].transform, teapot.transform);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
         }
 
@@ -639,7 +639,7 @@ namespace Gameplay.Tutorial
                 yield break;
             }
             SetNewTutorialTarget(energy[0].gameObject);
-            PlayDragAnimationCursor?.Invoke(energy[0].transform.position, GetGenerator(ItemType.Teapot).transform.position);
+            PlayDragAnimationCursor?.Invoke(energy[0].transform, GetGenerator(ItemType.Teapot).transform);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
         }
 
@@ -654,7 +654,7 @@ namespace Gameplay.Tutorial
                 yield break;
             }
             SetNewTutorialTarget(presents[0].gameObject);
-            PlayClickAnimationCursor?.Invoke(presents[0].transform.position, true);
+            PlayClickAnimationCursor?.Invoke(presents[0].transform, true);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
         }
 
@@ -663,7 +663,7 @@ namespace Gameplay.Tutorial
             _currentStage = TutorialStage.StepPresent2GetContains;
             var openPresent = GameStorage.Instance.GetItemsOnField(ItemType.OpenPresent, 1, 1)[0];
             SetNewTutorialTarget(openPresent.gameObject);
-            PlayClickAnimationCursor?.Invoke(openPresent.transform.position, true);
+            PlayClickAnimationCursor?.Invoke(openPresent.transform, true);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
         }
 
@@ -684,7 +684,7 @@ namespace Gameplay.Tutorial
                 yield break;
             }
             SetNewTutorialTarget(boxes[0].gameObject);
-            PlayClickAnimationCursor?.Invoke(_target.transform.position, true);
+            PlayClickAnimationCursor?.Invoke(_target.transform, true);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
         }
 
@@ -705,7 +705,7 @@ namespace Gameplay.Tutorial
             var teapotToggle = GetGenerator?.Invoke(ItemType.Teapot).GetComponent<ItemGenerator>().GetToggle();
             teapotToggle.interactable = true;
             teapotToggle.onValueChanged.AddListener(OnGeneratorSwitched);
-            PlayClickAnimationCursor?.Invoke(teapotToggle.transform.position, true);
+            PlayClickAnimationCursor?.Invoke(teapotToggle.transform, true);
             ShowTutorialWin(_rightTopSpawnWindowPoint.position);
         }
 
