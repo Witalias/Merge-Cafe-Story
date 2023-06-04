@@ -18,16 +18,16 @@ namespace Service
                 Destroy(gameObject);
         }
 
-        private void Start()
-        {
-            var language = GetLang();
-            Language = language switch
-            {
-                "ru" => Language.Russian,
-                _ => Language.English,
-            };
-            GameStorage.Instance.Language = Language;
-        }
+        //private void Start()
+        //{
+        //    var language = GetLang();
+        //    Language = language switch
+        //    {
+        //        "ru" => Language.Russian,
+        //        _ => Language.English,
+        //    };
+        //    GameStorage.Instance.Language = Language;
+        //}
 
         [DllImport("__Internal")]
         private static extern string GetLang();
