@@ -220,6 +220,12 @@ namespace Service
                     [8] = new ItemDescription("Chocolate milkshake", ""),
                     [10] = new ItemDescription("«Triple Combo»", ""),
                 },
+                [ItemType.Doubler] = new()
+                {
+                    [1] = new ItemDescription("Doubler", "Doubles rewards for 1 order"),
+                    [2] = new ItemDescription("Doubler", "Doubles rewards for 4 orders"),
+                    [3] = new ItemDescription("Doubler", "Doubles rewards for 9 orders")
+                }
             },
             [Language.Russian] = new()
             {
@@ -434,6 +440,12 @@ namespace Service
                     [8] = new ItemDescription("Шоколадный коктейль", ""),
                     [10] = new ItemDescription("«Тройное комбо»", ""),
                 },
+                [ItemType.Doubler] = new()
+                {
+                    [1] = new ItemDescription("Удвоитель", "Удваивает награды за 1 заказ"),
+                    [2] = new ItemDescription("Удвоитель", "Удваивает награды за 4 заказа"),
+                    [3] = new ItemDescription("Удвоитель", "Удваивает награды за 9 заказов")
+                }
             }
         };
 

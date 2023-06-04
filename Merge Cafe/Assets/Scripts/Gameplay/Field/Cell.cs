@@ -94,6 +94,9 @@ namespace Gameplay.Field
                 case ItemType.Box:
                     Item.gameObject.AddComponent(typeof(Box));
                     break;
+                case ItemType.Doubler:
+                    Item.gameObject.AddComponent(typeof(Doubler));
+                    break;
             }
         }
 

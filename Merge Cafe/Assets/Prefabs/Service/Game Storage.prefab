@@ -528,7 +528,13 @@ MonoBehaviour:
     Movable: 1
     Special: 1
     Items:
-    - Icon: {fileID: 21300000, guid: 1b01e2f62417e824fa268d85703503a5, type: 3}
+    - Icon: {fileID: 21300000, guid: 778941ffb28c22845939170ac0ce157b, type: 3}
+      TakeSound: 19
+      PutSound: 20
+    - Icon: {fileID: 21300000, guid: fbf333ea900bafc4aa59197e0dd7519a, type: 3}
+      TakeSound: 19
+      PutSound: 20
+    - Icon: {fileID: 21300000, guid: b71def3e80d9dd444a158c9ce992b1aa, type: 3}
       TakeSound: 19
       PutSound: 20
   _combinations:
