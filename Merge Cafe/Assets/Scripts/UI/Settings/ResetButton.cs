@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ namespace UI.Settings
         private void OnClick()
         {
             PlayerPrefs.DeleteAll();
+            DOTween.Clear();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             Time.timeScale = 1.0f;
         }

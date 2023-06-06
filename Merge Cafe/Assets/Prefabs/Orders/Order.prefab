@@ -296,6 +296,7 @@ GameObject:
   - component: {fileID: 317965869201829107}
   - component: {fileID: 7470860844084840929}
   - component: {fileID: 3679319302993096015}
+  - component: {fileID: 3928655583332943557}
   m_Layer: 5
   m_Name: Extra Reward
   m_TagString: Untagged
@@ -361,6 +362,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!111 &3928655583332943557
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5011337115999059170}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 72ac9861a0aa9054d8ca09ee43cd3947, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 72ac9861a0aa9054d8ca09ee43cd3947, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &5249830440864682545
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,7 +755,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.8392157, g: 0.79607844, b: 0.92156863, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -768,6 +785,7 @@ GameObject:
   - component: {fileID: 562873679805749540}
   - component: {fileID: 6312970110114776564}
   - component: {fileID: 7011066165692886989}
+  - component: {fileID: 8881782831616062011}
   m_Layer: 5
   m_Name: Order
   m_TagString: Untagged
@@ -842,6 +860,10 @@ MonoBehaviour:
   _extraRewardImage: {fileID: 3679319302993096015}
   _darkenedColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
   _delayBeforeFinished: 2
+  _background: {fileID: 7578982093415498248}
+  _doubledRewardValueColor: {r: 0.6, g: 1, b: 0.5882353, a: 1}
+  _doubledBackgroundColor: {r: 0.7843138, g: 0.7411765, b: 0.8588236, a: 1}
+  _doubledPointColor: {r: 0.4039216, g: 0.2627451, b: 0.67058825, a: 1}
 --- !u!222 &562873679805749540
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -890,6 +912,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fba34fbed7f54d54f8a7a9a8e71a73f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8881782831616062011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7578982094795671928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 846e80f956a686a4289e813a7fc72b5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &9168265725201435448

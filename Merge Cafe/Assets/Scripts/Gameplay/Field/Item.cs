@@ -9,6 +9,7 @@ using System;
 using Enums;
 using Gameplay.Orders;
 using Gameplay.ItemGenerators;
+using Gameplay.Tutorial;
 
 namespace Gameplay.Field
 {
@@ -44,6 +45,9 @@ namespace Gameplay.Field
         public static event Action WrongLevelForCombinating;
         public static event Action<int, int> CellChanged;
         public static event Action<int> ItemRemoved;
+        public static event Action ItemCaptured;
+        public static event Action ItemsMerged;
+        public static event Action ItemsCombinated;
 
         public ItemStorage Stats { get; private set; }
 
@@ -94,9 +98,60 @@ namespace Gameplay.Field
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            if (!TutorialSystem.TutorialDone && GetComponent<TutorialTarget>() == null)
+                return;
+
+            ItemCaptured?.Invoke();
             _isReturning = false;
             transform.SetAsLastSibling();
-            SoundManager.Instanse.Play(Stats.TakeSound, null);
+            SoundManager.Instanse.Play(_storage.GetItem(Stats.Type, Stats.Level).TakeSound, null);
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            _dragged = false;
+            ReturnToCell();
+
+            if (!Stats.Movable || (!TutorialSystem.TutorialDone && GetComponent<TutorialTarget>() == null))
+                return;
+
+            CheckCursorOver();
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (Stats.Movable)
+            {
+                _animator.SetBool(_zoomAnimatorBool, true);
+                if (!_dragged)
+                    CursorHoveredMovableItem?.Invoke(Stats.Type, Stats.Level);
+                Stats.Unlock();
+            }
+            else if (!_dragged)
+                CursorHoveredNotMovableItem?.Invoke(Stats.Type, Stats.Level);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            CursorLeftItem?.Invoke();
+
+            if (!Stats.Movable)
+                return;
+
+            _animator.SetBool(_zoomAnimatorBool, false);
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            _dragged = true;
+
+            if (_quickClickTracking.IsChecking || !Stats.Movable ||
+                (!TutorialSystem.TutorialDone && GetComponent<TutorialTarget>() == null))
+                return;
+
+            var mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            var followPosition = new Vector3(mousePosition.x, mousePosition.y, 0f);
+            transform.position = Vector3.Lerp(transform.position, followPosition, _followSpeed * Time.fixedDeltaTime);
         }
 
         private void Awake()
@@ -104,7 +159,7 @@ namespace Gameplay.Field
             _animator = GetComponent<Animator>();
             _quickClickTracking = GetComponent<QuickClickTracking>();
             _mainCamera = Camera.main;
-            _storage = GameStorage.Instanse;
+            _storage = GameStorage.Instance;
             SetActiveParticles(false);
         }
 
@@ -122,6 +177,7 @@ namespace Gameplay.Field
         {
             _isReturning = false;
             _animator.SetTrigger(_disappearAnimatorTrigger);
+            //_currentCell.Clear();
             yield return new WaitForSeconds(0.5f);
             Remove();
         }
@@ -171,7 +227,7 @@ namespace Gameplay.Field
 
         private void InteractWithTrashCan(TrashCan trashCan)
         {
-            if (trashCan == null)
+            if (trashCan == null || (!TutorialSystem.TutorialDone && GetComponent<TutorialExtraTarget>() == null))
                 return;
 
             if (trashCan.GetComponent<Upgradable>().CheckIncomingItem(Stats))
@@ -200,15 +256,17 @@ namespace Gameplay.Field
 
         private void InteractWithCell(Cell cell)
         {
-            if (cell == null)
-                return;
-            else if (cell.Empty)
-                Move(cell);
-            else if (EqualTo(cell.Item))
+            if (cell == null || _currentCell == cell)
             {
-                if (_currentCell == cell)
-                    return;
-
+                //SoundManager.Instanse.Play(_storage.GetItem(Stats.Type, Stats.Level).PutSound, null);
+                return;
+            }
+            else if (cell.Empty)
+            {
+                Move(cell);
+            }
+            else if (EqualTo(cell.Item) && cell.Item.Stats.Type != ItemType.OpenPresent)
+            {
                 if (_storage.IsItemMaxLevel(Stats.Type, Stats.Level))
                     MergingItemsOfMaxLevelTried?.Invoke();
                 else
@@ -221,21 +279,31 @@ namespace Gameplay.Field
                 else
                     WrongLevelForCombinating?.Invoke();
             }
+            else if (Stats.Type == ItemType.Duplicator && !cell.Item.Stats.Special)
+            {
+                Duplicate(cell);
+            }
             else if (Stats.Movable && cell.Item.Stats.Movable)
                 Swap(cell);
         }
 
         private void Move(Cell toCell)
         {
+            if (!TutorialSystem.TutorialDone)
+                return;
+
             CellChanged?.Invoke(_currentCell.transform.GetSiblingIndex(), toCell.transform.GetSiblingIndex());
             _currentCell.Clear();
             toCell.SetItem(this);
             _currentCell = toCell;
-            SoundManager.Instanse.Play(Stats.PutSound, null);
+            SoundManager.Instanse.Play(_storage.GetItem(Stats.Type, Stats.Level).PutSound, null);
         }
 
         private void Swap(Cell withCell)
         {
+            if (!TutorialSystem.TutorialDone)
+                return;
+
             CellChanged?.Invoke(_currentCell.transform.GetSiblingIndex(), withCell.transform.GetSiblingIndex());
             _currentCell.Clear();
             _currentCell.SetItem(withCell.Item);
@@ -243,7 +311,7 @@ namespace Gameplay.Field
             withCell.Clear();
             withCell.SetItem(this);
             _currentCell = withCell;
-            SoundManager.Instanse.Play(Stats.PutSound, null);
+            SoundManager.Instanse.Play(_storage.GetItem(Stats.Type, Stats.Level).PutSound, null);
         }
 
         private void Join(Cell withCell)
@@ -260,60 +328,27 @@ namespace Gameplay.Field
                 randomCell.CreateItem(_storage.GetItem(ItemType.Star, 1), transform.position);
             }
             Instantiate(_mergeParticlePrefab, withCell.transform.position, Quaternion.identity);
+            ItemsMerged?.Invoke();
         }
 
         private void Combinate(Cell withCell)
         {
             _isReturning = false;
+            SoundManager.Instanse.Play(_storage.GetCombinateSound(Stats.Type, withCell.Item.Stats.Type), null);
             StartCoroutine(Disappear());
             StartCoroutine(withCell.Item.Disappear());
-            SoundManager.Instanse.Play(_storage.GetCombinateSound(Stats.Type, withCell.Item.Stats.Type), null);
+            ItemsCombinated?.Invoke();
         }
 
-        public void OnPointerUp(PointerEventData eventData)
+        private void Duplicate(Cell withCell)
         {
-            _dragged = false;
-
-            if (!Stats.Movable)
-                return;
-
-            ReturnToCell();
-            CheckCursorOver();
-        }
-
-        public void OnPointerEnter(PointerEventData eventData)
-        {
-            if (Stats.Movable)
-            {
-                _animator.SetBool(_zoomAnimatorBool, true);
-                if (!_dragged)
-                    CursorHoveredMovableItem?.Invoke(Stats.Type, Stats.Level);
-                Stats.Unlock();
-            }
-            else if (!_dragged)
-                CursorHoveredNotMovableItem?.Invoke(Stats.Type, Stats.Level);
-        }
-
-        public void OnPointerExit(PointerEventData eventData)
-        {
-            CursorLeftItem?.Invoke();
-
-            if (!Stats.Movable)
-                return;
-
-            _animator.SetBool(_zoomAnimatorBool, false);
-        }
-
-        public void OnDrag(PointerEventData eventData)
-        {
-            _dragged = true;
-
-            if (_quickClickTracking.IsChecking || !Stats.Movable)
-                return;
-
-            var mousePosition = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            var followPosition = new Vector3(mousePosition.x, mousePosition.y, 0f);
-            transform.position = Vector3.Lerp(transform.position, followPosition, _followSpeed * Time.fixedDeltaTime);
+            var itemMaxLevel = GameStorage.Instance.GetItemMaxLevel(withCell.Item.Stats.Type);
+            var duplicatorNormalLevel = 2;
+            Remove();
+            var duplicatedItemLevel = withCell.Item.Stats.Level - (duplicatorNormalLevel - Stats.Level);
+            duplicatedItemLevel = Mathf.Clamp(duplicatedItemLevel, 1, itemMaxLevel);
+            SoundManager.Instanse.Play(Sound.Merge, null, duplicatedItemLevel - 1);
+            _currentCell.CreateItem(GameStorage.Instance.GetItem(withCell.Item.Stats.Type, duplicatedItemLevel), withCell.transform.position);
         }
     }
 }

@@ -9,16 +9,18 @@ namespace Service
 {
     public class GameStorage : MonoBehaviour, IStorable
     {
-        public static GameStorage Instanse { get; private set; } = null;
+        public static GameStorage Instance { get; private set; } = null;
 
         private const string STARS_COUNT_KEY = "STARS_COUNT";
         private const string BRILLIANTS_COUNT_KEY = "BRILLIANTS_COUNT";
         private const string ITEM_IS_NEW_KEY = "ITEM_IS_NEW_";
         private const string ITEM_UNLOCKED_KEY = "ITEM_UNLOCKED_";
         private const string GAME_STAGE_KEY = "GAME_STAGE";
+        private const string LANGUAGE_KEY = "LANGUAGE";
 
         [Header("Settings")]
         [SerializeField] private bool _loadData = false;
+        [SerializeField] private bool _cheats = false;
         [SerializeField] private int _starsCount = 0;
         [SerializeField] private int _brilliantsCount = 0;
         [SerializeField] private int _generationStarFromLevel = 6;
@@ -30,7 +32,7 @@ namespace Service
         [SerializeField] private int[] _stagesForOrderCounts;
 
         [Header("Items")]
-        [SerializeField] private TypedItem[] _typedItems;
+        [SerializeField] private TypedItemPost[] _typedItems;
         [SerializeField] private ItemCombinations[] _combinations;
 
         [Header("Sprites")]
@@ -48,12 +50,16 @@ namespace Service
         private ItemGeneratorStorage _generatorStorage;
 
         private Cell[] cells;
-        private Dictionary<ItemType, ItemStorage[]> _items = new Dictionary<ItemType, ItemStorage[]>();
-        private Dictionary<ItemType, Dictionary<int, Sprite>> _itemSprites = new Dictionary<ItemType, Dictionary<int, Sprite>>();
+        private readonly Dictionary<ItemType, ItemStorage[]> _items = new();
+        private readonly Dictionary<ItemType, Dictionary<int, Sprite>> _itemSprites = new();
 
         public static event System.Action NoEmptyCells;
 
+        public Language Language { get; set; } = Language.English;
+
         public bool LoadData { get => _loadData; }
+
+        public bool Cheats { get => _cheats; }
 
         public int GameStage { get; set; } = 1;
 
@@ -88,6 +94,7 @@ namespace Service
             PlayerPrefs.SetInt(STARS_COUNT_KEY, _starsCount);
             PlayerPrefs.SetInt(BRILLIANTS_COUNT_KEY, _brilliantsCount);
             PlayerPrefs.SetInt(GAME_STAGE_KEY, GameStage);
+            PlayerPrefs.SetInt(LANGUAGE_KEY, (int)Language);
             foreach (var type in _items.Keys)
             {
                 foreach (var item in _items[type])
@@ -103,6 +110,7 @@ namespace Service
             _starsCount = PlayerPrefs.GetInt(STARS_COUNT_KEY, 0);
             _brilliantsCount = PlayerPrefs.GetInt(BRILLIANTS_COUNT_KEY, 0);
             GameStage = PlayerPrefs.GetInt(GAME_STAGE_KEY, 1);
+            Language = (Language)PlayerPrefs.GetInt(LANGUAGE_KEY, 0);
             foreach (var type in _items.Keys)
             {
                 foreach (var item in _items[type])
@@ -192,6 +200,25 @@ namespace Service
             return emptyCells[Random.Range(0, emptyCells.Count)];
         }
 
+        public Item[] GetItemsOnField(ItemType type, int level, int count)
+        {
+            if (count <= 0)
+                return new Item[0];
+
+            var item = GetItem(type, level);
+            var results = new List<Item>();
+            foreach (var cell in cells)
+            {
+                if (cell.Empty)
+                    continue;
+                if (cell.Item.Stats.EqualTo(item))
+                    results.Add(cell.Item);
+                if (results.Count == count)
+                    break;
+            }
+            return results.ToArray();
+        }
+
         public Sound GetCombinateSound(ItemType current, ItemType with)
         {
             foreach (var combination in _combinations)
@@ -258,8 +285,8 @@ namespace Service
 
         private void Awake()
         {
-            if (Instanse == null)
-                Instanse = this;
+            if (Instance == null)
+                Instance = this;
             else
                 Destroy(gameObject);
 
@@ -292,10 +319,7 @@ namespace Service
                 var spritesDict = new Dictionary<int, Sprite>();
 
                 foreach (var item in element.Value)
-                {
-                    //item.SetType(element.Key);
                     spritesDict.Add(item.Level, item.Icon);
-                }
 
                 _itemSprites.Add(element.Key, spritesDict);
             }
@@ -307,24 +331,13 @@ namespace Service
                 _items.Add(item.Type, GetItemStorageArray(item));
         }
 
-        private ItemStorage[] GetItemStorageArray(TypedItem item)
+        private ItemStorage[] GetItemStorageArray(TypedItemPost item)
         {
-            var itemStats = new ItemStorage[item.Icons.Length];
+            var itemStats = new ItemStorage[item.Items.Length];
             for (var i = 0; i < itemStats.Length; ++i)
-                itemStats[i] = new ItemStorage(i + 1, item.Icons[i], item.Type, item.Throwable, 
-                    item.Movable, false, item.TakeSound, item.PutSound);
+                itemStats[i] = new ItemStorage(i + 1, item.Items[i].Icon, item.Type, item.Throwable, 
+                    item.Movable, item.Special, false, item.Items[i].TakeSound, item.Items[i].PutSound);
             return itemStats;
         }
-    }
-
-    [System.Serializable]
-    public class TypedItem
-    {
-        public ItemType Type;
-        public bool Throwable = true;
-        public bool Movable = true;
-        public Sound TakeSound = default;
-        public Sound PutSound = default;
-        public Sprite[] Icons;
     }
 }

@@ -14,6 +14,7 @@ namespace Gameplay.Field
         public static event Func<ItemStorage> GetRandomOrderItem;
         public static event Func<ItemStorage> GetOrderItemMaxLevel;
         public static event Action NoOrderPoints;
+        public static event Action Opened;
 
         private void Awake()
         {
@@ -24,26 +25,30 @@ namespace Gameplay.Field
         private void Update()
         {
             if (_clickTracking.QuickClicked)
+                Open();
+        }
+
+        private void Open()
+        {
+            ItemStorage item = null;
+            if (_item.Stats.Level == 2)
+                item = GetRandomOrderItem?.Invoke();
+            else if (_item.Stats.Level > 2)
+                item = GetOrderItemMaxLevel?.Invoke();
+            else return;
+
+            if (item == null)
             {
-                ItemStorage item = null;
-                if (_item.Stats.Level == 2)
-                    item = GetRandomOrderItem?.Invoke();
-                else if (_item.Stats.Level > 2)
-                    item = GetOrderItemMaxLevel?.Invoke();
-                else return;
-
-                if (item == null)
-                {
-                    NoOrderPoints?.Invoke();
-                    return;
-                }
-                if (!GameStorage.Instanse.HasEmptyCells(true))
-                    return;
-
-                _item.Remove();
-                GameStorage.Instanse.GetRandomEmptyCell().CreateItem(item, transform.position);
-                item.UnlockFirstly();
+                NoOrderPoints?.Invoke();
+                return;
             }
+            if (!GameStorage.Instance.HasEmptyCells(true))
+                return;
+
+            _item.Remove();
+            GameStorage.Instance.GetRandomEmptyCell().CreateItem(item, transform.position);
+            item.UnlockFirstly();
+            Opened?.Invoke();
         }
     }
 }

@@ -7,6 +7,7 @@ using Enums;
 using Gameplay.Field;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Gameplay.Tutorial;
 
 namespace Gameplay.ItemGenerators
 {
@@ -23,6 +24,7 @@ namespace Gameplay.ItemGenerators
         [SerializeField] private GameObject _energyIcon;
         [SerializeField] private Toggle _toggle;
         [SerializeField] private Color _disabledColor;
+        [SerializeField] private Sound _produceSound;
         [SerializeField] private ItemType[] _generatedItems;
         [SerializeField] private GeneratorStats[] _statsOnLevels;
 
@@ -41,19 +43,28 @@ namespace Gameplay.ItemGenerators
         public ItemType[] GeneratedItems { get => _generatedItems; }
         public int MaxItemsLevel { get => _statsOnLevels[_upgradable.Level - 1].initItemsLevel; }
 
+        public static event System.Action GeneratorClicked;
+        public static event System.Action ItemProduced;
+        public static event System.Action Speeded;
+
+        public Toggle GetToggle() => _toggle;
+
         public void SpeedUp(int onItemCount)
         {
             _remainItemsToSlowingDown += onItemCount;
             _energyIcon.SetActive(true);
             SoundManager.Instanse.Play(Sound.SpeedUp, null);
+            Speeded?.Invoke();
         }
 
         public void SetActiveTimer(bool value)
         {
+            if (!gameObject.activeSelf)
+                return;
             _forcedStopped = !value;
             if (value == true)
                 _addBarValueCoroutine = StartCoroutine(AddBarValue());
-            else
+            else if (_addBarValueCoroutine != null)
                 StopCoroutine(_addBarValueCoroutine);
         }
 
@@ -72,8 +83,11 @@ namespace Gameplay.ItemGenerators
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            if (_stopped || _forcedStopped || !_enabled)
+            if (_stopped || !_enabled || 
+                (!TutorialSystem.TutorialDone && GetComponent<TutorialTarget>() == null))
                 return;
+
+            GeneratorClicked?.Invoke();
 
             _animator.SetTrigger(_clickAnimatorBool);
             _currentGenerationTime += _statsOnLevels[_upgradable.Level - 1].clickIncreaseSeconds;
@@ -92,13 +106,13 @@ namespace Gameplay.ItemGenerators
         private void Start()
         {
             if (_storage == null)
-                _storage = GameStorage.Instanse;
+                _storage = GameStorage.Instance;
             UpdateProducedItems();
         }
 
         private void OnEnable()
         {
-            _storage = GameStorage.Instanse;
+            _storage = GameStorage.Instance;
             if (!_stopped)
                 _addBarValueCoroutine = StartCoroutine(AddBarValue());
         }
@@ -159,10 +173,11 @@ namespace Gameplay.ItemGenerators
                 randomType = _currentGeneratedItems[Random.Range(0, _currentGeneratedItems.Count)];
 
             var randomLevel = Random.Range(1, _statsOnLevels[_upgradable.Level - 1].initItemsLevel + 1);
-            var item = new ItemStorage(_storage.GetItem(randomType, randomLevel));
+            var item = new ItemStorage(_storage.GetItem(randomType, TutorialSystem.TutorialDone ? randomLevel : 1));
             cell.CreateItem(item, transform.position);
-
             _animator.SetTrigger(_clickAnimatorBool);
+            SoundManager.Instanse.Play(_produceSound, null);
+            ItemProduced?.Invoke();
         }
 
         private void CheckBoost()

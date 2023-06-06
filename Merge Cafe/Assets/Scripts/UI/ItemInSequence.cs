@@ -4,6 +4,8 @@ using Gameplay.Field;
 using Service;
 using Enums;
 using System.Collections;
+using Gameplay.Tutorial;
+using System;
 
 namespace UI
 {
@@ -12,6 +14,7 @@ namespace UI
     public class ItemInSequence : MonoBehaviour
     {
         private const string _attentionAnimatorTrigger = "Attention";
+        private const string _pulsateAnimatorBool = "Pulsate";
 
         [SerializeField] private Image _reward;
         [SerializeField] private GameObject _cross;
@@ -26,21 +29,35 @@ namespace UI
 
         public bool ContainsPresent { get; private set; } = false;
 
+        public static event Action PresentGetted;
+        public Image GetRewardImage() => _reward;
+
         public void PlayNewItemParticles() => Instantiate(_ballsParticlePrefab, _reward.transform.position, Quaternion.identity);
 
         public void PayAttentionAnimation()
         {
-            _animator.SetTrigger(_attentionAnimatorTrigger);
+            if (_animator != null)
+                _animator.SetTrigger(_attentionAnimatorTrigger);
+        }
+
+        public void SetPulsate(bool value)
+        {
+            if (_animator != null)
+                _animator.SetBool(_pulsateAnimatorBool, value);
         }
 
         public void ShowReward(ItemStorage item)
         {
-            _storage = GameStorage.Instanse;
+            _storage = GameStorage.Instance;
             _item = item;
-            ContainsPresent = true;
             _rewardStorage = _storage.GetRewardForNewItemByLevel(item.Level);
             _reward.gameObject.SetActive(true);
             _reward.sprite = _rewardStorage.Icon;
+            ContainsPresent = true;
+            if (_item.RewardIsShowing)
+                return;
+            _item.RewardIsShowing = true;
+            PayAttentionAnimation();
             SoundManager.Instanse.Play(Sound.NewItem, null, item.Level - 1);
 
             // Для синхронизации анимации и звука. На более изящное решение пока нет времени.
@@ -58,6 +75,12 @@ namespace UI
             }
         }
 
+        public void HideReward()
+        {
+            ContainsPresent = false;
+            _reward.gameObject.SetActive(false);
+        }
+
         public void SetSprite(Sprite value) => _image.sprite = value;
 
         public void SetCrossActive(bool value) => _cross.SetActive(value);
@@ -70,12 +93,12 @@ namespace UI
 
         private void Start()
         {
-            _storage = GameStorage.Instanse;
+            _storage = GameStorage.Instance;
         }
 
         private void OnMouseDown()
         {
-            if (!ContainsPresent)
+            if (!ContainsPresent || (!TutorialSystem.TutorialDone && GetComponent<TutorialTarget>() == null))
                 return;
 
             var randomCell = _storage.GetRandomEmptyCell(true);
@@ -85,7 +108,10 @@ namespace UI
             randomCell.CreateItem(_rewardStorage, transform.position);
             _reward.gameObject.SetActive(false);
             ContainsPresent = false;
+            _item.RewardIsShowing = false;
             _item.NotNew();
+
+            PresentGetted?.Invoke();
         }
     }
 }

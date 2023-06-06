@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Service;
 using System.Linq;
 using EventHandlers;
+using Gameplay.Tutorial;
 
 namespace Gameplay.Field
 {
@@ -20,6 +21,9 @@ namespace Gameplay.Field
         private int _currentCellIndex;
 
         private readonly List<ItemStorage> _content = new();
+
+        public static event System.Action Opened;
+        public static event System.Action ClickedOpen;
 
         public void Save()
         {
@@ -40,7 +44,7 @@ namespace Gameplay.Field
             {
                 var itemType = (ItemType)PlayerPrefs.GetInt(ITEM_TYPE_IN_PRESENT_KEY + i + hierarchyIndex);
                 var level = PlayerPrefs.GetInt(ITEM_LEVEL_IN_PRESENT_KEY + i + hierarchyIndex);
-                _content.Add(GameStorage.Instanse.GetItem(itemType, level));
+                _content.Add(GameStorage.Instance.GetItem(itemType, level));
             }
             PlayerPrefs.DeleteKey(ITEMS_COUNT_IN_PRESENT_KEY + hierarchyIndex);
         }
@@ -60,7 +64,7 @@ namespace Gameplay.Field
         private void Start()
         {
             _currentCellIndex = _item.CurrentCell.transform.GetSiblingIndex();
-            if (GameStorage.Instanse.LoadData && 
+            if (GameStorage.Instance.LoadData && 
                 PlayerPrefs.HasKey(ITEMS_COUNT_IN_PRESENT_KEY + _currentCellIndex))
                 Load();
             else
@@ -68,7 +72,7 @@ namespace Gameplay.Field
                 foreach (var item in PresentsInfo.GetContent(_item.Stats.Level))
                 {
                     for (var i = 0; i < item.Count; ++i)
-                        _content.Add(GameStorage.Instanse.GetItem(item.Type, Random.Range(item.MinLevel, item.MaxLevel + 1)));
+                        _content.Add(GameStorage.Instance.GetItem(item.Type, Random.Range(item.MinLevel, item.MaxLevel + 1)));
                 }
                 Save();
             }
@@ -76,7 +80,7 @@ namespace Gameplay.Field
 
         private void Update()
         {
-            if (_quickClickTracking.QuickClicked)
+            if (_quickClickTracking.QuickClicked && (TutorialSystem.TutorialDone || GetComponent<TutorialTarget>() != null))
             {
                 if (_item.Stats.Type == ItemType.Present)
                     OpenPresent();
@@ -94,11 +98,13 @@ namespace Gameplay.Field
         private void OpenPresent()
         {
             _item.OpenPresent();
+            Opened?.Invoke();
         }
 
         private void GetItem()
         {
-            if (!GameStorage.Instanse.HasEmptyCells(true))
+            ClickedOpen?.Invoke();
+            if (!GameStorage.Instance.HasEmptyCells(true))
                 return;
 
             var nextItem = _content[Random.Range(0, _content.Count)];
@@ -112,7 +118,7 @@ namespace Gameplay.Field
             else
                 Save();
 
-            GameStorage.Instanse.GetRandomEmptyCell(true).CreateItem(nextItem, transform.position);
+            GameStorage.Instance.GetRandomEmptyCell(true).CreateItem(nextItem, transform.position);
         }
 
         private void DeleteSave(int cellIndex)

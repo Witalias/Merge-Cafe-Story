@@ -9,6 +9,8 @@ using TMPro;
 using Gameplay.Counters;
 using System.Linq;
 using Unity.VisualScripting;
+using Gameplay.Tutorial;
+using System;
 
 namespace Gameplay.Orders
 {
@@ -22,6 +24,7 @@ namespace Gameplay.Orders
         private const string BRILLIANTS_REWARD_IN_ORDER_KEY = "BRILLIANTS_REWARD_IN_ORDER";
         private const string STARS_REWARD_IN_ORDER_KEY = "STARS_REWARD_IN_ORDER";
         private const string _showAnimatorBool = "Show";
+        private const string REWARD_COEFFICIENT_KEY = "REWARD_COEFFICIENT";
 
         [SerializeField] private OrderPoint[] _orderPoints;
         [SerializeField] private Transform _starsSpawnPoint;
@@ -32,6 +35,10 @@ namespace Gameplay.Orders
         [SerializeField] private Image _extraRewardImage;
         [SerializeField] private Color _darkenedColor;
         [SerializeField] private float _delayBeforeFinished = 1f;
+        [SerializeField] private Image _background;
+        [SerializeField] private Color _doubledRewardValueColor;
+        [SerializeField] private Color _doubledBackgroundColor;
+        [SerializeField] private Color _doubledPointColor;
 
         private Animator _animator;
         private CurrencyAdder _currencyAdder;
@@ -44,6 +51,12 @@ namespace Gameplay.Orders
         private bool _actived = false;
         private bool started = false;
 
+        private int _reward—oefficient;
+        private Color _defaultValueColor;
+        private Color _defaultBackgroundColor;
+        private Color _defaultPointColor;
+
+        public static event System.Action RewardsAdded;
         public static event System.Action<int> OrderDone;
         public static event System.Action<ItemStorage> NoEmptyCellsAndRewardGetted;
 
@@ -51,6 +64,7 @@ namespace Gameplay.Orders
 
         public void Save()
         {
+
             var hierarchyIndex = transform.GetSiblingIndex();
             for (var i = 0; i < _orders.Length; ++i)
             {
@@ -77,6 +91,7 @@ namespace Gameplay.Orders
             }
             PlayerPrefs.SetInt(BRILLIANTS_REWARD_IN_ORDER_KEY + hierarchyIndex, _brilliants);
             PlayerPrefs.SetInt(STARS_REWARD_IN_ORDER_KEY + hierarchyIndex, _stars);
+            PlayerPrefs.SetInt(REWARD_COEFFICIENT_KEY + hierarchyIndex, _reward—oefficient);
         }
 
         public void Load()
@@ -89,10 +104,10 @@ namespace Gameplay.Orders
                 {
                     var itemType = (ItemType)PlayerPrefs.GetInt(ITEM_TYPE_IN_ORDER_POINT_KEY + i + hierarchyIndex);
                     var level = PlayerPrefs.GetInt(ITEM_LEVEL_IN_ORDER_POINT_KEY + i + hierarchyIndex);
-                    orderPoints.Add(GameStorage.Instanse.GetItem(itemType, level));
+                    orderPoints.Add(GameStorage.Instance.GetItem(itemType, level));
                 }
             }
-            if (orderPoints.Count == 0)
+            if (orderPoints.Count == 0 && TutorialSystem.TutorialDone)
             {
                 CheckOnEmpty();
                 return;
@@ -101,23 +116,24 @@ namespace Gameplay.Orders
             {
                 var itemType = (ItemType)PlayerPrefs.GetInt(EXTRA_REWARD_TYPE_IN_ORDER_KEY + hierarchyIndex);
                 var level = PlayerPrefs.GetInt(EXTRA_REWARD_LEVEL_IN_ORDER_KEY + hierarchyIndex);
-                _extraReward = GameStorage.Instanse.GetItem(itemType, level);
+                _extraReward = GameStorage.Instance.GetItem(itemType, level);
             }
             _brilliants = PlayerPrefs.GetInt(BRILLIANTS_REWARD_IN_ORDER_KEY + hierarchyIndex);
             _stars = PlayerPrefs.GetInt(STARS_REWARD_IN_ORDER_KEY + hierarchyIndex);
-            Generate(orderPoints.ToArray(), _stars, _brilliants, _extraReward);
+            _reward—oefficient = PlayerPrefs.GetInt(REWARD_COEFFICIENT_KEY + hierarchyIndex, 1);
+            Generate(orderPoints.ToArray(), _stars, _brilliants, _reward—oefficient, _extraReward);
         }
 
         public void SetID(int value) => _id = value;
 
-        public void Generate(ItemStorage[] items, int stars, int brilliants, ItemStorage extraReward)
+        public void Generate(ItemStorage[] items, int stars, int brilliants, int reward—oefficient, ItemStorage extraReward)
         {
             _actived = true;
 
             _stars = stars;
             _brilliants = brilliants;
             _extraReward = extraReward;
-
+            _reward—oefficient = reward—oefficient;
             _starsValueText.text = stars.ToString();
             _brilliantsValueText.text = brilliants.ToString();
 
@@ -145,6 +161,7 @@ namespace Gameplay.Orders
                     _orderPoints[i].gameObject.SetActive(false);
                 }
             }
+            ChangeRewardText();
             Show();
         }
 
@@ -171,9 +188,10 @@ namespace Gameplay.Orders
         private void GetRewards()
         {
             _actived = false;
-            _currencyAdder.Add(CurrencyType.Star, _stars, _starsSpawnPoint.position);
-            _currencyAdder.Add(CurrencyType.Brilliant, _brilliants, _brilliantsSpawnPoint.position);
+            _currencyAdder.Add(CurrencyType.Star, _stars * _reward—oefficient, _starsSpawnPoint.position);
+            _currencyAdder.Add(CurrencyType.Brilliant, _brilliants * _reward—oefficient, _brilliantsSpawnPoint.position);
             GetExtraReward();
+            RewardsAdded?.Invoke();
             _rewards.SetActive(false);
             StartCoroutine(Finish(_delayBeforeFinished));
         }
@@ -188,16 +206,55 @@ namespace Gameplay.Orders
             return true;
         }
 
+        public void ChangeRewardCoefficent(bool isDoublerActive, int ordersToDoubleAmount)
+        {
+            if (isDoublerActive)
+            {
+                _reward—oefficient = 2;
+            }
+            else 
+            {
+                _reward—oefficient = 1;
+            }
+            ChangeRewardText();
+        }
+
+        private void ChangeRewardText()
+        {
+  
+            _starsValueText.SetText(Convert.ToString(_reward—oefficient * _stars));
+            _brilliantsValueText.SetText(Convert.ToString(_reward—oefficient * _brilliants));
+            if (_reward—oefficient == 2) // Doubler is active
+            {
+                _starsValueText.color = _doubledRewardValueColor;
+                _brilliantsValueText.color = _doubledRewardValueColor;
+                _background.color = _doubledBackgroundColor;
+                //foreach (var point in _orderPoints)
+                //    point.Background.color = _doubledPointColor;
+            }
+            else
+            {
+                _starsValueText.color = _defaultValueColor;
+                _brilliantsValueText.color = _defaultValueColor;
+                _background.color = _defaultBackgroundColor;
+                //foreach (var point in _orderPoints)
+                //    point.Background.color = _defaultPointColor;
+            }
+        }
+
         private void Awake()
         {
             _animator = GetComponent<Animator>();
+            _defaultValueColor = _starsValueText.color;
+            _defaultBackgroundColor = _background.color;
+            _defaultPointColor = _orderPoints[0].Background.color;
         }
 
         private void Start()
         {
-            _currencyAdder = GameStorage.Instanse.GetComponent<CurrencyAdder>();
+            _currencyAdder = GameStorage.Instance.GetComponent<CurrencyAdder>();
 
-            if (GameStorage.Instanse.LoadData)
+            if (GameStorage.Instance.LoadData)
                 Load();
 
             started = true;
@@ -220,6 +277,7 @@ namespace Gameplay.Orders
 
         private IEnumerator Finish(float delay)
         {
+            SoundManager.Instanse.Play(Sound.Cash, null);
             yield return new WaitForSeconds(delay);
             Hide();
             yield return new WaitForSeconds(0.5f);
@@ -237,7 +295,7 @@ namespace Gameplay.Orders
             if (_extraReward == null)
                 return;
 
-            var randomCell = GameStorage.Instanse.GetRandomEmptyCell();
+            var randomCell = GameStorage.Instance.GetRandomEmptyCell();
             if (randomCell == null)
                 NoEmptyCellsAndRewardGetted?.Invoke(_extraReward);
             else

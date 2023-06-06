@@ -77,8 +77,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4289520383
-  m_fontColor: {r: 1, g: 0.88808626, b: 0.67358494, a: 1}
+    rgba: 4285923413
+  m_fontColor: {r: 0.33363423, g: 0, b: 0.46226418, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -234,43 +234,57 @@ MonoBehaviour:
   _nameLeft: {fileID: 3899636264293407043}
   _nameRight: {fileID: 3899636264408270057}
   _phrase: {fileID: 3899636262820729443}
+  _click: {fileID: 3899636263214444290}
+  _skip: {fileID: 8055955214538776012}
   _blackFilter: {fileID: 3899636264331656833}
   _background: {fileID: 3899636264165437903}
   _characters:
   - Type: 0
-    Name: "\u041C\u0430\u0433\u0434\u0430\u043B\u0435\u043D\u0430"
+    Names:
+    - Language: 0
+      Text: Magdalena
+    - Language: 1
+      Text: "\u041C\u0430\u0433\u0434\u0430\u043B\u0435\u043D\u0430"
     LeftSide: 1
     Emotions:
     - Type: 0
-      Face: {fileID: 21300000, guid: a11974cd47d611c4fa152dd672e797f0, type: 3}
+      Face: {fileID: 21300000, guid: cc0fa19c9f649f84a9a6a773b5454986, type: 3}
     - Type: 1
-      Face: {fileID: 21300000, guid: 68dc0b77a92ae35439106a2f30f94c59, type: 3}
+      Face: {fileID: 21300000, guid: cc0fa19c9f649f84a9a6a773b5454986, type: 3}
     - Type: 2
-      Face: {fileID: 21300000, guid: 35e80c783afa1564c9a693aef224cd98, type: 3}
+      Face: {fileID: 21300000, guid: cc0fa19c9f649f84a9a6a773b5454986, type: 3}
     - Type: 3
-      Face: {fileID: 21300000, guid: 039e24d58b02173409b9384485060852, type: 3}
+      Face: {fileID: 21300000, guid: cc0fa19c9f649f84a9a6a773b5454986, type: 3}
     - Type: 4
-      Face: {fileID: 21300000, guid: 82c9d8782a66eee48a678a8c3083f4f6, type: 3}
+      Face: {fileID: 21300000, guid: cc0fa19c9f649f84a9a6a773b5454986, type: 3}
     - Type: 5
-      Face: {fileID: 21300000, guid: fb1b39f633402df448e9b7cbe5595f98, type: 3}
+      Face: {fileID: 21300000, guid: cc0fa19c9f649f84a9a6a773b5454986, type: 3}
   - Type: 1
-    Name: "\u041C\u0430\u0442\u0438\u043B\u044C\u0434\u0430"
+    Names:
+    - Language: 0
+      Text: Matilda
+    - Language: 1
+      Text: "\u041C\u0430\u0442\u0438\u043B\u044C\u0434\u0430"
     LeftSide: 0
     Emotions:
     - Type: 0
-      Face: {fileID: 21300000, guid: 6581a57316b37bd419fb36f92562c7d2, type: 3}
+      Face: {fileID: 21300000, guid: 7ef82c18be5d63e40ad596e7f19c4dd1, type: 3}
     - Type: 1
-      Face: {fileID: 21300000, guid: 18646f6368819b041a35c7fff3e0f073, type: 3}
+      Face: {fileID: 21300000, guid: 7ef82c18be5d63e40ad596e7f19c4dd1, type: 3}
     - Type: 2
-      Face: {fileID: 21300000, guid: 9c7fdec789ad43945992e19bfc3d820e, type: 3}
+      Face: {fileID: 21300000, guid: 7ef82c18be5d63e40ad596e7f19c4dd1, type: 3}
     - Type: 3
-      Face: {fileID: 21300000, guid: 392abb4dd3e256047be903abec012b11, type: 3}
+      Face: {fileID: 21300000, guid: 7ef82c18be5d63e40ad596e7f19c4dd1, type: 3}
     - Type: 4
-      Face: {fileID: 21300000, guid: 8c76e795354e26e408305ef8bac0faab, type: 3}
+      Face: {fileID: 21300000, guid: 7ef82c18be5d63e40ad596e7f19c4dd1, type: 3}
     - Type: 5
-      Face: {fileID: 21300000, guid: 9d00e1194c577ee4cb765eaae736ee75, type: 3}
+      Face: {fileID: 21300000, guid: 7ef82c18be5d63e40ad596e7f19c4dd1, type: 3}
   - Type: 2
-    Name: "\u0422\u0435\u043B\u0435\u0444\u043E\u043D"
+    Names:
+    - Language: 0
+      Text: Phone
+    - Language: 1
+      Text: "\u0422\u0435\u043B\u0435\u0444\u043E\u043D"
     LeftSide: 0
     Emotions:
     - Type: 0
@@ -286,7 +300,11 @@ MonoBehaviour:
     - Type: 5
       Face: {fileID: 21300000, guid: 39f2d76aaf754d749af16f6e1bfebe35, type: 3}
   - Type: 3
-    Name: "\u0424\u0435\u043B\u0438\u043A\u0441"
+    Names:
+    - Language: 0
+      Text: Felix
+    - Language: 1
+      Text: "\u0424\u0435\u043B\u0438\u043A\u0441"
     LeftSide: 0
     Emotions:
     - Type: 0
@@ -303,968 +321,1557 @@ MonoBehaviour:
       Face: {fileID: 21300000, guid: 39f2d76aaf754d749af16f6e1bfebe35, type: 3}
   _dialogCollection:
   - Type: 0
-    Phrases:
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0414\u0430\u0436\u0435 \u043D\u0435 \u0432\u0435\u0440\u0438\u0442\u0441\u044F,
-        \u0447\u0442\u043E \u043C\u044B \u0441\u043D\u043E\u0432\u0430 \u0432\u0435\u0440\u043D\u0443\u043B\u0438\u0441\u044C
-        \u0441\u044E\u0434\u0430\u2026"
-    - Character: 0
-      Emotion: 1
-      Phrase: "10 \u043B\u0435\u0442 \u043D\u0430\u0437\u0430\u0434 \u044F \u043F\u043E\u043A\u043B\u044F\u043B\u0430\u0441\u044C
-        \u0441\u0435\u0431\u0435, \u0447\u0442\u043E \u0431\u043E\u043B\u044C\u0448\u0435
-        \u043D\u0438\u043A\u043E\u0433\u0434\u0430 \u043D\u0435 \u0432\u0435\u0440\u043D\u0443\u0441\u044C
-        \u0432 \u044D\u0442\u043E \u043A\u0430\u0444\u0435."
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u041F\u043E\u0447\u0435\u043C\u0443 \u0436\u0435?"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041C\u0430\u043C\u0430, \u043D\u0435\u0443\u0436\u0435\u043B\u0438
-        \u0442\u044B \u043D\u0435 \u043F\u043E\u043D\u0438\u043C\u0430\u0435\u0448\u044C?"
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u0417\u0434\u0435\u0441\u044C \u043C\u0435\u043D\u044F \u0431\u0443\u0434\u0443\u0442
-        \u0442\u0435\u0440\u0437\u0430\u0442\u044C \u043C\u0443\u043A\u0438 \u043F\u0440\u043E\u0448\u043B\u043E\u0433\u043E."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041D\u0438\u043A\u043E\u0433\u0434\u0430 \u043D\u0435 \u0437\u0430\u043F\u043E\u043C\u043D\u044E
-        \u0442\u043E\u0442 \u0441\u0442\u0440\u0430\u0448\u043D\u044B\u0439 \u043F\u043E\u0436\u0430\u0440
-        \u0437\u0434\u0435\u0441\u044C \u0438 \u0438\u0441\u043F\u0443\u0433\u0430\u043D\u043D\u044B\u0435,
-        \u043F\u043E\u043B\u043D\u044B\u0435 \u0431\u043E\u043B\u0438 \u0438 \u0441\u043B\u0451\u0437
-        \u0433\u043B\u0430\u0437\u0430 \u043C\u043E\u0435\u0439 \u043C\u0430\u043B\u0435\u043D\u044C\u043A\u043E\u0439
-        \u041B\u0438\u0437\u044B."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u0420\u0430\u043D\u044C\u0448\u0435 \u0437\u0434\u0435\u0441\u044C
-        \u0436\u0438\u043B\u0430 \u0432\u0441\u044F \u043D\u0430\u0448\u0430 \u0441\u0435\u043C\u044C\u044F."
-    - Character: 0
-      Emotion: 2
-      Phrase: "\u0423 \u043C\u0435\u043D\u044F \u043D\u0438\u043A\u043E\u0433\u043E
-        \u043D\u0435 \u043E\u0441\u0442\u0430\u043B\u043E\u0441\u044C\u2026"
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u0414\u0435\u0442\u043A\u0430, \u043F\u043E\u0441\u043B\u0443\u0448\u0430\u0439."
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u0412\u043E\u0442 \u0443\u0436\u0435 \u043A\u0430\u043A 2 \u043D\u0435\u0434\u0435\u043B\u0438,
-        \u043F\u043E\u0441\u043B\u0435 \u0441\u043C\u0435\u0440\u0442\u0438 \u0442\u0432\u043E\u0435\u0433\u043E
-        \u043C\u0443\u0436\u0430, \u0442\u044B \u043D\u0435 \u0432\u044B\u0445\u043E\u0434\u0438\u0448\u044C
-        \u0438\u0437 \u0434\u043E\u043C\u0430."
-    - Character: 1
-      Emotion: 1
-      Phrase: "\u0418 \u0442\u0432\u043E\u044F \u0434\u043E\u0447\u044C, \u043C\u043E\u044F
-        \u0432\u043D\u0443\u0447\u043A\u0430\u2026"
-    - Character: 1
-      Emotion: 1
-      Phrase: "\u041C\u043D\u0435 \u0442\u0435\u0431\u044F \u043E\u0447\u0435\u043D\u044C
-        \u0436\u0430\u043B\u044C."
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u041D\u043E \u0442\u0430\u043A \u0436\u0438\u0442\u044C \u043D\u0435\u043B\u044C\u0437\u044F."
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u041C\u044D\u0440 \u043F\u043E\u0434\u043F\u0438\u0441\u0430\u043B
-        \u043A\u043E\u043D\u0442\u0440\u0430\u043A\u0442 \u043E \u0441\u043D\u043E\u0441\u0435
-        \u043A\u0430\u0444\u0435, \u0435\u0441\u043B\u0438 \u043E\u043D\u043E \u043D\u0435
-        \u0431\u0443\u0434\u0435\u0442 \u043F\u0440\u0438\u0432\u0435\u0434\u0435\u043D\u043E
-        \u0432 \u043F\u043E\u0440\u044F\u0434\u043E\u043A \u0432 \u0442\u0435\u0447\u0435\u043D\u0438\u0435
-        \u0433\u043E\u0434\u0430."
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u041D\u0435\u0443\u0436\u0435\u043B\u0438 \u0442\u044B \u043F\u043E\u0437\u0432\u043E\u043B\u0438\u0448\u044C
-        \u043A\u043E\u043C\u0443-\u0442\u043E \u0443\u043D\u0438\u0447\u0442\u043E\u0436\u0438\u0442\u044C
-        \u043D\u0430\u0448\u0435 \u0441\u0435\u043C\u0435\u0439\u043D\u043E\u0435
-        \u0434\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435?"
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u0421\u0434\u0435\u043B\u0430\u0439 \u044D\u0442\u043E \u0440\u0430\u0434\u0438
-        \u043C\u0435\u043D\u044F, \u0440\u0430\u0434\u0438 \u043C\u0430\u0442\u0435\u0440\u0438."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041D\u043E\u2026"
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u041D\u0438\u043A\u0430\u043A\u0438\u0445 \xAB\u043D\u043E\xBB!"
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u0422\u0435\u0431\u0435 \u043D\u0430\u0434\u043E \u043E\u0442\u0432\u043B\u0435\u0447\u044C\u0441\u044F."
-    - Character: 1
-      Emotion: 4
-      Phrase: "\u041F\u043E\u043C\u043E\u0433\u0430-\u043A\u0430 \u043C\u043D\u0435
-        \u043F\u0435\u0440\u0435\u043D\u0435\u0441\u0442\u0438 \u0442\u0435 \u0441\u0442\u043E\u043B\u044B
-        \u0432 \u0433\u043E\u0441\u0442\u0435\u0432\u043E\u0439 \u0437\u0430\u043B."
+    Parts:
+    - Language: 0
+      Phrases:
+      - Character: 0
+        Emotion: 0
+        Phrase: "I can\u2019t even believe that we are back here again\u2026"
+      - Character: 1
+        Emotion: 0
+        Phrase: Why not?
+      - Character: 0
+        Emotion: 1
+        Phrase: I thought that my adult life would take shape in a new place with
+          a new environment.
+      - Character: 0
+        Emotion: 1
+        Phrase: I'm so used to my new cozy apartment on the outskirts of the city.
+      - Character: 1
+        Emotion: 0
+        Phrase: Baby, listen.
+      - Character: 1
+        Emotion: 0
+        Phrase: "The mayor has signed a contract to demolish the caf\xE9 if it is
+          not fixed within a year."
+      - Character: 1
+        Emotion: 0
+        Phrase: Are you going to let someone destroy our family heirloom?
+      - Character: 1
+        Emotion: 1
+        Phrase: Do it for me, for your mother.
+      - Character: 0
+        Emotion: 1
+        Phrase: But...
+      - Character: 1
+        Emotion: 0
+        Phrase: "No \xABbuts\xBB!"
+      - Character: 1
+        Emotion: 0
+        Phrase: You need to take a break.
+      - Character: 1
+        Emotion: 4
+        Phrase: Help me move those tables to the guest room.
+    - Language: 1
+      Phrases:
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0414\u0430\u0436\u0435 \u043D\u0435 \u0432\u0435\u0440\u0438\u0442\u0441\u044F,
+          \u0447\u0442\u043E \u043C\u044B \u0441\u043D\u043E\u0432\u0430 \u0432\u0435\u0440\u043D\u0443\u043B\u0438\u0441\u044C
+          \u0441\u044E\u0434\u0430\u2026"
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u041F\u043E\u0447\u0435\u043C\u0443 \u0436\u0435?"
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u042F \u043D\u0430\u0434\u0435\u044F\u043B\u0430\u0441\u044C, \u0447\u0442\u043E
+          \u043C\u043E\u044F \u0436\u0438\u0437\u043D\u044C \u0441\u043B\u043E\u0436\u0438\u0442\u0441\u044F
+          \u0432 \u043D\u043E\u0432\u043E\u043C \u043C\u0435\u0441\u0442\u0435 \u0441
+          \u043D\u043E\u0432\u043E\u0439 \u043E\u0431\u0441\u0442\u0430\u043D\u043E\u0432\u043A\u043E\u0439."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u042F \u0442\u0430\u043A \u043F\u0440\u0438\u0432\u044B\u043A\u043B\u0430
+          \u043A \u0441\u0432\u043E\u0435\u0439 \u043D\u043E\u0432\u043E\u0439 \u0443\u044E\u0442\u043D\u043E\u0439
+          \u043A\u0432\u0430\u0440\u0442\u0438\u0440\u0435 \u043D\u0430 \u043E\u043A\u0440\u0430\u0438\u043D\u0435
+          \u0433\u043E\u0440\u043E\u0434\u0430."
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u0414\u0435\u0442\u043A\u0430, \u043F\u043E\u0441\u043B\u0443\u0448\u0430\u0439."
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u041C\u044D\u0440 \u043F\u043E\u0434\u043F\u0438\u0441\u0430\u043B
+          \u043A\u043E\u043D\u0442\u0440\u0430\u043A\u0442 \u043E \u0441\u043D\u043E\u0441\u0435
+          \u043A\u0430\u0444\u0435, \u0435\u0441\u043B\u0438 \u043E\u043D\u043E \u043D\u0435
+          \u0431\u0443\u0434\u0435\u0442 \u043F\u0440\u0438\u0432\u0435\u0434\u0435\u043D\u043E
+          \u0432 \u043F\u043E\u0440\u044F\u0434\u043E\u043A \u0432 \u0442\u0435\u0447\u0435\u043D\u0438\u0435
+          \u0433\u043E\u0434\u0430."
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u041D\u0435\u0443\u0436\u0435\u043B\u0438 \u0442\u044B \u043F\u043E\u0437\u0432\u043E\u043B\u0438\u0448\u044C
+          \u043A\u043E\u043C\u0443-\u0442\u043E \u0443\u043D\u0438\u0447\u0442\u043E\u0436\u0438\u0442\u044C
+          \u043D\u0430\u0448\u0435 \u0441\u0435\u043C\u0435\u0439\u043D\u043E\u0435
+          \u0434\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435?"
+      - Character: 1
+        Emotion: 1
+        Phrase: "\u0421\u0434\u0435\u043B\u0430\u0439 \u044D\u0442\u043E \u0440\u0430\u0434\u0438
+          \u043C\u0435\u043D\u044F, \u0440\u0430\u0434\u0438 \u043C\u0430\u0442\u0435\u0440\u0438."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u041D\u043E\u2026"
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u041D\u0438\u043A\u0430\u043A\u0438\u0445 \xAB\u043D\u043E\xBB!"
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u0422\u0435\u0431\u0435 \u043D\u0430\u0434\u043E \u043E\u0442\u0432\u043B\u0435\u0447\u044C\u0441\u044F."
+      - Character: 1
+        Emotion: 4
+        Phrase: "\u041F\u043E\u043C\u043E\u0433\u0430-\u043A\u0430 \u043C\u043D\u0435
+          \u043F\u0435\u0440\u0435\u043D\u0435\u0441\u0442\u0438 \u0442\u0435 \u0441\u0442\u043E\u043B\u044B
+          \u0432 \u0433\u043E\u0441\u0442\u0435\u0432\u043E\u0439 \u0437\u0430\u043B."
   - Type: 1
-    Phrases:
-    - Character: 2
-      Emotion: 0
-      Phrase: "\u0414\u0437\u044B\u043D\u044C!.."
-    - Character: 0
-      Emotion: 3
-      Phrase: '?'
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0410\u043B\u043B\u043E?"
-    - Character: 2
-      Emotion: 0
-      Phrase: "\u0423 \u0442\u0435\u0431\u044F \u043A\u0430\u043A \u0432\u0441\u0435\u0433\u0434\u0430
-        \u043E\u0447\u0430\u0440\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0439
-        \u0433\u043E\u043B\u043E\u0441, \u043F\u0440\u0438\u043D\u0446\u0435\u0441\u0441\u0430."
-    - Character: 0
-      Emotion: 3
-      Phrase: "\u0424\u0435\u043B\u0438\u043A\u0441?"
-    - Character: 0
-      Emotion: 4
-      Phrase: "\u041D\u0435\u0443\u0436\u0435\u043B\u0438 \u0442\u044B?"
-    - Character: 0
-      Emotion: 4
-      Phrase: "\u041A\u0430\u043A \u0436\u0435 \u0434\u0430\u0432\u043D\u043E \u043C\u044B
-        \u043D\u0435 \u043E\u0431\u0449\u0430\u043B\u0438\u0441\u044C!"
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u042F \u0443\u0437\u043D\u0430\u043B \u043E \u0442\u0432\u043E\u0451\u043C
-        \u0433\u043E\u0440\u0435."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041E \u0441\u043C\u0435\u0440\u0442\u0438 \u043C\u0443\u0436\u0430
-        \u0432 \u0430\u0432\u0442\u043E\u043A\u0430\u0442\u0430\u0441\u0442\u0440\u043E\u0444\u0435."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041C\u043D\u0435 \u043E\u0447\u0435\u043D\u044C \u0436\u0430\u043B\u044C\u2026\r"
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041F\u0440\u043E\u0448\u0443, \u0434\u0430\u0432\u0430\u0439 \u043D\u0435
-        \u0431\u0443\u0434\u0435\u043C \u0437\u0430\u0442\u0440\u0430\u0433\u0438\u0432\u0430\u0442\u044C
-        \u044D\u0442\u0443 \u0442\u0435\u043C\u0443."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041B\u0443\u0447\u0448\u0435 \u0440\u0430\u0441\u0441\u043A\u0430\u0436\u0438,
-        \u043A\u0430\u043A \u0442\u044B \u0442\u0430\u043C \u0432 \u0415\u0432\u0440\u043E\u043F\u0435?\r"
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0421\u0435\u0439\u0447\u0430\u0441 \u044F \u0436\u0438\u0432\u0443
-        \u0432 \u0420\u0438\u043C\u0435."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041F\u043E\u0432\u0438\u0434\u0430\u043B \u041A\u043E\u043B\u0438\u0437\u0435\u0439
-        \u0438 \u0443\u0437\u043D\u0430\u043B \u043C\u043D\u043E\u0433\u043E \u0438\u043D\u0442\u0435\u0440\u0435\u0441\u043D\u043E\u0433\u043E
-        \u043E\u0431 \u044D\u0442\u043E\u0439 \u0441\u0442\u0440\u0430\u043D\u0435."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0422\u044B \u0437\u043D\u0430\u043B\u0430, \u0447\u0442\u043E \u0437\u0434\u0435\u0441\u044C
-        \u0435\u0441\u0442\u044C \u043F\u043B\u043E\u0449\u0430\u0434\u044C \u0440\u0438\u043C\u0441\u043A\u0438\u0445
-        \u043A\u043E\u0442\u0438\u043A\u043E\u0432?"
-    - Character: 0
-      Emotion: 5
-      Phrase: "\u0414\u0430-\u0430, \u0443 \u0442\u0435\u0431\u044F \u043E\u0447\u0435\u043D\u044C
-        \u043D\u0430\u0441\u044B\u0449\u0435\u043D\u043D\u0430\u044F \u0436\u0438\u0437\u043D\u044C."
-    - Character: 0
-      Emotion: 4
-      Phrase: "\u041D\u0430\u043C \u0441 \u0442\u043E\u0431\u043E\u0439 \u0435\u0449\u0451
-        \u0441\u0442\u043E\u043B\u044C\u043A\u043E \u043E \u0447\u0451\u043C \u043D\u0443\u0436\u043D\u043E
-        \u043F\u043E\u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C!"
+    Parts:
+    - Language: 0
+      Phrases:
+      - Character: 2
+        Emotion: 0
+        Phrase: Ring!
+      - Character: 0
+        Emotion: 3
+        Phrase: '?'
+      - Character: 0
+        Emotion: 0
+        Phrase: Hello?
+      - Character: 3
+        Emotion: 0
+        Phrase: You have a charming voice as always, princess.
+      - Character: 0
+        Emotion: 3
+        Phrase: Felix? Are you?
+      - Character: 0
+        Emotion: 4
+        Phrase: How long have we not spoken!
+      - Character: 0
+        Emotion: 0
+        Phrase: How are you in Europe?
+      - Character: 3
+        Emotion: 0
+        Phrase: Now I live in Rome.
+      - Character: 3
+        Emotion: 0
+        Phrase: I saw the Colosseum and learned a lot of interesting things about
+          this country.
+      - Character: 3
+        Emotion: 0
+        Phrase: Did you know that there is a square of Roman seals here?
+      - Character: 0
+        Emotion: 5
+        Phrase: Yes, you have a very busy life.
+      - Character: 0
+        Emotion: 4
+        Phrase: We have so much more to talk about!
+    - Language: 1
+      Phrases:
+      - Character: 2
+        Emotion: 0
+        Phrase: "\u0414\u0437\u044B\u043D\u044C!"
+      - Character: 0
+        Emotion: 3
+        Phrase: '?'
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0410\u043B\u043B\u043E?"
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0423 \u0442\u0435\u0431\u044F \u043A\u0430\u043A \u0432\u0441\u0435\u0433\u0434\u0430
+          \u043E\u0447\u0430\u0440\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u043D\u044B\u0439
+          \u0433\u043E\u043B\u043E\u0441, \u043F\u0440\u0438\u043D\u0446\u0435\u0441\u0441\u0430."
+      - Character: 0
+        Emotion: 3
+        Phrase: "\u0424\u0435\u043B\u0438\u043A\u0441? \u041D\u0435\u0443\u0436\u0435\u043B\u0438
+          \u0442\u044B?"
+      - Character: 0
+        Emotion: 4
+        Phrase: "\u041A\u0430\u043A \u0436\u0435 \u0434\u0430\u0432\u043D\u043E \u043C\u044B
+          \u043D\u0435 \u043E\u0431\u0449\u0430\u043B\u0438\u0441\u044C!"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041A\u0430\u043A \u0442\u044B \u0442\u0430\u043C \u0432 \u0415\u0432\u0440\u043E\u043F\u0435?"
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0421\u0435\u0439\u0447\u0430\u0441 \u044F \u0436\u0438\u0432\u0443
+          \u0432 \u0420\u0438\u043C\u0435."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041F\u043E\u0432\u0438\u0434\u0430\u043B \u041A\u043E\u043B\u0438\u0437\u0435\u0439
+          \u0438 \u0443\u0437\u043D\u0430\u043B \u043C\u043D\u043E\u0433\u043E \u0438\u043D\u0442\u0435\u0440\u0435\u0441\u043D\u043E\u0433\u043E
+          \u043E\u0431 \u044D\u0442\u043E\u0439 \u0441\u0442\u0440\u0430\u043D\u0435."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0422\u044B \u0437\u043D\u0430\u043B\u0430, \u0447\u0442\u043E
+          \u0437\u0434\u0435\u0441\u044C \u0435\u0441\u0442\u044C \u043F\u043B\u043E\u0449\u0430\u0434\u044C
+          \u0440\u0438\u043C\u0441\u043A\u0438\u0445 \u043A\u043E\u0442\u0438\u043A\u043E\u0432?"
+      - Character: 0
+        Emotion: 5
+        Phrase: "\u0414\u0430-\u0430, \u0443 \u0442\u0435\u0431\u044F \u043E\u0447\u0435\u043D\u044C
+          \u043D\u0430\u0441\u044B\u0449\u0435\u043D\u043D\u0430\u044F \u0436\u0438\u0437\u043D\u044C."
+      - Character: 0
+        Emotion: 4
+        Phrase: "\u041D\u0430\u043C \u0441 \u0442\u043E\u0431\u043E\u0439 \u0435\u0449\u0451
+          \u0441\u0442\u043E\u043B\u044C\u043A\u043E \u043E \u0447\u0451\u043C \u043D\u0443\u0436\u043D\u043E
+          \u043F\u043E\u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C!"
   - Type: 5
-    Phrases:
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0418 \u0432\u043E\u0442\u2026 \u042F \u0432\u0441\u0442\u0440\u0435\u0442\u0438\u043B
-        \u0435\u0451 \u0434\u043E\u0447\u044C \u0432 \u043A\u0430\u0444\u0435\u2026"
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u0424\u0435\u043B\u0438\u043A\u0441. \u042F\u2026"
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041E\u0439, \u043F\u0440\u043E\u0441\u0442\u0438."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041F\u043E\u043D\u0438\u043C\u0430\u044E, \u0447\u0442\u043E \u044D\u0442\u043E
-        \u0431\u044C\u0451\u0442 \u0442\u0435\u0431\u0435 \u043F\u043E \u0441\u0435\u0440\u0434\u0446\u0443."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041D\u0435\u0442, \u0432\u0441\u0451 \u043D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u042F \u043D\u0438\u043A\u043E\u0433\u0434\u0430 \u0440\u0430\u0441\u043A\u0440\u044B\u0432\u0430\u043B\u0430
-        \u043F\u043E\u0434\u0440\u043E\u0431\u043D\u043E\u0441\u0442\u0438 \u043E
-        \u0442\u043E\u043C, \u0447\u0442\u043E \u043F\u0440\u043E\u0438\u0437\u043E\u0448\u043B\u043E
-        \u0441 \u043C\u043E\u0435\u0439 \u0434\u043E\u0447\u0435\u0440\u044C\u044E."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0418 \u043F\u043E\u043D\u044F\u043B\u0430, \u0447\u0442\u043E \u043D\u0435\u0442
-        \u0441\u043C\u044B\u0441\u043B\u0430 \u0434\u0435\u0440\u0436\u0430\u0442\u044C
-        \u0432\u0441\u0451 \u0432 \u0441\u0435\u0431\u0435."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041B\u0438\u0437\u0430 \u2013 \u043E\u0447\u0435\u043D\u044C \u0434\u043E\u0431\u0440\u0430\u044F
-        \u0438 \u0441\u043C\u0435\u043B\u0430\u044F \u0434\u0435\u0432\u043E\u0447\u043A\u0430."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041F\u043E\u043C\u043D\u044E, \u0435\u0439 \u0438\u0441\u043F\u043E\u043B\u043D\u0438\u043B\u043E\u0441\u044C
-        7 \u043B\u0435\u0442."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041A\u0430\u0437\u0430\u043B\u043E\u0441\u044C, \u043E\u043D\u0430
-        \u0431\u044B\u043B\u0430 \u0441\u0447\u0430\u0441\u0442\u043B\u0438\u0432\u0435\u0435
-        \u0432\u0441\u0435\u0445 \u043D\u0430 \u0441\u0432\u0435\u0442\u0435."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u0415\u0451 \u043B\u0443\u0447\u0435\u0437\u0430\u0440\u043D\u0430\u044F
-        \u0443\u043B\u044B\u0431\u043A\u0430 \u0438 \u0441\u0447\u0430\u0441\u0442\u043B\u0438\u0432\u043E\u0435
-        \u043B\u0438\u0446\u043E \u043C\u0438\u0433\u043E\u043C \u0441\u043C\u0435\u043D\u0438\u043B\u0438\u0441\u044C
-        \u043F\u0430\u043D\u0438\u0447\u0435\u0441\u043A\u0438\u043C \u0438\u0441\u043F\u0443\u0433\u043E\u043C
-        \u0438 \u043D\u0435\u043E\u0434\u043E\u043B\u0438\u043C\u044B\u043C \u0441\u0442\u0440\u0430\u0445\u043E\u043C
-        \u0432 \u043C\u043E\u043C\u0435\u043D\u0442, \u043A\u043E\u0433\u0434\u0430
-        \u0432 \u043A\u0430\u0444\u0435 \u0432\u0441\u043F\u044B\u0445\u043D\u0443\u043B
-        \u043F\u043E\u0436\u0430\u0440."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u0413\u043E\u0441\u0442\u0438 \u0437\u0430\u0432\u0435\u0434\u0435\u043D\u0438\u044F
-        \u0438 \u0441\u043E\u0442\u0440\u0443\u0434\u043D\u0438\u043A\u0438 \u0432
-        \u043F\u0430\u043D\u0438\u043A\u0435 \u0431\u0435\u0436\u0430\u043B\u0438
-        \u043A \u0432\u044B\u0445\u043E\u0434\u0443."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041F\u043E\u0432\u0441\u044E\u0434\u0443 \u0446\u0430\u0440\u0438\u043B
-        \u0445\u0430\u043E\u0441."
-    - Character: 0
-      Emotion: 2
-      Phrase: "\u0411\u0435\u0434\u043D\u0430\u044F \u0434\u0435\u0432\u043E\u0447\u043A\u0430\u2026"
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041E\u043D\u0430 \u043F\u043E\u0431\u0435\u0436\u0430\u043B\u0430
-        \u043D\u0435 \u0442\u0443\u0434\u0430."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u0412 \u0442\u0435\u0445\u043D\u0438\u0447\u0435\u0441\u043A\u0438\u0435
-        \u043F\u043E\u043C\u0435\u0449\u0435\u043D\u0438\u044F."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041C\u043E\u0439 \u043C\u0443\u0436 \u0437\u0430\u043C\u0435\u0442\u0438\u043B
-        \u041B\u0438\u0437\u0443."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041D\u043E \u043F\u0440\u0435\u0436\u0434\u0435 \u0447\u0435\u043C
-        \u043E\u043D \u0434\u043E\u0431\u0440\u0430\u043B\u0441\u044F \u0434\u043E
-        \u043D\u0435\u0451, \u043E\u0433\u043D\u0435\u0442\u0443\u0448\u0438\u0442\u0435\u043B\u044C,
-        \u043A\u043E\u0442\u043E\u0440\u044B\u0439 \u0432\u0438\u0441\u0435\u043B
-        \u0440\u044F\u0434\u043E\u043C \u0441 \u043D\u0438\u043C, \u0432\u0437\u043E\u0440\u0432\u0430\u043B\u0441\u044F."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u0412 \u0442\u043E\u0442 \u0434\u0435\u043D\u044C \u043E\u043D \u0441\u0442\u0430\u043B
-        \u0438\u043D\u0432\u0430\u043B\u0438\u0434\u043E\u043C."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041B\u0438\u0437\u0430 \u0434\u043E \u0441\u043C\u0435\u0440\u0442\u0438
-        \u0431\u043E\u044F\u043B\u0430\u0441\u044C \u043E\u0433\u043D\u044F."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u042F \u043F\u043E\u0431\u0435\u0436\u0430\u043B\u0430 \u0437\u0430
-        \u043D\u0435\u0439."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041C\u043D\u0435 \u0431\u044B\u043B\u043E \u043F\u043B\u0435\u0432\u0430\u0442\u044C
-        \u043D\u0430 \u043E\u0433\u043E\u043D\u044C."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041F\u043B\u0435\u0432\u0430\u0442\u044C \u043D\u0430 \u0432\u0441\u0451."
-    - Character: 0
-      Emotion: 2
-      Phrase: "\u041D\u043E \u043F\u043E\u0442\u043E\u043B\u043E\u043A \u043D\u0435
-        \u0432\u044B\u0434\u0435\u0440\u0436\u0430\u043B, \u0438 \u043E\u0433\u0440\u043E\u043C\u043D\u0430\u044F
-        \u0431\u0430\u043B\u043A\u0430 \u043E\u0442\u0434\u0435\u043B\u0438\u043B\u0430
-        \u043C\u0435\u043D\u044F \u043E\u0442 \u0434\u043E\u0447\u0435\u0440\u0438."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041C\u0443\u0436 \u0432\u044B\u0442\u0430\u0449\u0438\u043B \u043C\u0435\u043D\u044F,
-        \u043A\u043E\u0433\u0434\u0430 \u043E\u0433\u043E\u043D\u044C \u043E\u0445\u0432\u0430\u0442\u0438\u043B
-        \u043F\u043E\u0447\u0442\u0438 \u0432\u0441\u0451 \u0437\u0434\u0430\u043D\u0438\u0435."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u042F \u0441\u0434\u0435\u043B\u0430\u043B\u0430 \u0432\u0441\u0451,
-        \u0447\u0442\u043E \u043C\u043E\u0433\u043B\u0430."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041E\u0443\u2026 \u042D\u0442\u043E\u2026 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u043E
-        \u0443\u0436\u0430\u0441\u043D\u043E."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0425\u043E\u0440\u043E\u0448\u043E, \u0447\u0442\u043E \u0442\u044B
-        \u043C\u043D\u0435 \u0440\u0430\u0441\u0441\u043A\u0430\u0437\u0430\u043B\u0430."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041D\u0435 \u0434\u0435\u0440\u0436\u0438 \u0432\u0441\u0451 \u0432
-        \u0441\u0435\u0431\u0435."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u042F \u0432\u0441\u0435\u0433\u0434\u0430 \u0433\u043E\u0442\u043E\u0432
-        \u0442\u0435\u0431\u044F \u0432\u044B\u0441\u043B\u0443\u0448\u0430\u0442\u044C."
+    Parts:
+    - Language: 0
+      Phrases:
+      - Character: 3
+        Emotion: 0
+        Phrase: And so...
+      - Character: 3
+        Emotion: 0
+        Phrase: I met her sister in a cafe...
+      - Character: 0
+        Emotion: 1
+        Phrase: "Felix. I\u2026"
+      - Character: 3
+        Emotion: 0
+        Phrase: Oh, sorry.
+      - Character: 3
+        Emotion: 0
+        Phrase: I understand that it hurts your heart.
+      - Character: 0
+        Emotion: 0
+        Phrase: No, everything is fine.
+      - Character: 0
+        Emotion: 1
+        Phrase: I never revealed the details of what happened to my sister.
+      - Character: 0
+        Emotion: 0
+        Phrase: And I realized that it makes no sense to keep everything to yourself.
+      - Character: 0
+        Emotion: 0
+        Phrase: Lisa is a very kind and brave girl.
+      - Character: 0
+        Emotion: 0
+        Phrase: I remember she was 12 years old.
+      - Character: 0
+        Emotion: 1
+        Phrase: She seemed to be the happiest person in the world.
+      - Character: 0
+        Emotion: 1
+        Phrase: Her radiant smile and happy face were instantly replaced by panic
+          fear and overwhelming fear at the moment when a fire broke out in the cafe.
+      - Character: 0
+        Emotion: 0
+        Phrase: Guests of the institution and employees in a panic fled to the exit.
+      - Character: 0
+        Emotion: 1
+        Phrase: Chaos reigned everywhere.
+      - Character: 0
+        Emotion: 1
+        Phrase: Poor girl...
+      - Character: 0
+        Emotion: 1
+        Phrase: She ran the wrong way.
+      - Character: 0
+        Emotion: 1
+        Phrase: In technical rooms.
+      - Character: 0
+        Emotion: 1
+        Phrase: Lisa was scared to death of fire.
+      - Character: 0
+        Emotion: 0
+        Phrase: ' I ran after her.'
+      - Character: 0
+        Emotion: 0
+        Phrase: I didn't care about the fire.
+      - Character: 0
+        Emotion: 1
+        Phrase: But the ceiling could not stand it, and a huge beam separated me
+          from my sister.
+      - Character: 0
+        Emotion: 1
+        Phrase: I did all I could.
+      - Character: 3
+        Emotion: 0
+        Phrase: Oh...
+      - Character: 3
+        Emotion: 0
+        Phrase: It's... really awful.
+      - Character: 3
+        Emotion: 0
+        Phrase: It's good that you told me.
+      - Character: 3
+        Emotion: 0
+        Phrase: Don't keep everything to yourself.
+      - Character: 3
+        Emotion: 0
+        Phrase: ' I''m always ready to listen to you.'
+    - Language: 1
+      Phrases:
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0418 \u0432\u043E\u0442\u2026"
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u042F \u0432\u0441\u0442\u0440\u0435\u0442\u0438\u043B \u0435\u0451
+          \u0441\u0435\u0441\u0442\u0440\u0443 \u0432 \u043A\u0430\u0444\u0435\u2026"
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u0424\u0435\u043B\u0438\u043A\u0441. \u042F\u2026"
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041E, \u043F\u0440\u043E\u0441\u0442\u0438."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041F\u043E\u043D\u0438\u043C\u0430\u044E, \u0447\u0442\u043E \u044D\u0442\u043E
+          \u0431\u044C\u0451\u0442 \u0442\u0435\u0431\u0435 \u043F\u043E \u0441\u0435\u0440\u0434\u0446\u0443."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041D\u0435\u0442, \u0432\u0441\u0451 \u043D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u042F \u043D\u0438\u043A\u043E\u0433\u0434\u0430 \u0440\u0430\u0441\u043A\u0440\u044B\u0432\u0430\u043B\u0430
+          \u043F\u043E\u0434\u0440\u043E\u0431\u043D\u043E\u0441\u0442\u0438 \u043E
+          \u0442\u043E\u043C, \u0447\u0442\u043E \u043F\u0440\u043E\u0438\u0437\u043E\u0448\u043B\u043E
+          \u0441 \u043C\u043E\u0435\u0439 \u0441\u0435\u0441\u0442\u0440\u043E\u0439."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0418 \u043F\u043E\u043D\u044F\u043B\u0430, \u0447\u0442\u043E
+          \u043D\u0435\u0442 \u0441\u043C\u044B\u0441\u043B\u0430 \u0434\u0435\u0440\u0436\u0430\u0442\u044C
+          \u0432\u0441\u0451 \u0432 \u0441\u0435\u0431\u0435."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041B\u0438\u0437\u0430 \u2013 \u043E\u0447\u0435\u043D\u044C \u0434\u043E\u0431\u0440\u0430\u044F
+          \u0438 \u0441\u043C\u0435\u043B\u0430\u044F \u0434\u0435\u0432\u043E\u0447\u043A\u0430."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041F\u043E\u043C\u043D\u044E, \u0435\u0439 \u0438\u0441\u043F\u043E\u043B\u043D\u0438\u043B\u043E\u0441\u044C
+          12 \u043B\u0435\u0442."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u041A\u0430\u0437\u0430\u043B\u043E\u0441\u044C, \u043E\u043D\u0430
+          \u0431\u044B\u043B\u0430 \u0441\u0447\u0430\u0441\u0442\u043B\u0438\u0432\u0435\u0435
+          \u0432\u0441\u0435\u0445 \u043D\u0430 \u0441\u0432\u0435\u0442\u0435."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u0415\u0451 \u043B\u0443\u0447\u0435\u0437\u0430\u0440\u043D\u0430\u044F
+          \u0443\u043B\u044B\u0431\u043A\u0430 \u0438 \u0441\u0447\u0430\u0441\u0442\u043B\u0438\u0432\u043E\u0435
+          \u043B\u0438\u0446\u043E \u043C\u0438\u0433\u043E\u043C \u0441\u043C\u0435\u043D\u0438\u043B\u0438\u0441\u044C
+          \u043F\u0430\u043D\u0438\u0447\u0435\u0441\u043A\u0438\u043C \u0438\u0441\u043F\u0443\u0433\u043E\u043C
+          \u0438 \u043D\u0435\u043E\u0434\u043E\u043B\u0438\u043C\u044B\u043C \u0441\u0442\u0440\u0430\u0445\u043E\u043C
+          \u0432 \u043C\u043E\u043C\u0435\u043D\u0442, \u043A\u043E\u0433\u0434\u0430
+          \u0432 \u043A\u0430\u0444\u0435 \u0432\u0441\u043F\u044B\u0445\u043D\u0443\u043B
+          \u043F\u043E\u0436\u0430\u0440."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0413\u043E\u0441\u0442\u0438 \u0437\u0430\u0432\u0435\u0434\u0435\u043D\u0438\u044F
+          \u0438 \u0441\u043E\u0442\u0440\u0443\u0434\u043D\u0438\u043A\u0438 \u0432
+          \u043F\u0430\u043D\u0438\u043A\u0435 \u0431\u0435\u0436\u0430\u043B\u0438
+          \u043A \u0432\u044B\u0445\u043E\u0434\u0443."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u041F\u043E\u0432\u0441\u044E\u0434\u0443 \u0446\u0430\u0440\u0438\u043B
+          \u0445\u0430\u043E\u0441."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u0411\u0435\u0434\u043D\u0430\u044F \u0434\u0435\u0432\u043E\u0447\u043A\u0430\u2026"
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u041E\u043D\u0430 \u043F\u043E\u0431\u0435\u0436\u0430\u043B\u0430
+          \u043D\u0435 \u0442\u0443\u0434\u0430."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u0412 \u0442\u0435\u0445\u043D\u0438\u0447\u0435\u0441\u043A\u0438\u0435
+          \u043F\u043E\u043C\u0435\u0449\u0435\u043D\u0438\u044F."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u041B\u0438\u0437\u0430 \u0434\u043E \u0441\u043C\u0435\u0440\u0442\u0438
+          \u0431\u043E\u044F\u043B\u0430\u0441\u044C \u043E\u0433\u043D\u044F."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u042F \u043F\u043E\u0431\u0435\u0436\u0430\u043B\u0430 \u0437\u0430
+          \u043D\u0435\u0439."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041C\u043D\u0435 \u0431\u044B\u043B\u043E \u043F\u043B\u0435\u0432\u0430\u0442\u044C
+          \u043D\u0430 \u043E\u0433\u043E\u043D\u044C."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u041D\u043E \u043F\u043E\u0442\u043E\u043B\u043E\u043A \u043D\u0435
+          \u0432\u044B\u0434\u0435\u0440\u0436\u0430\u043B, \u0438 \u043E\u0433\u0440\u043E\u043C\u043D\u0430\u044F
+          \u0431\u0430\u043B\u043A\u0430 \u043E\u0442\u0434\u0435\u043B\u0438\u043B\u0430
+          \u043C\u0435\u043D\u044F \u043E\u0442 \u0441\u0435\u0441\u0442\u0440\u044B."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u042F \u0441\u0434\u0435\u043B\u0430\u043B\u0430 \u0432\u0441\u0451,
+          \u0447\u0442\u043E \u043C\u043E\u0433\u043B\u0430."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041E\u0443\u2026"
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u042D\u0442\u043E\u2026 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043B\u044C\u043D\u043E
+          \u0443\u0436\u0430\u0441\u043D\u043E."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0425\u043E\u0440\u043E\u0448\u043E, \u0447\u0442\u043E \u0442\u044B
+          \u043C\u043D\u0435 \u0440\u0430\u0441\u0441\u043A\u0430\u0437\u0430\u043B\u0430."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041D\u0435 \u0434\u0435\u0440\u0436\u0438 \u0432\u0441\u0451 \u0432
+          \u0441\u0435\u0431\u0435."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u042F \u0432\u0441\u0435\u0433\u0434\u0430 \u0433\u043E\u0442\u043E\u0432
+          \u0442\u0435\u0431\u044F \u0432\u044B\u0441\u043B\u0443\u0448\u0430\u0442\u044C."
   - Type: 2
-    Phrases:
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041C\u0430\u043C\u0430, \u043F\u043E\u0441\u043C\u043E\u0442\u0440\u0438
-        \u043D\u0430 \u044D\u0442\u0438 \u0440\u0438\u0441\u0443\u043D\u043A\u0438."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u042D\u0442\u043E \u043F\u0440\u0438\u043D\u0430\u0434\u043B\u0435\u0436\u0430\u043B\u043E
-        \u041B\u0438\u0437\u0435."
-    - Character: 1
-      Emotion: 1
-      Phrase: "\u0414\u0430, \u043E\u043D\u0430 \u0431\u044B\u043B\u0430 \u0445\u0443\u0434\u043E\u0436\u043D\u0438\u0446\u0435\u0439."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041F\u043E\u043C\u043D\u044E, \u0438\u0437-\u0437\u0430 \u0434\u043E\u043B\u0433\u043E\u0432
-        \u0438 \u043A\u0440\u0435\u0434\u0438\u0442\u043E\u0432 \u0443 \u043C\u0435\u043D\u044F
-        \u0435\u0434\u0432\u0430 \u0445\u0432\u0430\u0442\u0438\u043B\u043E \u0434\u0435\u043D\u0435\u0433
-        \u043D\u0430 \u043F\u043E\u043A\u0443\u043F\u043A\u0443 \u0446\u0432\u0435\u0442\u043D\u044B\u0445
-        \u043A\u0430\u0440\u0430\u043D\u0434\u0430\u0448\u0435\u0439."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u042F \u0434\u0430\u0432\u043D\u043E \u0435\u0439 \u043E\u0431\u0435\u0449\u0430\u043B\u0430."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041A\u0430\u043A \u0436\u0435 \u043E\u043D\u0430 \u0431\u044B\u043B\u0430
-        \u0440\u0430\u0434\u0430."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u0412\u0441\u0451 \u043E\u0442\u0434\u0430\u043B\u0430 \u0431\u044B,
-        \u0447\u0442\u043E\u0431\u044B \u0441\u043D\u043E\u0432\u0430 \u0443\u0432\u0438\u0434\u0435\u0442\u044C
-        \u0435\u0451 \u043B\u0438\u0446\u043E."
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u041A\u0430\u0440\u0430\u043D\u0434\u0430\u0448\u0438 \u043A\u0443\u043F\u0438\u043B\u0430
-        \u044F."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041A\u0430\u043A\u043E\u0439 \u0436\u0435 \u044F \u0431\u044B\u043B\u0430
-        \u0433\u043B\u0443\u043F\u043E\u0439."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041D\u0435 \u043E\u0442\u043B\u043E\u0436\u0438\u043B\u0430 \u0434\u0435\u043D\u0435\u0433
-        \u0434\u0430\u0436\u0435 \u043D\u0430 \u0441\u043E\u0431\u0441\u0442\u0432\u0435\u043D\u043D\u043E\u0433\u043E
-        \u0440\u0435\u0431\u0451\u043D\u043A\u0430\u2026"
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u041D\u0435 \u0437\u0430\u0446\u0438\u043A\u043B\u0438\u0432\u0430\u0439\u0441\u044F
-        \u043D\u0430 \u043F\u0440\u043E\u0448\u043B\u043E\u043C."
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u041D\u0430\u043C \u0435\u0449\u0451 \u0441\u0442\u0435\u043D\u044B
-        \u043A\u0440\u0430\u0441\u0438\u0442\u044C."
-    - Character: 1
-      Emotion: 4
-      Phrase: "\u0422\u044B \u0441\u043E \u043C\u043D\u043E\u0439?"
+    Parts:
+    - Language: 0
+      Phrases:
+      - Character: 0
+        Emotion: 0
+        Phrase: Mom, look at these drawings.
+      - Character: 1
+        Emotion: 1
+        Phrase: It belonged to Lisa.
+      - Character: 1
+        Emotion: 1
+        Phrase: Yes, she was an artist.
+      - Character: 0
+        Emotion: 0
+        Phrase: I remember when we lived here, she spent most of her time drawing.
+      - Character: 0
+        Emotion: 0
+        Phrase: I dreamed of going to art school.
+      - Character: 0
+        Emotion: 0
+        Phrase: She could ignite the light in me even in those moments when it seemed
+          that there was no way out.
+      - Character: 1
+        Emotion: 0
+        Phrase: Don't dwell on the past.
+      - Character: 1
+        Emotion: 0
+        Phrase: We have to paint the walls.
+      - Character: 1
+        Emotion: 4
+        Phrase: Are you with me?
+    - Language: 1
+      Phrases:
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041C\u0430\u043C\u0430, \u043F\u043E\u0441\u043C\u043E\u0442\u0440\u0438
+          \u043D\u0430 \u044D\u0442\u0438 \u0440\u0438\u0441\u0443\u043D\u043A\u0438."
+      - Character: 1
+        Emotion: 1
+        Phrase: "\u042D\u0442\u043E \u043F\u0440\u0438\u043D\u0430\u0434\u043B\u0435\u0436\u0430\u043B\u043E
+          \u041B\u0438\u0437\u0435."
+      - Character: 1
+        Emotion: 1
+        Phrase: "\u0414\u0430, \u043E\u043D\u0430 \u0431\u044B\u043B\u0430 \u0445\u0443\u0434\u043E\u0436\u043D\u0438\u0446\u0435\u0439."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u042F \u043F\u043E\u043C\u043D\u044E, \u043A\u043E\u0433\u0434\u0430
+          \u043C\u044B \u0436\u0438\u043B\u0438 \u0437\u0434\u0435\u0441\u044C, \u043E\u043D\u0430
+          \u043F\u0440\u043E\u0432\u043E\u0434\u0438\u043B\u0430 \u043F\u043E\u0447\u0442\u0438
+          \u0432\u0441\u0451 \u0441\u0432\u043E\u0451 \u0441\u0432\u043E\u0431\u043E\u0434\u043D\u043E\u0435
+          \u0432\u0440\u0435\u043C\u044F \u0437\u0430 \u0440\u0438\u0441\u043E\u0432\u0430\u043D\u0438\u0435\u043C."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u042F \u043C\u0435\u0447\u0442\u0430\u043B\u0430 \u043F\u043E\u0441\u0442\u0443\u043F\u0438\u0442\u044C
+          \u0432 \u0445\u0443\u0434\u043E\u0436\u0435\u0441\u0442\u0432\u0435\u043D\u043D\u0443\u044E
+          \u0448\u043A\u043E\u043B\u0443."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041E\u043D\u0430 \u043C\u043E\u0433\u043B\u0430 \u0437\u0430\u0436\u0435\u0447\u044C
+          \u0432\u043E \u043C\u043D\u0435 \u0441\u0432\u0435\u0442 \u0434\u0430\u0436\u0435
+          \u0432 \u0442\u0435 \u043C\u043E\u043C\u0435\u043D\u0442\u044B, \u043A\u043E\u0433\u0434\u0430
+          \u043A\u0430\u0437\u0430\u043B\u043E\u0441\u044C, \u0447\u0442\u043E \u0432\u044B\u0445\u043E\u0434\u0430
+          \u043D\u0435\u0442."
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u041D\u0435 \u0437\u0430\u0446\u0438\u043A\u043B\u0438\u0432\u0430\u0439\u0441\u044F
+          \u043D\u0430 \u043F\u0440\u043E\u0448\u043B\u043E\u043C."
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u041D\u0430\u043C \u0435\u0449\u0451 \u0441\u0442\u0435\u043D\u044B
+          \u043A\u0440\u0430\u0441\u0438\u0442\u044C."
+      - Character: 1
+        Emotion: 4
+        Phrase: "\u0422\u044B \u0441\u043E \u043C\u043D\u043E\u0439?"
   - Type: 6
-    Phrases:
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041B\u0438\u0437\u0430 \u0434\u043E \u0443\u0436\u0430\u0441\u0430
-        \u0431\u043E\u044F\u043B\u0430\u0441\u044C \u043E\u0433\u043D\u044F."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u0414\u0430\u0436\u0435 \u043E\u0431\u044B\u0447\u043D\u044B\u0439
-        \u043A\u043E\u0441\u0442\u0451\u0440 \u0434\u043B\u044F \u043D\u0435\u0451
-        \u0431\u044B\u043B \u0447\u0435\u043C-\u0442\u043E \u043F\u043E\u0438\u0441\u0442\u0438\u043D\u0435
-        \u043F\u0443\u0433\u0430\u044E\u0449\u0438\u043C."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041A\u0430\u043A \u043D\u0430\u0447\u0430\u043B\u0441\u044F \u0442\u043E\u0442
-        \u043F\u043E\u0436\u0430\u0440?"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041F\u0440\u0438\u0447\u0438\u043D\u0430 \u043F\u043E\u0436\u0430\u0440\u0430
-        \u0434\u043E \u0441\u0438\u0445 \u043F\u043E\u0440 \u0442\u043E\u0447\u043D\u043E
-        \u043D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u0430."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0412 \u0442\u043E\u0442 \u0440\u043E\u043A\u043E\u0432\u043E\u0439
-        \u0434\u0435\u043D\u044C \u043D\u0435\u0437\u0430\u0434\u043E\u043B\u0433\u043E
-        \u0434\u043E \u043F\u043E\u0436\u0430\u0440\u0430 \u044F \u043D\u0430\u0445\u043E\u0434\u0438\u043B\u0430\u0441\u044C
-        \u0432 \u0441\u0432\u043E\u0451\u043C \u043A\u0430\u0431\u0438\u043D\u0435\u0442\u0435."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u042F \u043F\u043E\u0447\u0443\u0432\u0441\u0442\u0432\u043E\u0432\u0430\u043B\u0430
-        \u043B\u0451\u0433\u043A\u0438\u0439 \u0437\u0430\u043F\u0430\u0445 \u0431\u0435\u043D\u0437\u0438\u043D\u0430,
-        \u043D\u043E \u0441\u043D\u0430\u0447\u0430\u043B\u0430 \u043D\u0435 \u043F\u0440\u0438\u0434\u0430\u043B\u0430
-        \u044D\u0442\u043E\u043C\u0443 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0417\u0430\u0442\u0435\u043C \u0437\u0430\u043F\u0430\u0445 \u0443\u0441\u0438\u043B\u0438\u043B\u0441\u044F,
-        \u043F\u0440\u043E\u043F\u0430\u043B\u043E \u044D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u0442\u0432\u043E."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u042F \u0442\u0443\u0442 \u0436\u0435 \u0432\u044B\u0448\u043B\u0430
-        \u0432 \u043A\u043E\u0440\u0438\u0434\u043E\u0440, \u0447\u0442\u043E\u0431\u044B
-        \u043F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C \u044D\u043B\u0435\u043A\u0442\u0440\u043E-\u0449\u0438\u0442\u043E\u043A."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0412\u043D\u0435\u0437\u0430\u043F\u043D\u043E \u043C\u0438\u043C\u043E
-        \u043C\u0435\u043D\u044F, \u0441\u043B\u0443\u0447\u0430\u0439\u043D\u043E
-        \u0437\u0430\u0434\u0435\u0432, \u043F\u0440\u043E\u0431\u0435\u0436\u0430\u043B\u0430
-        \u0447\u044C\u044F-\u0442\u043E \u0442\u0435\u043D\u044C."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u042F \u043D\u0435 \u0441\u043C\u043E\u0433\u043B\u0430 \u0440\u0430\u0437\u0433\u043B\u044F\u0434\u0435\u0442\u044C,
-        \u043A\u0442\u043E \u044D\u0442\u043E, \u0438\u0437-\u0437\u0430 \u043E\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0438\u044F
-        \u0441\u0432\u0435\u0442\u0430."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0412\u0441\u0451 \u043F\u0440\u043E\u0438\u0437\u043E\u0448\u043B\u043E
-        \u043C\u043E\u043C\u0435\u043D\u0442\u0430\u043B\u044C\u043D\u043E."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041D\u0430 \u0444\u043E\u043D\u0435 \u0443\u0436\u0435 \u0440\u0435\u0432\u0435\u043B\u0430
-        \u043F\u043E\u0436\u0430\u0440\u043D\u0430\u044F \u0441\u0438\u0433\u043D\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u044F,
-        \u0438 \u0447\u0430\u0441\u0442\u044C \u0437\u0430\u0432\u0435\u0434\u0435\u043D\u0438\u044F
-        \u043E\u0445\u0432\u0430\u0442\u0438\u043B\u0438 \u044F\u0437\u044B\u043A\u0438
-        \u043F\u043B\u0430\u043C\u0435\u043D\u0438."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u0421\u043B\u0435\u0434\u0441\u0442\u0432\u0438\u0435 \u043E\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u043B\u043E\u0441\u044C
-        \u043D\u0430 \u0443\u0442\u0435\u0447\u043A\u0435 \u0433\u0430\u0437\u0430,
-        \u043D\u043E \u044F \u0443\u0432\u0435\u0440\u0435\u043D\u0430, \u043F\u0440\u0438\u0447\u0438\u043D\u0430
-        \u043D\u0435 \u0432 \u044D\u0442\u043E\u043C."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u042D\u0442\u043E \u0431\u044B\u043B \u043D\u0430\u043C\u0435\u0440\u0435\u043D\u043D\u044B\u0439
-        \u043F\u043E\u0434\u0436\u043E\u0433."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041A\u0430\u043A \u0434\u0443\u043C\u0430\u0435\u0448\u044C, \u043A\u0442\u043E
-        \u043C\u043E\u0433 \u044D\u0442\u043E \u0441\u0434\u0435\u043B\u0430\u0442\u044C?"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u042F \u043D\u0435 \u0443\u0432\u0435\u0440\u0435\u043D\u0430."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0423 \u043C\u0435\u043D\u044F \u043D\u0435 \u0431\u044B\u043B\u043E
-        \u0437\u0430\u0432\u0438\u0441\u0442\u043D\u0438\u043A\u043E\u0432 \u0438
-        \u0432\u0440\u0430\u0433\u043E\u0432."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u0410 \u0432\u0435\u0434\u044C \u0432\u0438\u043D\u043E\u0432\u043D\u0438\u043A
-        \u0442\u0430\u043A \u0438 \u043D\u0435 \u043D\u0430\u043A\u0430\u0437\u0430\u043D
-        \u0438, \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E, \u0434\u043E \u0441\u0438\u0445
-        \u043F\u043E\u0440 \u0440\u0430\u0437\u0433\u0443\u043B\u0438\u0432\u0430\u0435\u0442
-        \u043D\u0430 \u0441\u0432\u043E\u0431\u043E\u0434\u0435."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041D\u0435 \u0433\u0440\u0443\u0441\u0442\u0438, \u043F\u0440\u0438\u043D\u0446\u0435\u0441\u0441\u0430."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041A\u043E\u0433\u0434\u0430 \u044F \u0432\u0435\u0440\u043D\u0443\u0441\u044C,
-        \u043C\u044B \u0432\u043C\u0435\u0441\u0442\u0435 \u0441\u043B\u0435\u0442\u0430\u0435\u043C
-        \u043D\u0430 \u043A\u0443\u0440\u043E\u0440\u0442."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0411\u0443\u0434\u044C \u0443\u0432\u0435\u0440\u0435\u043D\u0430,
-        \u043D\u043E\u0432\u044B\u0435 \u0432\u043F\u0435\u0447\u0430\u0442\u043B\u0435\u043D\u0438\u044F
-        \u043F\u043E\u043C\u043E\u0433\u0443\u0442 \u0441\u0431\u0440\u043E\u0441\u0438\u0442\u044C
-        \u0442\u044F\u0436\u0451\u043B\u044B\u0439 \u0433\u0440\u0443\u0437 \u0441
-        \u0434\u0443\u0448\u0438."
+    Parts:
+    - Language: 0
+      Phrases:
+      - Character: 0
+        Emotion: 0
+        Phrase: Lisa was terrified of fire.
+      - Character: 0
+        Emotion: 1
+        Phrase: Even an ordinary fire for her was something truly frightening.
+      - Character: 3
+        Emotion: 0
+        Phrase: How did that fire start?
+      - Character: 0
+        Emotion: 0
+        Phrase: The cause of the fire is still not exactly known.
+      - Character: 0
+        Emotion: 0
+        Phrase: On that fateful day, shortly before the fire, I was in my office.
+      - Character: 0
+        Emotion: 0
+        Phrase: I smelled a slight smell of gasoline, but at first I did not attach
+          any importance to this.
+      - Character: 0
+        Emotion: 0
+        Phrase: Then the smell intensified, the electricity went out.
+      - Character: 0
+        Emotion: 0
+        Phrase: I immediately went out into the corridor to check the electrical
+          panel.
+      - Character: 0
+        Emotion: 0
+        Phrase: Suddenly, a shadow ran past me, accidentally hitting me.
+      - Character: 0
+        Emotion: 1
+        Phrase: I couldn't see who it was due to the lack of light.
+      - Character: 0
+        Emotion: 0
+        Phrase: Everything happened instantly.
+      - Character: 0
+        Emotion: 1
+        Phrase: In the background, the fire alarm was already roaring, and part of
+          the establishment was engulfed in flames.
+      - Character: 0
+        Emotion: 1
+        Phrase: The investigation settled on a gas leak, but I'm sure that's not
+          the reason.
+      - Character: 0
+        Emotion: 1
+        Phrase: It was deliberate arson.
+      - Character: 3
+        Emotion: 0
+        Phrase: Who do you think could have done this?
+      - Character: 0
+        Emotion: 0
+        Phrase: I'm not sure.
+      - Character: 0
+        Emotion: 0
+        Phrase: I did not have envious people and enemies.
+      - Character: 0
+        Emotion: 1
+        Phrase: But the culprit has not been punished and, perhaps, is still walking
+          free.
+      - Character: 3
+        Emotion: 0
+        Phrase: Don't be sad, princess.
+      - Character: 3
+        Emotion: 0
+        Phrase: When I get back, we fly to the resort together.
+      - Character: 3
+        Emotion: 0
+        Phrase: Be sure, new impressions will help to relieve a heavy burden from
+          the soul.
+    - Language: 1
+      Phrases:
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041B\u0438\u0437\u0430 \u0434\u043E \u0443\u0436\u0430\u0441\u0430
+          \u0431\u043E\u044F\u043B\u0430\u0441\u044C \u043E\u0433\u043D\u044F."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u0414\u0430\u0436\u0435 \u043E\u0431\u044B\u0447\u043D\u044B\u0439
+          \u043A\u043E\u0441\u0442\u0451\u0440 \u0434\u043B\u044F \u043D\u0435\u0451
+          \u0431\u044B\u043B \u0447\u0435\u043C-\u0442\u043E \u043F\u043E\u0438\u0441\u0442\u0438\u043D\u0435
+          \u043F\u0443\u0433\u0430\u044E\u0449\u0438\u043C."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041A\u0430\u043A \u043D\u0430\u0447\u0430\u043B\u0441\u044F \u0442\u043E\u0442
+          \u043F\u043E\u0436\u0430\u0440?"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041F\u0440\u0438\u0447\u0438\u043D\u0430 \u043F\u043E\u0436\u0430\u0440\u0430
+          \u0434\u043E \u0441\u0438\u0445 \u043F\u043E\u0440 \u0442\u043E\u0447\u043D\u043E
+          \u043D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u0430."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0412 \u0442\u043E\u0442 \u0440\u043E\u043A\u043E\u0432\u043E\u0439
+          \u0434\u0435\u043D\u044C \u043D\u0435\u0437\u0430\u0434\u043E\u043B\u0433\u043E
+          \u0434\u043E \u043F\u043E\u0436\u0430\u0440\u0430 \u044F \u043D\u0430\u0445\u043E\u0434\u0438\u043B\u0430\u0441\u044C
+          \u0432 \u0441\u0432\u043E\u0451\u043C \u043A\u0430\u0431\u0438\u043D\u0435\u0442\u0435."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u042F \u043F\u043E\u0447\u0443\u0432\u0441\u0442\u0432\u043E\u0432\u0430\u043B\u0430
+          \u043B\u0451\u0433\u043A\u0438\u0439 \u0437\u0430\u043F\u0430\u0445 \u0431\u0435\u043D\u0437\u0438\u043D\u0430,
+          \u043D\u043E \u0441\u043D\u0430\u0447\u0430\u043B\u0430 \u043D\u0435 \u043F\u0440\u0438\u0434\u0430\u043B\u0430
+          \u044D\u0442\u043E\u043C\u0443 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u044F."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0417\u0430\u0442\u0435\u043C \u0437\u0430\u043F\u0430\u0445 \u0443\u0441\u0438\u043B\u0438\u043B\u0441\u044F,
+          \u043F\u0440\u043E\u043F\u0430\u043B\u043E \u044D\u043B\u0435\u043A\u0442\u0440\u0438\u0447\u0435\u0441\u0442\u0432\u043E."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u042F \u0442\u0443\u0442 \u0436\u0435 \u0432\u044B\u0448\u043B\u0430
+          \u0432 \u043A\u043E\u0440\u0438\u0434\u043E\u0440, \u0447\u0442\u043E\u0431\u044B
+          \u043F\u0440\u043E\u0432\u0435\u0440\u0438\u0442\u044C \u044D\u043B\u0435\u043A\u0442\u0440\u043E-\u0449\u0438\u0442\u043E\u043A."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0412\u043D\u0435\u0437\u0430\u043F\u043D\u043E \u043C\u0438\u043C\u043E
+          \u043C\u0435\u043D\u044F, \u0441\u043B\u0443\u0447\u0430\u0439\u043D\u043E
+          \u0437\u0430\u0434\u0435\u0432, \u043F\u0440\u043E\u0431\u0435\u0436\u0430\u043B\u0430
+          \u0447\u044C\u044F-\u0442\u043E \u0442\u0435\u043D\u044C."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u042F \u043D\u0435 \u0441\u043C\u043E\u0433\u043B\u0430 \u0440\u0430\u0437\u0433\u043B\u044F\u0434\u0435\u0442\u044C,
+          \u043A\u0442\u043E \u044D\u0442\u043E, \u0438\u0437-\u0437\u0430 \u043E\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0438\u044F
+          \u0441\u0432\u0435\u0442\u0430."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0412\u0441\u0451 \u043F\u0440\u043E\u0438\u0437\u043E\u0448\u043B\u043E
+          \u043C\u043E\u043C\u0435\u043D\u0442\u0430\u043B\u044C\u043D\u043E."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u041D\u0430 \u0444\u043E\u043D\u0435 \u0443\u0436\u0435 \u0440\u0435\u0432\u0435\u043B\u0430
+          \u043F\u043E\u0436\u0430\u0440\u043D\u0430\u044F \u0441\u0438\u0433\u043D\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u044F,
+          \u0438 \u0447\u0430\u0441\u0442\u044C \u0437\u0430\u0432\u0435\u0434\u0435\u043D\u0438\u044F
+          \u043E\u0445\u0432\u0430\u0442\u0438\u043B\u0438 \u044F\u0437\u044B\u043A\u0438
+          \u043F\u043B\u0430\u043C\u0435\u043D\u0438."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u0421\u043B\u0435\u0434\u0441\u0442\u0432\u0438\u0435 \u043E\u0441\u0442\u0430\u043D\u043E\u0432\u0438\u043B\u043E\u0441\u044C
+          \u043D\u0430 \u0443\u0442\u0435\u0447\u043A\u0435 \u0433\u0430\u0437\u0430,
+          \u043D\u043E \u044F \u0443\u0432\u0435\u0440\u0435\u043D\u0430, \u043F\u0440\u0438\u0447\u0438\u043D\u0430
+          \u043D\u0435 \u0432 \u044D\u0442\u043E\u043C."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u042D\u0442\u043E \u0431\u044B\u043B \u043D\u0430\u043C\u0435\u0440\u0435\u043D\u043D\u044B\u0439
+          \u043F\u043E\u0434\u0436\u043E\u0433."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041A\u0430\u043A \u0434\u0443\u043C\u0430\u0435\u0448\u044C, \u043A\u0442\u043E
+          \u043C\u043E\u0433 \u044D\u0442\u043E \u0441\u0434\u0435\u043B\u0430\u0442\u044C?"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u042F \u043D\u0435 \u0443\u0432\u0435\u0440\u0435\u043D\u0430."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0423 \u043C\u0435\u043D\u044F \u043D\u0435 \u0431\u044B\u043B\u043E
+          \u0437\u0430\u0432\u0438\u0441\u0442\u043D\u0438\u043A\u043E\u0432 \u0438
+          \u0432\u0440\u0430\u0433\u043E\u0432."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u0410 \u0432\u0435\u0434\u044C \u0432\u0438\u043D\u043E\u0432\u043D\u0438\u043A
+          \u0442\u0430\u043A \u0438 \u043D\u0435 \u043D\u0430\u043A\u0430\u0437\u0430\u043D
+          \u0438, \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E, \u0434\u043E
+          \u0441\u0438\u0445 \u043F\u043E\u0440 \u0440\u0430\u0437\u0433\u0443\u043B\u0438\u0432\u0430\u0435\u0442
+          \u043D\u0430 \u0441\u0432\u043E\u0431\u043E\u0434\u0435."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041D\u0435 \u0433\u0440\u0443\u0441\u0442\u0438, \u043F\u0440\u0438\u043D\u0446\u0435\u0441\u0441\u0430."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041A\u043E\u0433\u0434\u0430 \u044F \u0432\u0435\u0440\u043D\u0443\u0441\u044C,
+          \u043C\u044B \u0432\u043C\u0435\u0441\u0442\u0435 \u0441\u043B\u0435\u0442\u0430\u0435\u043C
+          \u043D\u0430 \u043A\u0443\u0440\u043E\u0440\u0442."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0411\u0443\u0434\u044C \u0443\u0432\u0435\u0440\u0435\u043D\u0430,
+          \u043D\u043E\u0432\u044B\u0435 \u0432\u043F\u0435\u0447\u0430\u0442\u043B\u0435\u043D\u0438\u044F
+          \u043F\u043E\u043C\u043E\u0433\u0443\u0442 \u0441\u0431\u0440\u043E\u0441\u0438\u0442\u044C
+          \u0442\u044F\u0436\u0451\u043B\u044B\u0439 \u0433\u0440\u0443\u0437 \u0441
+          \u0434\u0443\u0448\u0438."
   - Type: 3
-    Phrases:
-    - Character: 1
-      Emotion: 5
-      Phrase: "\u0418 \u0432\u043E\u0442\u2026"
-    - Character: 1
-      Emotion: 5
-      Phrase: "\u0415\u0451 \u0431\u0430\u0431\u0443\u043B\u044F, \u0443\u0432\u0438\u0434\u0435\u0432,
-        \u043A\u0430\u043A \u044F \u0433\u043E\u0432\u043E\u0440\u044E \u0441 \u043F\u043E\u0434\u0440\u0443\u0433\u043E\u0439
-        \u043F\u043E \u0432\u0438\u0434\u0435\u043E\u0441\u0432\u044F\u0437\u0438,
-        \u043F\u043E\u0448\u043B\u0430 \u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C
-        \u0441 \u043F\u0440\u0435\u0437\u0438\u0434\u0435\u043D\u0442\u043E\u043C
-        \u043F\u043E \u0442\u0435\u043B\u0435\u0432\u0438\u0437\u043E\u0440\u0443."
-    - Character: 1
-      Emotion: 5
-      Phrase: "\u0425\u0430-\u0445\u0430!"
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u2026"
-    - Character: 1
-      Emotion: 1
-      Phrase: "\u0414\u0435\u0442\u043A\u0430, \u0432\u0441\u0451 \u0432 \u043F\u043E\u0440\u044F\u0434\u043A\u0435?"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u042D\u0442\u043E \u043A\u0430\u0444\u0435\u2026"
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u0412\u0441\u0451 \u043D\u0438\u043A\u0430\u043A \u043D\u0435 \u043C\u043E\u0433\u0443
-        \u0441\u0432\u044B\u043A\u043D\u0443\u0442\u044C\u0441\u044F \u0441 \u043C\u044B\u0441\u043B\u044C\u044E
-        \u043E \u0442\u043E\u043C, \u0447\u0442\u043E \u043C\u043D\u0435 \u0432\u043D\u043E\u0432\u044C
-        \u043F\u0440\u0438\u0434\u0451\u0442\u0441\u044F \u043F\u0440\u043E\u0432\u043E\u0434\u0438\u0442\u044C
-        \u0431\u043E\u043B\u044C\u0448\u0443\u044E \u0447\u0430\u0441\u0442\u044C
-        \u0441\u0432\u043E\u0435\u0433\u043E \u0432\u0440\u0435\u043C\u0435\u043D\u0438
-        \u0432 \u043C\u0435\u0441\u0442\u0435, \u043A\u043E\u0442\u043E\u0440\u043E\u0435
-        \u043A\u043E\u0433\u0434\u0430-\u0442\u043E \u0440\u0430\u0437\u0440\u0443\u0448\u0438\u043B\u043E
-        \u043C\u043E\u044E \u0436\u0438\u0437\u043D\u044C."
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u041C\u0430\u0433\u0434\u0430\u043B\u0435\u043D\u0430, \u043C\u044B
-        \u0443\u0436\u0435 \u0433\u043E\u0432\u043E\u0440\u0438\u043B\u0438 \u043E\u0431
-        \u044D\u0442\u043E\u043C\u2026"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0417\u043D\u0430\u0435\u0448\u044C, \u0432 \u043A\u0430\u043A\u043E\u0439-\u0442\u043E
-        \u043C\u0435\u0440\u0435 \u044F \u0440\u0430\u0434\u0430, \u0447\u0442\u043E
-        \u0442\u044B \u0432\u0437\u044F\u043B\u0430 \u043C\u0435\u043D\u044F \u0441
-        \u0441\u043E\u0431\u043E\u0439."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041F\u043E\u0440\u043E\u0439 \u043F\u0440\u0438\u0445\u043E\u0434\u0438\u0442\u0441\u044F
-        \u0432\u043D\u043E\u0432\u044C \u043F\u0435\u0440\u0435\u0436\u0438\u0432\u0430\u0442\u044C
-        \u043C\u043E\u043C\u0435\u043D\u0442\u044B \u043F\u0440\u043E\u0448\u043B\u043E\u0433\u043E,
-        \u0447\u0442\u043E\u0431\u044B \u043F\u0435\u0440\u0435\u0441\u0442\u0430\u0442\u044C
-        \u0443\u0431\u0435\u0433\u0430\u0442\u044C \u043E\u0442 \u043F\u0440\u043E\u0431\u043B\u0435\u043C
-        \u0438 \u0441\u0442\u043E\u043B\u043A\u043D\u0443\u0442\u044C\u0441\u044F
-        \u0441\u043E \u0441\u0432\u043E\u0438\u043C \u0441\u0442\u0440\u0430\u0445\u043E\u043C
-        \u043B\u0438\u0446\u043E\u043C \u043A \u043B\u0438\u0446\u0443, \u0432\u0435\u0440\u043D\u043E?"
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u042F \u0440\u0430\u0434\u0430, \u0447\u0442\u043E \u0442\u044B \u044D\u0442\u043E
-        \u043F\u043E\u043D\u044F\u043B\u0430, \u0434\u043E\u0440\u043E\u0433\u0430\u044F."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0410 \u0442\u044B, \u043C\u0430\u043C\u0430."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041F\u043E\u0447\u0435\u043C\u0443 \u0441\u0440\u0430\u0437\u0443
-        \u043F\u043E\u0441\u043B\u0435 \u043F\u043E\u0436\u0430\u0440\u0430 \u0442\u044B
-        \u0431\u0440\u043E\u0441\u0438\u043B\u0430 \u043C\u0435\u043D\u044F \u0438
-        \u0441\u0431\u0435\u0436\u0430\u043B\u0430 \u0432 \u0415\u0432\u0440\u043E\u043F\u0443?"
-    - Character: 1
-      Emotion: 3
-      Phrase: "\u0421\u0431\u0435\u0436\u0430\u043B\u0430?"
-    - Character: 1
-      Emotion: 3
-      Phrase: "\u042D\u0442\u043E \u043D\u0435 \u0442\u0430\u043A!"
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u0414\u0435\u0442\u043A\u0430, \u043C\u0438\u043B\u0430\u044F, \u043C\u043D\u0435
-        \u043D\u0430\u0434\u043E \u043E\u0442\u043B\u0443\u0447\u0438\u0442\u044C\u0441\u044F,
-        \u043F\u043E\u0433\u043E\u0432\u043E\u0440\u0438\u043C \u043F\u043E\u0437\u0436\u0435."
+    Parts:
+    - Language: 0
+      Phrases:
+      - Character: 1
+        Emotion: 0
+        Phrase: And so...
+      - Character: 1
+        Emotion: 4
+        Phrase: Her grandmother, seeing me talking with a friend via video link,
+          went to talk to the president on TV.
+      - Character: 1
+        Emotion: 5
+        Phrase: Haha!
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u2026"
+      - Character: 1
+        Emotion: 1
+        Phrase: Baby, is everything all right?
+      - Character: 0
+        Emotion: 1
+        Phrase: It's a cafe...
+      - Character: 0
+        Emotion: 1
+        Phrase: I still can't get over the idea that I'll have to spend most of my
+          time in this place again.
+      - Character: 1
+        Emotion: 1
+        Phrase: Magdalena, we have already talked about this...
+      - Character: 0
+        Emotion: 0
+        Phrase: You know, in a way I'm glad you took me with you.
+      - Character: 0
+        Emotion: 0
+        Phrase: Sometimes you have to relive moments of the past in order to stop
+          running away from problems, right?
+      - Character: 1
+        Emotion: 0
+        Phrase: I'm glad you understood that, dear.
+      - Character: 0
+        Emotion: 0
+        Phrase: And you, mother.
+      - Character: 0
+        Emotion: 1
+        Phrase: Why did you leave me and run away to Europe right after the fire?
+      - Character: 1
+        Emotion: 3
+        Phrase: Run away?
+      - Character: 1
+        Emotion: 3
+        Phrase: This is wrong!
+      - Character: 1
+        Emotion: 0
+        Phrase: Baby, honey, I need to go away, we'll talk later.
+    - Language: 1
+      Phrases:
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u0418 \u0432\u043E\u0442\u2026"
+      - Character: 1
+        Emotion: 4
+        Phrase: "\u0415\u0451 \u0431\u0430\u0431\u0443\u043B\u044F, \u0443\u0432\u0438\u0434\u0435\u0432,
+          \u043A\u0430\u043A \u044F \u0433\u043E\u0432\u043E\u0440\u044E \u0441 \u043F\u043E\u0434\u0440\u0443\u0433\u043E\u0439
+          \u043F\u043E \u0432\u0438\u0434\u0435\u043E\u0441\u0432\u044F\u0437\u0438,
+          \u043F\u043E\u0448\u043B\u0430 \u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C
+          \u0441 \u043F\u0440\u0435\u0437\u0438\u0434\u0435\u043D\u0442\u043E\u043C
+          \u043F\u043E \u0442\u0435\u043B\u0435\u0432\u0438\u0437\u043E\u0440\u0443."
+      - Character: 1
+        Emotion: 5
+        Phrase: "\u0425\u0430-\u0445\u0430!"
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u2026"
+      - Character: 1
+        Emotion: 1
+        Phrase: "\u0414\u0435\u0442\u043A\u0430, \u0432\u0441\u0451 \u0432 \u043F\u043E\u0440\u044F\u0434\u043A\u0435?"
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u042D\u0442\u043E \u043A\u0430\u0444\u0435\u2026"
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u0412\u0441\u0451 \u0435\u0449\u0451 \u043D\u0435 \u043C\u043E\u0433\u0443
+          \u0441\u043C\u0438\u0440\u0438\u0442\u044C\u0441\u044F \u0441 \u043C\u044B\u0441\u043B\u044C\u044E,
+          \u0447\u0442\u043E \u043C\u043D\u0435 \u0441\u043D\u043E\u0432\u0430 \u043F\u0440\u0438\u0434\u0435\u0442\u0441\u044F
+          \u043F\u0440\u043E\u0432\u043E\u0434\u0438\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0443\u044E
+          \u0447\u0430\u0441\u0442\u044C \u0441\u0432\u043E\u0435\u0433\u043E \u0432\u0440\u0435\u043C\u0435\u043D\u0438
+          \u0432 \u044D\u0442\u043E\u043C \u043C\u0435\u0441\u0442\u0435."
+      - Character: 1
+        Emotion: 1
+        Phrase: "\u041C\u0430\u0433\u0434\u0430\u043B\u0435\u043D\u0430, \u043C\u044B
+          \u0443\u0436\u0435 \u0433\u043E\u0432\u043E\u0440\u0438\u043B\u0438 \u043E\u0431
+          \u044D\u0442\u043E\u043C\u2026"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0417\u043D\u0430\u0435\u0448\u044C, \u0432 \u043A\u0430\u043A\u043E\u0439-\u0442\u043E
+          \u043C\u0435\u0440\u0435 \u044F \u0440\u0430\u0434\u0430, \u0447\u0442\u043E
+          \u0442\u044B \u0432\u0437\u044F\u043B\u0430 \u043C\u0435\u043D\u044F \u0441
+          \u0441\u043E\u0431\u043E\u0439."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041F\u043E\u0440\u043E\u0439 \u043F\u0440\u0438\u0445\u043E\u0434\u0438\u0442\u0441\u044F
+          \u0432\u043D\u043E\u0432\u044C \u043F\u0435\u0440\u0435\u0436\u0438\u0432\u0430\u0442\u044C
+          \u043C\u043E\u043C\u0435\u043D\u0442\u044B \u043F\u0440\u043E\u0448\u043B\u043E\u0433\u043E,
+          \u0447\u0442\u043E\u0431\u044B \u043F\u0435\u0440\u0435\u0441\u0442\u0430\u0442\u044C
+          \u0443\u0431\u0435\u0433\u0430\u0442\u044C \u043E\u0442 \u043F\u0440\u043E\u0431\u043B\u0435\u043C,
+          \u0432\u0435\u0440\u043D\u043E?"
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u042F \u0440\u0430\u0434\u0430, \u0447\u0442\u043E \u0442\u044B
+          \u044D\u0442\u043E \u043F\u043E\u043D\u044F\u043B\u0430, \u0434\u043E\u0440\u043E\u0433\u0430\u044F."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0410 \u0442\u044B, \u043C\u0430\u043C\u0430."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u041F\u043E\u0447\u0435\u043C\u0443 \u0441\u0440\u0430\u0437\u0443
+          \u043F\u043E\u0441\u043B\u0435 \u043F\u043E\u0436\u0430\u0440\u0430 \u0442\u044B
+          \u0431\u0440\u043E\u0441\u0438\u043B\u0430 \u043C\u0435\u043D\u044F \u0438
+          \u0441\u0431\u0435\u0436\u0430\u043B\u0430 \u0432 \u0415\u0432\u0440\u043E\u043F\u0443?"
+      - Character: 1
+        Emotion: 3
+        Phrase: "\u0421\u0431\u0435\u0436\u0430\u043B\u0430?"
+      - Character: 1
+        Emotion: 3
+        Phrase: "\u042D\u0442\u043E \u043D\u0435 \u0442\u0430\u043A!"
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u0414\u0435\u0442\u043A\u0430, \u043C\u0438\u043B\u0430\u044F,
+          \u043C\u043D\u0435 \u043D\u0430\u0434\u043E \u043E\u0442\u043B\u0443\u0447\u0438\u0442\u044C\u0441\u044F,
+          \u043F\u043E\u0433\u043E\u0432\u043E\u0440\u0438\u043C \u043F\u043E\u0437\u0436\u0435."
   - Type: 4
-    Phrases:
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041C\u0438\u043D\u0443\u0442\u043A\u0443, \u0424\u0435\u043B\u0438\u043A\u0441."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041F\u0440\u043E\u0432\u0435\u0440\u044E \u043F\u043E\u0447\u0442\u043E\u0432\u044B\u0439
-        \u044F\u0449\u0438\u043A."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0421\u0435\u0433\u043E\u0434\u043D\u044F \u044F \u0436\u0434\u0443
-        \u043E\u0442\u043A\u0440\u044B\u0442\u043A\u0443 \u043E\u0442 \u0441\u0432\u043E\u0435\u0439
-        \u043E\u0434\u043D\u043E\u043A\u043B\u0430\u0441\u0441\u043D\u0438\u0446\u044B."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0420\u0430\u0437\u0443\u043C\u0435\u0435\u0442\u0441\u044F, \u043F\u0440\u0438\u043D\u0446\u0435\u0441\u0441\u0430."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u2026"
-    - Character: 0
-      Emotion: 4
-      Phrase: "\u041F\u0440\u0438\u0448\u043B\u0430!"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041F\u043E\u0433\u043E\u0434\u0438-\u043A\u0430."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0422\u0443\u0442 \u043F\u0438\u0441\u044C\u043C\u043E \u043C\u0430\u043C\u0435."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0422\u044B \u0436\u0435 \u043D\u0435 \u0441\u0442\u0430\u043D\u0435\u0448\u044C
-        \u0435\u0433\u043E \u0447\u0438\u0442\u0430\u0442\u044C?"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041A\u043E\u043D\u0435\u0447\u043D\u043E \u043D\u0435\u0442."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u042F \u0442\u043E\u043B\u044C\u043A\u043E \u043F\u043E\u0441\u043C\u043E\u0442\u0440\u044E,
-        \u043E\u0442 \u043A\u043E\u0433\u043E \u043E\u043D\u043E."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041C\u0430\u0433\u0434\u0430\u043B\u0435\u043D\u0430, \u044D\u0442\u043E
-        \u043D\u0435\u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u2026"
-    - Character: 0
-      Emotion: 3
-      Phrase: "\u041D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C\u2026"
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0427\u0442\u043E \u0441\u043B\u0443\u0447\u0438\u043B\u043E\u0441\u044C?"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\xAB\u041C\u0430\u0442\u0438\u043B\u044C\u0434\u0430 \u0425\u0430\u0447\u0435\u0442\u0441\u043E\u043D,
-        \u043D\u043E\u043C\u0435\u0440 11 \u0432 \u0431\u0435\u0433\u0430\u0445\xBB."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\xAB\u041E\u043D\u0430 \u0441\u043D\u043E\u0432\u0430 \u043D\u0430\u0441
-        \u0440\u0430\u0437\u043E\u0447\u0430\u0440\u043E\u0432\u0430\u043B\u0430\xBB."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\xAB\u0418\u0437\u0432\u0438\u043D\u0438, \u043D\u043E \u0435\u0441\u043B\u0438
-        \u0442\u0430\u043A \u0431\u0443\u0434\u0435\u0442 \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0430\u0442\u044C\u0441\u044F
-        \u0432 \u0442\u043E\u043C \u0436\u0435 \u0434\u0443\u0445\u0435, \u043C\u044B
-        \u0431\u0443\u0434\u0435\u043C \u0432\u044B\u043D\u0443\u0436\u0434\u0435\u043D\u044B
-        \u043E\u0442 \u043D\u0435\u0451 \u0438\u0437\u0431\u0430\u0432\u0438\u0442\u044C\u0441\u044F\xBB"
-    - Character: 0
-      Emotion: 3
-      Phrase: "\u041E\u0442 \u043A\u043E\u0433\u043E \u043E\u043D\u0438 \u0445\u043E\u0442\u044F\u0442
-        \xAB\u0438\u0437\u0431\u0430\u0432\u0438\u0442\u044C\u0441\u044F\xBB?"
-    - Character: 0
-      Emotion: 3
-      Phrase: "\u0418 \u043F\u0440\u0438\u0447\u0451\u043C \u0442\u0443\u0442 \u043C\u0430\u043C\u0430?"
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u0411\u043E\u044E\u0441\u044C, \u0443 \u043D\u0430\u0441 \u0441 \u043D\u0435\u0439
-        \u0441\u043E\u0441\u0442\u043E\u0438\u0442\u0441\u044F \u043D\u0435 \u043E\u0447\u0435\u043D\u044C
-        \u043F\u0440\u0438\u044F\u0442\u043D\u044B\u0439 \u0440\u0430\u0437\u0433\u043E\u0432\u043E\u0440."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041C\u0430\u0433\u0434\u0430\u043B\u0435\u043D\u0430, \u044D\u0442\u043E
-        \u0442\u0435\u0431\u044F \u043D\u0435 \u043A\u0430\u0441\u0430\u0435\u0442\u0441\u044F."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041F\u043E\u0433\u043E\u0434\u0438, \u0442\u0443\u0442 \u0435\u0449\u0451
-        \u0432\u043B\u043E\u0436\u0435\u043D\u0430 \u0437\u0430\u043F\u0438\u0441\u043A\u0430."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041D\u043E \u043D\u0430 \u043D\u0435\u0439 \u043D\u0438\u0447\u0435\u0433\u043E
-        \u043D\u0435\u0442\u2026"
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041F\u0440\u043E\u0441\u0442\u043E \u043A\u043B\u043E\u0447\u043E\u043A
-        \u0431\u0443\u043C\u0430\u0433\u0438."
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u0414\u0435\u0442\u043A\u0430, \u0442\u044B \u043C\u043D\u0435 \u043D\u0443\u0436\u043D\u0430!"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041F\u043E\u0433\u043E\u0432\u043E\u0440\u0438\u043C \u043F\u043E\u0437\u0436\u0435,
-        \u0424\u0435\u043B\u0438\u043A\u0441."
+    Parts:
+    - Language: 0
+      Phrases:
+      - Character: 0
+        Emotion: 0
+        Phrase: Wait a minute, Felix.
+      - Character: 0
+        Emotion: 0
+        Phrase: I'll check the mailbox.
+      - Character: 0
+        Emotion: 0
+        Phrase: Today I am waiting for a postcard from my classmate.
+      - Character: 3
+        Emotion: 0
+        Phrase: Of course, princess.
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u2026"
+      - Character: 0
+        Emotion: 4
+        Phrase: It have come!
+      - Character: 0
+        Emotion: 0
+        Phrase: Wait a minute.
+      - Character: 0
+        Emotion: 0
+        Phrase: Here is a letter to my mother.
+      - Character: 3
+        Emotion: 0
+        Phrase: You won't read it, will you?
+      - Character: 0
+        Emotion: 0
+        Phrase: Of course not.
+      - Character: 0
+        Emotion: 0
+        Phrase: I'll just see who it's from.
+      - Character: 3
+        Emotion: 0
+        Phrase: Magdalena, this is wrong.
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u2026"
+      - Character: 0
+        Emotion: 1
+        Phrase: "It can't be\u2026"
+      - Character: 3
+        Emotion: 0
+        Phrase: What happened?
+      - Character: 0
+        Emotion: 0
+        Phrase: "\xABMatilda Hutcheson, number 11 is on the run."
+      - Character: 0
+        Emotion: 0
+        Phrase: She disappointed us again.
+      - Character: 0
+        Emotion: 0
+        Phrase: "I'm sorry, but if this continues like this, we'll be forced to get
+          rid of her.\xBB"
+      - Character: 0
+        Emotion: 1
+        Phrase: "Who do they want to \xABget rid of\xBB?"
+      - Character: 0
+        Emotion: 0
+        Phrase: And what about mom?
+      - Character: 0
+        Emotion: 0
+        Phrase: I'm afraid we won't have a very pleasant conversation with her.
+      - Character: 3
+        Emotion: 0
+        Phrase: Magdalena, this is none of your business.
+      - Character: 0
+        Emotion: 0
+        Phrase: Wait, there's also a note inside.
+      - Character: 0
+        Emotion: 0
+        Phrase: But there is nothing on it...
+      - Character: 0
+        Emotion: 1
+        Phrase: Just a piece of paper.
+      - Character: 1
+        Emotion: 0
+        Phrase: Baby, I need you!
+      - Character: 0
+        Emotion: 0
+        Phrase: We'll talk later, Felix.
+    - Language: 1
+      Phrases:
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041C\u0438\u043D\u0443\u0442\u043A\u0443, \u0424\u0435\u043B\u0438\u043A\u0441."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041F\u0440\u043E\u0432\u0435\u0440\u044E \u043F\u043E\u0447\u0442\u043E\u0432\u044B\u0439
+          \u044F\u0449\u0438\u043A."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0421\u0435\u0433\u043E\u0434\u043D\u044F \u044F \u0436\u0434\u0443
+          \u043E\u0442\u043A\u0440\u044B\u0442\u043A\u0443 \u043E\u0442 \u0441\u0432\u043E\u0435\u0439
+          \u043E\u0434\u043D\u043E\u043A\u043B\u0430\u0441\u0441\u043D\u0438\u0446\u044B."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0420\u0430\u0437\u0443\u043C\u0435\u0435\u0442\u0441\u044F, \u043F\u0440\u0438\u043D\u0446\u0435\u0441\u0441\u0430."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u2026"
+      - Character: 0
+        Emotion: 4
+        Phrase: "\u041F\u0440\u0438\u0448\u043B\u0430!"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041F\u043E\u0433\u043E\u0434\u0438-\u043A\u0430."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0422\u0443\u0442 \u043F\u0438\u0441\u044C\u043C\u043E \u043C\u0430\u043C\u0435."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0422\u044B \u0436\u0435 \u043D\u0435 \u0441\u0442\u0430\u043D\u0435\u0448\u044C
+          \u0435\u0433\u043E \u0447\u0438\u0442\u0430\u0442\u044C?"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041A\u043E\u043D\u0435\u0447\u043D\u043E \u043D\u0435\u0442."
+      - Character: 0
+        Emotion: 0
+        Phrase: " \u042F \u0442\u043E\u043B\u044C\u043A\u043E \u043F\u043E\u0441\u043C\u043E\u0442\u0440\u044E,
+          \u043E\u0442 \u043A\u043E\u0433\u043E \u043E\u043D\u043E."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041C\u0430\u0433\u0434\u0430\u043B\u0435\u043D\u0430, \u044D\u0442\u043E
+          \u043D\u0435\u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u2026"
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u041D\u0435 \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C\u2026"
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0427\u0442\u043E \u0441\u043B\u0443\u0447\u0438\u043B\u043E\u0441\u044C?"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\xAB\u041C\u0430\u0442\u0438\u043B\u044C\u0434\u0430 \u0425\u0430\u0447\u0435\u0442\u0441\u043E\u043D,
+          \u043D\u043E\u043C\u0435\u0440 11 \u0432 \u0431\u0435\u0433\u0430\u0445."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041E\u043D\u0430 \u0441\u043D\u043E\u0432\u0430 \u043D\u0430\u0441
+          \u0440\u0430\u0437\u043E\u0447\u0430\u0440\u043E\u0432\u0430\u043B\u0430."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0418\u0437\u0432\u0438\u043D\u0438, \u043D\u043E \u0435\u0441\u043B\u0438
+          \u0442\u0430\u043A \u0431\u0443\u0434\u0435\u0442 \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0430\u0442\u044C\u0441\u044F
+          \u0432 \u0442\u043E\u043C \u0436\u0435 \u0434\u0443\u0445\u0435, \u043C\u044B
+          \u0431\u0443\u0434\u0435\u043C \u0432\u044B\u043D\u0443\u0436\u0434\u0435\u043D\u044B
+          \u043E\u0442 \u043D\u0435\u0451 \u0438\u0437\u0431\u0430\u0432\u0438\u0442\u044C\u0441\u044F\xBB."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u041E\u0442 \u043A\u043E\u0433\u043E \u043E\u043D\u0438 \u0445\u043E\u0442\u044F\u0442
+          \xAB\u0438\u0437\u0431\u0430\u0432\u0438\u0442\u044C\u0441\u044F\xBB?"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0418 \u043F\u0440\u0438\u0447\u0451\u043C \u0442\u0443\u0442 \u043C\u0430\u043C\u0430?"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0411\u043E\u044E\u0441\u044C, \u0443 \u043D\u0430\u0441 \u0441
+          \u043D\u0435\u0439 \u0441\u043E\u0441\u0442\u043E\u0438\u0442\u0441\u044F
+          \u043D\u0435 \u043E\u0447\u0435\u043D\u044C \u043F\u0440\u0438\u044F\u0442\u043D\u044B\u0439
+          \u0440\u0430\u0437\u0433\u043E\u0432\u043E\u0440."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041C\u0430\u0433\u0434\u0430\u043B\u0435\u043D\u0430, \u044D\u0442\u043E
+          \u0442\u0435\u0431\u044F \u043D\u0435 \u043A\u0430\u0441\u0430\u0435\u0442\u0441\u044F."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041F\u043E\u0433\u043E\u0434\u0438, \u0442\u0443\u0442 \u0435\u0449\u0451
+          \u0432\u043B\u043E\u0436\u0435\u043D\u0430 \u0437\u0430\u043F\u0438\u0441\u043A\u0430."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041D\u043E \u043D\u0430 \u043D\u0435\u0439 \u043D\u0438\u0447\u0435\u0433\u043E
+          \u043D\u0435\u0442\u2026"
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u041F\u0440\u043E\u0441\u0442\u043E \u043A\u043B\u043E\u0447\u043E\u043A
+          \u0431\u0443\u043C\u0430\u0433\u0438."
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u0414\u0435\u0442\u043A\u0430, \u0442\u044B \u043C\u043D\u0435
+          \u043D\u0443\u0436\u043D\u0430!"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041F\u043E\u0433\u043E\u0432\u043E\u0440\u0438\u043C \u043F\u043E\u0437\u0436\u0435,
+          \u0424\u0435\u043B\u0438\u043A\u0441."
   - Type: 11
-    Phrases:
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0424\u0435\u043B\u0438\u043A\u0441, \u0442\u0435\u0431\u0435 \u043D\u0440\u0430\u0432\u0438\u0442\u0441\u044F
-        \u0415\u0432\u0440\u043E\u043F\u0430?"
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u042F \u043D\u0435 \u0431\u044B\u043B \u0440\u0430\u0434, \u043A\u043E\u0433\u0434\u0430
-        \u0443\u0437\u043D\u0430\u043B, \u0447\u0442\u043E \u043C\u043E\u044F \u0441\u0435\u043C\u044C\u044F
-        \u043F\u0435\u0440\u0435\u0435\u0437\u0436\u0430\u0435\u0442 \u0432 \u0415\u0432\u0440\u043E\u043F\u0443."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u042D\u0442\u043E \u0434\u0435\u043B\u043E \u043F\u0440\u0438\u0432\u044B\u0447\u043A\u0438."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u042F \u0442\u043E\u0441\u043A\u043E\u0432\u0430\u043B \u043F\u043E
-        \u043F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0435\u043C\u0443 \u0434\u043E\u043C\u0443."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041D\u043E \u0432\u0440\u0435\u043C\u044F \u043B\u0435\u0447\u0438\u0442,
-        \u0438 \u0432 \u0438\u0442\u043E\u0433\u0435 \u0441\u043C\u0438\u0440\u0438\u043B\u0441\u044F."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041F\u043E\u0447\u0435\u043C\u0443 \u0442\u044B \u043D\u0435 \u043C\u043E\u0436\u0435\u0448\u044C
-        \u0432\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u0434\u043E\u043C\u043E\u0439?"
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0414\u0435\u043B\u043E \u0432 \u0440\u043E\u0434\u0438\u0442\u0435\u043B\u044F\u0445."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0410 \u0442\u043E\u0447\u043D\u0435\u0435 \u0432 \u043E\u0442\u0446\u0435."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041E\u043D \u0431\u044B\u043B \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0447\u0435\u0441\u043A\u0438
-        \u043F\u0440\u043E\u0442\u0438\u0432."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u042F \u0435\u0433\u043E \u043F\u043E\u043D\u0438\u043C\u0430\u043B,
-        \u0432\u0435\u0434\u044C \u043D\u0430 \u0441\u0442\u0430\u0440\u043E\u0441\u0442\u0438
-        \u043B\u0435\u0442 \u043E\u043D \u0431\u044B\u043B \u043D\u0435 \u0432 \u043B\u0443\u0447\u0448\u0435\u043C
-        \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0438."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0415\u043C\u0443 \u0442\u0440\u0435\u0431\u043E\u0432\u0430\u043B\u0430\u0441\u044C
-        \u043C\u043E\u044F \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0430."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041D\u043E \u0433\u043E\u0434 \u043D\u0430\u0437\u0430\u0434 \u043E\u0442\u0435\u0446
-        \u043F\u043E\u043F\u0440\u043E\u0449\u0430\u043B\u0441\u044F \u0441 \u043C\u0438\u0440\u043E\u043C."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0418 \u044F \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u043B
-        \u0436\u0438\u0442\u044C \u0441\u0432\u043E\u0435\u0439 \u0436\u0438\u0437\u043D\u044C\u044E."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041D\u043E \u0441\u0435\u0439\u0447\u0430\u0441 \u0442\u0435\u0431\u044F
-        \u043D\u0438\u0447\u0435\u0433\u043E \u043D\u0435 \u0434\u0435\u0440\u0436\u0438\u0442?"
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u042F \u043F\u043E\u0434\u043D\u0438\u043C\u0430\u043B \u044D\u0442\u043E\u0442
-        \u0432\u043E\u043F\u0440\u043E\u0441 \u043F\u0435\u0440\u0435\u0434 \u043C\u0430\u0442\u0435\u0440\u044C\u044E."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041E\u043D\u0430 \u043B\u0438\u0448\u044C \u0436\u0435\u043B\u0430\u0435\u0442
-        \u043C\u043D\u0435 \u0441\u0447\u0430\u0441\u0442\u044C\u044F."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041F\u043E\u044D\u0442\u043E\u043C\u0443 \u043F\u043E\u0439\u043C\u0451\u0442
-        \u043B\u044E\u0431\u043E\u0435 \u043C\u043E\u0451 \u0440\u0435\u0448\u0435\u043D\u0438\u0435."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041D\u043E \u0434\u0443\u0448\u0430 \u0440\u0430\u0437\u0440\u044B\u0432\u0430\u0435\u0442\u0441\u044F
-        \u043E\u0442 \u043E\u0434\u043D\u043E\u0439 \u0442\u043E\u043B\u044C\u043A\u043E
-        \u043C\u044B\u0441\u043B\u0438, \u0447\u0442\u043E \u043F\u0440\u0438\u0434\u0451\u0442\u0441\u044F
-        \u0431\u0440\u043E\u0441\u0438\u0442\u044C \u0432\u0441\u0451: \u0438 \u0441\u0435\u043C\u044C\u044E,
-        \u0438 \u043D\u043E\u0432\u044B\u0445 \u0434\u0440\u0443\u0437\u0435\u0439,
-        \u0438 \u0440\u0430\u0431\u043E\u0442\u0443."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u042F \u0442\u0435\u0431\u044F \u043F\u043E\u043D\u0438\u043C\u0430\u044E."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u042F \u0442\u0432\u0451\u0440\u0434\u043E \u0440\u0435\u0448\u0438\u043B
-        \u0432\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u0434\u043E\u043C\u043E\u0439
-        \u043F\u043E\u0441\u043B\u0435 \u043E\u043A\u043E\u043D\u0447\u0430\u043D\u0438\u044F
-        \u0443\u0447\u0451\u0431\u044B \u0432 \u0443\u043D\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u0435."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0415\u0441\u0442\u044C \u0435\u0434\u0438\u043D\u0441\u0442\u0432\u0435\u043D\u043D\u0430\u044F
-        \u043F\u0440\u0438\u0447\u0438\u043D\u0430, \u043F\u043E \u043A\u043E\u0442\u043E\u0440\u043E\u0439
-        \u044F \u043F\u0440\u0438\u043D\u044F\u043B \u044D\u0442\u043E \u0440\u0435\u0448\u0435\u043D\u0438\u0435."
-    - Character: 0
-      Emotion: 3
-      Phrase: "\u0418 \u043A\u0430\u043A\u0430\u044F \u0436\u0435?"
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0412\u0441\u0435\u043C\u0443 \u0441\u0432\u043E\u0451 \u0432\u0440\u0435\u043C\u044F,
-        \u041C\u0430\u0433\u0434\u0430\u043B\u0435\u043D\u0430."
+    Parts:
+    - Language: 0
+      Phrases:
+      - Character: 0
+        Emotion: 0
+        Phrase: Felix, do you like Europe?
+      - Character: 3
+        Emotion: 0
+        Phrase: I wasn't happy when I found out that my family was moving to Europe.
+      - Character: 3
+        Emotion: 0
+        Phrase: It's a matter of habit.
+      - Character: 3
+        Emotion: 0
+        Phrase: I missed my previous home.
+      - Character: 3
+        Emotion: 0
+        Phrase: But time heals, and eventually reconciled.
+      - Character: 0
+        Emotion: 0
+        Phrase: Why can't you come home?
+      - Character: 3
+        Emotion: 0
+        Phrase: It's about the parents.
+      - Character: 3
+        Emotion: 0
+        Phrase: More specifically, the father.
+      - Character: 3
+        Emotion: 0
+        Phrase: He was categorically against it.
+      - Character: 3
+        Emotion: 0
+        Phrase: I understood him, because in his old age he was not in the best condition.
+      - Character: 3
+        Emotion: 0
+        Phrase: He needed my support.
+      - Character: 3
+        Emotion: 0
+        Phrase: But a year ago, my father said goodbye to the world.
+      - Character: 3
+        Emotion: 0
+        Phrase: And I continued to live my life.
+      - Character: 0
+        Emotion: 0
+        Phrase: But now nothing holds you?
+      - Character: 3
+        Emotion: 0
+        Phrase: I raised this issue with my mother.
+      - Character: 3
+        Emotion: 0
+        Phrase: She only wants me to be happy.
+      - Character: 3
+        Emotion: 0
+        Phrase: Therefore, he will understand any of my decisions.
+      - Character: 3
+        Emotion: 0
+        Phrase: 'But the soul is torn at the mere thought that you have to give up
+          everything: family, new friends, and work.'
+      - Character: 0
+        Emotion: 1
+        Phrase: I understand you.
+      - Character: 3
+        Emotion: 0
+        Phrase: I made up my mind to come home after finishing my university studies.
+      - Character: 3
+        Emotion: 0
+        Phrase: There is only one reason why I made this decision.
+      - Character: 0
+        Emotion: 3
+        Phrase: And what is it?
+      - Character: 3
+        Emotion: 0
+        Phrase: All in good time, Magdalena.
+    - Language: 1
+      Phrases:
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0424\u0435\u043B\u0438\u043A\u0441, \u0442\u0435\u0431\u0435 \u043D\u0440\u0430\u0432\u0438\u0442\u0441\u044F
+          \u0415\u0432\u0440\u043E\u043F\u0430?"
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u042F \u043D\u0435 \u0431\u044B\u043B \u0440\u0430\u0434, \u043A\u043E\u0433\u0434\u0430
+          \u0443\u0437\u043D\u0430\u043B, \u0447\u0442\u043E \u043C\u043E\u044F \u0441\u0435\u043C\u044C\u044F
+          \u043F\u0435\u0440\u0435\u0435\u0437\u0436\u0430\u0435\u0442 \u0432 \u0415\u0432\u0440\u043E\u043F\u0443."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u042D\u0442\u043E \u0434\u0435\u043B\u043E \u043F\u0440\u0438\u0432\u044B\u0447\u043A\u0438."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u042F \u0442\u043E\u0441\u043A\u043E\u0432\u0430\u043B \u043F\u043E
+          \u043F\u0440\u0435\u0434\u044B\u0434\u0443\u0449\u0435\u043C\u0443 \u0434\u043E\u043C\u0443."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041D\u043E \u0432\u0440\u0435\u043C\u044F \u043B\u0435\u0447\u0438\u0442,
+          \u0438 \u0432 \u0438\u0442\u043E\u0433\u0435 \u0441\u043C\u0438\u0440\u0438\u043B\u0441\u044F."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041F\u043E\u0447\u0435\u043C\u0443 \u0442\u044B \u043D\u0435 \u043C\u043E\u0436\u0435\u0448\u044C
+          \u0432\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u0434\u043E\u043C\u043E\u0439?"
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0414\u0435\u043B\u043E \u0432 \u0440\u043E\u0434\u0438\u0442\u0435\u043B\u044F\u0445."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0410 \u0442\u043E\u0447\u043D\u0435\u0435 \u0432 \u043E\u0442\u0446\u0435."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041E\u043D \u0431\u044B\u043B \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u0447\u0435\u0441\u043A\u0438
+          \u043F\u0440\u043E\u0442\u0438\u0432."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u042F \u0435\u0433\u043E \u043F\u043E\u043D\u0438\u043C\u0430\u043B,
+          \u0432\u0435\u0434\u044C \u043D\u0430 \u0441\u0442\u0430\u0440\u043E\u0441\u0442\u0438
+          \u043B\u0435\u0442 \u043E\u043D \u0431\u044B\u043B \u043D\u0435 \u0432
+          \u043B\u0443\u0447\u0448\u0435\u043C \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0438."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0415\u043C\u0443 \u0442\u0440\u0435\u0431\u043E\u0432\u0430\u043B\u0430\u0441\u044C
+          \u043C\u043E\u044F \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u043A\u0430."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041D\u043E \u0433\u043E\u0434 \u043D\u0430\u0437\u0430\u0434 \u043E\u0442\u0435\u0446
+          \u043F\u043E\u043F\u0440\u043E\u0449\u0430\u043B\u0441\u044F \u0441 \u043C\u0438\u0440\u043E\u043C."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0418 \u044F \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u043B
+          \u0436\u0438\u0442\u044C \u0441\u0432\u043E\u0435\u0439 \u0436\u0438\u0437\u043D\u044C\u044E."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041D\u043E \u0441\u0435\u0439\u0447\u0430\u0441 \u0442\u0435\u0431\u044F
+          \u043D\u0438\u0447\u0435\u0433\u043E \u043D\u0435 \u0434\u0435\u0440\u0436\u0438\u0442?"
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u042F \u043F\u043E\u0434\u043D\u0438\u043C\u0430\u043B \u044D\u0442\u043E\u0442
+          \u0432\u043E\u043F\u0440\u043E\u0441 \u043F\u0435\u0440\u0435\u0434 \u043C\u0430\u0442\u0435\u0440\u044C\u044E."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041E\u043D\u0430 \u043B\u0438\u0448\u044C \u0436\u0435\u043B\u0430\u0435\u0442
+          \u043C\u043D\u0435 \u0441\u0447\u0430\u0441\u0442\u044C\u044F."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041F\u043E\u044D\u0442\u043E\u043C\u0443 \u043F\u043E\u0439\u043C\u0451\u0442
+          \u043B\u044E\u0431\u043E\u0435 \u043C\u043E\u0451 \u0440\u0435\u0448\u0435\u043D\u0438\u0435."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041D\u043E \u0434\u0443\u0448\u0430 \u0440\u0430\u0437\u0440\u044B\u0432\u0430\u0435\u0442\u0441\u044F
+          \u043E\u0442 \u043E\u0434\u043D\u043E\u0439 \u0442\u043E\u043B\u044C\u043A\u043E
+          \u043C\u044B\u0441\u043B\u0438, \u0447\u0442\u043E \u043F\u0440\u0438\u0434\u0451\u0442\u0441\u044F
+          \u0431\u0440\u043E\u0441\u0438\u0442\u044C \u0432\u0441\u0451: \u0438 \u0441\u0435\u043C\u044C\u044E,
+          \u0438 \u043D\u043E\u0432\u044B\u0445 \u0434\u0440\u0443\u0437\u0435\u0439,
+          \u0438 \u0440\u0430\u0431\u043E\u0442\u0443."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u042F \u0442\u0435\u0431\u044F \u043F\u043E\u043D\u0438\u043C\u0430\u044E."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u042F \u0442\u0432\u0451\u0440\u0434\u043E \u0440\u0435\u0448\u0438\u043B
+          \u0432\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u0434\u043E\u043C\u043E\u0439
+          \u043F\u043E\u0441\u043B\u0435 \u043E\u043A\u043E\u043D\u0447\u0430\u043D\u0438\u044F
+          \u0443\u0447\u0451\u0431\u044B \u0432 \u0443\u043D\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u0435."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0415\u0441\u0442\u044C \u0435\u0434\u0438\u043D\u0441\u0442\u0432\u0435\u043D\u043D\u0430\u044F
+          \u043F\u0440\u0438\u0447\u0438\u043D\u0430, \u043F\u043E \u043A\u043E\u0442\u043E\u0440\u043E\u0439
+          \u044F \u043F\u0440\u0438\u043D\u044F\u043B \u044D\u0442\u043E \u0440\u0435\u0448\u0435\u043D\u0438\u0435."
+      - Character: 0
+        Emotion: 3
+        Phrase: "\u0418 \u043A\u0430\u043A\u0430\u044F \u0436\u0435?"
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0412\u0441\u0435\u043C\u0443 \u0441\u0432\u043E\u0451 \u0432\u0440\u0435\u043C\u044F,
+          \u041C\u0430\u0433\u0434\u0430\u043B\u0435\u043D\u0430."
   - Type: 7
-    Phrases:
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041C\u0430\u043C\u0430, \u0442\u044B \u0433\u0434\u0435?"
-    - Character: 0
-      Emotion: 3
-      Phrase: "\u2026"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041E\u043D\u0430 \u0433\u043E\u0432\u043E\u0440\u0438\u0442 \u043F\u043E
-        \u0442\u0435\u043B\u0435\u0444\u043E\u043D\u0443\u2026"
-    - Character: 1
-      Emotion: 3
-      Phrase: "\u0414\u0430 \u0442\u044B \u0441 \u0443\u043C\u0430 \u0441\u043E\u0448\u0451\u043B?"
-    - Character: 1
-      Emotion: 3
-      Phrase: "\u041E\u043D\u0430 \u043D\u0430\u0448\u043B\u0430 \u044D\u0442\u043E
-        \u043F\u0438\u0441\u044C\u043C\u043E!"
-    - Character: 1
-      Emotion: 3
-      Phrase: "\u041A\u0430\u043A \u0432\u043E\u043E\u0431\u0449\u0435 \u043C\u043E\u0436\u043D\u043E
-        \u0434\u043E \u044D\u0442\u043E\u0433\u043E \u0434\u043E\u0434\u0443\u043C\u0430\u0442\u044C\u0441\u044F?"
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u0423 \u043D\u0430\u0441 \u0435\u0441\u0442\u044C \u0441\u043A\u0440\u044B\u0442\u044B\u0439
-        \u043A\u0430\u043D\u0430\u043B \u0441\u0432\u044F\u0437\u0438."
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u0422\u043E\u0433\u0434\u0430 \u0441\u0430\u043C\u0438 \u0438\u0449\u0438\u0442\u0443
-        \u044D\u0442\u0443 \u0434\u0443\u0440\u0430\u0446\u043A\u0443\u044E \u043A\u043D\u0438\u0433\u0443
-        \u0424\u0440\u0438\u0434\u043C\u0430\u043D\u0430!"
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u042F \u043D\u0435\u2026"
-    - Character: 1
-      Emotion: 3
-      Phrase: "\u041C\u0430\u0433\u0434\u0430\u043B\u0435\u043D\u0430?"
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u0427\u0442\u043E \u0442\u044B \u0442\u0443\u0442 \u0434\u0435\u043B\u0430\u0435\u0448\u044C?"
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041C\u0430\u043C\u0430, \u0447\u0442\u043E \u044D\u0442\u043E \u0437\u043D\u0430\u0447\u0438\u0442?"
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u0427\u0442\u043E \u0437\u0430 \u043F\u0438\u0441\u044C\u043C\u043E?"
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u0414\u0435\u0442\u043A\u0430, \u0442\u044B \u0437\u043D\u0430\u043B\u0430,
-        \u0447\u0442\u043E \u0447\u0443\u0436\u0438\u0435 \u043F\u0438\u0441\u044C\u043C\u0430
-        \u0447\u0438\u0442\u0430\u0442\u044C \u043D\u0435\u0445\u043E\u0440\u043E\u0448\u043E?"
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u041E\u0442\u0434\u0430\u0439 \u0435\u0433\u043E \u043C\u043D\u0435."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041D\u0435\u0442, \u044F \u0445\u043E\u0447\u0443 \u0437\u043D\u0430\u0442\u044C,
-        \u0447\u0442\u043E \u043F\u0440\u043E\u0438\u0441\u0445\u043E\u0434\u0438\u0442."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041A\u0442\u043E \u0442\u0430\u043A\u0430\u044F \u043D\u043E\u043C\u0435\u0440
-        11?"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0418 \u043F\u043E\u0447\u0435\u043C\u0443 \u043E\u0442 \u043D\u0435\u0451
-        \u0445\u043E\u0442\u044F\u0442 \u0438\u0437\u0431\u0430\u0432\u0438\u0442\u044C\u0441\u044F?"
-    - Character: 1
-      Emotion: 1
-      Phrase: "\u0421\u043B\u0443\u0448\u0430\u0439, \u044D\u0442\u043E \u043D\u0435\u0432\u0430\u0436\u043D\u043E."
-    - Character: 1
-      Emotion: 4
-      Phrase: "\u0418 \u0432\u043E\u043E\u0431\u0449\u0435, \u044D\u0442\u043E \u0442\u0435\u0431\u044F
-        \u043D\u0435 \u043A\u0430\u0441\u0430\u0435\u0442\u0441\u044F."
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u041E\u0442\u0434\u0430\u0439 \u0441\u044E\u0434\u0430 \u043F\u0438\u0441\u044C\u043C\u043E!
-        (\u0412\u044B\u0440\u044B\u0432\u0430\u0435\u0442 \u0435\u0433\u043E \u0438\u0437
-        \u0440\u0443\u043A.)"
-    - Character: 1
-      Emotion: 0
-      Phrase: "\u0416\u0438\u0432\u043E \u0438\u0434\u0438 \u0437\u0430\u043D\u0438\u043C\u0430\u0439\u0441\u044F
-        \u0433\u043E\u0441\u0442\u044F\u043C\u0438 \u0432 \u0437\u0430\u043B."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041C\u043E\u0436\u0435\u0442 \u0442\u044B \u0438 \u0437\u0430\u0431\u044B\u043B\u0430,
-        \u043D\u043E \u044F \u0434\u0430\u0432\u043D\u043E \u043D\u0435 \u0440\u0435\u0431\u0451\u043D\u043E\u043A."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0418 \u044F \u0434\u043E\u0431\u0435\u0440\u0443\u0441\u044C \u0434\u043E
-        \u0438\u0441\u0442\u0438\u043D\u044B."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u2026"
-    - Character: 0
-      Emotion: 0
-      Phrase: "(\u041F\u0440\u043E \u0441\u0435\u0431\u044F.) \u0425\u043C\u2026"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0421\u043A\u0440\u044B\u0442\u044B\u0439 \u043A\u0430\u043D\u0430\u043B
-        \u0441\u0432\u044F\u0437\u0438\u2026"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0423 \u043C\u0435\u043D\u044F \u0435\u0441\u0442\u044C \u043F\u043B\u0430\u043D."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0418\u0437\u0432\u0438\u043D\u0438, \u043C\u0430\u043C\u0430, \u043D\u043E
-        \u0442\u0435\u0431\u0435 \u044D\u0442\u043E \u043D\u0435 \u043F\u043E\u043D\u0440\u0430\u0432\u0438\u0442\u0441\u044F."
+    Parts:
+    - Language: 0
+      Phrases:
+      - Character: 0
+        Emotion: 0
+        Phrase: Mom, where are you?
+      - Character: 0
+        Emotion: 3
+        Phrase: "\u2026"
+      - Character: 0
+        Emotion: 0
+        Phrase: "She is talking on the phone\u2026"
+      - Character: 1
+        Emotion: 3
+        Phrase: Are you crazy?
+      - Character: 1
+        Emotion: 3
+        Phrase: She found this letter!
+      - Character: 1
+        Emotion: 0
+        Phrase: How can you even think of this?
+      - Character: 1
+        Emotion: 0
+        Phrase: We have a hidden communication channel.
+      - Character: 1
+        Emotion: 0
+        Phrase: Then I'll look for that stupid Friedman book myself!
+      - Character: 1
+        Emotion: 0
+        Phrase: I don't...
+      - Character: 1
+        Emotion: 3
+        Phrase: Magdalena?
+      - Character: 1
+        Emotion: 0
+        Phrase: What are you doing here?
+      - Character: 0
+        Emotion: 1
+        Phrase: Mom, what does this mean?
+      - Character: 0
+        Emotion: 1
+        Phrase: What's the letter?
+      - Character: 0
+        Emotion: 0
+        Phrase: Baby, did you know that reading other people's letters is not good?
+      - Character: 0
+        Emotion: 0
+        Phrase: Give it to me.
+      - Character: 0
+        Emotion: 0
+        Phrase: No, I want to know what's going on.
+      - Character: 0
+        Emotion: 0
+        Phrase: Who is number 11?
+      - Character: 0
+        Emotion: 0
+        Phrase: And why do they want to get rid of it?
+      - Character: 1
+        Emotion: 0
+        Phrase: Look, it doesn't matter.
+      - Character: 1
+        Emotion: 0
+        Phrase: And anyway, it doesn't concern you.
+      - Character: 1
+        Emotion: 0
+        Phrase: Give me the letter here! (Tears it out of her hands.)
+      - Character: 1
+        Emotion: 0
+        Phrase: Quickly go and take care of the guests in the hall.
+      - Character: 0
+        Emotion: 0
+        Phrase: You may have forgotten, but I have not been a child for a long time.
+      - Character: 0
+        Emotion: 0
+        Phrase: And I will get to the truth.
+      - Character: 0
+        Emotion: 0
+        Phrase: ...
+      - Character: 0
+        Emotion: 0
+        Phrase: (To himself.) Hmm...
+      - Character: 0
+        Emotion: 0
+        Phrase: Hidden communication channel...
+      - Character: 0
+        Emotion: 0
+        Phrase: I have a plan.
+      - Character: 0
+        Emotion: 0
+        Phrase: I'm sorry mom, but you won't like this.
+    - Language: 1
+      Phrases:
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041C\u0430\u043C\u0430, \u0442\u044B \u0433\u0434\u0435?"
+      - Character: 0
+        Emotion: 3
+        Phrase: "\u2026"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041E\u043D\u0430 \u0433\u043E\u0432\u043E\u0440\u0438\u0442 \u043F\u043E
+          \u0442\u0435\u043B\u0435\u0444\u043E\u043D\u0443\u2026"
+      - Character: 1
+        Emotion: 3
+        Phrase: "\u0414\u0430 \u0442\u044B \u0441 \u0443\u043C\u0430 \u0441\u043E\u0448\u0451\u043B?"
+      - Character: 1
+        Emotion: 3
+        Phrase: "\u041E\u043D\u0430 \u043D\u0430\u0448\u043B\u0430 \u044D\u0442\u043E
+          \u043F\u0438\u0441\u044C\u043C\u043E!"
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u041A\u0430\u043A \u0432\u043E\u043E\u0431\u0449\u0435 \u043C\u043E\u0436\u043D\u043E
+          \u0434\u043E \u044D\u0442\u043E\u0433\u043E \u0434\u043E\u0434\u0443\u043C\u0430\u0442\u044C\u0441\u044F?"
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u0423 \u043D\u0430\u0441 \u0435\u0441\u0442\u044C \u0441\u043A\u0440\u044B\u0442\u044B\u0439
+          \u043A\u0430\u043D\u0430\u043B \u0441\u0432\u044F\u0437\u0438."
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u0422\u043E\u0433\u0434\u0430 \u0441\u0430\u043C\u0438 \u0438\u0449\u0438\u0442\u0443
+          \u044D\u0442\u0443 \u0434\u0443\u0440\u0430\u0446\u043A\u0443\u044E \u043A\u043D\u0438\u0433\u0443
+          \u0424\u0440\u0438\u0434\u043C\u0430\u043D\u0430!"
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u042F \u043D\u0435\u2026"
+      - Character: 1
+        Emotion: 3
+        Phrase: "\u041C\u0430\u0433\u0434\u0430\u043B\u0435\u043D\u0430?"
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u0427\u0442\u043E \u0442\u044B \u0442\u0443\u0442 \u0434\u0435\u043B\u0430\u0435\u0448\u044C?"
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u041C\u0430\u043C\u0430, \u0447\u0442\u043E \u044D\u0442\u043E
+          \u0437\u043D\u0430\u0447\u0438\u0442?"
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u0427\u0442\u043E \u0437\u0430 \u043F\u0438\u0441\u044C\u043C\u043E?"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0414\u0435\u0442\u043A\u0430, \u0442\u044B \u0437\u043D\u0430\u043B\u0430,
+          \u0447\u0442\u043E \u0447\u0443\u0436\u0438\u0435 \u043F\u0438\u0441\u044C\u043C\u0430
+          \u0447\u0438\u0442\u0430\u0442\u044C \u043D\u0435\u0445\u043E\u0440\u043E\u0448\u043E?"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041E\u0442\u0434\u0430\u0439 \u0435\u0433\u043E \u043C\u043D\u0435."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041D\u0435\u0442, \u044F \u0445\u043E\u0447\u0443 \u0437\u043D\u0430\u0442\u044C,
+          \u0447\u0442\u043E \u043F\u0440\u043E\u0438\u0441\u0445\u043E\u0434\u0438\u0442."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041A\u0442\u043E \u0442\u0430\u043A\u0430\u044F \u043D\u043E\u043C\u0435\u0440
+          11?"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0418 \u043F\u043E\u0447\u0435\u043C\u0443 \u043E\u0442 \u043D\u0435\u0451
+          \u0445\u043E\u0442\u044F\u0442 \u0438\u0437\u0431\u0430\u0432\u0438\u0442\u044C\u0441\u044F?"
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u0421\u043B\u0443\u0448\u0430\u0439, \u044D\u0442\u043E \u043D\u0435\u0432\u0430\u0436\u043D\u043E."
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u0418 \u0432\u043E\u043E\u0431\u0449\u0435, \u044D\u0442\u043E
+          \u0442\u0435\u0431\u044F \u043D\u0435 \u043A\u0430\u0441\u0430\u0435\u0442\u0441\u044F."
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u041E\u0442\u0434\u0430\u0439 \u0441\u044E\u0434\u0430 \u043F\u0438\u0441\u044C\u043C\u043E!
+          (\u0412\u044B\u0440\u044B\u0432\u0430\u0435\u0442 \u0435\u0433\u043E \u0438\u0437
+          \u0440\u0443\u043A.)"
+      - Character: 1
+        Emotion: 0
+        Phrase: "\u0416\u0438\u0432\u043E \u0438\u0434\u0438 \u0437\u0430\u043D\u0438\u043C\u0430\u0439\u0441\u044F
+          \u0433\u043E\u0441\u0442\u044F\u043C\u0438 \u0432 \u0437\u0430\u043B."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041C\u043E\u0436\u0435\u0442 \u0442\u044B \u0438 \u0437\u0430\u0431\u044B\u043B\u0430,
+          \u043D\u043E \u044F \u0434\u0430\u0432\u043D\u043E \u043D\u0435 \u0440\u0435\u0431\u0451\u043D\u043E\u043A."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0418 \u044F \u0434\u043E\u0431\u0435\u0440\u0443\u0441\u044C \u0434\u043E
+          \u0438\u0441\u0442\u0438\u043D\u044B."
+      - Character: 0
+        Emotion: 0
+        Phrase: ...
+      - Character: 0
+        Emotion: 0
+        Phrase: "(\u041F\u0440\u043E \u0441\u0435\u0431\u044F.) \u0425\u043C\u2026"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0421\u043A\u0440\u044B\u0442\u044B\u0439 \u043A\u0430\u043D\u0430\u043B
+          \u0441\u0432\u044F\u0437\u0438\u2026"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0423 \u043C\u0435\u043D\u044F \u0435\u0441\u0442\u044C \u043F\u043B\u0430\u043D."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0418\u0437\u0432\u0438\u043D\u0438, \u043C\u0430\u043C\u0430,
+          \u043D\u043E \u0442\u0435\u0431\u0435 \u044D\u0442\u043E \u043D\u0435 \u043F\u043E\u043D\u0440\u0430\u0432\u0438\u0442\u0441\u044F."
   - Type: 8
-    Phrases:
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0422\u044B \u0436\u0435 \u043D\u0435 \u0432\u0441\u0435\u0440\u044C\u0451\u0437?"
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041F\u0440\u043E\u043D\u0438\u043A\u043D\u0443\u0442\u044C \u0432
-        \u043A\u0430\u0431\u0438\u043D\u0435\u0442 \u043C\u0430\u0442\u0435\u0440\u0438
-        - \u044D\u0442\u043E\u2026"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0424\u0435\u043B\u0438\u043A\u0441, \u0443\u0441\u043F\u043E\u043A\u043E\u0439\u0441\u044F."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041E\u043D\u0430 \u043D\u0438\u0447\u0435\u0433\u043E \u043D\u0435
-        \u0437\u0430\u043F\u043E\u0434\u043E\u0437\u0440\u0438\u0442."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041C\u043D\u0435 \u043D\u0443\u0436\u0435\u043D \u0435\u0451 \u043D\u043E\u0443\u0442\u0431\u0443\u043A
-        \u043B\u0438\u0448\u044C \u043D\u0430 \u043F\u0430\u0440\u0443 \u043C\u0438\u043D\u0443\u0442."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u042F \u043D\u0435 \u0443\u0437\u043D\u0430\u044E \u0442\u0435\u0431\u044F,
-        \u041C\u0430\u0433\u0434\u0430\u043B\u0435\u043D\u0430."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0422\u044B \u043F\u043E\u0441\u0442\u043E\u044F\u043D\u043D\u043E
-        \u0432\u043B\u044F\u043F\u044B\u0432\u0430\u0435\u0448\u044C\u0441\u044F
-        \u0432 \u0437\u0430\u0432\u0430\u0440\u0443\u0448\u043A\u0438."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u041D\u0430\u0434\u043E \u0431\u044B\u043B\u043E \u0432\u0441\u0451-\u0442\u0430\u043A\u0438
-        \u043C\u043D\u0435 \u043F\u0440\u0438\u0435\u0445\u0430\u0442\u044C\u2026"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0417\u0434\u0435\u0441\u044C \u043F\u0430\u0440\u043E\u043B\u044C."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0412\u043E\u0442 \u0438 \u043E\u0442\u043B\u0438\u0447\u043D\u043E."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0417\u0430\u043A\u0430\u043D\u0447\u0438\u0432\u0430\u0439 \u044D\u0442\u0443
-        \u0447\u0435\u043F\u0443\u0445\u0443."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0422\u0443\u0442 \u043F\u043E\u0434\u0441\u043A\u0430\u0437\u043A\u0430."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u201C\u041B\u044E\u0431\u0438\u043C\u044B\u0439 \u0434\u0435\u0441\u0435\u0440\u0442\u201D."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u042F \u0445\u043E\u0440\u043E\u0448\u043E \u0437\u043D\u0430\u044E
-        \u0441\u0432\u043E\u044E \u043C\u0430\u043C\u0443."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041E\u043D\u0430 \u043D\u0435 \u043B\u044E\u0431\u0438\u0442 \u0434\u0435\u0441\u0435\u0440\u0442\u044B."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0425\u043C\u2026"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041C\u043E\u0436\u0435\u0442, \u0442\u0430\u043A \u0438 \u043E\u0442\u0432\u0435\u0442\u0438\u0442\u044C?"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u201C\u041D\u0438\u043A\u0430\u043A\u043E\u0439\u201D."
-    - Character: 0
-      Emotion: 4
-      Phrase: "\u0421\u0440\u0430\u0431\u043E\u0442\u0430\u043B\u043E!"
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u0418 \u0447\u0442\u043E \u0436\u0435 \u0442\u0430\u043C \u0442\u0430\u043A\u043E\u0433\u043E
-        \u043D\u0435\u043E\u0431\u044B\u0447\u043D\u043E\u0433\u043E?"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0412\u0445\u043E\u0434\u044F\u0449\u0435\u0435 \u043F\u0438\u0441\u044C\u043C\u043E."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0418\u0437 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F
-        \u043F\u043E\u0434 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435\u043C
-        \u201CGH\u201D."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0421\u0443\u0434\u044F \u043F\u043E \u0432\u0441\u0435\u043C\u0443,
-        \u044D\u0442\u043E \u0438 \u0435\u0441\u0442\u044C \u0441\u043A\u0440\u044B\u0442\u044B\u0439
-        \u043A\u0430\u043D\u0430\u043B."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0422\u0430\u043A-\u0442\u0430\u043A, \u043F\u043E\u0441\u043C\u043E\u0442\u0440\u0438\u043C\u2026"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0422\u0435\u043A\u0443\u0449\u0438\u0435 \u0441\u0442\u0430\u0442\u0443\u0441\u044B
-        \u0447\u043B\u0435\u043D\u043E\u0432\u2026"
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u0417\u0434\u0435\u0441\u044C \u043F\u0440\u043E\u043D\u0443\u043C\u0435\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0439
-        \u0441\u043F\u0438\u0441\u043E\u043A \u043B\u044E\u0434\u0435\u0439."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041D\u043E\u043C\u0435\u0440 1, \u0421\u044D\u043C\u044E\u044D\u043B\u044C,
-        \u201C\u043D\u0430 \u043C\u0435\u0441\u0442\u0435\u201D."
-    - Character: 0
-      Emotion: 0
-      Phrase: "\u041D\u043E\u043C\u0435\u0440 3, \u041D\u0430\u0442\u0430\u043B\u0438,
-        \u201C\u043F\u043E\u0433\u0438\u0431\u201D."
-    - Character: 3
-      Emotion: 0
-      Phrase: "\u042D\u0442\u043E \u0435\u0449\u0451 \u043D\u0438\u0447\u0435\u0433\u043E
-        \u043D\u0435 \u0437\u043D\u0430\u0447\u0438\u0442."
-    - Character: 0
-      Emotion: 1
-      Phrase: "\u041E \u043D\u0435\u0442\u2026"
+    Parts:
+    - Language: 0
+      Phrases:
+      - Character: 3
+        Emotion: 0
+        Phrase: You're not serious, are you?
+      - Character: 3
+        Emotion: 0
+        Phrase: Breaking into mother's office is...
+      - Character: 0
+        Emotion: 0
+        Phrase: Felix, calm down.
+      - Character: 0
+        Emotion: 0
+        Phrase: She won't suspect anything.
+      - Character: 0
+        Emotion: 0
+        Phrase: I only need her laptop for a couple of minutes.
+      - Character: 3
+        Emotion: 0
+        Phrase: I don't recognize you, Magdalena.
+      - Character: 3
+        Emotion: 0
+        Phrase: You are constantly getting into trouble.
+      - Character: 3
+        Emotion: 0
+        Phrase: I still had to come...
+      - Character: 0
+        Emotion: 0
+        Phrase: Here is the password.
+      - Character: 3
+        Emotion: 0
+        Phrase: That's great.
+      - Character: 3
+        Emotion: 0
+        Phrase: End this nonsense.
+      - Character: 0
+        Emotion: 0
+        Phrase: Here's a hint.
+      - Character: 0
+        Emotion: 0
+        Phrase: "\xABFavorite Dessert\xBB."
+      - Character: 0
+        Emotion: 0
+        Phrase: I know my mother well.
+      - Character: 0
+        Emotion: 0
+        Phrase: She doesn't like desserts..
+      - Character: 0
+        Emotion: 0
+        Phrase: Hmm...
+      - Character: 0
+        Emotion: 0
+        Phrase: Maybe answer like that?
+      - Character: 0
+        Emotion: 0
+        Phrase: "\xABNo\xBB."
+      - Character: 0
+        Emotion: 4
+        Phrase: ' It worked!'
+      - Character: 3
+        Emotion: 0
+        Phrase: And what's so unusual about it?
+      - Character: 0
+        Emotion: 0
+        Phrase: An incoming letter.
+      - Character: 0
+        Emotion: 0
+        Phrase: "From an app called \xABGH\xBB."
+      - Character: 0
+        Emotion: 0
+        Phrase: Apparently, this is the hidden channel.
+      - Character: 0
+        Emotion: 0
+        Phrase: Well, well, let's see...
+      - Character: 0
+        Emotion: 0
+        Phrase: The current statuses of the members...
+      - Character: 0
+        Emotion: 0
+        Phrase: Here is a numbered list of people.
+      - Character: 0
+        Emotion: 0
+        Phrase: "Number 1, Samuel, \xABin place\xBB."
+      - Character: 0
+        Emotion: 0
+        Phrase: "Number 3, Natalie, \xABdied\xBB."
+      - Character: 3
+        Emotion: 0
+        Phrase: That doesn't mean anything yet.
+      - Character: 0
+        Emotion: 1
+        Phrase: Oh no...
+    - Language: 1
+      Phrases:
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0422\u044B \u0436\u0435 \u043D\u0435 \u0432\u0441\u0435\u0440\u044C\u0451\u0437?"
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041F\u0440\u043E\u043D\u0438\u043A\u043D\u0443\u0442\u044C \u0432
+          \u043A\u0430\u0431\u0438\u043D\u0435\u0442 \u043C\u0430\u0442\u0435\u0440\u0438
+          - \u044D\u0442\u043E\u2026"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0424\u0435\u043B\u0438\u043A\u0441, \u0443\u0441\u043F\u043E\u043A\u043E\u0439\u0441\u044F."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041E\u043D\u0430 \u043D\u0438\u0447\u0435\u0433\u043E \u043D\u0435
+          \u0437\u0430\u043F\u043E\u0434\u043E\u0437\u0440\u0438\u0442."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041C\u043D\u0435 \u043D\u0443\u0436\u0435\u043D \u0435\u0451 \u043D\u043E\u0443\u0442\u0431\u0443\u043A
+          \u043B\u0438\u0448\u044C \u043D\u0430 \u043F\u0430\u0440\u0443 \u043C\u0438\u043D\u0443\u0442."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u042F \u043D\u0435 \u0443\u0437\u043D\u0430\u044E \u0442\u0435\u0431\u044F,
+          \u041C\u0430\u0433\u0434\u0430\u043B\u0435\u043D\u0430."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0422\u044B \u043F\u043E\u0441\u0442\u043E\u044F\u043D\u043D\u043E
+          \u0432\u043B\u044F\u043F\u044B\u0432\u0430\u0435\u0448\u044C\u0441\u044F
+          \u0432 \u0437\u0430\u0432\u0430\u0440\u0443\u0448\u043A\u0438."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u041D\u0430\u0434\u043E \u0431\u044B\u043B\u043E \u0432\u0441\u0451-\u0442\u0430\u043A\u0438
+          \u043C\u043D\u0435 \u043F\u0440\u0438\u0435\u0445\u0430\u0442\u044C\u2026"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0417\u0434\u0435\u0441\u044C \u043F\u0430\u0440\u043E\u043B\u044C."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0412\u043E\u0442 \u0438 \u043E\u0442\u043B\u0438\u0447\u043D\u043E."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0417\u0430\u043A\u0430\u043D\u0447\u0438\u0432\u0430\u0439 \u044D\u0442\u0443
+          \u0447\u0435\u043F\u0443\u0445\u0443."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0422\u0443\u0442 \u043F\u043E\u0434\u0441\u043A\u0430\u0437\u043A\u0430."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\xAB\u041B\u044E\u0431\u0438\u043C\u044B\u0439 \u0434\u0435\u0441\u0435\u0440\u0442\xBB."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u042F \u0445\u043E\u0440\u043E\u0448\u043E \u0437\u043D\u0430\u044E
+          \u0441\u0432\u043E\u044E \u043C\u0430\u043C\u0443."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041E\u043D\u0430 \u043D\u0435 \u043B\u044E\u0431\u0438\u0442 \u0434\u0435\u0441\u0435\u0440\u0442\u044B."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0425\u043C\u2026"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041C\u043E\u0436\u0435\u0442, \u0442\u0430\u043A \u0438 \u043E\u0442\u0432\u0435\u0442\u0438\u0442\u044C?"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\xAB\u041D\u0438\u043A\u0430\u043A\u043E\u0439\xBB."
+      - Character: 0
+        Emotion: 4
+        Phrase: "\u0421\u0440\u0430\u0431\u043E\u0442\u0430\u043B\u043E!"
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u0418 \u0447\u0442\u043E \u0436\u0435 \u0442\u0430\u043C \u0442\u0430\u043A\u043E\u0433\u043E
+          \u043D\u0435\u043E\u0431\u044B\u0447\u043D\u043E\u0433\u043E?"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0412\u0445\u043E\u0434\u044F\u0449\u0435\u0435 \u043F\u0438\u0441\u044C\u043C\u043E."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0418\u0437 \u043F\u0440\u0438\u043B\u043E\u0436\u0435\u043D\u0438\u044F
+          \u043F\u043E\u0434 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435\u043C
+          \xABGH\xBB."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0421\u0443\u0434\u044F \u043F\u043E \u0432\u0441\u0435\u043C\u0443,
+          \u044D\u0442\u043E \u0438 \u0435\u0441\u0442\u044C \u0441\u043A\u0440\u044B\u0442\u044B\u0439
+          \u043A\u0430\u043D\u0430\u043B."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0422\u0430\u043A-\u0442\u0430\u043A, \u043F\u043E\u0441\u043C\u043E\u0442\u0440\u0438\u043C\u2026"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0422\u0435\u043A\u0443\u0449\u0438\u0435 \u0441\u0442\u0430\u0442\u0443\u0441\u044B
+          \u0447\u043B\u0435\u043D\u043E\u0432\u2026"
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u0417\u0434\u0435\u0441\u044C \u043F\u0440\u043E\u043D\u0443\u043C\u0435\u0440\u043E\u0432\u0430\u043D\u043D\u044B\u0439
+          \u0441\u043F\u0438\u0441\u043E\u043A \u043B\u044E\u0434\u0435\u0439."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041D\u043E\u043C\u0435\u0440 1, \u0421\u044D\u043C\u044E\u044D\u043B\u044C,
+          \xAB\u043D\u0430 \u043C\u0435\u0441\u0442\u0435\xBB."
+      - Character: 0
+        Emotion: 0
+        Phrase: "\u041D\u043E\u043C\u0435\u0440 3, \u041D\u0430\u0442\u0430\u043B\u0438,
+          \xAB\u043F\u043E\u0433\u0438\u0431\xBB."
+      - Character: 3
+        Emotion: 0
+        Phrase: "\u042D\u0442\u043E \u0435\u0449\u0451 \u043D\u0438\u0447\u0435\u0433\u043E
+          \u043D\u0435 \u0437\u043D\u0430\u0447\u0438\u0442."
+      - Character: 0
+        Emotion: 1
+        Phrase: "\u041E \u043D\u0435\u0442\u2026"
 --- !u!114 &3899636262540677431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1324,7 +1931,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174.69, y: 142.03}
+  m_AnchoredPosition: {x: 172.66, y: 140}
   m_SizeDelta: {x: 280, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3899636262737963739
@@ -1355,7 +1962,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a11974cd47d611c4fa152dd672e797f0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc0fa19c9f649f84a9a6a773b5454986, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1708,7 +2315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6034176, g: 0.64090425, b: 0.7075472, a: 0.83137256}
+  m_Color: {r: 0.56078434, g: 0.5411765, b: 0.8352942, a: 0.83137256}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2106,7 +2713,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -148, y: 140}
+  m_AnchoredPosition: {x: -171.2, y: 140}
   m_SizeDelta: {x: 280, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3899636264448874923
@@ -2137,7 +2744,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6581a57316b37bd419fb36f92562c7d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7ef82c18be5d63e40ad596e7f19c4dd1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

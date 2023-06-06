@@ -62,22 +62,18 @@ namespace Service
 
         private void Start()
         {
-            if (GameStorage.Instanse.LoadData)
+            if (GameStorage.Instance.LoadData)
                 Load();
-        }
-
-        private void OnEnable()
-        {
-            _playMusicCoroutine = StartCoroutine(CheckMusicEnd());
         }
 
         private IEnumerator CheckMusicEnd()
         {
-            yield return new WaitForSeconds(2f);
-            if (!_audioSource.isPlaying)
-                StartCoroutine(Finish());
-            else
-                _playMusicCoroutine = StartCoroutine(CheckMusicEnd());
+            while (true)
+            {
+                yield return new WaitForSeconds(2f);
+                if (!_audioSource.isPlaying)
+                    StartCoroutine(Finish());
+            }
         }
 
         private IEnumerator Finish()
@@ -85,11 +81,13 @@ namespace Service
             if (++_currentIndex >= _musicDictionary[_currentMusic].Length)
                 _currentIndex = 0;
             yield return new WaitForSeconds(0f);
-            PlayMusic(_currentIndex);
+            if (!_audioSource.isPlaying)
+                PlayMusic(_currentIndex);
         }
 
         private void PlayMusic(int index)
         {
+            Stop();
             var musicToPlay = _musicDictionary[_currentMusic][index];
             _audioSource.PlayOneShot(musicToPlay);
             _playMusicCoroutine = StartCoroutine(CheckMusicEnd());

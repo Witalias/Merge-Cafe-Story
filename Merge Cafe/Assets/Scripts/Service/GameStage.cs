@@ -15,8 +15,7 @@ namespace Service
                     (ItemType.Tea, 1, 3, 1),
                 }, null, new[]
                 {
-                    (ItemType.Teapot, 1, 5),
-                    (ItemType.Brilliant, 1, 2),
+                    (ItemType.Teapot, 1, 4),
                     (ItemType.Key, 1, 4),
                 }, 1),
 
@@ -47,13 +46,13 @@ namespace Service
                 }, new[]
                 {
                     (ItemType.Oven, 1, 20),
-                    (ItemType.Teapot, 1, 7),
-                    (ItemType.TrashCan, 1, 9),
+                    (ItemType.Teapot, 1, 8),
+                    (ItemType.TrashCan, 1, 10),
                     (ItemType.Present, 1, 10),
                     (ItemType.Box, 1, 8),
                     (ItemType.Key, 1, 6),
                     (ItemType.Key, 1, 6),
-                    (ItemType.Brilliant, 2, 7),
+                    (ItemType.Brilliant, 2, 8),
                 }, 1),
 
                 new Settings(new[] // 4
@@ -67,11 +66,12 @@ namespace Service
                     (ItemType.BakeryProduct, 4),
                 }, new[]
                 {
-                    (ItemType.Oven, 1, 10),
-                    (ItemType.Teapot, 1, 7),
-                    (ItemType.Box, 1, 8),
-                    (ItemType.Brilliant, 3, 10),
-                    (ItemType.Energy, 2, 12),
+                    (ItemType.TrashCan, 1, 20),
+                    (ItemType.Teapot, 1, 9),
+                    (ItemType.Box, 1, 10),
+                    (ItemType.Energy, 2, 16),
+                    (ItemType.Duplicator, 1, 22),
+                    (ItemType.Brilliant, 3, 13),
                 }, 2),
 
                 new Settings(new[] // 5
@@ -86,12 +86,13 @@ namespace Service
                     (ItemType.BakeryProductWithCream, 4),
                 }, new[]
                 {
-                    (ItemType.Teapot, 2, 23),
-                    (ItemType.Present, 1, 20),
-                    (ItemType.TrashCan, 1, 15),
-                    (ItemType.TrashCan, 2, 28),
-                    (ItemType.Energy, 1, 8),
-                    (ItemType.Brilliant, 2, 13),
+                    (ItemType.Teapot, 2, 30),
+                    (ItemType.Present, 1, 26),
+                    (ItemType.Oven, 1, 13),
+                    (ItemType.TrashCan, 2, 37),
+                    (ItemType.Energy, 1, 10),
+                    (ItemType.Doubler, 1, 20),
+                    (ItemType.Brilliant, 2, 17),
                 }, 2),
 
                 new Settings(new[] // 6
@@ -106,12 +107,12 @@ namespace Service
                     (ItemType.BakeryProduct, 5),
                 }, new[]
                 {
-                    (ItemType.TrashCan, 1, 25),
-                    (ItemType.Energy, 2, 19),
-                    (ItemType.Brilliant, 2, 19),
-                    (ItemType.Key, 1, 20),
-                    (ItemType.Oven, 1, 24),
-                    (ItemType.Box, 1, 16),
+                    (ItemType.TrashCan, 1, 33),
+                    (ItemType.Energy, 2, 25),
+                    (ItemType.Brilliant, 2, 25),
+                    (ItemType.Key, 1, 32),
+                    (ItemType.Oven, 1, 21),
+                    (ItemType.Box, 1, 26),
                 }, 2),
 
                 new Settings(new[] // 7
@@ -126,11 +127,12 @@ namespace Service
                     (ItemType.BakeryProductWithCream, 5),
                 }, new[]
                 {
-                    (ItemType.TrashCan, 1, 27),
-                    (ItemType.Teapot, 2, 28),
-                    (ItemType.Brilliant, 3, 23),
-                    (ItemType.Energy, 1, 10),
-                    (ItemType.Present, 1, 30),
+                    (ItemType.TrashCan, 1, 36),
+                    (ItemType.Teapot, 2, 37),
+                    (ItemType.Energy, 1, 13),
+                    (ItemType.Brilliant, 3, 28),
+                    (ItemType.Duplicator, 1, 37),
+                    (ItemType.Present, 1, 40),
                 }, 2),
 
                 new Settings(new[] // 8
@@ -145,12 +147,13 @@ namespace Service
                     (ItemType.BakeryProduct, 6),
                 }, new[]
                 {
-                    (ItemType.Toaster, 1, 60),
-                    (ItemType.Teapot, 1, 30),
-                    (ItemType.Brilliant, 1, 12),
-                    (ItemType.Brilliant, 1, 12),
-                    (ItemType.Key, 2, 34),
-                    (ItemType.Oven, 1, 29),
+                    (ItemType.Toaster, 1, 70),
+                    (ItemType.Teapot, 1, 40),
+                    (ItemType.Brilliant, 1, 16),
+                    (ItemType.Brilliant, 1, 16),
+                    (ItemType.Key, 2, 45),
+                    (ItemType.Doubler, 1, 34),
+                    (ItemType.Oven, 1, 38),
                 }),
 
                 new Settings(new[] // 9
@@ -167,11 +170,11 @@ namespace Service
                     (ItemType.FastFood, 4),
                 }, new[]
                 {
-                    (ItemType.Teapot, 1, 33),
-                    (ItemType.TrashCan, 1, 29),
-                    (ItemType.Box, 2, 30),
-                    (ItemType.Brilliant, 3, 26),
-                    (ItemType.Energy, 3, 27),
+                    (ItemType.Teapot, 1, 44),
+                    (ItemType.TrashCan, 1, 38),
+                    (ItemType.Box, 2, 40),
+                    (ItemType.Brilliant, 3, 34),
+                    (ItemType.Energy, 3, 36),
                 }),
 
                 new Settings(new[] // 10
@@ -187,12 +190,12 @@ namespace Service
                     (ItemType.BakeryProduct, 7),
                 }, new[]
                 {
-                    (ItemType.Teapot, 1, 35),
-                    (ItemType.Teapot, 2, 40),
-                    (ItemType.Present, 2, 31),
-                    (ItemType.Toaster, 1, 24),
-                    (ItemType.Energy, 1, 18),
-                    (ItemType.Brilliant, 2, 23),
+                    (ItemType.Teapot, 1, 46),
+                    (ItemType.Teapot, 2, 53),
+                    (ItemType.Present, 2, 41),
+                    (ItemType.Toaster, 1, 32),
+                    (ItemType.Energy, 1, 24),
+                    (ItemType.Brilliant, 2, 30),
                 }),
             };
         }

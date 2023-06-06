@@ -12,6 +12,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 4a0971bbfd844524aaa352ea03960477, type: 3}
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
+      propertyPath: _produceSound
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _generatedItems.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -22,6 +26,22 @@ PrefabInstance:
     - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: _generatedItems.Array.data[1]
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
+      propertyPath: _statsOnLevels.Array.data[0].clickIncreaseSeconds
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
+      propertyPath: _statsOnLevels.Array.data[1].clickIncreaseSeconds
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
+      propertyPath: _statsOnLevels.Array.data[5].clickIncreaseSeconds
+      value: 2.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 177258564609147120, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
+      propertyPath: _statsOnLevels.Array.data[6].clickIncreaseSeconds
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 177258564609147122, guid: a8a65e10e283a46499daeeef6f4b120c, type: 3}
       propertyPath: m_Pivot.x

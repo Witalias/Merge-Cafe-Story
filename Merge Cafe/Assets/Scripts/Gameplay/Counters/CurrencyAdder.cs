@@ -26,10 +26,10 @@ namespace Gameplay.Counters
                 switch (type)
                 {
                     case CurrencyType.Star:
-                        Spawn(GameStorage.Instanse.StarForAnimation, count / 3 + 1, animationStartPosition);
+                        Spawn(GameStorage.Instance.StarForAnimation, count / 3 + 1, animationStartPosition);
                         break;
                     case CurrencyType.Brilliant:
-                        Spawn(GameStorage.Instanse.BrilliantForAnimation, count / 20 + 1, animationStartPosition);
+                        Spawn(GameStorage.Instance.BrilliantForAnimation, count / 20 + 1, animationStartPosition);
                         break;
                 }
             }

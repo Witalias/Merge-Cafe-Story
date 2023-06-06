@@ -1,5 +1,6 @@
 ﻿using Gameplay.Counters;
 using Gameplay.ItemGenerators;
+using Gameplay.Tutorial;
 using UnityEngine;
 
 namespace EventHandlers
@@ -24,6 +25,10 @@ namespace EventHandlers
             InfoWindowHandler.IsGeneratorMaxLevel += _itemGeneratorStorage.IsMaxLevel;
             InfoWindowHandler.GetGeneratorLevel += _itemGeneratorStorage.GetLevel;
             InfoWindowHandler.GetProducedItemSprites += _itemGeneratorStorage.GetProducedItemSprites;
+
+            TutorialSystem.GetGenerator += _itemGeneratorStorage.GetGenerator;
+            TutorialSystem.SetActiveGeneratorTimers += _itemGeneratorStorage.SetActiveTimers;
+            TutorialSystem.SetGeneratorLevel += _itemGeneratorStorage.SetLevel;
         }
 
         private void OnDisable()
@@ -36,6 +41,10 @@ namespace EventHandlers
             InfoWindowHandler.IsGeneratorMaxLevel -= _itemGeneratorStorage.IsMaxLevel;
             InfoWindowHandler.GetGeneratorLevel -= _itemGeneratorStorage.GetLevel;
             InfoWindowHandler.GetProducedItemSprites -= _itemGeneratorStorage.GetProducedItemSprites;
+
+            TutorialSystem.GetGenerator -= _itemGeneratorStorage.GetGenerator;
+            TutorialSystem.SetActiveGeneratorTimers -= _itemGeneratorStorage.SetActiveTimers;
+            TutorialSystem.SetGeneratorLevel -= _itemGeneratorStorage.SetLevel;
         }
     }
 }

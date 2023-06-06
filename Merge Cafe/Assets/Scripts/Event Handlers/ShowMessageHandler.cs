@@ -10,15 +10,6 @@ namespace EventHandlers
     [RequireComponent(typeof(Message))]
     public class ShowMessageHandler : MonoBehaviour
     {
-        private const string _maxLevelText = "Максимальный уровень";
-        private const string _noEmptyCellsText = "Нет свободных ячеек";
-        private const string _cannotBeThrownAwayText = "Этот предмет нельзя выбросить";
-        private const string _dragItemToTrashCanText = "Перетащите ненужный предмет";
-        private const string _upgradedText = "УЛУЧШЕНО";
-        private const string _wrongLevelForCombinatingText = "Неподходящий уровень предмета";
-        private const string _notEnougthBrilliantsText = "Не хватает бриллиантов";
-        private const string _noOrderPointsText = "Нет доступных заказов";
-
         private Message _message;
 
         private void Awake()
@@ -53,42 +44,42 @@ namespace EventHandlers
 
         private void ShowMaxLevel()
         {
-            _message.Show(_maxLevelText);
+            _message.Show(Translation.GetMessageText(GameStorage.Instance.Language, MessageType.MaxLevel));
         }
 
         private void ShowNoEmptyCells()
         {
-            _message.Show(_noEmptyCellsText);
+            _message.Show(Translation.GetMessageText(GameStorage.Instance.Language, MessageType.NoEmptyCells));
         }
 
         private void ShowCannotBeThrownAway()
         {
-            _message.Show(_cannotBeThrownAwayText);
+            _message.Show(Translation.GetMessageText(GameStorage.Instance.Language, MessageType.CannotBeThrownAway));
         }
 
         private void ShowDragItemToTrashCan()
         {
-            _message.Show(_dragItemToTrashCanText);
+            _message.Show(Translation.GetMessageText(GameStorage.Instance.Language, MessageType.DragItemToTrashCan));
         }
 
         private void ShowUpgraded()
         {
-            _message.Show(_upgradedText);
+            _message.Show(Translation.GetMessageText(GameStorage.Instance.Language, MessageType.Upgraded));
         }
 
         private void ShowWrongLevelForCombination()
         {
-            _message.Show(_wrongLevelForCombinatingText);
+            _message.Show(Translation.GetMessageText(GameStorage.Instance.Language, MessageType.WrongLevelForCombinating));
         }
 
         private void ShowNotEnoughBrilliants()
         {
-            _message.Show(_notEnougthBrilliantsText);
+            _message.Show(Translation.GetMessageText(GameStorage.Instance.Language, MessageType.NotEnougthBrilliants));
         }
 
         private void ShowNoOrderPoints()
         {
-            _message.Show(_noOrderPointsText);
+            _message.Show(Translation.GetMessageText(GameStorage.Instance.Language, MessageType.NoOrderPoints));
         }
     }
 }

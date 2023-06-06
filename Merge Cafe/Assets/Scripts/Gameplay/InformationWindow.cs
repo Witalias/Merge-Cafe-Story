@@ -1,4 +1,5 @@
 using Gameplay.Field;
+using Gameplay.Tutorial;
 using Service;
 using System.Collections.Generic;
 using TMPro;
@@ -10,6 +11,7 @@ namespace Gameplay
     [RequireComponent(typeof(Animation))]
     public class InformationWindow : MonoBehaviour
     {
+        [SerializeField] private bool _enabled;
         [SerializeField] private GameObject _panel;
         [SerializeField] private TextMeshProUGUI _title;
         [SerializeField] private TextMeshProUGUI _level;
@@ -32,20 +34,10 @@ namespace Gameplay
         }
 
         public void ShowGenerator(string title, int level, string description, Sprite[] producedItemSprites,
-            string instruction = null)
+            string instruction)
         {
-            if (instruction == null || instruction == "")
-            {
-                instruction = "Нажми для ускорения производства.\n\n";
-                if (level == 1 || level == 4)
-                    instruction += "Улучши, чтобы быстрее производить предметы.";
-                else
-                    instruction += "Улучши, чтобы повысить уровень производимых предметов.";
-                instruction += "\n\nПроизводит:";
-            }
             ClearProducedItemsList();
             Show(title, level, description, instruction);
-            //_producedItemsGroup.gameObject.SetActive(true);
 
             if (producedItemSprites == null)
                 return;
@@ -73,11 +65,13 @@ namespace Gameplay
 
         private void Show(string title, int level, string description, string instruction)
         {
-            _panel.SetActive(true);
+            if (!TutorialSystem.TutorialDone || !_enabled)
+                return;
 
             _title.text = title;
-            _level.text = $"Уровень {level}";
-            _description.text = description;
+            _level.text = $"{Translation.GetLevelText(GameStorage.Instance.Language)} {level}";
+            //_description.text = description;
+            _description.text = "";
             _instruction.text = instruction;
 
             SetWindowPosition();
@@ -90,7 +84,8 @@ namespace Gameplay
 
         private System.Collections.IEnumerator UpdateWindow()
         {
-            yield return new WaitForSeconds(0.01f);
+            _panel.SetActive(true);
+            yield return new WaitForEndOfFrame();
             _panel.SetActive(false);
             _panel.SetActive(true);
         }

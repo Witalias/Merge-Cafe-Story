@@ -32,8 +32,8 @@ namespace Gameplay.DecorationMode
         public void Activate()
         {
             var buildingCanvas = GameObject.FindGameObjectWithTag(Tags.BuildingCanvas.ToString()).transform;
-            var purchaseButton = Instantiate(GameStorage.Instanse.PurchaseButton, transform.position, Quaternion.identity, buildingCanvas).GetComponent<PurchaseButton>();
-            purchaseButton.SetIcon(GameStorage.Instanse.DialogWindow);
+            var purchaseButton = Instantiate(GameStorage.Instance.PurchaseButton, transform.position, Quaternion.identity, buildingCanvas).GetComponent<PurchaseButton>();
+            purchaseButton.SetIcon(GameStorage.Instance.DialogWindow);
             purchaseButton.SetCost(_cost);
             _canActivate = true;
 
@@ -53,7 +53,7 @@ namespace Gameplay.DecorationMode
 
         private void Start()
         {
-            if (GameStorage.Instanse.LoadData)
+            if (GameStorage.Instance.LoadData)
                 Load();
         }
 

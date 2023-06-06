@@ -18,6 +18,12 @@ namespace Enums
         Toaster,
         FastFood,
         Box,
-        Energy
+        Energy,
+        Trash,
+        Duplicator,
+        Doubler,
+        Blender,
+        Juice,
+        Cocktail
     }
 }
