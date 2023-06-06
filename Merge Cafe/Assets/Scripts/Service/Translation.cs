@@ -133,8 +133,8 @@ namespace Service
                 {
                     [1] = new ItemDescription("Tea leaf", "So tiny and defenseless."),
                     [2] = new ItemDescription("Tea bag", "Immerse it in boiling water."),
-                    [3] = new ItemDescription("Black tea", "Just like my soul."),
-                    [4] = new ItemDescription("Green tea", "Warms."),
+                    [3] = new ItemDescription("Green tea", "Warms."),
+                    [4] = new ItemDescription("Black tea", "Just like my soul."),
                     [5] = new ItemDescription("Tea with lemon", "- Chivirzdnerkilmerk with lemon, please!\n- Chivirzdnerkilmerk with what?"),
                     [6] = new ItemDescription("Teapot", "Grab it for your friends."),
                     [7] = new ItemDescription("Cold tea", "You won't believe it, but it's not just tea that's cold!"),
@@ -222,9 +222,9 @@ namespace Service
                 },
                 [ItemType.Doubler] = new()
                 {
-                    [1] = new ItemDescription("Doubler", "Doubles rewards for 1 order"),
-                    [2] = new ItemDescription("Doubler", "Doubles rewards for 4 orders"),
-                    [3] = new ItemDescription("Doubler", "Doubles rewards for 9 orders")
+                    [1] = new ItemDescription("Doubler", ""),
+                    [2] = new ItemDescription("Doubler", ""),
+                    [3] = new ItemDescription("Doubler", "")
                 }
             },
             [Language.Russian] = new()
@@ -353,8 +353,8 @@ namespace Service
                 {
                     [1] = new ItemDescription("Чайный лист", "Такой крохотный и беззащитный."),
                     [2] = new ItemDescription("Чайный пакетик", "Погрузите его в кипяток."),
-                    [3] = new ItemDescription("Чёрный чай", "Прямо как моя душа."),
-                    [4] = new ItemDescription("Зелёный чай", "Согревает."),
+                    [3] = new ItemDescription("Зелёный чай", "Согревает."),
+                    [4] = new ItemDescription("Чёрный чай", "Прямо как моя душа."),
                     [5] = new ItemDescription("Чай с лимоном", "— Мне, пожалуйста, чивирзднеркильмерк с лимоном!\n— Чивирзднеркильмерк с чем?"),
                     [6] = new ItemDescription("Заварник", "Захвати для своих друзей."),
                     [7] = new ItemDescription("Холодный чай", "Вы не поверите, но это не просто чай, который остыл!"),
@@ -442,9 +442,9 @@ namespace Service
                 },
                 [ItemType.Doubler] = new()
                 {
-                    [1] = new ItemDescription("Удвоитель", "Удваивает награды за 1 заказ"),
-                    [2] = new ItemDescription("Удвоитель", "Удваивает награды за 4 заказа"),
-                    [3] = new ItemDescription("Удвоитель", "Удваивает награды за 9 заказов")
+                    [1] = new ItemDescription("Удвоитель", ""),
+                    [2] = new ItemDescription("Удвоитель", ""),
+                    [3] = new ItemDescription("Удвоитель", "")
                 }
             }
         };
@@ -819,6 +819,20 @@ namespace Service
             },
         };
 
+        private static Dictionary<Language, string[]> _doublerInfo = new()
+        {
+            [Language.English] = new[]
+            {
+                "Doubles the rewards of",
+                "order"
+            },
+            [Language.Russian] = new[]
+            {
+                "Удваивает награды для",
+                ""
+            },
+        };
+
         public static string GetItemTitle(Language language, ItemType type) => _itemNames[language][type];
 
         public static ItemDescription GetItemDescription(Language language, ItemType type, int level)
@@ -890,6 +904,7 @@ namespace Service
 
         public static string GetDuplicatorInfoPart(Language language, int level) => _duplicatorInfo[language][level];
 
+        public static string[] GetDoublerInfoParts(Language language) => _doublerInfo[language];
 
         public static string PluralizeWord(int count, string one, string twoFour, string fiveTen)
         {

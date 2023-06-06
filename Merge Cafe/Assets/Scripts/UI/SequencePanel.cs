@@ -17,12 +17,12 @@ namespace UI
 
         public ItemInSequence GetItemInSequence(int level) => _icons[level - 1];
 
-        public void Show(ItemType type)
+        public void Show(ItemType type, bool forced = false)
         {
             if (type == ItemType.OpenPresent)
                 return;
 
-            if (_busy && type != _currentType)
+            if (_busy && type != _currentType && !forced)
                 return;
 
             _currentType = type;
@@ -40,11 +40,12 @@ namespace UI
                     return;
                 }
                 _icons[i].gameObject.SetActive(true);
+                _icons[i].HideReward();
                 _icons[i].SetSprite(item.Unlocked ? item.Icon : _storage.QuestionMark);
 
                 if (item.IsNew && item.Unlocked && !_icons[i].ContainsPresent)
                 {
-                    _icons[i].PayAttentionAnimation();
+                    //_icons[i].PayAttentionAnimation();
                     _icons[i].ShowReward(item);
                     _busy = true;
                 }
@@ -81,6 +82,11 @@ namespace UI
             }
             foreach (var arrow in _arrows)
                 arrow.SetActive(false);
+        }
+
+        public void SetPulsateItem(int level, bool value)
+        {
+            _icons[level - 1].SetPulsate(value);
         }
 
         private void Awake()

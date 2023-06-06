@@ -14,6 +14,7 @@ namespace UI
     public class ItemInSequence : MonoBehaviour
     {
         private const string _attentionAnimatorTrigger = "Attention";
+        private const string _pulsateAnimatorBool = "Pulsate";
 
         [SerializeField] private Image _reward;
         [SerializeField] private GameObject _cross;
@@ -35,17 +36,28 @@ namespace UI
 
         public void PayAttentionAnimation()
         {
-            _animator.SetTrigger(_attentionAnimatorTrigger);
+            if (_animator != null)
+                _animator.SetTrigger(_attentionAnimatorTrigger);
+        }
+
+        public void SetPulsate(bool value)
+        {
+            if (_animator != null)
+                _animator.SetBool(_pulsateAnimatorBool, value);
         }
 
         public void ShowReward(ItemStorage item)
         {
             _storage = GameStorage.Instance;
             _item = item;
-            ContainsPresent = true;
             _rewardStorage = _storage.GetRewardForNewItemByLevel(item.Level);
             _reward.gameObject.SetActive(true);
             _reward.sprite = _rewardStorage.Icon;
+            ContainsPresent = true;
+            if (_item.RewardIsShowing)
+                return;
+            _item.RewardIsShowing = true;
+            PayAttentionAnimation();
             SoundManager.Instanse.Play(Sound.NewItem, null, item.Level - 1);
 
             // Для синхронизации анимации и звука. На более изящное решение пока нет времени.
@@ -61,6 +73,12 @@ namespace UI
                 yield return new WaitForSeconds(delay);
                 _animator.speed = 1f;
             }
+        }
+
+        public void HideReward()
+        {
+            ContainsPresent = false;
+            _reward.gameObject.SetActive(false);
         }
 
         public void SetSprite(Sprite value) => _image.sprite = value;
@@ -90,6 +108,7 @@ namespace UI
             randomCell.CreateItem(_rewardStorage, transform.position);
             _reward.gameObject.SetActive(false);
             ContainsPresent = false;
+            _item.RewardIsShowing = false;
             _item.NotNew();
 
             PresentGetted?.Invoke();

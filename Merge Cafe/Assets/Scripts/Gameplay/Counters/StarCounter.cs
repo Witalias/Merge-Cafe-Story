@@ -6,10 +6,12 @@ using Service;
 using Enums;
 using System.Collections.Generic;
 using Gameplay.Field;
+using YG;
+using UnityEngine.EventSystems;
 
 namespace Gameplay.Counters
 {
-    public class StarCounter : MonoBehaviour, IStorable
+    public class StarCounter : MonoBehaviour, IStorable, IPointerEnterHandler, IPointerExitHandler
     {
         private const string CURRENT_STAR_REWARD_TYPE_KEY = "CURRENT_STAR_REWARD_TYPE";
         private const string CURRENT_STAR_REWARD_LEVEL_KEY = "CURRENT_STAR_REWARD_LEVEL";
@@ -42,6 +44,8 @@ namespace Gameplay.Counters
         public static event System.Action NewStageReached;
         public static event System.Action<ItemType> ActivateGenerator;
         public static event System.Action<int, float> NewGlobalLevel;
+        public static event System.Action<ItemType, int> CursorHoveredItem;
+        public static event System.Action CursorLeftItem;
         public static event System.Func<ItemType, bool> IsGenerator;
         public static event System.Func<ItemType, bool> GeneratorExistsInGame;
 
@@ -84,7 +88,18 @@ namespace Gameplay.Counters
         {
             _storage.StarsCount += value;
             UpdateValuesText();
+            YandexGame.NewLeaderboardScores("Stars", _storage.StarsCount);
             SoundManager.Instanse.Play(Sound.MagicV2, null);
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            CursorHoveredItem?.Invoke(_currentReward.Type, _currentReward.Level);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            CursorLeftItem?.Invoke();
         }
 
         private void Start()

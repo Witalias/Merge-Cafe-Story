@@ -1,5 +1,6 @@
 using Enums;
 using Gameplay;
+using Gameplay.Counters;
 using Gameplay.Field;
 using Gameplay.ItemGenerators;
 using Service;
@@ -32,6 +33,8 @@ namespace EventHandlers
             Item.CursorLeftItem += _informationWindow.Hide;
             Upgradable.CursorHoveredGenerator += OnCursorHoveredGenerator;
             Upgradable.CursorLeftGenerator += _informationWindow.Hide;
+            StarCounter.CursorHoveredItem += OnCursorHoveredItem;
+            StarCounter.CursorLeftItem += _informationWindow.Hide;
         }
 
         private void OnDisable()
@@ -41,6 +44,8 @@ namespace EventHandlers
             Item.CursorLeftItem -= _informationWindow.Hide;
             Upgradable.CursorHoveredGenerator -= OnCursorHoveredGenerator;
             Upgradable.CursorLeftGenerator -= _informationWindow.Hide;
+            StarCounter.CursorHoveredItem -= OnCursorHoveredItem;
+            StarCounter.CursorLeftItem -= _informationWindow.Hide;
         }
 
         private void OnCursorHoveredItem(ItemType type, int level)
@@ -150,6 +155,26 @@ namespace EventHandlers
             else if (type == ItemType.Duplicator)
             {
                 instruction = $"{Translation.GetDuplicatorInfoPart(language, level)}.";
+            }
+            else if (type == ItemType.Doubler)
+            {
+                var count = level switch
+                {
+                    1 => 1,
+                    2 => 4,
+                    3 => 9,
+                    _ => 1
+                };
+                var parts = Translation.GetDoublerInfoParts(language);
+                if (language == Language.Russian)
+                {
+                    instruction = $"{parts[0]} <color=#{highlightColor}>{count} " +
+                        $"{Translation.PluralizeWord(count, "заказа", "заказов", "заказов")}</color>.";
+                }
+                else
+                {
+                    instruction = $"{parts[0]} <color=#{highlightColor}>{count} {parts[1]}{(count > 1 ? "s" : "")}</color>.";
+                }
             }
             else
             {

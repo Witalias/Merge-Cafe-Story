@@ -4,95 +4,21 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>{{{ PRODUCT_NAME }}}</title>
+    <title>Merge Cafe Story</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
 
     <!-- Yandex Games SDK -->
     <script src="https://yandex.ru/games/sdk/v2"></script>
 
-    <!-- Yandex.Metrika counter -->
+    
 
-    #if BANNER_DYNAMIC_1
-    <style>
-        #RTB1 {
-            position: fixed;
-            display: none;
-        }
 
-            #RTB1.show {
-                display: block;
-            }
-    </style>
-    #endif
 
-    #if BANNER_DYNAMIC_2
-    <style>
-        #RTB2 {
-            position: fixed;
-            display: none;
-        }
 
-            #RTB2.show {
-                display: block;
-            }
-    </style>
-    #endif
-
-    #if BANNER_STATIC_1
-    <style>
-        #RTBStatic1 {
-            position: fixed;
-            width: 80%;
-            height: 15%;
-            left: 10%;
-            bottom: 0;
-            display: none;
-        }
-
-            #RTBStatic1.show {
-                display: block;
-            }
-
-        @media screen and (max-width: 800px) {
-            #RTBStatic1 {
-                width: 320px;
-                height: 50px;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
-    </style>
-    #endif
-
-    #if BANNER_STATIC_2
-    <style>
-        #RTBStatic2 {
-            position: fixed;
-            width: 80%;
-            height: 15%;
-            left: 10%;
-            top: 0;
-            display: none;
-        }
-
-            #RTBStatic2.show {
-                display: block;
-            }
-
-        @media screen and (max-width: 800px) {
-            #RTBStatic2 {
-                width: 320px;
-                height: 50px;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
-    </style>
-    #endif
 
 </head>
-<body class="{{{ SPLASH_SCREEN_STYLE.toLowerCase() }}}">
+<body class="dark">
 <div id="unity-container" class="unity-desktop">
     <canvas id="unity-canvas"></canvas>
 </div>
@@ -106,142 +32,22 @@
     </div>
 </div>
 
-#if BANNER_DYNAMIC_1
-<div id="RTB1">
-    <script>
-        const rbt1 = document.querySelector('#RTB1');
 
-        function ExecuteCodeRTB1() {
-            try {
-                {{{ BANNER_DYNAMIC_1 }}}
-            } catch (e) {
-                console.error('CRASH Render RTB1: ', e.message);
-            }
-        }
 
-        function ActivityRTB1(state) {
-            try {
-                if (state) {
-                    rbt1.classList.add('show');
-                } else {
-                    rbt1.classList.remove('show');
-                }
-            } catch (e) {
-                console.error('CRASH Activity RTB1: ', e.message);
-            }
-        }
 
-        function RecalculateRTB1(_width, _height, _left, _top) {
-            try {
-                document.getElementById('RTB1').style.width = _width;
-                document.getElementById('RTB1').style.height = _height;
-                document.getElementById('RTB1').style.left = _left;
-                document.getElementById('RTB1').style.top = _top;
-            } catch (e) {
-                console.error('CRASH Recalculate RTB1: ', e.message);
-            }
-        }
-    </script>
-</div>
-#endif
-
-#if BANNER_DYNAMIC_2
-<div id="RTB2">
-    <script>
-        const rbt2 = document.querySelector('#RTB2');
-
-        function ExecuteCodeRTB2() {
-            try {
-                {{{ BANNER_DYNAMIC_2 }}}
-            } catch (e) {
-                console.error('CRASH Render RTB2: ', e.message);
-            }
-        }
-
-        function ActivityRTB2(state) {
-            try {
-                if (state) {
-                    rbt2.classList.add('show');
-                } else {
-                    rbt2.classList.remove('show');
-                }
-            } catch (e) {
-                console.error('CRASH Activity RTB2: ', e.message);
-            }
-        }
-
-        function RecalculateRTB2(_width, _height, _left, _top) {
-            try {
-                document.getElementById('RTB2').style.width = _width;
-                document.getElementById('RTB2').style.height = _height;
-                document.getElementById('RTB2').style.left = _left;
-                document.getElementById('RTB2').style.top = _top;
-            } catch (e) {
-                console.error('CRASH Recalculate RTB2: ', e.message);
-            }
-        }
-    </script>
-</div>
-#endif
-
-#if BANNER_STATIC_1
-<div id="RTBStatic1">
-    <script>
-        const rbtLoadGame1 = document.querySelector('#RTBStatic1');
-        rbtLoadGame1.classList.add('show');
-
-        function ExecuteCodeStaticRTB1() {
-            try {
-                if (document.getElementById('RTBStatic1').style.display !== 'none') {
-                    {{{ BANNER_STATIC_1 }}}
-                }
-            } catch (e) {
-                console.error('CRASH Render Static RTB1: ', e.message);
-            }
-        }
-        ExecuteCodeStaticRTB1();
-    </script>
-</div>
-#endif
-
-#if BANNER_STATIC_2
-<div id="RTBStatic2">
-    <script>
-        const rbtLoadGame2 = document.querySelector('#RTBStatic2');
-        rbtLoadGame2.classList.add('show');
-
-        function ExecuteCodeStaticRTB2() {
-            try {
-                if (document.getElementById('RTBStatic2').style.display !== 'none') {
-                    {{{ BANNER_STATIC_2 }}}
-                }
-            } catch (e) {
-                console.error('CRASH Render Static RTB2: ', e.message);
-            }
-        }
-        ExecuteCodeStaticRTB2();
-    </script>
-</div>
-#endif
 
 <script>
     const hideFullScreenButton = "";
     const buildUrl = "Build";
-    const loaderUrl = buildUrl + "/{{{ LOADER_FILENAME }}}";
+    const loaderUrl = buildUrl + "/Merge Cafe Story (WebGL).loader.js";
     const config = {
-        dataUrl: buildUrl + "/{{{ DATA_FILENAME }}}",
-        frameworkUrl: buildUrl + "/{{{ FRAMEWORK_FILENAME }}}",
-        codeUrl: buildUrl + "/{{{ CODE_FILENAME }}}",
-        #if MEMORY_FILENAME
-        memoryUrl: buildUrl + "/{{{ MEMORY_FILENAME }}}",
-        #endif
-        #if SYMBOLS_FILENAME
-        symbolsUrl: buildUrl + "/{{{ SYMBOLS_FILENAME }}}",
-        #endif
+        dataUrl: buildUrl + "/Merge Cafe Story (WebGL).data",
+        frameworkUrl: buildUrl + "/Merge Cafe Story (WebGL).framework.js",
+        codeUrl: buildUrl + "/Merge Cafe Story (WebGL).wasm",
         streamingAssetsUrl: "StreamingAssets",
-        companyName: "{{{ COMPANY_NAME }}}",
-        productName: "{{{ PRODUCT_NAME }}}",
-        productVersion: "{{{ PRODUCT_VERSION }}}",
+        companyName: "Team7",
+        productName: "Merge Cafe Story",
+        productVersion: "0.1.0.0",
     };
 
     const container = document.querySelector("#unity-container");
@@ -268,10 +74,10 @@
 
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         container.className = "unity-mobile";
-        config.devicePixelRatio = 1;
+        
     }
 
-    var backgroundUnity = "url('" + buildUrl + "/{{{ BACKGROUND_FILENAME.replace(/'/g, '%27') }}}') center / cover";
+    
     canvas.style.background = "url('background.png') center / cover";
 
     loadingCover.style.display = "";
@@ -760,6 +566,10 @@
         }
     }
 
+    function GetLanguage() {
+        return ysdk.environment.i18n.lang;
+    }
+
     function RequestingEnvironmentData() {
         try {
             let jsonEnvir = {
@@ -835,22 +645,6 @@
     }
 
     function StaticRBTDeactivate() {
-        #if BANNER_STATIC_1
-        try {
-            rbtLoadGame1.classList.remove('show');
-            document.getElementById('RTBStatic1').style.display = 'none';
-        } catch (e) {
-            console.error('CRASH off RTBStatic1: ', e.message);
-        }
-        #endif
-        #if BANNER_STATIC_2
-        try {
-            rbtLoadGame2.classList.remove('show');
-            document.getElementById('RTBStatic2').style.display = 'none';
-        } catch (e) {
-            console.error('CRASH off RTBStatic2: ', e.message);
-        }
-        #endif
     }
 
     document.body.appendChild(script);

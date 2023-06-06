@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _loadData: 1
+  _cheats: 0
   _starsCount: 0
   _brilliantsCount: 0
   _generationStarFromLevel: 5
@@ -68,7 +69,7 @@ MonoBehaviour:
   - Type: 2
     Level: 1
   - Type: 15
-    Level: 3
+    Level: 2
   - Type: 2
     Level: 2
   - Type: 9
@@ -82,19 +83,19 @@ MonoBehaviour:
     Movable: 1
     Special: 0
     Items:
-    - Icon: {fileID: 21300000, guid: 1f3b6cfa33aac7346a47bca21ceff110, type: 3}
+    - Icon: {fileID: 21300000, guid: 128359d6a4602dd40ae5c0c8a1fbdbf5, type: 3}
       TakeSound: 19
       PutSound: 20
-    - Icon: {fileID: 21300000, guid: 6a0c538cb3c5eaa4f95b6ea38b625451, type: 3}
+    - Icon: {fileID: 21300000, guid: 65c3d483732f18942a0a695a66d6092b, type: 3}
       TakeSound: 19
       PutSound: 20
-    - Icon: {fileID: 21300000, guid: ef452084954e63a4fab2baca54df16f7, type: 3}
+    - Icon: {fileID: 21300000, guid: b66020c43a84eca47b20a76cae62ec75, type: 3}
       TakeSound: 2
       PutSound: 3
-    - Icon: {fileID: 21300000, guid: 64555132157c5444a82c28a33c7a2c68, type: 3}
+    - Icon: {fileID: 21300000, guid: 28031655b295c804ba05bee17a94929a, type: 3}
       TakeSound: 2
       PutSound: 3
-    - Icon: {fileID: 21300000, guid: 2f1236717bbca574b9e4ff5ce9ee3e29, type: 3}
+    - Icon: {fileID: 21300000, guid: f40685dc33b99714a83d5cedfb9dc5ff, type: 3}
       TakeSound: 2
       PutSound: 3
     - Icon: {fileID: 21300000, guid: b7d664f95d7d880469f73d3a5be8ca65, type: 3}
@@ -117,16 +118,16 @@ MonoBehaviour:
     Movable: 1
     Special: 0
     Items:
-    - Icon: {fileID: 21300000, guid: 6420e33bfee2d27469c23964dfd0088c, type: 3}
+    - Icon: {fileID: 21300000, guid: 029b429cde0846145a6520b545e6233d, type: 3}
       TakeSound: 19
       PutSound: 20
-    - Icon: {fileID: 21300000, guid: 02ec69e54ab9a4d4baaa2dab5fa7d4f3, type: 3}
+    - Icon: {fileID: 21300000, guid: 4b4da4d9cf798b149b16949e60f76085, type: 3}
       TakeSound: 19
       PutSound: 20
-    - Icon: {fileID: 21300000, guid: a312cb23017ded84b8a6ee152c6a28fe, type: 3}
+    - Icon: {fileID: 21300000, guid: e73f2205957c7144ca5cfaf0531295f6, type: 3}
       TakeSound: 19
       PutSound: 20
-    - Icon: {fileID: 21300000, guid: 1448618b91a42cb428491dd6beb820f5, type: 3}
+    - Icon: {fileID: 21300000, guid: 3506b57797bdf1c478ca1fa1082de78f, type: 3}
       TakeSound: 2
       PutSound: 3
     - Icon: {fileID: 21300000, guid: fb40087a54e5c044e9cd858767c83363, type: 3}
@@ -220,10 +221,10 @@ MonoBehaviour:
     Movable: 1
     Special: 1
     Items:
-    - Icon: {fileID: 21300000, guid: 94e04c3a9e3e91647a6f07b5a236012a, type: 3}
+    - Icon: {fileID: 21300000, guid: e101634e18ea5234db946feaff48634d, type: 3}
       TakeSound: 19
       PutSound: 20
-    - Icon: {fileID: 21300000, guid: e1c4db1e1932f2e459c4d86c0df2806a, type: 3}
+    - Icon: {fileID: 21300000, guid: 0aa15d21247f7ae40a97a2383d6614bf, type: 3}
       TakeSound: 23
       PutSound: 24
     - Icon: {fileID: 21300000, guid: 0e80554649ab40d46a7e69b2fd295949, type: 3}
@@ -528,13 +529,13 @@ MonoBehaviour:
     Movable: 1
     Special: 1
     Items:
-    - Icon: {fileID: 21300000, guid: 778941ffb28c22845939170ac0ce157b, type: 3}
+    - Icon: {fileID: 21300000, guid: bf4d13c9a4f9f564f93511b5cf35a657, type: 3}
       TakeSound: 19
       PutSound: 20
-    - Icon: {fileID: 21300000, guid: fbf333ea900bafc4aa59197e0dd7519a, type: 3}
+    - Icon: {fileID: 21300000, guid: 0a61cf741ea6e9d4c8518e19496571d9, type: 3}
       TakeSound: 19
       PutSound: 20
-    - Icon: {fileID: 21300000, guid: b71def3e80d9dd444a158c9ce992b1aa, type: 3}
+    - Icon: {fileID: 21300000, guid: 8329457cee960484c869f56ff7351561, type: 3}
       TakeSound: 19
       PutSound: 20
   _combinations:

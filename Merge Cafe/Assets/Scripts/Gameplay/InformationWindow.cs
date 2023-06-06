@@ -70,7 +70,8 @@ namespace Gameplay
 
             _title.text = title;
             _level.text = $"{Translation.GetLevelText(GameStorage.Instance.Language)} {level}";
-            _description.text = description;
+            //_description.text = description;
+            _description.text = "";
             _instruction.text = instruction;
 
             SetWindowPosition();

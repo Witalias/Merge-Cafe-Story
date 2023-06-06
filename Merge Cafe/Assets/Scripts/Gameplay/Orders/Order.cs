@@ -35,6 +35,10 @@ namespace Gameplay.Orders
         [SerializeField] private Image _extraRewardImage;
         [SerializeField] private Color _darkenedColor;
         [SerializeField] private float _delayBeforeFinished = 1f;
+        [SerializeField] private Image _background;
+        [SerializeField] private Color _doubledRewardValueColor;
+        [SerializeField] private Color _doubledBackgroundColor;
+        [SerializeField] private Color _doubledPointColor;
 
         private Animator _animator;
         private CurrencyAdder _currencyAdder;
@@ -48,8 +52,9 @@ namespace Gameplay.Orders
         private bool started = false;
 
         private int _reward—oefficient;
-        private Color _defaultColor = Color.white;
-        private Color _doubledRewardValueColor = Color.green;
+        private Color _defaultValueColor;
+        private Color _defaultBackgroundColor;
+        private Color _defaultPointColor;
 
         public static event System.Action RewardsAdded;
         public static event System.Action<int> OrderDone;
@@ -223,17 +228,26 @@ namespace Gameplay.Orders
             {
                 _starsValueText.color = _doubledRewardValueColor;
                 _brilliantsValueText.color = _doubledRewardValueColor;
+                _background.color = _doubledBackgroundColor;
+                //foreach (var point in _orderPoints)
+                //    point.Background.color = _doubledPointColor;
             }
             else
             {
-                _starsValueText.color = _defaultColor;
-                _brilliantsValueText.color = _defaultColor;
+                _starsValueText.color = _defaultValueColor;
+                _brilliantsValueText.color = _defaultValueColor;
+                _background.color = _defaultBackgroundColor;
+                //foreach (var point in _orderPoints)
+                //    point.Background.color = _defaultPointColor;
             }
         }
 
         private void Awake()
         {
             _animator = GetComponent<Animator>();
+            _defaultValueColor = _starsValueText.color;
+            _defaultBackgroundColor = _background.color;
+            _defaultPointColor = _orderPoints[0].Background.color;
         }
 
         private void Start()

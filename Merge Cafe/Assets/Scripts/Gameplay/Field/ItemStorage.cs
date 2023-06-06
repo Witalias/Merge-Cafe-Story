@@ -15,6 +15,7 @@ namespace Gameplay.Field
         public bool Throwable { get; private set; } = true;
         public bool Movable { get; private set; } = true;
         public bool Special { get; private set; } = true;
+        public bool RewardIsShowing { get; set; } = false;
         public Sound TakeSound { get; }
         public Sound PutSound { get; }
 

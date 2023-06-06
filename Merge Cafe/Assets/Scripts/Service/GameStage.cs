@@ -91,6 +91,7 @@ namespace Service
                     (ItemType.Oven, 1, 13),
                     (ItemType.TrashCan, 2, 37),
                     (ItemType.Energy, 1, 10),
+                    (ItemType.Doubler, 1, 20),
                     (ItemType.Brilliant, 2, 17),
                 }, 2),
 
@@ -151,6 +152,7 @@ namespace Service
                     (ItemType.Brilliant, 1, 16),
                     (ItemType.Brilliant, 1, 16),
                     (ItemType.Key, 2, 45),
+                    (ItemType.Doubler, 1, 34),
                     (ItemType.Oven, 1, 38),
                 }),
 

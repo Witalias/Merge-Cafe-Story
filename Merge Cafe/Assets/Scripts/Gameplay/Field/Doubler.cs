@@ -1,13 +1,12 @@
-using System.Collections;
+using Service;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 namespace Gameplay.Field
 {
     [RequireComponent(typeof(Item))]
     [RequireComponent(typeof(QuickClickTracking))]
-    public class Doubler : MonoBehaviour //, IStorable
+    public class Doubler : MonoBehaviour
     {
         private Item _item;
         private QuickClickTracking _quickClickTracking;
@@ -32,6 +31,7 @@ namespace Gameplay.Field
             if (_quickClickTracking.QuickClicked)
             {
                 Activated?.Invoke(_ordersToDoubleDependingOnLevel[_item.Stats.Level]);
+                SoundManager.Instanse.Play(Enums.Sound.SpeedUp, null);
                 Destroy(gameObject);
             }
         }
