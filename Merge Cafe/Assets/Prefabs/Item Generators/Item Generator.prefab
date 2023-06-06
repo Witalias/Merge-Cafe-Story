@@ -118,6 +118,7 @@ RectTransform:
   - {fileID: 177258565823292348}
   - {fileID: 3370551925709574606}
   - {fileID: 9157411622498797851}
+  - {fileID: 6498851000428494985}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -151,7 +152,9 @@ MonoBehaviour:
   _bar: {fileID: 177258565823292355}
   _energyIcon: {fileID: 4615350950180680006}
   _toggle: {fileID: 5504134919012545092}
+  _itemSpawnPoint: {fileID: 6498851000428494985}
   _disabledColor: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
+  _produceSound: 0
   _generatedItems: 
   _statsOnLevels:
   - generationTimeInSec: 30
@@ -305,6 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 0}
   _toggle: {fileID: 5504134919012545092}
+  _objectToInactive: {fileID: 0}
 --- !u!1 &177258564630686194
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,6 +777,42 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!1 &8138346527222865445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6498851000428494985}
+  m_Layer: 5
+  m_Name: Item Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6498851000428494985
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8138346527222865445}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 177258564609147122}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -87.6}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8925664789797432168
 GameObject:
   m_ObjectHideFlags: 0

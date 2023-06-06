@@ -163,6 +163,7 @@ namespace Gameplay.Orders
             }
             ChangeRewardText();
             Show();
+            CheckOnAvailableItems();
         }
 
         public void CheckIncomingItem(ItemStorage item, out bool matches)
@@ -185,6 +186,17 @@ namespace Gameplay.Orders
                 GetRewards();
         }
 
+        public void CheckOnAvailableItems()
+        {
+            for (var i = 0; i < _orders.Length; ++i)
+            {
+                if (_orders[i] == null)
+                    continue;
+                _orderPoints[i].SetActiveAvailableMark(
+                    ItemsManager.Instance.IsAvailable(_orders[i].Type, _orders[i].Level));
+            }
+        }
+
         private void GetRewards()
         {
             _actived = false;
@@ -202,6 +214,7 @@ namespace Gameplay.Orders
             _orderPoints[orderPointIndex].CheckMark.gameObject.SetActive(true);
             _orderPoints[orderPointIndex].CheckMark.Play();
             _orderPoints[orderPointIndex].Icon.color = _darkenedColor;
+            _orderPoints[orderPointIndex].SetActiveAvailableMark(false);
             _orders[orderPointIndex] = null;
             return true;
         }

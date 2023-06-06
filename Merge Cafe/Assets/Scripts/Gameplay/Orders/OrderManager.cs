@@ -145,11 +145,15 @@ namespace Gameplay.Orders
             return orderPoints.OrderByDescending(point => point.Level).ToArray()[0];
         }
 
-        public void ChangeDoublerOrdersAmount(int ordersAmount)
+        public void AddDoublerOrdersAmount(int ordersAmount)
         {
+            doubledRewardsOrdersAmount += ordersAmount;     
+        }
 
-            doubledRewardsOrdersAmount += ordersAmount;
-      
+        public void CheckOnAvailableItems()
+        {
+            foreach (var order in _orders)
+                order.CheckOnAvailableItems();
         }
 
         private ItemStorage[] GetOrderPoints() => _orders.SelectMany(order => order.OrderPoints).ToArray();

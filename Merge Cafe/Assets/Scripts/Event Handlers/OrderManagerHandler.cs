@@ -26,7 +26,9 @@ namespace EventHandlers
             Box.GetOrderItemMaxLevel += _orderManager.GetOrderItemMaxLevel;
             TutorialSystem.GenerateOrder += _orderManager.GenerateCustomOrder;
             TutorialSystem.GetOrderTransform += _orderManager.GetOrderTransform;
-            Doubler.Activated += _orderManager.ChangeDoublerOrdersAmount;
+            Doubler.Activated += _orderManager.AddDoublerOrdersAmount;
+            Item.ItemCreated += _orderManager.CheckOnAvailableItems;
+            Item.ItemRemoved += _orderManager.CheckOnAvailableItems;
         }
 
         private void OnDisable()
@@ -38,7 +40,9 @@ namespace EventHandlers
             Box.GetOrderItemMaxLevel -= _orderManager.GetOrderItemMaxLevel;
             TutorialSystem.GenerateOrder -= _orderManager.GenerateCustomOrder;
             TutorialSystem.GetOrderTransform -= _orderManager.GetOrderTransform;
-            Doubler.Activated -= _orderManager.ChangeDoublerOrdersAmount;
+            Doubler.Activated -= _orderManager.AddDoublerOrdersAmount;
+            Item.ItemCreated -= _orderManager.CheckOnAvailableItems;
+            Item.ItemRemoved -= _orderManager.CheckOnAvailableItems;
         }
     }
 }

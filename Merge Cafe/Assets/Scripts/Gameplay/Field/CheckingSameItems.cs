@@ -42,7 +42,8 @@ namespace Gameplay.Field
                     }
 
                     if (GameStorage.Instance.IsItemMaxLevel(firstItem.Stats.Type, firstItem.Stats.Level) 
-                        || firstItem.Stats.Type == ItemType.OpenPresent)
+                        || firstItem.Stats.Type == ItemType.OpenPresent
+                        || firstItem.AvailableForOrder)
                         continue;
 
                     for (var j = i + 1; j < _cells.Length; ++j)

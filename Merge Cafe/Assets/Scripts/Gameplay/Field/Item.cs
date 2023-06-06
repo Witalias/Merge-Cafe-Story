@@ -25,6 +25,7 @@ namespace Gameplay.Field
         [SerializeField] private float _returningSpeed;
         [SerializeField] private float _followSpeed;
         [SerializeField] private Image _image;
+        [SerializeField] private Animation _mark;
         [SerializeField] private GameObject _highlightParticlePrefab;
         [SerializeField] private GameObject _mergeParticlePrefab;
 
@@ -44,7 +45,9 @@ namespace Gameplay.Field
         public static event Action CannotBeThrownAway;
         public static event Action WrongLevelForCombinating;
         public static event Action<int, int> CellChanged;
-        public static event Action<int> ItemRemoved;
+        public static event Action<int> ItemRemovedWithSiblingIndex;
+        public static event Action ItemCreated;
+        public static event Action ItemRemoved;
         public static event Action ItemCaptured;
         public static event Action ItemsMerged;
         public static event Action ItemsCombinated;
@@ -53,10 +56,14 @@ namespace Gameplay.Field
 
         public Cell CurrentCell { get => _currentCell; }
 
+        public bool AvailableForOrder => gameObject != null && _mark.gameObject.activeSelf;
+
         public void Initialize(ItemStorage stats)
         {
             _image.sprite = stats.Icon;
             Stats = stats;
+            ItemsManager.Instance.Add(this);
+            ItemCreated?.Invoke();
 
             _animator.SetTrigger(_burnAnimatorTrigger);
         }
@@ -87,12 +94,23 @@ namespace Gameplay.Field
 
         public void Remove()
         {
-            ItemRemoved?.Invoke(CurrentCell.transform.GetSiblingIndex());
+            ItemRemovedWithSiblingIndex?.Invoke(CurrentCell.transform.GetSiblingIndex());
+            ItemsManager.Instance.Remove(this);
+            ItemRemoved?.Invoke();
             _currentCell.Clear();
             Destroy(gameObject);
         }
 
         public void SetActiveParticles(bool value) => _highlightParticlePrefab.SetActive(value);
+
+        public void SetActiveMark(bool value)
+        {
+            if (value && _mark.gameObject.activeSelf)
+                return;
+            _mark.gameObject.SetActive(value);
+            if (value)
+                _mark.Play();
+        }
 
         public void PlayHighlight() => _animator.SetTrigger(_highlightAnimatorTrigger);
 
@@ -317,10 +335,10 @@ namespace Gameplay.Field
         private void Join(Cell withCell)
         {
             SoundManager.Instanse.Play(Sound.Merge, null, Stats.Level - 1);
-            Destroy(withCell.Item.gameObject);
+            withCell.Item.Remove();
+            Remove();
             withCell.Clear();
             withCell.CreateItem(_storage.GetNextItemByAnotherItem(Stats));
-            Remove();
 
             if (Stats.Level >= _storage.GenerationStarFromLevel)
             {

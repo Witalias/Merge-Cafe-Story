@@ -23,6 +23,7 @@ namespace Gameplay.ItemGenerators
         [SerializeField] private UIBar _bar;
         [SerializeField] private GameObject _energyIcon;
         [SerializeField] private Toggle _toggle;
+        [SerializeField] private Transform _itemSpawnPoint;
         [SerializeField] private Color _disabledColor;
         [SerializeField] private Sound _produceSound;
         [SerializeField] private ItemType[] _generatedItems;
@@ -174,7 +175,7 @@ namespace Gameplay.ItemGenerators
 
             var randomLevel = Random.Range(1, _statsOnLevels[_upgradable.Level - 1].initItemsLevel + 1);
             var item = new ItemStorage(_storage.GetItem(randomType, TutorialSystem.TutorialDone ? randomLevel : 1));
-            cell.CreateItem(item, transform.position);
+            cell.CreateItem(item, _itemSpawnPoint.position);
             _animator.SetTrigger(_clickAnimatorBool);
             SoundManager.Instanse.Play(_produceSound, null);
             ItemProduced?.Invoke();

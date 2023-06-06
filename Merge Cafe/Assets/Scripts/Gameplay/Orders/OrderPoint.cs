@@ -10,9 +10,12 @@ namespace Gameplay.Orders
     public class OrderPoint : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField] private Image _icon;
-        [SerializeField] private Animation _checkMark;
+        [SerializeField] private Animation _checkMarkCompleted;
+        [SerializeField] private Animation _checkMarkAvailable;
+        [SerializeField] private Color _availableCellColor;
 
         private Image _background;
+        private Color _defaultCellColor;
 
         private ItemType _itemType;
         private int _itemLevel;
@@ -24,13 +27,23 @@ namespace Gameplay.Orders
 
         public Image Icon { get => _icon; }
 
-        public Animation CheckMark { get => _checkMark; }
+        public Animation CheckMark { get => _checkMarkCompleted; }
 
         public void SetItem(ItemStorage stats)
         {
             Icon.sprite = stats.Icon;
             _itemType = stats.Type;
             _itemLevel = stats.Level;
+        }
+
+        public void SetActiveAvailableMark(bool value)
+        {
+            if (value && _checkMarkAvailable.gameObject.activeSelf)
+                return;
+
+            _checkMarkAvailable.gameObject.SetActive(value);
+            if (value) _checkMarkAvailable.Play();
+            _background.color = value ? _availableCellColor : _defaultCellColor;
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -46,6 +59,7 @@ namespace Gameplay.Orders
         private void Awake()
         {
             _background = GetComponent<Image>();
+            _defaultCellColor = _background.color;
         }
     }
 

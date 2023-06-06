@@ -57,7 +57,7 @@ namespace Gameplay.Field
 
         private void OnEnable()
         {
-            Item.ItemRemoved += DeleteSave;
+            Item.ItemRemovedWithSiblingIndex += DeleteSave;
             Item.CellChanged += ChangeCell;
         }
 
@@ -91,7 +91,7 @@ namespace Gameplay.Field
 
         private void OnDisable()
         {
-            Item.ItemRemoved -= DeleteSave;
+            Item.ItemRemovedWithSiblingIndex -= DeleteSave;
             Item.CellChanged -= ChangeCell;
         }
 
