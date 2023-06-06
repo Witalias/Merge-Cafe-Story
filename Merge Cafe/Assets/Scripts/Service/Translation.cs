@@ -823,13 +823,15 @@ namespace Service
         {
             [Language.English] = new[]
             {
-                "Doubles the rewards of",
-                "order"
+                "Click to double the rewards for",
+                "order",
+                "or merge to increase the number of orders with a doubling of rewards"
             },
             [Language.Russian] = new[]
             {
-                "Удваивает награды для",
-                ""
+                "Нажми, чтобы удвоить награды для",
+                "",
+                "или объедини, чтобы увеличить количество заказов с удвоением наград"
             },
         };
 

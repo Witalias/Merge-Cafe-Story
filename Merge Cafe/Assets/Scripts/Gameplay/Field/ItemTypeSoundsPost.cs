@@ -10,5 +10,6 @@ namespace Gameplay.Field
         public Sprite Icon;
         public Sound TakeSound;
         public Sound PutSound;
+        public bool ShakeAnimation;
     }
 }

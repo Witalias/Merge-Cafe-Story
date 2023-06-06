@@ -78,7 +78,7 @@ namespace UI
             _title.text = Translation.GetCongratulationsText(language);
             _mainText.text = text;
             _levelText.text = level;
-            _viewAdsText.text = Translation.GetViewAdsText(language);
+            //_viewAdsText.text = Translation.GetViewAdsText(language);
             _greatText.text = Translation.GetGreatText(language);
             _rewardIcon.sprite = GameStorage.Instance.GetItemSprite(rewardItem, rewardLevel);
             _shareToggle.isOn = true;

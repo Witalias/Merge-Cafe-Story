@@ -22,6 +22,8 @@ namespace Gameplay.Field
 
         private IEnumerator Check()
         {
+            var waitFrame = new WaitForEndOfFrame();
+            var waitDelay = new WaitForSeconds(_checkingDelay);
             while (true)
             {
                 for (var i = 0; i < _cells.Length; ++i)
@@ -30,7 +32,7 @@ namespace Gameplay.Field
                         continue;
 
                     var firstItem = _cells[i].Item;
-                    yield return new WaitForEndOfFrame();
+                    yield return waitFrame;
 
                     CheckTutorialItem?.Invoke(firstItem.Stats);
 
@@ -55,13 +57,13 @@ namespace Gameplay.Field
                         {
                             firstItem.PlayHighlight();
                             secondItem.PlayHighlight();
-                            yield return new WaitForSeconds(_checkingDelay);
+                            yield return waitDelay;
                             StartCoroutine(Check());
                             yield break;
                         }
                     }
                 }
-                yield return new WaitForSeconds(_checkingDelay);
+                yield return waitDelay;
             }
         }
 

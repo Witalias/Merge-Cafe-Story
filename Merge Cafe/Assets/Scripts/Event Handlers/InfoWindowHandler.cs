@@ -169,12 +169,16 @@ namespace EventHandlers
                 if (language == Language.Russian)
                 {
                     instruction = $"{parts[0]} <color=#{highlightColor}>{count} " +
-                        $"{Translation.PluralizeWord(count, "заказа", "заказов", "заказов")}</color>.";
+                        $"{Translation.PluralizeWord(count, "заказа", "заказов", "заказов")}</color>";
                 }
                 else
                 {
-                    instruction = $"{parts[0]} <color=#{highlightColor}>{count} {parts[1]}{(count > 1 ? "s" : "")}</color>.";
+                    instruction = $"{parts[0]} <color=#{highlightColor}>{count} {parts[1]}{(count > 1 ? "s" : "")}</color>";
                 }
+                if (maxLevel)
+                    instruction += ".";
+                else
+                    instruction += $", {parts[2]}.";
             }
             else
             {

@@ -17,6 +17,7 @@ namespace Gameplay.ItemGenerators
     {
         private const float _tick = 0.01f;
         private const string _clickAnimatorBool = "Click";
+        private const string REMAIN_ITEMS_TO_SLOWING_DOWN_PREFIX = "REMAIN_ITEMS_TO_SLOWING_DOWN_";
 
         [SerializeField] private float _boostSpeedMultiplier;
         [SerializeField] private Image _image;
@@ -47,6 +48,17 @@ namespace Gameplay.ItemGenerators
         public static event System.Action GeneratorClicked;
         public static event System.Action ItemProduced;
         public static event System.Action Speeded;
+
+        public void Save()
+        {
+            PlayerPrefs.SetInt(REMAIN_ITEMS_TO_SLOWING_DOWN_PREFIX + gameObject.name, _remainItemsToSlowingDown);
+        }
+
+        {
+            _remainItemsToSlowingDown = PlayerPrefs.GetInt(REMAIN_ITEMS_TO_SLOWING_DOWN_PREFIX + gameObject.name, 0);
+            if (_remainItemsToSlowingDown > 0)
+                _energyIcon.SetActive(true);
+        }
 
         public Toggle GetToggle() => _toggle;
 

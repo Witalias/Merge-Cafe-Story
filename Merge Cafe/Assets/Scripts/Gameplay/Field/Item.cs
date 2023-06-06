@@ -21,6 +21,7 @@ namespace Gameplay.Field
         private const string _burnAnimatorTrigger = "Burn";
         private const string _disappearAnimatorTrigger = "Disappear";
         private const string _highlightAnimatorTrigger = "Highlight";
+        private const string _shakeAnimatorTrigger = "Shake";
 
         [SerializeField] private float _returningSpeed;
         [SerializeField] private float _followSpeed;
@@ -34,6 +35,7 @@ namespace Gameplay.Field
         private Camera _mainCamera;
         private GameStorage _storage;
         private QuickClickTracking _quickClickTracking;
+        private readonly Vector2 _shakeDelay = new(15f, 30f);
 
         private bool _isReturning = false;
         private bool _dragged = false;
@@ -64,8 +66,9 @@ namespace Gameplay.Field
             Stats = stats;
             ItemsManager.Instance.Add(this);
             ItemCreated?.Invoke();
-
             _animator.SetTrigger(_burnAnimatorTrigger);
+            if (stats.ShakeAnimation)
+                StartCoroutine(Shake());
         }
 
         public void SetCell(Cell cell) => _currentCell = cell;
@@ -367,6 +370,15 @@ namespace Gameplay.Field
             duplicatedItemLevel = Mathf.Clamp(duplicatedItemLevel, 1, itemMaxLevel);
             SoundManager.Instanse.Play(Sound.Merge, null, duplicatedItemLevel - 1);
             _currentCell.CreateItem(GameStorage.Instance.GetItem(withCell.Item.Stats.Type, duplicatedItemLevel), withCell.transform.position);
+        }
+
+        private IEnumerator Shake()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(UnityEngine.Random.Range(_shakeDelay.x, _shakeDelay.y));
+                _animator.SetTrigger(_shakeAnimatorTrigger);
+            }
         }
     }
 }

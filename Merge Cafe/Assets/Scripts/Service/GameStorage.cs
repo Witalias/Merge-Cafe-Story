@@ -335,8 +335,11 @@ namespace Service
         {
             var itemStats = new ItemStorage[item.Items.Length];
             for (var i = 0; i < itemStats.Length; ++i)
-                itemStats[i] = new ItemStorage(i + 1, item.Items[i].Icon, item.Type, item.Throwable, 
-                    item.Movable, item.Special, false, item.Items[i].TakeSound, item.Items[i].PutSound);
+            {
+                itemStats[i] = new ItemStorage(i + 1, item.Items[i].Icon, item.Type, item.Throwable,
+                    item.Movable, item.Special, item.Items[i].ShakeAnimation, false, item.Items[i].TakeSound,
+                    item.Items[i].PutSound);
+            }
             return itemStats;
         }
     }

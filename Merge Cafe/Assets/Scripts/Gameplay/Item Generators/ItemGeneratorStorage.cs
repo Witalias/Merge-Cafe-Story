@@ -22,12 +22,16 @@ namespace Gameplay.ItemGenerators
         {
             foreach (var upgradable in _upgradables)
                 upgradable.Save();
+            foreach (var generator in _generators)
+                generator.Save();
         }
 
         public void Load()
         {
             foreach (var upgradable in _upgradables)
                 upgradable.Load();
+            foreach (var generator in _generators)
+                generator.Load();
         }
 
         public Sprite[] GetProducedItemSprites(ItemType type)
