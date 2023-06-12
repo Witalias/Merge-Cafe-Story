@@ -1,11 +1,11 @@
-# Merge-Cafe
+# Merge Cafe Story: Restaurant Game
 
-В игре "Merge Cafe Story" вы становитесь хозяином уютного кафе, которое нужно развивать и совершенствовать. Основной процесс игры заключается в том, чтобы выполнять заказы посетителей, сочетая различные напитки и выпечку из доступных ингредиентов.
+In the game "Merge Cave Story" you become the owner of a cozy cafe that needs to be developed and improved. The main process of the game is to fulfill the orders of visitors, combining various drinks and pastries from the available ingredients.
 
-Игрок должен объединять ингредиенты с помощью механики merge, создавая более сложные и вкусные блюда. Каждый заказ имеет свои требования, поэтому игрок должен быть внимательным, чтобы удовлетворить потребности клиентов.
+The player should combine ingredients using merge mechanics, creating more complex and delicious dishes. Each order has its own requirements, so the player must be attentive to meet the needs of customers.
 
-Кроме того, игрок может увеличивать уровень популярности своего кафе, чтобы улучшать оборудование, которое будет ускорять производство продуктов.
+In addition, the player can increase the popularity level of his cafe in order to improve equipment that will speed up the production of products.
 
-Помимо основной игры, игрок продвигается по сюжету, открывая новые диалоги и улучшая своё кафе. За полученные деньги владелец кафе сможет наводить уборку и обустраивать кафе, приводя его в порядок.
+In addition to the main game, the player moves along the plot, opening new dialogues and improving his cafe. For the money received, the owner of the cafe will be able to clean up and equip the cafe, putting it in order.
 
-"Merge Cafe Story" - это увлекательная игра, которая позволяет почувствовать себя настоящим хозяином кафе. Она подходит для всех любителей игр с элементами стратегии и пазлов.
+"Merge Cafe Story" is an exciting game that allows you to feel like a real cafe owner. It is suitable for all fans of games with elements of strategy and puzzles.
