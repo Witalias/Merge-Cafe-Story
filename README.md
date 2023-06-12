@@ -1,6 +1,6 @@
 # Merge Cafe Story: Restaurant Game
 
-In the game "Merge Cave Story" you become the owner of a cozy cafe that needs to be developed and improved. The main process of the game is to fulfill the orders of visitors, combining various drinks and pastries from the available ingredients.
+In the game "Merge Cafe Story" you become the owner of a cozy cafe that needs to be developed and improved. The main process of the game is to fulfill the orders of visitors, combining various drinks and pastries from the available ingredients.
 
 The player should combine ingredients using merge mechanics, creating more complex and delicious dishes. Each order has its own requirements, so the player must be attentive to meet the needs of customers.
 
