@@ -43,7 +43,8 @@ namespace Gameplay.Field
                         break;
                     }
 
-                    if (GameStorage.Instance.IsItemMaxLevel(firstItem.Stats.Type, firstItem.Stats.Level) 
+                    if (firstItem == null
+                        || GameStorage.Instance.IsItemMaxLevel(firstItem.Stats.Type, firstItem.Stats.Level) 
                         || firstItem.Stats.Type == ItemType.OpenPresent
                         || firstItem.AvailableForOrder)
                         continue;

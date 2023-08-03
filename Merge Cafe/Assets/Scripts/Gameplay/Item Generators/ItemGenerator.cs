@@ -54,6 +54,7 @@ namespace Gameplay.ItemGenerators
             PlayerPrefs.SetInt(REMAIN_ITEMS_TO_SLOWING_DOWN_PREFIX + gameObject.name, _remainItemsToSlowingDown);
         }
 
+        public void Load()
         {
             _remainItemsToSlowingDown = PlayerPrefs.GetInt(REMAIN_ITEMS_TO_SLOWING_DOWN_PREFIX + gameObject.name, 0);
             if (_remainItemsToSlowingDown > 0)

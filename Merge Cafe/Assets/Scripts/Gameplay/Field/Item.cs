@@ -108,7 +108,7 @@ namespace Gameplay.Field
 
         public void SetActiveMark(bool value)
         {
-            if (value && _mark.gameObject.activeSelf)
+            if (gameObject == null ||(value && _mark.gameObject.activeSelf))
                 return;
             _mark.gameObject.SetActive(value);
             if (value)
